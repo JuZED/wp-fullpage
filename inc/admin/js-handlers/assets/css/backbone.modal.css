@@ -1,0 +1,118 @@
+#bbm {
+	position: relative; }
+
+.bbm-modal-backdrop {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	min-height: 360px;
+	-webkit-transition: background-color 0.3s;
+	background: rgba(0, 0, 0, 0.75);
+	z-index: 159900;
+}
+
+.bbm-modal {
+	position: fixed;
+	top: 30px;
+	left: 30px;
+	right: 30px;
+	bottom: 30px;
+	-webkit-box-shadow: 0 5px 15px rgba(0,0,0,.7);
+	box-shadow: 0 5px 15px rgba(0,0,0,.7);
+	background: #fcfcfc;
+	z-index: 160000; }
+	.bbm-modal * {
+		-webkit-box-sizing: content-box;
+		-moz-box-sizing: content-box;
+		box-sizing: content-box; }
+	.bbm-modal .bbm-modal-content {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		overflow: auto;
+		min-height: 300px; }
+
+/* BLOCKS */
+.bbm-modal__topbar,
+.bbm-modal__bottombar {
+	padding: 0 30px; }
+
+.bbm-modal__topbar {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 56px;
+	z-index: 200; }
+	.bbm-modal__topbar > ul {
+		list-style: none;
+		text-align: center;
+		padding: 0;
+		margin: 0; }
+
+.bbm-modal__tab {
+	display: inline-block;
+	padding: 15px 10px; }
+	.bbm-modal__tab a {
+		font-size: 16px;
+		font-weight: bold;
+		color: #999999; }
+		.bbm-modal__tab a:hover, .bbm-modal__tab a.active {
+			color: #222222; }
+
+.bbm-modal__title {
+	padding: 0 16px;
+	font-size: 22px;
+	line-height: 60px;
+	margin: 0; }
+
+.bbm-modal__section {
+	position: absolute;
+	top: 60px;
+	left: 0;
+	right: 0;
+	bottom: 61px;
+	height: auto;
+	width: auto;
+	padding: 20px;
+	margin: 0;
+	overflow: auto;
+	background: #fff;
+	border-top: 1px solid #ddd;
+	border-bottom: 1px solid #ddd; }
+	.bbm-modal__section p {
+		font-size: 16px;
+		line-height: 26px;
+		color: #575656; }
+		.bbm-modal__section p:last-child {
+			padding: 0;
+			margin-bottom: 0; }
+	.bbm-modal__section h3 {
+		margin: 0;
+		font-size: 20px;
+		line-height: 1em; }
+
+.bbm-modal__bottombar {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	height: 60px;
+	z-index: 100; }
+	.bbm-modal__bottombar .bbm-add-button,
+	.bbm-modal__bottombar .bbm-close-button {
+			float: right;
+			margin-left: 10px;
+			margin-top: 12px; }
+
+/* MODULES */
+.bbm-group {
+	content: "";
+	display: table;
+	clear: both; }
+
+	

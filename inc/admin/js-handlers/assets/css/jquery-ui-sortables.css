@@ -1,0 +1,53 @@
+
+.wpfp-sortables { 
+	list-style-type: none; 
+	margin: 0; 
+	padding: 0; }
+	
+	.wpfp-sortables li.wpfp-sortable-item { 
+		background-color: #E3E3E3;
+		margin: 0 5px 5px 5px;
+		padding: 5px;
+		font-size: 1.2em;
+		border: 1px solid #eeeeee;
+		position: relative;
+		line-height: 1.2em;
+		color: #17A5C7; }
+	
+	.wpfp-sortables li.wpfp-sortable-item:nth-child(odd) { 
+		background-color: #C7C6C6; }
+	
+		.wpfp-sortables li.wpfp-sortable-item .wpfp-sortable-item-title { 
+			display: inline-block;
+			margin: 0 10px;
+			cursor: default; }
+	
+		.wpfp-sortables li.wpfp-sortable-item .wpfp-sortable-icon { 
+			cursor: move;
+			display: inline-block;
+			-webkit-transform: rotate(90deg);
+			-ms-transform: rotate(90deg);
+			transform: rotate(90deg); }
+			
+			.wpfp-sortables li.wpfp-sortable-item .wpfp-sortable-icon:before { 
+				font-family: 'dashicons';
+				content: "\f475";
+				font-size: 0.6em; }
+
+		.wpfp-sortables li.wpfp-sortable-item.sortable-placeholder { 
+			height: 1.5em; 
+			line-height: 1.2em;
+			border-style: dashed;
+			border-color: #dddddd; }	
+	
+		.wpfp-sortables li.wpfp-sortable-item .wpfp-remove-sortable-item { 
+			position: absolute;
+			top: 5px;
+			right: 5px;
+			text-decoration: none;
+			color: #17A5C7; }	
+			
+			.wpfp-sortables li.wpfp-sortable-item .wpfp-remove-sortable-item:before { 
+				font-family: 'dashicons';
+				content: "\f182";
+				font-size: 0.8em; }

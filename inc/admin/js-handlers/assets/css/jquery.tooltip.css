@@ -1,0 +1,59 @@
+
+.wpfp-tip {
+	font-weight: normal;
+	display: inline-block;
+	cursor: help; }
+
+	.wpfp-tip:after {
+		font-family: "dashicons";
+		content: "\f348";
+		font-size: 1.2em;
+		line-height: 1.0em;
+		color: #17A5C7;
+		-webkit-text-shadow: 2px 2px 1px #FFEB00;
+		text-shadow: 2px 2px 1px #FFEB00;
+		transition: .1s all ease-in-out;
+		-webkit-transition: .1s all ease-in-out; }
+
+		.wpfp-tip:hover:after {
+			color: #555555;
+			-webkit-text-shadow: 2px 2px 1px #C7C6C6;
+			text-shadow: 2px 2px 1px #C7C6C6; }
+
+
+.wpfp-goto {
+	font-weight: normal;
+	display: inline-block;
+	text-decoration: none;
+	cursor: pointer; }
+
+	.wpfp-goto:after {
+		font-family: "dashicons";
+		content: "\f319";
+		font-size: 1.2em;
+		line-height: 1.0em;
+		color: #17A5C7;
+		-webkit-text-shadow: 2px 2px 1px #FFEB00;
+		text-shadow: 2px 2px 1px #FFEB00;
+		transition: .1s all ease-in-out;
+		-webkit-transition: .1s all ease-in-out; }
+
+		.wpfp-goto:hover:after {
+			color: #555555;
+			-webkit-text-shadow: 2px 2px 1px #C7C6C6;
+			text-shadow: 2px 2px 1px #C7C6C6; }
+
+.wpfp-tooltip {
+	display: none;
+	position: absolute;
+	color: #ffffff;
+	font-weight: bold;
+	border: 1px solid #FFF000;
+	background-color: rgba(23, 165, 199, 0.95);
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+	box-shadow: 4px 4px 0px rgba(85, 85, 85, 0.63);
+	-webkit-box-shadow: 4px 4px 0px rgba(85, 85, 85, 0.63);
+	padding: 10px;
+	font-size: 12px Arial;
+	max-width: 50%; }
