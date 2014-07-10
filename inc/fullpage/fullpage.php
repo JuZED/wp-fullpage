@@ -115,13 +115,15 @@ final class WP_Fullpage extends WP_Fullpage_Base {
 			wp_enqueue_script( 'jquery-slimscroll', $this->assets_url . '/js/jquery.slimscroll.min.js', array( 'jquery' ), WPFP_VERSION );
 			wp_enqueue_script( 'jquery-easings', $this->assets_url . '/js/jquery.easings.min.js', array( 'jquery' ), WPFP_VERSION );
 			wp_enqueue_script( 'jquery-pseudo', $this->assets_url . '/js/jquery.pseudo.js', array( 'jquery' ), WPFP_VERSION );
-			// wp_enqueue_script( 'jquery-fullpage', $this->assets_url . '/js/jquery.fullPage.min.js', array( 'jquery', 'jquery-slimscroll', 'jquery-easings' ), WPFP_VERSION );
 			wp_enqueue_script( 'jquery-fullpage', $this->assets_url . '/js/jquery.fullPage.js', array( 'jquery', 'jquery-slimscroll', 'jquery-easings' ), WPFP_VERSION );
 			
+			// Get the path to 'jquery.fullpage.custom-events.js'.
+			// See if the file exists in the theme
 			$fullpage_custom_events_script_path = $this->locate_template(
 				trailingslashit( $this->script_path() ) . 'jquery.fullpage.custom-events.js'
 			);
 
+			// Convert the previous script path to an URL
 			$fullpage_custom_events_script_url = str_replace( 
 				array(
 					get_stylesheet_directory(),
@@ -136,20 +138,8 @@ final class WP_Fullpage extends WP_Fullpage_Base {
 				$fullpage_custom_events_script_path
 			);
 
-			if( $fullpage_custom_events_script_url ) {
-
-				wp_enqueue_script( 'jquery-fullpage-custom-events', $fullpage_custom_events_script_url, array( 'jquery', 'jquery-fullpage', 'jquery-slimscroll', 'jquery-easings', 'jquery-pseudo' ), WPFP_VERSION );
-
-				$dependencies = array( 'jquery-fullpage-custom-events' );
-
-			}
-			else {
-
-				$dependencies = array( 'jquery', 'jquery-fullpage', 'jquery-slimscroll', 'jquery-easings' );
-
-			}
-
-			wp_enqueue_script( 'jquery-fullpage-init', $this->assets_url . '/js/jquery.fullPage.init.js', $dependencies, WPFP_VERSION );
+			wp_enqueue_script( 'jquery-fullpage-custom-events', $fullpage_custom_events_script_url, array( 'jquery', 'jquery-fullpage', 'jquery-slimscroll', 'jquery-easings', 'jquery-pseudo' ), WPFP_VERSION );
+			wp_enqueue_script( 'jquery-fullpage-init', $this->assets_url . '/js/jquery.fullPage.init.js', array( 'jquery-fullpage-custom-events' ), WPFP_VERSION );
 			
 			// Add Fullpage Styles
 			wp_enqueue_style( 'dashicons' );
@@ -177,7 +167,10 @@ final class WP_Fullpage extends WP_Fullpage_Base {
 		$sections_option = WPFP_Query()->fullpage->sections_option;
 
 		$params['navigationTooltips'] = array();
+		$params['sectionsColor']      = array();
+		$params['anchors']            = array();
 
+		// Get the sections Fullpage params
 		foreach( WPFP_Query()->sections as $key => $section ) {
 
 			$params['navigationTooltips'][] = WPFP_Query()->get_section_nav_title( $section->ID );
@@ -237,7 +230,7 @@ final class WP_Fullpage extends WP_Fullpage_Base {
 		if ( $template )
 			load_template( $template, false );
 
-	} // END public function wc_get_template_part
+	} // END public function get_template_part
 
 	/**
 	 * Get templates passing attributes and including the file.

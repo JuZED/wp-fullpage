@@ -106,6 +106,7 @@ final class WP_Fullpage_Query {
 		$slides_options   = get_post_meta( $post->ID, WPFP_FULLPAGE_PT_SLIDES_OPTIONS, true );
 		$custom_options   = get_post_meta( $post->ID, WPFP_FULLPAGE_PT_CUSTOM_OPTIONS, true );
 
+		// Init Fullpage options
 		$this->fullpage->fullpage_options = apply_filters( 'wpfp_fullpage_fullpage_option', $fullpage_options, $post->ID );
 		$this->fullpage->sections_options = apply_filters( 'wpfp_fullpage_sections_option', $sections_options, $post->ID );
 		$this->fullpage->slides_options   = apply_filters( 'wpfp_fullpage_slides_option', $slides_options, $post->ID );
@@ -129,6 +130,7 @@ final class WP_Fullpage_Query {
 		if( empty( $sections_options ) )
 			return;
 
+		// Prepare Args for the query
 		switch ( $sections_options['sectionsType'] ) {
 			
 			case 'sections':

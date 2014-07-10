@@ -5,9 +5,6 @@ require_once( ABSPATH . 'wp-admin/includes/class-wp-posts-list-table.php' );
 
 /**
  * Fullpage Posts List Table class.
- *
- * @package WordPress
- * @subpackage List_Table
  */
 abstract class WP_Fullpage_Posts_List_Table extends WP_Posts_List_Table {
 
@@ -96,7 +93,7 @@ abstract class WP_Fullpage_Posts_List_Table extends WP_Posts_List_Table {
 
 			$ajax_params['author'] = $current_user_id;
 
-			$status_links['mine']   = "<a data-params='" . json_encode( $ajax_params ) . "' href='#' class='" . implode( ' ', $classes ) . "'>" . sprintf( _nx( 'Mine <span class="count">(%s)</span>', 'Mine <span class="count">(%s)</span>', $this->user_posts_count, 'posts' ), number_format_i18n( $this->user_posts_count ) ) . '</a>';
+			$status_links['mine']    = "<a data-params='" . json_encode( $ajax_params ) . "' href='#' class='" . implode( ' ', $classes ) . "'>" . sprintf( _nx( 'Mine <span class="count">(%s)</span>', 'Mine <span class="count">(%s)</span>', $this->user_posts_count, 'posts' ), number_format_i18n( $this->user_posts_count ) ) . '</a>';
 			$ajax_params['allposts'] = 1;
 
 		}
@@ -736,6 +733,7 @@ abstract class WP_Fullpage_Posts_List_Table extends WP_Posts_List_Table {
 			return;
 
 		$input_id = $input_id . '-search-input';
+
 		?>
 			<p class="search-box">
 				<label class="screen-reader-text" for="<?php print $input_id ?>"><?php print $text; ?>:</label>
@@ -809,7 +807,7 @@ abstract class WP_Fullpage_Posts_List_Table extends WP_Posts_List_Table {
 		
 		$ajax_params['paged'] = min( $total_pages, $current+1 );
 
-		$page_links[]     = sprintf( "<a data-params='%s' class='%s' title='%s' href='#'>%s</a>",
+		$page_links[] = sprintf( "<a data-params='%s' class='%s' title='%s' href='#'>%s</a>",
 			json_encode( $ajax_params ),
 			'next-page' . $disable_last . ' ' . WPFP_BBM_LOADS_CONTENT,
 			esc_attr__( 'Go to the next page' ),

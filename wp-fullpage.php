@@ -2,12 +2,12 @@
 /* 
 Plugin Name: WP Fullpage
 Plugin URI: http://www.juzed.fr/
-Description: Add Fullpage.js Features to your Blog 
+Description: Change your WordPress website to a Fullscreen Scrolling one using FullPage.js
 Version: 1.0 
 Author: Julien Zerbib
 Author URI: http://www.juzed.fr/
-  
-  
+
+
 	Copyright 2013  Julien Zerbib  ( email : contact@juzed.fr )
 
 	This program is free software; you can redistribute it and/or modify
@@ -82,7 +82,7 @@ class WP_Fullpage_Launcher {
 
 } // END class WP_Fullpage_Launcher
 
-// Installation and uninstallation hooks
+// Plugin Activation and Deactivation hooks
 register_activation_hook( __FILE__, array( 'WP_Fullpage_Launcher', 'activate' ) );
 register_deactivation_hook( __FILE__, array( 'WP_Fullpage_Launcher', 'deactivate' ) );
 

@@ -14,10 +14,10 @@ define( 'WPFP_DOMAIN', 'wpfp' );
 define( 'WPFP_REL_PATH', plugin_dir_path( __FILE__ ) );
 
 // The WP Fullpage URL
-define( 'WPFP_URL', plugins_url( '/', __FILE__ ) );
+define( 'WPFP_URL', plugins_url( trailingslashit( basename( __DIR__ ) ), dirname( __FILE__ ) ) );
 
 // The WP Fullpage Assets URL
-define( 'WPFP_ASSETS_URL', plugins_url( trailingslashit( basename( __DIR__ ) ), dirname( __FILE__ ) ) . 'assets/' );
+define( 'WPFP_ASSETS_URL', WPFP_URL . 'assets/' );
 
 // The WP Fullpage Templates Path
 define( 'WPFP_TEMPLATE_PATH', 'wp-fullpage/' );

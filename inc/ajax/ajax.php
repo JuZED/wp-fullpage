@@ -38,14 +38,14 @@ class WP_Fullpage_Ajax extends WP_Fullpage_Base {
 		// Ajax action to get posts of a type list
 		add_action( 'wp_ajax_wpfp_get_posts_of_type', array( &$this, 'get_posts_of_type' ) );
 
+		// Ajax action to get posts of a term list
+		add_action( 'wp_ajax_wpfp_get_posts_of_term_or_type_sortables', array( &$this, 'get_posts_of_term_or_type_sortables' ) );
+
 		// Ajax action to get fullpage sections list sortables
 		add_action( 'wp_ajax_wpfp_get_fullpage_sections_sortables', array( &$this, 'get_fullpage_sections_sortables' ) );
 
 		// Ajax action to get fullpage slides list sortables
 		add_action( 'wp_ajax_wpfp_get_fullpage_slides_sortables', array( &$this, 'get_fullpage_slides_sortables' ) );
-
-		// Ajax action to get posts of a term list
-		add_action( 'wp_ajax_wpfp_get_posts_of_term_or_type_sortables', array( &$this, 'get_posts_of_term_or_type_sortables' ) );
 
 	} // END private function actions_filters
 
@@ -138,14 +138,14 @@ class WP_Fullpage_Ajax extends WP_Fullpage_Base {
 		
 		check_ajax_referer( WPFP_GET_POSTS_OF_TERM_ACTION, 'security' );
 
-		$paged            = isset( $_REQUEST['paged'] ) ? $_REQUEST['paged'] : 1;
-		$orderby          = isset( $_REQUEST['orderby'] ) ? $_REQUEST['orderby'] : '';
-		$order            = isset( $_REQUEST['order'] ) ? $_REQUEST['order'] : '';
-		$post_status      = isset( $_REQUEST['post_status'] ) ? $_REQUEST['post_status'] : '';
-		$search           = isset( $_REQUEST['s'] ) ? $_REQUEST['s'] : '';
-		$date             = isset( $_REQUEST['m'] ) ? (int) $_REQUEST['m'] : 0;
-		$taxonomy         = isset( $_REQUEST['taxonomy'] ) ? $_REQUEST['taxonomy'] : '';
-		$term_id          = isset( $_REQUEST['term_id'] ) ? $_REQUEST['term_id'] : 0;
+		$paged       = isset( $_REQUEST['paged'] ) ? $_REQUEST['paged'] : 1;
+		$orderby     = isset( $_REQUEST['orderby'] ) ? $_REQUEST['orderby'] : '';
+		$order       = isset( $_REQUEST['order'] ) ? $_REQUEST['order'] : '';
+		$post_status = isset( $_REQUEST['post_status'] ) ? $_REQUEST['post_status'] : '';
+		$search      = isset( $_REQUEST['s'] ) ? $_REQUEST['s'] : '';
+		$date        = isset( $_REQUEST['m'] ) ? (int) $_REQUEST['m'] : 0;
+		$taxonomy    = isset( $_REQUEST['taxonomy'] ) ? $_REQUEST['taxonomy'] : '';
+		$term_id     = isset( $_REQUEST['term_id'] ) ? $_REQUEST['term_id'] : 0;
 
 		$term  = get_term( $term_id, $taxonomy );
 		$title = $term->name;
@@ -163,13 +163,13 @@ class WP_Fullpage_Ajax extends WP_Fullpage_Base {
 			'term_id'     => $term->term_id,
 			'tax_query'   => array(
 				array(
-					'taxonomy'         => $taxonomy,
-					'field'            => 'id',
-					'terms'            => array( $term->term_id ),
+					'taxonomy' => $taxonomy,
+					'field'    => 'id',
+					'terms'    => array( $term->term_id ),
 				),
 			),
-			'orderby'     => $orderby,
-			'order'       => $order,
+			'orderby' => $orderby,
+			'order'   => $order,
 		);
 		
 		$this->get_posts_of_term_list( $args, $title );
@@ -236,11 +236,11 @@ class WP_Fullpage_Ajax extends WP_Fullpage_Base {
 			die;
 
 		$args = array(
-			'post__in'         => $posts,
-			'post_type'        => $post_type,
-			'posts_per_page'   => -1,
-			'orderby'          => 'post__in',
-			'order'            => 'ASC',
+			'post__in'       => $posts,
+			'post_type'      => $post_type,
+			'posts_per_page' => -1,
+			'orderby'        => 'post__in',
+			'order'          => 'ASC',
 		);
 		
 		$this->get_posts_sortables( $args, $sortable_id, $empty_text );
@@ -267,11 +267,11 @@ class WP_Fullpage_Ajax extends WP_Fullpage_Base {
 			die;
 
 		$args = array(
-			'post__in'         => $posts,
-			'post_type'        => $post_type,
-			'posts_per_page'   => -1,
-			'orderby'          => 'post__in',
-			'order'            => 'ASC',
+			'post__in'       => $posts,
+			'post_type'      => $post_type,
+			'posts_per_page' => -1,
+			'orderby'        => 'post__in',
+			'order'          => 'ASC',
 		);
 		
 		$this->get_posts_sortables( $args, $sortable_id, $empty_text );
@@ -297,11 +297,11 @@ class WP_Fullpage_Ajax extends WP_Fullpage_Base {
 			die;
 
 		$args = array(
-			'post__in'         => $posts,
-			'post_type'        => 'any',
-			'posts_per_page'   => -1,
-			'orderby'          => 'post__in',
-			'order'            => 'ASC',
+			'post__in'       => $posts,
+			'post_type'      => 'any',
+			'posts_per_page' => -1,
+			'orderby'        => 'post__in',
+			'order'          => 'ASC',
 		);
 		
 		$this->get_posts_sortables( $args, $sortable_id, $empty_text );

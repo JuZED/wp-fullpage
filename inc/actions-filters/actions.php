@@ -28,7 +28,7 @@ class WP_Fullpage_Actions extends WP_Fullpage_Base {
 		add_action( 'plugins_loaded', array( &$this, 'init_textdomain' ) );
 
 		// Flush rules on after switch theme
-		add_action( 'after_switch_theme', array( &$this, 'rewrite_flush' ) );
+		add_action( 'after_switch_theme', array( &$this, 'flush_rules' ) );
 
 	} // END public function actions
 
@@ -48,11 +48,11 @@ class WP_Fullpage_Actions extends WP_Fullpage_Base {
 	 * 
 	 * @return  void
 	 */
-	public function rewrite_flush() {
+	public function flush_rules() {
 		
 		flush_rewrite_rules();
 		
-	} // END public function rewrite_flush
+	} // END public function flush_rules
 
 } // END class WP_Fullpage_Actions
 

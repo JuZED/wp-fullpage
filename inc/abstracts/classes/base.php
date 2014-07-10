@@ -35,7 +35,7 @@ abstract class WP_Fullpage_Base {
 	 */
 	public function init( $dir = __DIR__, $file = __FILE__ ) {
 		
-		// Initializing plugin properties
+		// Initializing class properties
 		WPFP_Helpers()->define_properties( $this, $dir, $file );
 
 	} // END public function init
