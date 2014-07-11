@@ -1216,7 +1216,7 @@ final class WP_Fullpage_Query {
 		$content = $post->post_content;
 
 		if ( null === $more_link_text )
-			$more_link_text = __( '(more&hellip;)' );
+			$more_link_text = __( '(more&hellip;)', WPFP_DOMAIN );
 
 		$output = '';
 		$has_teaser = false;
