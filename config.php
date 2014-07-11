@@ -53,6 +53,7 @@ define( 'WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS', 'wpfp_fullpage_pt_fullpage_options'
 define( 'WPFP_FULLPAGE_PT_SECTIONS_OPTIONS', 'wpfp_fullpage_pt_sections_options' );
 define( 'WPFP_FULLPAGE_PT_SLIDES_OPTIONS', 'wpfp_fullpage_pt_slides_options' );
 define( 'WPFP_FULLPAGE_PT_CUSTOM_OPTIONS', 'wpfp_fullpage_pt_custom_options' );
+define( 'WPFP_SECTION_PT_FULLPAGE_OPTIONS', 'wpfp_section_pt_fullpage_options' );
 define( 'WPFP_SECTION_PT_SECTION_OPTIONS', 'wpfp_section_pt_section_options' );
 define( 'WPFP_SECTION_PT_SLIDES_OPTIONS', 'wpfp_section_pt_slides_options' );
 define( 'WPFP_SECTION_PT_CUSTOM_OPTIONS', 'wpfp_section_pt_custom_options' );

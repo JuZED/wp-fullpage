@@ -215,14 +215,16 @@ final class WP_Fullpage_Query {
 					$section->in_the_slide_loop = false;
 
 					// Get Section options
-					$section_options = get_post_meta( $section->ID, WPFP_SECTION_PT_SECTION_OPTIONS, true );
-					$slides_options  = get_post_meta( $section->ID, WPFP_SECTION_PT_SLIDES_OPTIONS, true );
-					$custom_options  = get_post_meta( $section->ID, WPFP_SECTION_PT_CUSTOM_OPTIONS, true );
+					$fullpage_options = get_post_meta( $section->ID, WPFP_SECTION_PT_FULLPAGE_OPTIONS, true );
+					$section_options  = get_post_meta( $section->ID, WPFP_SECTION_PT_SECTION_OPTIONS, true );
+					$slides_options   = get_post_meta( $section->ID, WPFP_SECTION_PT_SLIDES_OPTIONS, true );
+					$custom_options   = get_post_meta( $section->ID, WPFP_SECTION_PT_CUSTOM_OPTIONS, true );
 
 					// Init Section options
-					$section->section_options = apply_filters( 'wpfp_section_section_options', $section_options, $key, $this );
-					$section->slides_options  = apply_filters( 'wpfp_section_slides_options', $slides_options, $key, $this );
-					$section->custom_options  = apply_filters( 'wpfp_section_custom_options', $custom_options, $key, $this );
+					$section->fullpage_options = apply_filters( 'wpfp_section_fullpage_options', $fullpage_options, $key, $this );
+					$section->section_options  = apply_filters( 'wpfp_section_section_options', $section_options, $key, $this );
+					$section->slides_options   = apply_filters( 'wpfp_section_slides_options', $slides_options, $key, $this );
+					$section->custom_options   = apply_filters( 'wpfp_section_custom_options', $custom_options, $key, $this );
 
 					$this->init_slides( $key );
 

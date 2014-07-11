@@ -45,6 +45,46 @@
 					
 					</li>
 					
+					<!-- Slides Navigation -->
+					<li>
+
+						<span class="label">
+						 	<?php _e( 'Slides Navigation', WPFP_DOMAIN ); ?>
+						</span>
+
+						<div class="radio">
+
+							<input type="radio" id="slidesNavigation-yes" name="<?php print WPFP_SECTION_PT_FULLPAGE_OPTIONS; ?>[slidesNavigation]" value="yes" <?php WPFP_Helpers()->checked( isset( $slidesNavigation ) ? $slidesNavigation : 'no', isset( $SLIDESNAVIGATION ) ? $SLIDESNAVIGATION : 'no', 'yes' ); ?> />
+							<label for="slidesNavigation-yes">
+							 	<?php _e( 'yes', WPFP_DOMAIN ); ?>
+							</label>
+							<input type="radio" id="slidesNavigation-no" name="<?php print WPFP_SECTION_PT_FULLPAGE_OPTIONS; ?>[slidesNavigation]" value="no" <?php WPFP_Helpers()->checked( isset( $slidesNavigation ) ? $slidesNavigation : 'no', isset( $SLIDESNAVIGATION ) ? $SLIDESNAVIGATION : 'no', 'no' ); ?> />
+							<label for="slidesNavigation-no">
+							 	<?php _e( 'no', WPFP_DOMAIN ); ?>
+							</label>
+
+						</div>
+
+						<span class="wpfp-tip" data-tip="<?php _e( 'If set to true it will show a navigation bar made up of small circles for each landscape slider on the site.', WPFP_DOMAIN ); ?>"></span>
+
+					</li>
+					
+					<!-- Slides Nav Position -->
+					<li>
+
+						<label for="slidesNavPosition">
+						 	<?php _e( 'Slides Nav Position', WPFP_DOMAIN ); ?>
+						</label>
+						<select id="slidesNavPosition" name="<?php print WPFP_SECTION_PT_FULLPAGE_OPTIONS; ?>[slidesNavPosition]" <?php WPFP_Helpers()->default_setting( isset( $SLIDESNAVPOSITION ) ? $SLIDESNAVPOSITION : 'top', true ); ?>>
+							
+							<option value="top" <?php selected( isset( $slidesNavPosition ) ? $slidesNavPosition : '', 'top' ); ?>><?php _e( 'Top', WPFP_DOMAIN ); ?></option>
+							<option value="bottom" <?php selected( isset( $slidesNavPosition ) ? $slidesNavPosition : '', 'bottom' ); ?>><?php _e( 'Bottom', WPFP_DOMAIN ); ?></option>
+
+						</select>
+						<span class="wpfp-tip" data-tip="<?php _e( 'Defines the position for the landscape navigation bar for sliders. Admits top and bottom as values. You may want to modify the CSS styles to determine the distance from the top or bottom as well as any other style such as color.', WPFP_DOMAIN ); ?>"></span>
+
+					</li>
+					
 					<!-- Section Color -->
 					<li>
 				

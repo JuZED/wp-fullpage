@@ -13,7 +13,7 @@
 
 	<?php
 
-		$position = WPFP_Query()->fullpage->fullpage_options['slidesNavPosition'];
+		$position = WPFP_Query()->section->fullpage_options['slidesNavPosition'];
 
 	?>
 
@@ -25,7 +25,7 @@
 
 				?>
 
-					<li class="<?php print $key === 0 ? 'active' : ''; ?>" data-tooltip="<?php print esc_html( WPFP_Query()->get_slide_title( $slide->ID, '', '', false ) ); ?>">
+					<li data-tooltip="<?php print esc_html( WPFP_Query()->get_slide_title( $slide->ID, '', '', false ) ); ?>">
 						<a href="#">
 							<span></span>
 						</a>
