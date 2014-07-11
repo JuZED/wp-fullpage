@@ -576,7 +576,7 @@ final class WP_Fullpage extends WP_Fullpage_Base {
 
 		}
 	
-	} // END public function get_sections
+	} // END public function get_loop
 
 	/**
 	 * Get the template path.
