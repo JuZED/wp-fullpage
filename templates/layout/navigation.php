@@ -20,7 +20,7 @@
 			foreach( WPFP_Query()->sections as $key => $section ) :
 
 		?>
-			<li class="<?php print $key === 0 ? 'active' : ''; ?>" data-menuanchor="<?php print $section->post_name ?>" data-tooltip="<?php print esc_html( WPFP_Query()->get_section_title( $section->ID, '', '', false ) ); ?>">
+			<li class="<?php print $key === 0 ? 'active' : ''; ?>" data-menuanchor="<?php print $section->post_name ?>" data-tooltip="<?php print esc_html( WPFP_Query()->get_section_nav_title( $key ) ); ?>">
 				<a href="#<?php print $section->post_name ?>">
 					<span></span>
 				</a>

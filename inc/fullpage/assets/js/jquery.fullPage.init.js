@@ -13,8 +13,6 @@
 			easing: fullPageParams.easing,
 			menu: '#wpfp-navigation',
 			navigation: false,
-			navigationPosition: fullPageParams.navigationPosition,
-			navigationTooltips: fullPageParams.navigationTooltips,
 			slidesNavigation: fullPageParams.slidesNavigation == 'yes' ? true : false,
 			slidesNavPosition: fullPageParams.slidesNavPosition,
 			loopBottom: fullPageParams.loopBottom == 'yes' ? true : false,
