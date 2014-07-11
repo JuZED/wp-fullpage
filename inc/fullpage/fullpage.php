@@ -446,7 +446,7 @@ final class WP_Fullpage extends WP_Fullpage_Base {
 	public function get_layout( $type, $name = null ) {
 		
 		/**
-		 * Fires before the fullpage layout template file is loaded.
+		 * Fires before the layout template file is loaded.
 		 *
 		 * The hook allows a specific layout template file to be used in place of the
 		 * default layout template file. If your file is called header-new.php,
