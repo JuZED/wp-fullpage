@@ -115,7 +115,7 @@ final class WP_Fullpage extends WP_Fullpage_Base {
 			wp_enqueue_script( 'jquery-slimscroll', $this->assets_url . '/js/jquery.slimscroll.min.js', array( 'jquery' ), WPFP_VERSION );
 			wp_enqueue_script( 'jquery-easings', $this->assets_url . '/js/jquery.easings.min.js', array( 'jquery' ), WPFP_VERSION );
 			wp_enqueue_script( 'jquery-pseudo', $this->assets_url . '/js/jquery.pseudo.js', array( 'jquery' ), WPFP_VERSION );
-			wp_enqueue_script( 'jquery-fullpage', $this->assets_url . '/js/jquery.fullPage.js', array( 'jquery', 'jquery-slimscroll', 'jquery-easings' ), WPFP_VERSION );
+			wp_enqueue_script( 'jquery-fullpage', $this->assets_url . '/js/jquery.fullPage.js', array( 'jquery-slimscroll', 'jquery-easings' ), WPFP_VERSION );
 			
 			// Get the path to 'jquery.fullpage.custom-events.js'.
 			// See if the file exists in the theme
@@ -138,18 +138,18 @@ final class WP_Fullpage extends WP_Fullpage_Base {
 				$fullpage_custom_events_script_path
 			);
 
-			wp_enqueue_script( 'jquery-fullpage-custom-events', $fullpage_custom_events_script_url, array( 'jquery', 'jquery-fullpage', 'jquery-slimscroll', 'jquery-easings', 'jquery-pseudo' ), WPFP_VERSION );
+			wp_enqueue_script( 'jquery-fullpage-custom-events', $fullpage_custom_events_script_url, array( 'jquery-fullpage', 'jquery-pseudo' ), WPFP_VERSION );
 			wp_enqueue_script( 'jquery-fullpage-init', $this->assets_url . '/js/jquery.fullPage.init.js', array( 'jquery-fullpage-custom-events' ), WPFP_VERSION );
-			
-			// Add Fullpage Styles
-			wp_enqueue_style( 'dashicons' );
-			wp_enqueue_style( 'jquery-fullPage', $this->assets_url . '/css/jquery.fullPage.css', array(), WPFP_VERSION );
-			wp_enqueue_style( 'jquery-fullPage-init', $this->assets_url . '/css/jquery.fullPage.custom.css', array( 'jquery-fullPage', 'dashicons' ), WPFP_VERSION );
 
 			// Init Fullpage Params
 			$params = $this->init_fullpage_params();
 
 			wp_localize_script( 'jquery-fullpage-init', 'fullPageParams', $params );
+			
+			// Add Fullpage Styles
+			wp_enqueue_style( 'dashicons' );
+			wp_enqueue_style( 'jquery-fullPage', $this->assets_url . '/css/jquery.fullPage.css', array(), WPFP_VERSION );
+			wp_enqueue_style( 'jquery-fullPage-custom', $this->assets_url . '/css/jquery.fullPage.custom.css', array( 'jquery-fullPage', 'dashicons' ), WPFP_VERSION );
 
 		}
 		
