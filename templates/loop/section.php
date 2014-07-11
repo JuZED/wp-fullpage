@@ -22,7 +22,7 @@
 		$slide_navigation = WPFP_Query()->section->fullpage_options['slidesNavigation'];
 
 		if( 'yes' === $slide_navigation )
-			WPFP()->get_slides_navigation();
+			WPFP()->get_slides_navigation( WPFP_Query()->section->post_name );
 
 	?>
 

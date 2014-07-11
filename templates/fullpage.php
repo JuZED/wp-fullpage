@@ -29,7 +29,7 @@ WPFP()->get_header(); ?>
 $navigation = WPFP_Query()->fullpage->fullpage_options['navigation'];
 
 if( 'yes' === $navigation )
-	WPFP()->get_navigation();
+	WPFP()->get_navigation( WPFP_Query()->fullpage->post_name );
 
 WPFP()->get_sidebar();
 WPFP()->get_footer();
