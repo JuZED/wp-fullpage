@@ -886,6 +886,11 @@ final class WP_Fullpage_Query {
 		if( empty( $section_ID ) )
 			$section_ID = $this->section->ID;
 
+		$section_option = $this->sections[ $section_ID ]->section_options;
+
+		if( ! empty( $sections_option['navTitle'] ) )
+			$nav_title = get_post_meta( $section_ID, $sections_option['navTitle'], true );
+
 		$sections_option = $this->fullpage->sections_option;
 
 		if( ! empty( $sections_option['navTitle'] ) )
