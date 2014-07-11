@@ -117,14 +117,14 @@ final class WP_Fullpage extends WP_Fullpage_Base {
 			wp_enqueue_script( 'jquery-pseudo', $this->assets_url . '/js/jquery.pseudo.js', array( 'jquery' ), WPFP_VERSION );
 			wp_enqueue_script( 'jquery-fullpage', $this->assets_url . '/js/jquery.fullPage.js', array( 'jquery-slimscroll', 'jquery-easings' ), WPFP_VERSION );
 			
-			// Get the path to 'jquery.fullpage.custom-events.js'.
+			// Get the path to 'jquery.fullpage.custom.js'.
 			// See if the file exists in the theme
-			$fullpage_custom_events_script_path = $this->locate_template(
-				trailingslashit( $this->script_path() ) . 'jquery.fullpage.custom-events.js'
+			$fullpage_custom_script_path = $this->locate_template(
+				trailingslashit( $this->script_path() ) . 'jquery.fullpage.custom.js'
 			);
 
 			// Convert the previous script path to an URL
-			$fullpage_custom_events_script_url = str_replace( 
+			$fullpage_custom_script_url = str_replace( 
 				array(
 					get_stylesheet_directory(),
 					get_template_directory(),
@@ -135,17 +135,17 @@ final class WP_Fullpage extends WP_Fullpage_Base {
 					get_template_directory_uri(),
 					WPFP_URL,
 				),
-				$fullpage_custom_events_script_path
+				$fullpage_custom_script_path
 			);
 
-			wp_enqueue_script( 'jquery-fullpage-custom-events', $fullpage_custom_events_script_url, array( 'jquery-fullpage', 'jquery-pseudo' ), WPFP_VERSION );
-			wp_enqueue_script( 'jquery-fullpage-init', $this->assets_url . '/js/jquery.fullPage.init.js', array( 'jquery-fullpage-custom-events' ), WPFP_VERSION );
+			wp_enqueue_script( 'jquery-fullpage-custom', $fullpage_custom_script_url, array( 'jquery-fullpage', 'jquery-pseudo' ), WPFP_VERSION );
+			wp_enqueue_script( 'jquery-fullpage-init', $this->assets_url . '/js/jquery.fullPage.init.js', array( 'jquery-fullpage-custom' ), WPFP_VERSION );
 
 			// Init Fullpage Params
 			$params = $this->init_fullpage_params();
 
 			// Fullpage params are added to the custom events script so they are available for fullpage init too
-			wp_localize_script( 'jquery-fullpage-custom-events', 'fullPageParams', $params );
+			wp_localize_script( 'jquery-fullpage-custom', 'fullPageParams', $params );
 			
 			// Add Fullpage Styles
 			wp_enqueue_style( 'dashicons' );
