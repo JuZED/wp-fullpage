@@ -1030,7 +1030,12 @@ final class WP_Fullpage_Query {
 		if( empty( $fullpage_ID ) )
 			$fullpage_ID = $this->fullpage->ID;
 		
-		return $this->get_bg( $fullpage_ID, $print );
+		$background_image = $this->get_bg( $fullpage_ID );
+
+		if( $print )
+			print $background_image;
+
+		return $background_image;
 
 	} // END public function get_section_bg
 
@@ -1047,7 +1052,12 @@ final class WP_Fullpage_Query {
 		if( empty( $section_ID ) )
 			$section_ID = $this->section->ID;
 		
-		return $this->get_bg( $section_ID, $print );
+		$background_image = $this->get_bg( $section_ID );
+
+		if( $print )
+			print $background_image;
+
+		return $background_image;
 
 	} // END public function get_section_bg
 
@@ -1064,19 +1074,23 @@ final class WP_Fullpage_Query {
 		if( empty( $slide_ID ) )
 			$slide_ID = $this->section->slides[ $this->section->current_slide ]->ID;
 		
-		return $this->get_bg( $slide_ID, $print );
+		$background_image = $this->get_bg( $slide_ID );
+
+		if( $print )
+			print $background_image;
+
+		return $background_image;
 
 	} // END public function get_slide_bg
 
 	/**
-	 * Display or retrieve the slide background.
+	 * Retrieve the post background.
 	 *
-	 * @param   int      $post_ID   Optional. The post ID.
-	 * @param   boolean  $print  	Optional, default to false. Whether to display or return.
+	 * @param   int      $post_ID   The post ID.
 	 * 
 	 * @return  string
 	 */
-	public function get_bg( $post_ID, $print = false ) {
+	public function get_bg( $post_ID ) {
 		
 		$background_image = '';
 
@@ -1087,9 +1101,6 @@ final class WP_Fullpage_Query {
 			$background_image  = sprintf( 'data-bg="%1s"', $post_thumbnail[0] );
 
 		}
-
-		if( $print )
-			print $background_image;
 
 		return $background_image;
 
