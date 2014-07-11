@@ -574,9 +574,9 @@ final class WP_Fullpage_Query {
 	 *
 	 * @return  int              		 the ID of the slide
 	 */
-	public function get_slide_ID( $section_index = 0, $slide_index = 0, $print = false ) {
+	public function get_slide_ID( $section_index = -1, $slide_index = 0, $print = false ) {
 		
-		if( empty( $section_index ) )
+		if( -1 == $section_index )
 			$section_index = $this->current_section;
 		
 		if( empty( $slide_index ) )
