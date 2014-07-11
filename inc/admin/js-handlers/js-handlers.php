@@ -35,12 +35,13 @@ class WP_Fullpage_JS_Handlers extends WP_Fullpage_Base {
 	} // END public static function instance
 
 	/**
-	 * Define Backbone Constants
+	 * Define some JS Constants
 	 * 
 	 * @return  void
 	 */
 	public static function define_constants() {
 		
+		// Define Backbone Constants
 		define( 'WPFP_BBM_PREFIX', 'bbm' );	
 		define( 'WPFP_BBM_CLOSE_BUTTON', sprintf( '%1s-%2s', WPFP_BBM_PREFIX, 'close-button' ) );	
 		define( 'WPFP_BBM_ADD_BUTTON', sprintf( '%1s-%2s', WPFP_BBM_PREFIX, 'add-button' ) );	
