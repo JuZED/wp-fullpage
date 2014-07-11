@@ -33,36 +33,17 @@ class WP_Fullpage_JS_Handlers extends WP_Fullpage_Base {
 		return self::$_instance;
 
 	} // END public static function instance
-
+	
 	/**
-	 * Define some JS Constants
-	 * 
-	 * @return  void
-	 */
-	public static function define_constants() {
-		
-		// Define Backbone Constants
-		define( 'WPFP_BBM_PREFIX', 'bbm' );	
-		define( 'WPFP_BBM_CLOSE_BUTTON', sprintf( '%1s-%2s', WPFP_BBM_PREFIX, 'close-button' ) );	
-		define( 'WPFP_BBM_ADD_BUTTON', sprintf( '%1s-%2s', WPFP_BBM_PREFIX, 'add-button' ) );	
-		define( 'WPFP_BBM_LOADS_CONTENT', sprintf( '%1s-%2s', WPFP_BBM_PREFIX, 'loads-content' ) );	
-		define( 'WPFP_BBM_SEARCH_INPUT', sprintf( '%1s-%2s', WPFP_BBM_PREFIX, 'search-input' ) );	
-		define( 'WPFP_BBM_PAGE_INPUT', sprintf( '%1s-%2s', WPFP_BBM_PREFIX, 'page-input' ) );	
-		define( 'WPFP_BBM_DATE_SELECT', sprintf( '%1s-%2s', WPFP_BBM_PREFIX, 'date-select' ) );	
-		define( 'WPFP_BBM_CAT_SELECT', sprintf( '%1s-%2s', WPFP_BBM_PREFIX, 'cat-select' ) );	
-		define( 'WPFP_BBM_SELECT_ALL', sprintf( '%1s-%2s', WPFP_BBM_PREFIX, 'select-all' ) );	
-
-	} // END public static function define_constants
-
-	/**
-	 * Init Settings Page Object
+	 * Init Fullpage Javascript Handlers
 	 *
 	 * @return  void
 	 */
 	public function init( $dir = __DIR__, $file = __FILE__ ) {
-
-		parent::init( __DIR__, __FILE__ );
-
+		
+		// Base Init
+		parent::init( $dir, $file );
+		
 	} // END public function init
 
 	/**
@@ -822,9 +803,6 @@ class WP_Fullpage_JS_Handlers extends WP_Fullpage_Base {
 	} // END public function last_dependencies
 
 } // END class WP_Fullpage_JS_Handlers
-
-// Define Backbone Constants
-WP_Fullpage_JS_Handlers::define_constants();
 
 /**
  * Returns the main instance of WP_Fullpage_JS_Handlers to prevent the need to use globals.
