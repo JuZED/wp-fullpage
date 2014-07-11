@@ -32,6 +32,7 @@ class WP_Fullpage_Slide_Type_Metabox extends WP_Fullpage_Metabox_Base {
 		add_action( 'load-post.php', array( &$this, 'metaboxes_init' ) );
 		add_action( 'load-post-new.php', array( &$this, 'metaboxes_init' ) );
 		
+		// Add some scripts		
 		add_action( 'admin_enqueue_scripts', array( &$this, 'admin_enqueue_scripts' ) );
 
 	} // END private function actions_filters
