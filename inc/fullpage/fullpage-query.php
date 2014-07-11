@@ -553,9 +553,9 @@ final class WP_Fullpage_Query {
 	 *
 	 * @return  int              		 the ID of the section
 	 */
-	public function get_section_ID( $section_index = 0, $print = false ) {
+	public function get_section_ID( $section_index = -1, $print = false ) {
 		
-		if( empty( $section_index ) )
+		if( -1 == $section_index )
 			$section_index = $this->current_section;
 
 		if( $print )
@@ -876,17 +876,18 @@ final class WP_Fullpage_Query {
 	/**
 	 * Display or retrieve the section navigation title.
 	 *
-	 * @param   int      	$section_ID  Optional. The section ID. If empty, will take the current section.
-	 * @param   boolean  	$print   	 Optional, default to false. Whether to display or return.
+	 * @param   int      	$section_index  Optional. The section index. If empty, will take the current section.
+	 * @param   boolean  	$print   	 	Optional, default to false. Whether to display or return.
 	 *
 	 * @return  null|string 		 	 Null on no title. String if $print parameter is false.
 	 */
-	public function get_section_nav_title( $section_ID = 0, $print = false ) {
-			
-		if( empty( $section_ID ) )
-			$section_ID = $this->section->ID;
+	public function get_section_nav_title( $section_index = -1, $print = false ) {
+		
+		if( -1 == $section_index )
+			$section_index = $this->current_section;
 
-		$section_options  = $this->sections[ $section_ID ]->section_options;
+		$section_ID       = $this->get_section_ID( $section_index );
+		$section_options  = $this->sections[ $section_index ]->section_options;
 		$sections_options = $this->fullpage->sections_options;
 
 		// the navTitle option of the section
