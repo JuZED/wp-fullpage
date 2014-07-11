@@ -16,7 +16,7 @@ WPFP()->get_header(); ?>
 		while ( have_posts() ) : the_post();
 
 			// Start the sections Loop.
-			WPFP()->get_sections();
+			WPFP()->get_sections( WPFP_Query()->fullpage->post_name );
 
 		endwhile;
 

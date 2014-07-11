@@ -1,9 +1,9 @@
 <?php
 /**
- * The template for displaying all fullpages
+ * The template for displaying all sections
  *
- * This is the template that displays all fullpages by default.
- * Please note that this is the WP Fullpage construct of fullpages and that
+ * This is the template that displays all sections by default.
+ * Please note that this is the WP Fullpage construct of sections and that
  * other 'pages' on your WordPress site will use a different template.
  */
 
@@ -13,7 +13,7 @@
 
 	<?php
 
-		WPFP()->get_slides();
+		WPFP()->get_slides( WPFP_Query()->section->post_name );
 
 	?>
 
