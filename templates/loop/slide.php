@@ -1,9 +1,9 @@
 <?php
 /**
- * The template for displaying all fullpages
+ * The template for displaying all slides
  *
- * This is the template that displays all fullpages by default.
- * Please note that this is the WP Fullpage construct of fullpages and that
+ * This is the template that displays all slides by default.
+ * Please note that this is the WP Fullpage construct of slides and that
  * other 'pages' on your WordPress site will use a different template.
  */
 
