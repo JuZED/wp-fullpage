@@ -894,7 +894,7 @@ final class WP_Fullpage_Query {
 		if( ! empty( $section_options['navTitle'] ) )
 			$nav_title = get_post_meta( $section_ID, $section_options['navTitle'], true );
 
-		// the default navTitle
+		// the default fullpage navTitle
 		if( empty( $nav_title ) && ! empty( $sections_options['navTitle'] ) )
 			$nav_title = get_post_meta( $section_ID, $sections_options['navTitle'], true );
 
@@ -908,6 +908,51 @@ final class WP_Fullpage_Query {
 		return $nav_title;
 
 	} // END public function get_section_nav_title
+
+	/**
+	 * Display or retrieve the slide navigation title.
+	 *
+	 * @param   int      	$section_index  	Optional. The section index. If empty, will take the current section.
+	 * @param   int      	$slide_index  		Optional. The slide index. If empty, will take the current slide.
+	 * @param   boolean  	$print   	 		Optional, default to false. Whether to display or return.
+	 *
+	 * @return  null|string 		 	 		Null on no title. String if $print parameter is false.
+	 */
+	public function get_slide_nav_title( $section_index = -1, $slide_index = -1, $print = false ) {
+		
+		if( -1 === $section_index )
+			$section_index = $this->section->current_section;
+		
+		if( -1 === $slide_index )
+			$slide_index = $this->sections[ $section_index ]->current_slide;
+
+		$slide_ID         = $this->get_slide_ID( $section_index, $slide_index );
+		$slide_options    = $this->sections[ $section_index ]->slides[ $slide_index ]->slide_options;
+		$section_options  = $this->sections[ $section_index ]->section_options;
+		$sections_options = $this->fullpage->sections_options;
+
+		// the navTitle option of the slide
+		if( ! empty( $slide_options['navTitle'] ) )
+			$nav_title = get_post_meta( $slide_ID, $slide_options['navTitle'], true );
+
+		// the navTitle option of the section
+		if( empty( $nav_title ) && ! empty( $section_options['navTitle'] ) )
+			$nav_title = get_post_meta( $slide_ID, $section_options['navTitle'], true );
+
+		// the default fullpage navTitle
+		if( empty( $nav_title ) && ! empty( $sections_options['navTitle'] ) )
+			$nav_title = get_post_meta( $slide_ID, $sections_options['navTitle'], true );
+
+		// the slide title
+		if( empty( $nav_title ) )
+			$nav_title = $this->get_slide_title( $slide_ID, '', '', false );
+
+		if ( $print )
+			print $nav_title;
+		
+		return $nav_title;
+
+	} // END public function get_slide_nav_title
 
 	/**
 	 * Display or retrieve the section color.
