@@ -146,7 +146,6 @@ class WP_Fullpage_Posts_Of_Term_List_Table extends WP_Fullpage_Posts_List_Table 
 
 	} // END public function extra_tablenav
 
-
 	/**
 	 * Get Columns
 	 *
