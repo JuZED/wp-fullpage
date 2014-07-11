@@ -524,12 +524,15 @@ final class WP_Fullpage extends WP_Fullpage_Base {
 	 * Includes the fullpage loop template for a theme or if a name is specified then a
 	 * specialised loop will be included.
 	 *
-	 * For the parameter, if the file is called "sections-special.php" then specify
-	 * "sections" and "special".
+	 * For the parameters, if the file is called "section-special.php" then specify
+	 * "section" and "special".
 	 *
-	 * @example  WPFP()->get_loop( 'sections', 'special' );
+	 * The method is looking for "$type-$name-the_post_name.php" and "$type-the_post_name.php" first.
+	 * So you can add a specific template for a section or a slide depending on its post_name.
 	 *
-	 * @param    string   $type   can be 'sections' or 'slides'
+	 * @example  WPFP()->get_loop( 'section', 'special' );
+	 *
+	 * @param    string   $type   can be 'section' or 'slide'
 	 * @param    string   $name   The name of the specialised fullpage loop.
 	 *
 	 * @return void
@@ -555,9 +558,12 @@ final class WP_Fullpage extends WP_Fullpage_Base {
 			WPFP_Query()->$the_type();
 
 			$template  = false;
+			$post_name = WPFP_Query()->$type->post_name;
 
 			$template = $this->locate_template(
 				array(
+					trailingslashit( $loop_path ) . "{$type}-{$name}-{$post_name}.php",
+					trailingslashit( $loop_path ) . "{$type}-{$post_name}.php",
 					trailingslashit( $loop_path ) . "{$type}-{$name}.php",
 					trailingslashit( $loop_path ) . "{$type}.php",
 				)
