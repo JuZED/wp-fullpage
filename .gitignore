@@ -35,6 +35,7 @@ Icon
 .Spotlight-V100
 .Trashes
 
+# Project ignored files
 inc/ajax/spec.php
 juzed.png
 juzed53bc3f8bd3f25.png
