@@ -679,24 +679,6 @@ class WP_Fullpage_JS_Handlers extends WP_Fullpage_Base {
 	 * @example
 	 *          WPFP_JS_Handlers()->jquery_ui_tabs( $dependencies );
 	 *
-	 * 			where : $args = array(
-	 *		  		array(
-	 *			   		'ajaxAction'       => 'my_first_ajax_action',
-	 *			   		'postType'         => 'my_first_post_type',
-	 *			     	'sortableID'       => 'my_first_post_type_sortable_selector',
-	 *			     	'inputID'          => 'my_first_post_type_input_selector',
-	 *			     	'nonce'            => 'my_first_nonce',
-	 *		       	),
-	 *		  		array(
-	 *			   		'ajaxAction'       => 'my_second_ajax_action',
-	 *			   		'postType'         => 'my_second_post_type',
-	 *			     	'sortableID'       => 'my_second_post_type_sortable_selector',
-	 *			     	'inputID'          => 'my_second_post_type_input_selector',
-	 *			     	'nonce'            => 'my_second_nonce',
-	 *		       	),
-	 *	         );
-	 *
-	 *
 	 * @param   array   $dependencies  a full array of dependencies :
 	 *                          array( 
 	 *                     			'js' => array(
