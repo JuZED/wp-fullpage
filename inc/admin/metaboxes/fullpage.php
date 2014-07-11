@@ -513,7 +513,7 @@ class WP_Fullpage_Fullpage_Type_Metabox extends WP_Fullpage_Metabox_Base {
 
 		WPFP_JS_Handlers()->jquery_sortables( $args, $dependencies );
 
-		WPFP_JS_Handlers()->chosen_jquery( $dependencies );
+		WPFP_JS_Handlers()->jquery_chosen( $dependencies );
 
 		WPFP_JS_Handlers()->jquery_button( '.radio', $dependencies );
 

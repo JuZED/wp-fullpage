@@ -452,7 +452,7 @@ class WP_Fullpage_Section_Type_Metabox extends WP_Fullpage_Metabox_Base {
 
 		WPFP_JS_Handlers()->jquery_button( '.radio', $dependencies );
 
-		WPFP_JS_Handlers()->chosen_jquery( $dependencies );
+		WPFP_JS_Handlers()->jquery_chosen( $dependencies );
 
 		wp_enqueue_style( 'section-options', $this->assets_url . 'css/section-options.css', $dependencies['css'], WPFP_VERSION );
 

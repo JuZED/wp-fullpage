@@ -494,7 +494,7 @@ class WP_Fullpage_JS_Handlers extends WP_Fullpage_Base {
 	 *
 	 * @return   void                    			
 	 */
-	public function chosen_jquery( &$dependencies ) {
+	public function jquery_chosen( &$dependencies ) {
 
 		wp_enqueue_style( 'wpfp-chosen-jquery', $this->assets_url . 'css/chosen.min.css', array(), WPFP_VERSION );
 		wp_enqueue_script( 'wpfp-chosen-jquery-min', $this->assets_url . 'js/chosen.jquery.min.js', array( 'jquery' ), WPFP_VERSION );
@@ -511,7 +511,7 @@ class WP_Fullpage_JS_Handlers extends WP_Fullpage_Base {
 			)
 		);
 
-	} // END public function chosen_jquery
+	} // END public function jquery_chosen
 
 	/**
 	 * Add a jQuery Tooltip Handler
