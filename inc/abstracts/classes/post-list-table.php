@@ -39,6 +39,12 @@ abstract class WP_Fullpage_Posts_List_Table extends WP_Posts_List_Table {
 		global $avail_post_stati, $wp_query, $per_page, $mode;
 
 		$avail_post_stati           = wp_edit_posts_query();
+
+		// Unset Trash status
+		foreach( $avail_post_stati as $key => $post_status )
+			if( 'trash' === $post_status )
+				unset( $avail_post_stati[ $key ] );
+
 		$this->hierarchical_display = ( is_post_type_hierarchical( $this->screen->post_type ) && 'menu_order title' == $wp_query->query['orderby'] );
 		$total_items                = $this->hierarchical_display ? $wp_query->post_count : $wp_query->found_posts;
 		$post_type                  = $this->screen->post_type;
