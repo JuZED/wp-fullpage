@@ -56,15 +56,16 @@ class WP_Fullpage_Posts_Of_Term_List_Table extends WP_Fullpage_Posts_List_Table 
 		if ( !empty($locked_post_status) )
 			return array();
 		
-		$status_links       = array();
-		$base_classes       = array( WPFP_BBM_LOADS_CONTENT );
-		$num_posts          = $this->counts;
-		$classes            = $base_classes;
-		$current_user_id    = get_current_user_id();
-		$ajax_params        = $this->ajax_params;
-		$ajax_params['s']   = '';
-		$ajax_params['m']   = '';
-		$ajax_params['cat'] = '';
+		$status_links         = array();
+		$base_classes         = array( WPFP_BBM_LOADS_CONTENT );
+		$num_posts            = $this->counts;
+		$classes              = $base_classes;
+		$current_user_id      = get_current_user_id();
+		$ajax_params          = $this->ajax_params;
+		$ajax_params['s']     = '';
+		$ajax_params['m']     = '';
+		$ajax_params['cat']   = '';
+		$ajax_params['paged'] = '';
 
 		$total_posts = array_sum( (array) $num_posts );
 
