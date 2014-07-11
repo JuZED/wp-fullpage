@@ -153,11 +153,11 @@ var fullpageConsoleLog,
 					position = $( this ).closest( '.fp-slidesNav' ).hasClass( 'top' ) ? 'top' : 'bottom';
 				
 				$( '<div class="fp-tooltip ' + position + '">' + tooltip + '</div>' ).hide()
-					.appendTo( $(this) )
+					.appendTo( $( this ) )
 					.fadeIn( 200 );
 
 			},
-			
+
 			mouseleave: function() {
 				
 				$( this ).find( '.fp-tooltip' ).fadeOut().remove();
