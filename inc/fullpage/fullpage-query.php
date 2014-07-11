@@ -555,7 +555,7 @@ final class WP_Fullpage_Query {
 	 */
 	public function get_section_ID( $section_index = -1, $print = false ) {
 		
-		if( -1 == $section_index )
+		if( -1 === $section_index )
 			$section_index = $this->current_section;
 
 		if( $print )
@@ -574,12 +574,12 @@ final class WP_Fullpage_Query {
 	 *
 	 * @return  int              		 the ID of the slide
 	 */
-	public function get_slide_ID( $section_index = -1, $slide_index = 0, $print = false ) {
+	public function get_slide_ID( $section_index = -1, $slide_index = -1, $print = false ) {
 		
-		if( -1 == $section_index )
+		if( -1 === $section_index )
 			$section_index = $this->current_section;
 		
-		if( empty( $slide_index ) )
+		if( -1 === $slide_index )
 			$slide_index = $this->sections[ $section_index ]->current_slide;
 
 		if( $print )
@@ -883,7 +883,7 @@ final class WP_Fullpage_Query {
 	 */
 	public function get_section_nav_title( $section_index = -1, $print = false ) {
 		
-		if( -1 == $section_index )
+		if( -1 === $section_index )
 			$section_index = $this->current_section;
 
 		$section_ID       = $this->get_section_ID( $section_index );
@@ -1118,12 +1118,12 @@ final class WP_Fullpage_Query {
 	 *
 	 * @return  string
 	 */
-	public function get_content( $section_index = 0, $slide_index = 0, $print = true, $more_link_text = null, $strip_teaser = false) {
+	public function get_content( $section_index = -1, $slide_index = -1, $print = true, $more_link_text = null, $strip_teaser = false) {
 		
-		if( empty( $section_index ) )
+		if( -1 === $section_index )
 			$section_index = $this->current_section;
 		
-		if( empty( $slide_index ) )
+		if( -1 === $slide_index )
 			$slide_index = $this->sections[ $section_index ]->current_slide;
 
 		$slide_ID         = $this->sections[ $section_index ]->slides[ $slide_index ]->ID;
