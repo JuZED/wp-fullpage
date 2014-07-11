@@ -101,6 +101,26 @@ var fullpageOnLeave,
 
 		}
 
+		// navigation tooltips
+		$( document ).on( {
+
+			mouseenter: function() {
+
+				var tooltip = $( this ).data( 'tooltip' );
+				
+				$( '<div class="fp-tooltip ' + fullPageParams.navigationPosition + '">' + tooltip + '</div>' ).hide()
+					.appendTo( $(this) )
+					.fadeIn( 200 );
+
+			},
+			mouseleave: function() {
+				
+				$( this ).find( '.fp-tooltip' ).fadeOut().remove();
+
+			}
+
+		}, '#wpfp-navigation li' );
+
 	} );
 
 } )( jQuery );

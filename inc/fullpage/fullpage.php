@@ -144,7 +144,8 @@ final class WP_Fullpage extends WP_Fullpage_Base {
 			// Init Fullpage Params
 			$params = $this->init_fullpage_params();
 
-			wp_localize_script( 'jquery-fullpage-init', 'fullPageParams', $params );
+			// Fullpage params are added to the custom events script so they are available for fullpage init too
+			wp_localize_script( 'jquery-fullpage-custom-events', 'fullPageParams', $params );
 			
 			// Add Fullpage Styles
 			wp_enqueue_style( 'dashicons' );

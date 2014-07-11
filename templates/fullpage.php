@@ -24,7 +24,12 @@ WPFP()->get_header(); ?>
 
 </div><!-- #fullpage -->
 
-
 <?php
+
+$navigation = WPFP_Query()->fullpage->fullpage_options['navigation'];
+
+if( 'yes' === $navigation )
+	WPFP()->get_navigation();
+
 WPFP()->get_sidebar();
 WPFP()->get_footer();

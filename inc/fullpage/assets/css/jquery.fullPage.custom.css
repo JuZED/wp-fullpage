@@ -2,10 +2,25 @@
 .admin-bar .fp-slidesNav.bottom {
 	bottom: 47px; }
 
+#wpfp-navigation {
+    position: fixed;
+    z-index: 100;
+    margin-top: -32px;
+    top: 50%;
+    opacity: 1; }
+
+	#wpfp-navigation.right {
+	    right: 17px; }
+
+	#wpfp-navigation.left {
+	    left: 17px; }
+
+#wpfp-navigation ul,
 .fp-slidesNav ul {
 	margin: 0;
 	padding: 0; }
 
+#wpfp-navigation li,
 .fp-slidesNav li {
 	display: block;
 	width: 14px;
@@ -16,6 +31,7 @@
 .fp-slidesNav li {
 	display: inline-block; }
 
+#wpfp-navigation li a,
 .fp-slidesNav li a {
 	display: block;
 	position: relative;
@@ -25,9 +41,11 @@
 	cursor: pointer;
 	text-decoration: none; }
 
+#wpfp-navigation .active span,
 .fp-slidesNav .active span {
 	background: #333; }
 
+#wpfp-navigation span,
 .fp-slidesNav span {
 	top: 2px;
 	left: 2px;
@@ -69,7 +87,9 @@
 
 .fp-tooltip {
 	color: #333;
-	width: 150px;
+	width: 150px; }
+
+.fp-tooltip.right {
 	text-align: right; }
 
 #fullpage .section,
