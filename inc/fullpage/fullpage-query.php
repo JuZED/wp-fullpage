@@ -881,7 +881,7 @@ final class WP_Fullpage_Query {
 	 *
 	 * @return  null|string 		 	 Null on no title. String if $print parameter is false.
 	 */
-	public function get_section_nav_title( $section_ID = 0, $print = true ) {
+	public function get_section_nav_title( $section_ID = 0, $print = false ) {
 			
 		if( empty( $section_ID ) )
 			$section_ID = $this->section->ID;
