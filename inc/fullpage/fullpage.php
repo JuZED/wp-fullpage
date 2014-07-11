@@ -158,7 +158,7 @@ final class WP_Fullpage extends WP_Fullpage_Base {
 	/**
 	 * Init Fullpage.js params
 	 * 
-	 * @return  void
+	 * @return  array	an array of fullpage params
 	 */
 	public function init_fullpage_params() {
 
