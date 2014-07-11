@@ -106,9 +106,10 @@ var fullpageOnLeave,
 
 			mouseenter: function() {
 
-				var tooltip = $( this ).data( 'tooltip' );
+				var tooltip  = $( this ).data( 'tooltip' ),
+					position = $( this ).closest( '.fp-slidesNav' ).hasClass( 'top' ) ? 'top' : 'bottom';
 				
-				$( '<div class="fp-tooltip ' + fullPageParams.slidesNavPosition + '">' + tooltip + '</div>' ).hide()
+				$( '<div class="fp-tooltip ' + position + '">' + tooltip + '</div>' ).hide()
 					.appendTo( $(this) )
 					.fadeIn( 200 );
 
