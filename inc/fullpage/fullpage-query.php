@@ -911,7 +911,7 @@ final class WP_Fullpage_Query {
 		
 		return $nav_title;
 
-	} // END public function get_slide_title
+	} // END public function get_section_nav_title
 
 	/**
 	 * Display or retrieve the section color.
