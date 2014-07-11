@@ -2,25 +2,33 @@
 .admin-bar .fp-slidesNav.bottom {
 	bottom: 47px; }
 
-#wpfp-navigation {
-    position: fixed;
-    z-index: 100;
-    margin-top: -32px;
-    top: 50%;
-    opacity: 1; }
+#fp-nav {
+	position: fixed;
+	z-index: 100;
+	margin-top: -32px;
+	top: 50%;
+	opacity: 1; }
 
-	#wpfp-navigation.right {
-	    right: 17px; }
+	#fp-nav.right {
+		right: 17px; }
 
-	#wpfp-navigation.left {
-	    left: 17px; }
+	#fp-nav.left {
+		left: 17px; }
 
-#wpfp-navigation ul,
+.fp-slidesNav {
+	width: 100%;
+	left: 0; }
+
+#fp-nav ul,
 .fp-slidesNav ul {
 	margin: 0;
 	padding: 0; }
 
-#wpfp-navigation li,
+.fp-slidesNav ul {
+	margin: 0 auto;
+	display: table; }
+
+#fp-nav li,
 .fp-slidesNav li {
 	display: block;
 	width: 14px;
@@ -31,7 +39,7 @@
 .fp-slidesNav li {
 	display: inline-block; }
 
-#wpfp-navigation li a,
+#fp-nav li a,
 .fp-slidesNav li a {
 	display: block;
 	position: relative;
@@ -41,11 +49,11 @@
 	cursor: pointer;
 	text-decoration: none; }
 
-#wpfp-navigation .active span,
+#fp-nav .active span,
 .fp-slidesNav .active span {
 	background: #333; }
 
-#wpfp-navigation span,
+#fp-nav span,
 .fp-slidesNav span {
 	top: 2px;
 	left: 2px;
@@ -91,6 +99,19 @@
 
 .fp-tooltip.right {
 	text-align: right; }
+
+.fp-tooltip.top,
+.fp-tooltip.bottom {
+	text-align: center;
+	top: initial;
+	width: 300px;
+	margin-left: -150px; }
+
+.fp-tooltip.top {
+	top: 30px; }
+
+.fp-tooltip.bottom {
+	bottom: 30px; }
 
 #fullpage .section,
 #fullpage .slide {

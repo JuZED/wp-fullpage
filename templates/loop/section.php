@@ -17,4 +17,13 @@
 
 	?>
 
+	<?php
+
+		$slide_navigation = WPFP_Query()->fullpage->fullpage_options['slidesNavigation'];
+
+		if( 'yes' === $slide_navigation )
+			WPFP()->get_slides_navigation();
+
+	?>
+
 </div><!-- .section -->

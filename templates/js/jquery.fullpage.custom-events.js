@@ -101,14 +101,14 @@ var fullpageOnLeave,
 
 		}
 
-		// navigation tooltips
+		// Slides Navigation tooltips
 		$( document ).on( {
 
 			mouseenter: function() {
 
 				var tooltip = $( this ).data( 'tooltip' );
 				
-				$( '<div class="fp-tooltip ' + fullPageParams.navigationPosition + '">' + tooltip + '</div>' ).hide()
+				$( '<div class="fp-tooltip ' + fullPageParams.slidesNavPosition + '">' + tooltip + '</div>' ).hide()
 					.appendTo( $(this) )
 					.fadeIn( 200 );
 
@@ -119,7 +119,7 @@ var fullpageOnLeave,
 
 			}
 
-		}, '#wpfp-navigation li' );
+		}, '.fp-slidesNav li' );
 
 	} );
 
