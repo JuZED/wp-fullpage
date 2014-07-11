@@ -9,7 +9,7 @@
 
 ?>
 
-<div class="section" <?php print WPFP_Query()->get_section_bg(); ?>>
+<div class="section" data-bg="<?php print WPFP_Query()->get_section_bg(); ?>">
 
 	<?php
 

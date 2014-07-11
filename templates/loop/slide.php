@@ -17,7 +17,7 @@
 
 ?>
 
-<div class="slide" data-anchor="<?php print WPFP_Query()->slide->post_name; ?>" <?php print WPFP_Query()->get_slide_bg(); ?>>
+<div class="slide" data-anchor="<?php print WPFP_Query()->slide->post_name; ?>" data-bg="<?php print WPFP_Query()->get_slide_bg(); ?>">
 
 <?php
 

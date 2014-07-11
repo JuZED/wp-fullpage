@@ -1144,7 +1144,7 @@ final class WP_Fullpage_Query {
 			
 			$post_thumbnail_id = get_post_thumbnail_id( $post_ID );
 			$post_thumbnail    = wp_get_attachment_image_src( $post_thumbnail_id, 'full' );
-			$background_image  = sprintf( 'data-bg="%1s"', $post_thumbnail[0] );
+			$background_image  = $post_thumbnail[0];
 
 		}
 
