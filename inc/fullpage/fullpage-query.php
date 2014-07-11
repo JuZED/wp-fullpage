@@ -886,16 +886,23 @@ final class WP_Fullpage_Query {
 		if( empty( $section_ID ) )
 			$section_ID = $this->section->ID;
 
-		$section_option = $this->sections[ $section_ID ]->section_options;
+		$section_options = $this->sections[ $section_ID ]->section_options;
 
-		if( ! empty( $sections_option['navTitle'] ) )
-			$nav_title = get_post_meta( $section_ID, $sections_option['navTitle'], true );
+		// the navTitle option of the section
+		if( ! empty( $section_options['navTitle'] ) )
+			$nav_title = get_post_meta( $section_ID, $section_options['navTitle'], true );
 
-		$sections_option = $this->fullpage->sections_option;
+		// the default navTitle
+		if( empty( $nav_title ) ) {
 
-		if( ! empty( $sections_option['navTitle'] ) )
-			$nav_title = get_post_meta( $section_ID, $sections_option['navTitle'], true );
+			$sections_options = $this->fullpage->sections_options;
 
+			if( ! empty( $sections_options['navTitle'] ) )
+				$nav_title = get_post_meta( $section_ID, $sections_options['navTitle'], true );
+
+		}
+
+		// the section title
 		if( empty( $nav_title ) )
 			$nav_title = $this->get_section_title( $section_ID, '', '', false );
 
