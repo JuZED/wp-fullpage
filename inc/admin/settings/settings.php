@@ -46,7 +46,7 @@ class WP_Fullpage_Settings extends WP_Fullpage_Base {
 		// Register WP Fullpage Settings
 		add_action( 'admin_init', array( &$this, 'register_settings' ) );
 
-		// Add some scripts and styles to Blogs settings page
+		// Add some scripts and styles to settings page
 		add_action( 'admin_enqueue_scripts', array( &$this, 'admin_enqueue_scripts' ) );
 
 	} // END private function actions_filters
