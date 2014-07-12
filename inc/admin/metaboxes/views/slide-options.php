@@ -16,6 +16,46 @@
 						<h5><?php _e( 'Fullpage.js Options', WPFP_DOMAIN );?></h5>
 
 					</li>
+							
+					<!-- Vertical Position -->
+					<li>
+
+						<label for="verticalPosition">
+						 	<?php _e( 'Vertical Position', WPFP_DOMAIN ); ?>
+						</label>
+
+						<select id="verticalPosition" name="<?php print WPFP_SLIDE_PT_SLIDE_OPTIONS; ?>[verticalPosition]" <?php WPFP_Helpers()->default_setting( isset( $VERTICALPOSITION ) ? $VERTICALPOSITION : 'inherit', true ); ?>>
+							
+							<option value="inherit" <?php selected( isset( $verticalPosition ) ? $verticalPosition : '', 'inherit' ); ?>><?php _e( 'Inherit', WPFP_DOMAIN ); ?></option>
+							<option value="center" <?php selected( isset( $verticalPosition ) ? $verticalPosition : '', 'center' ); ?>><?php _e( 'Center', WPFP_DOMAIN ); ?></option>
+							<option value="top" <?php selected( isset( $verticalPosition ) ? $verticalPosition : '', 'top' ); ?>><?php _e( 'Top', WPFP_DOMAIN ); ?></option>
+							<option value="bottom" <?php selected( isset( $verticalPosition ) ? $verticalPosition : '', 'bottom' ); ?>><?php _e( 'Bottom', WPFP_DOMAIN ); ?></option>
+
+						</select>
+
+						<span class="wpfp-tip" data-tip="<?php _e( 'Vertical position of the content within slide.', WPFP_DOMAIN ); ?>"></span>
+
+					</li>
+					
+					<!-- Horizontal Position -->
+					<li>
+
+						<label for="horizontalPosition">
+						 	<?php _e( 'Horizontal Position', WPFP_DOMAIN ); ?>
+						</label>
+
+						<select id="horizontalPosition" name="<?php print WPFP_SLIDE_PT_SLIDE_OPTIONS; ?>[horizontalPosition]" <?php WPFP_Helpers()->default_setting( isset( $HORIZONTALPOSITION ) ? $HORIZONTALPOSITION : 'inherit', true ); ?>>
+							
+							<option value="inherit" <?php selected( isset( $horizontalPosition ) ? $horizontalPosition : '', 'inherit' ); ?>><?php _e( 'Inherit', WPFP_DOMAIN ); ?></option>
+							<option value="center" <?php selected( isset( $horizontalPosition ) ? $horizontalPosition : '', 'center' ); ?>><?php _e( 'Center', WPFP_DOMAIN ); ?></option>
+							<option value="left" <?php selected( isset( $horizontalPosition ) ? $horizontalPosition : '', 'left' ); ?>><?php _e( 'Left', WPFP_DOMAIN ); ?></option>
+							<option value="right" <?php selected( isset( $horizontalPosition ) ? $horizontalPosition : '', 'right' ); ?>><?php _e( 'Right', WPFP_DOMAIN ); ?></option>
+
+						</select>
+
+						<span class="wpfp-tip" data-tip="<?php _e( 'Horizontal position of the content within slide.', WPFP_DOMAIN ); ?>"></span>
+
+					</li>
 
 					<!-- Slide Navigation Title -->
 					<li>
