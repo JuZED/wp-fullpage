@@ -124,6 +124,8 @@ class WP_Fullpage_Settings extends WP_Fullpage_Base {
 		
 		$dependencies = array();
 
+		WPFP_JS_Handlers()->color_picker( '#slideColor', $dependencies );
+
 		WPFP_JS_Handlers()->jquery_ui_tabs( $dependencies );
 
 		WPFP_JS_Handlers()->jquery_tooltip( $dependencies );

@@ -220,6 +220,8 @@ class WP_Fullpage_Slide_Type_Metabox extends WP_Fullpage_Metabox_Base {
 		if( ! in_array( $post_type, $this->post_types ) )
 			return;
 
+		WPFP_JS_Handlers()->color_picker( '#slideColor', $dependencies );
+
 		WPFP_JS_Handlers()->jquery_tooltip( $dependencies );
 
 		WPFP_JS_Handlers()->reset_form( '#wpfp_slide_options', '#wpfp_reset', $dependencies );

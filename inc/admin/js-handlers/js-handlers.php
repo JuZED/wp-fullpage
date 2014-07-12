@@ -628,6 +628,55 @@ class WP_Fullpage_JS_Handlers extends WP_Fullpage_Base {
 	} // END public function reset_form
 
 	/**
+	 * Add a Color Picker
+	 * 
+	 * @example
+	 *          WPFP_JS_Handlers()->color_picker( $selectors, $dependencies );
+	 *
+	 * @param   string   $selectors             the CSS selectors to bind
+	 * @param   array    $dependencies          a full array of dependencies :
+	 *                          array( 
+	 *                     			'js' => array(
+	 *                     				'js-dependencie-1-handle',
+	 *                     				'js-dependencie-2-handle',
+	 *                     			),
+	 *                     			'css' => array(
+	 *                     				'css-dependencie-1-handle',
+	 *                     				'css-dependencie-2-handle',
+	 *                     			) 
+	 *                     		)
+	 *
+	 * @return   void                    			
+	 */
+	public function color_picker( $selectors, &$dependencies ) {
+
+		wp_enqueue_style( 'wp-color-picker' );
+		wp_enqueue_style( 'color-picker-custom', $this->assets_url . 'css/color-picker.custom.css', array( 'wp-color-picker' ), WPFP_VERSION );
+		
+		wp_enqueue_script( 'wp-color-picker' );
+
+		$params = array(
+			'selectors' => $selectors,
+		);
+
+		wp_enqueue_script( 'color-picker-init', $this->assets_url . 'js/color-picker.init.js', array( 'wp-color-picker' ), WPFP_VERSION );
+		wp_localize_script( 'color-picker-init', 'wpfpColorPickerParams', $params );
+		
+		$this->last_dependencies( 
+			$dependencies, 
+			array( 
+				'js'  => array(
+					'color-picker-init',
+				),
+				'css' => array(
+					'color-picker-custom',
+				) 
+			)
+		);
+
+	} // END public function color_picker
+
+	/**
 	 * Add jquery ui button handler
 	 * 
 	 * @example

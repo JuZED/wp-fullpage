@@ -436,6 +436,8 @@ class WP_Fullpage_Fullpage_Type_Metabox extends WP_Fullpage_Metabox_Base {
 		if( $this->post_type != $post_type )
 			return;
 
+		WPFP_JS_Handlers()->color_picker( '#slideColor', $dependencies );
+
 		$args = array(
 			array(
 				'launcherID' => 'bbm-sections-list-launcher',
