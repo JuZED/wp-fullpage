@@ -130,7 +130,7 @@
 
 						<select id="verticalPosition" name="<?php print WPFP_SECTION_PT_SLIDES_OPTIONS; ?>[verticalPosition]" <?php WPFP_Helpers()->default_setting( isset( $VERTICALPOSITION ) ? $VERTICALPOSITION : 'inherit', true ); ?>>
 							
-							<option value="inherit" <?php selected( isset( $verticalPosition ) ? $verticalPosition : '', 'inherit' ); ?>><?php _e( 'Inherit', WPFP_DOMAIN ); ?></option>
+							<option value="inherit" <?php selected( isset( $verticalPosition ) ? $verticalPosition : '', 'inherit' ); ?>><?php _e( 'Inherit from Fullpage', WPFP_DOMAIN ); ?></option>
 							<option value="center" <?php selected( isset( $verticalPosition ) ? $verticalPosition : '', 'center' ); ?>><?php _e( 'Center', WPFP_DOMAIN ); ?></option>
 							<option value="top" <?php selected( isset( $verticalPosition ) ? $verticalPosition : '', 'top' ); ?>><?php _e( 'Top', WPFP_DOMAIN ); ?></option>
 							<option value="bottom" <?php selected( isset( $verticalPosition ) ? $verticalPosition : '', 'bottom' ); ?>><?php _e( 'Bottom', WPFP_DOMAIN ); ?></option>
@@ -150,7 +150,7 @@
 
 						<select id="horizontalPosition" name="<?php print WPFP_SECTION_PT_SLIDES_OPTIONS; ?>[horizontalPosition]" <?php WPFP_Helpers()->default_setting( isset( $HORIZONTALPOSITION ) ? $HORIZONTALPOSITION : 'inherit', true ); ?>>
 							
-							<option value="inherit" <?php selected( isset( $horizontalPosition ) ? $horizontalPosition : '', 'inherit' ); ?>><?php _e( 'Inherit', WPFP_DOMAIN ); ?></option>
+							<option value="inherit" <?php selected( isset( $horizontalPosition ) ? $horizontalPosition : '', 'inherit' ); ?>><?php _e( 'Inherit from Fullpage', WPFP_DOMAIN ); ?></option>
 							<option value="center" <?php selected( isset( $horizontalPosition ) ? $horizontalPosition : '', 'center' ); ?>><?php _e( 'Center', WPFP_DOMAIN ); ?></option>
 							<option value="left" <?php selected( isset( $horizontalPosition ) ? $horizontalPosition : '', 'left' ); ?>><?php _e( 'Left', WPFP_DOMAIN ); ?></option>
 							<option value="right" <?php selected( isset( $horizontalPosition ) ? $horizontalPosition : '', 'right' ); ?>><?php _e( 'Right', WPFP_DOMAIN ); ?></option>
