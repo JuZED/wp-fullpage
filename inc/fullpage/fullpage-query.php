@@ -957,6 +957,56 @@ final class WP_Fullpage_Query {
 	} // END public function get_slide_nav_title
 
 	/**
+	 * Display or retrieve the slide navigation position.
+	 *
+	 * @param   int      	$section_index  	Optional. The section index. If empty, will take the current section.
+	 * @param   int      	$slide_index  		Optional. The slide index. If empty, will take the current slide.
+	 * @param   boolean  	$print   	 		Optional, default to true. Whether to display or return.
+	 *
+	 * @return  string 		 	 				could be something like 'top center', 'middle left', ...
+	 */
+	public function get_slide_position( $section_index = -1, $slide_index = -1, $print = true ) {
+		
+		if( -1 === $section_index )
+			$section_index = $this->section->current_section;
+		
+		if( -1 === $slide_index )
+			$slide_index = $this->sections[ $section_index ]->current_slide;
+
+		$slide_options    = $this->sections[ $section_index ]->slides[ $slide_index ]->slide_options;
+		$section_options  = $this->sections[ $section_index ]->slides_options;
+		$fulpage_options  = $this->fullpage->slides_options;
+
+		// the position options of the slide
+		$vertical_position   = $slide_options['verticalPosition'];
+		$horizontal_position = $slide_options['horizontalPosition'];
+
+		// the vertical position option of the section
+		if( 'inherit' === $vertical_position )
+			$vertical_position = $section_options['verticalPosition'];
+		
+		// the horizontal position option of the section
+		if( 'inherit' === $horizontal_position )
+			$horizontal_position = $section_options['horizontalPosition'];
+
+		// the vertical position option of the fullpage
+		if( 'inherit' === $vertical_position )
+			$vertical_position = $fulpage_options['verticalPosition'];
+		
+		// the horizontal position option of the fullpage
+		if( 'inherit' === $horizontal_position )
+			$horizontal_position = $fulpage_options['horizontalPosition'];
+
+		$position = sprintf( '%1s %2s', $vertical_position, $horizontal_position );
+
+		if ( $print )
+			print $position;
+		
+		return $position;
+
+	} // END public function get_slide_position
+
+	/**
 	 * Display or retrieve the section color.
 	 *
 	 * @param   int      	$section_index  The section index.
