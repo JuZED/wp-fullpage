@@ -973,9 +973,9 @@ final class WP_Fullpage_Query {
 		if( -1 === $slide_index )
 			$slide_index = $this->sections[ $section_index ]->current_slide;
 
-		$slide_options    = $this->sections[ $section_index ]->slides[ $slide_index ]->slide_options;
-		$section_options  = $this->sections[ $section_index ]->slides_options;
-		$fulpage_options  = $this->fullpage->slides_options;
+		$slide_options   = $this->sections[ $section_index ]->slides[ $slide_index ]->slide_options;
+		$section_options = $this->sections[ $section_index ]->slides_options;
+		$fulpage_options = $this->fullpage->slides_options;
 
 		// the position options of the slide
 		$vertical_position   = $slide_options['verticalPosition'];
