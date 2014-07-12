@@ -27,7 +27,7 @@
 						<select id="verticalPosition" name="<?php print WPFP_SLIDE_PT_SLIDE_OPTIONS; ?>[verticalPosition]" <?php WPFP_Helpers()->default_setting( isset( $VERTICALPOSITION ) ? $VERTICALPOSITION : 'inherit', true ); ?>>
 							
 							<option value="inherit" <?php selected( isset( $verticalPosition ) ? $verticalPosition : '', 'inherit' ); ?>><?php _e( 'Inherit from Section', WPFP_DOMAIN ); ?></option>
-							<option value="center" <?php selected( isset( $verticalPosition ) ? $verticalPosition : '', 'center' ); ?>><?php _e( 'Center', WPFP_DOMAIN ); ?></option>
+							<option value="middle" <?php selected( isset( $verticalPosition ) ? $verticalPosition : '', 'middle' ); ?>><?php _e( 'Middle', WPFP_DOMAIN ); ?></option>
 							<option value="top" <?php selected( isset( $verticalPosition ) ? $verticalPosition : '', 'top' ); ?>><?php _e( 'Top', WPFP_DOMAIN ); ?></option>
 							<option value="bottom" <?php selected( isset( $verticalPosition ) ? $verticalPosition : '', 'bottom' ); ?>><?php _e( 'Bottom', WPFP_DOMAIN ); ?></option>
 
