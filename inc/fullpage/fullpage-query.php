@@ -283,6 +283,13 @@ final class WP_Fullpage_Query {
 				// No need to redo a query
 				$section->slides      = array( clone $section );
 				$section->slide_count = 1;
+				
+				foreach( $section->slides as $key => &$slide ) {
+					
+					// Init Slide options with section options
+					$slide->slide_options  = apply_filters( 'wpfp_slide_slide_options', $section->slides_options, $key, $this );
+
+				}
 
 				return;
 			
@@ -370,7 +377,7 @@ final class WP_Fullpage_Query {
 			foreach( $section->slides as $key => &$slide ) {
 				
 				// Init Slide options with section options
-				$slide->slide_options  = apply_filters( 'wpfp_slide_slide_options', $this->section->slides_options, $key, $this );
+				$slide->slide_options  = apply_filters( 'wpfp_slide_slide_options', $section->slides_options, $key, $this );
 
 			}
 
@@ -933,7 +940,7 @@ final class WP_Fullpage_Query {
 	public function get_slide_nav_title( $section_index = -1, $slide_index = -1, $print = false ) {
 		
 		if( -1 === $section_index )
-			$section_index = $this->section->current_section;
+			$section_index = $this->current_section;
 		
 		if( -1 === $slide_index )
 			$slide_index = $this->sections[ $section_index ]->current_slide;
@@ -978,7 +985,7 @@ final class WP_Fullpage_Query {
 	public function get_slide_position( $section_index = -1, $slide_index = -1, $print = true ) {
 		
 		if( -1 === $section_index )
-			$section_index = $this->section->current_section;
+			$section_index = $this->current_section;
 		
 		if( -1 === $slide_index )
 			$slide_index = $this->sections[ $section_index ]->current_slide;
