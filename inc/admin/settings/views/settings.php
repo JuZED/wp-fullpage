@@ -1,3 +1,10 @@
+<?php
+
+/**
+ * @package 	WP_Fullpage\Includes\Settings\Views
+ */
+
+?>
 
 <div class="wrap wpfp-wrap">
 

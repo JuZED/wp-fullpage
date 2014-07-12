@@ -1,7 +1,15 @@
 <?php
 
 /**
+ * @package 	WP_Fullpage\Includes\Admin\List_Tables\Classes
+ * @subpackage 	WP_Fullpage\Includes\Absctract\Classes
+ */
+
+/**
  * Fullpage Posts of type List Table class.
+ * 
+ * @package 	WP_Fullpage\Includes\Admin\List_Tables\Classes
+ * @subpackage 	WP_Fullpage\Includes\Absctract\Classes
  */
 class WP_Fullpage_Posts_Of_Type_List_Table extends WP_Fullpage_Posts_List_Table {
 

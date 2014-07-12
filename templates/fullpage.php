@@ -5,6 +5,8 @@
  * This is the template that displays all fullpages by default.
  * Please note that this is the WP Fullpage construct of fullpages and that
  * other 'pages' on your WordPress site will use a different template.
+ * 
+ * @package 	WP_Fullpage\Templates
  */
 
 WPFP()->get_header(); ?>

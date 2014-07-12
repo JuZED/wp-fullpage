@@ -2,6 +2,9 @@
 
 /**
  * Main WP Fullpage Query Class
+ * 
+ * @package 	WP_Fullpage\Includes\Fullpage
+ * @subpackage 	WP_Fullpage\Includes\Absctract\Classes
  */
 final class WP_Fullpage_Query {
 
@@ -1421,7 +1424,7 @@ final class WP_Fullpage_Query {
 /**
  * Returns the main instance of WP_Fullpage_Query to prevent the need to use globals.
  *
- * @example WPFP_Query()->my_method() 
+ * WPFP_Query()->my_method() 
  *
  * @return 	WP_Fullpage_Query
  */

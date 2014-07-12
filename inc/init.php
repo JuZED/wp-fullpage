@@ -2,6 +2,9 @@
 
 /**
  * Init WP Fullpage
+ * 
+ * @package 	WP_Fullpage\Includes
+ * @subpackage 	WP_Fullpage\Includes\Absctract\Classes
  */
 class WP_Fullpage_Init extends WP_Fullpage_Base {
 

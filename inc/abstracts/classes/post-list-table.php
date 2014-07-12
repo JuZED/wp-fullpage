@@ -1,10 +1,21 @@
 <?php
 
+/**
+ * @package 	WP_Fullpage\Includes\Absctract\Classes
+ * @subpackage 	WordPress
+ */
+
+/**
+ * Require WordPress Class
+ */
 require_once( ABSPATH . 'wp-admin/includes/class-wp-list-table.php' );
 require_once( ABSPATH . 'wp-admin/includes/class-wp-posts-list-table.php' );
 
 /**
  * Fullpage Posts List Table class.
+ * 
+ * @package 	WP_Fullpage\Includes\Absctract\Classes
+ * @subpackage 	WordPress
  */
 abstract class WP_Fullpage_Posts_List_Table extends WP_Posts_List_Table {
 

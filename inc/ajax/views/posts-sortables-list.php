@@ -1,3 +1,10 @@
+<?php
+
+/**
+ * @package 	WP_Fullpage\Includes\Ajax\Views
+ */
+
+?>
 	
 <?php
 	if( have_posts() ) :

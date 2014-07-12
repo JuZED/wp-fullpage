@@ -1,7 +1,15 @@
 <?php
 
 /**
+ * @package 	WP_Fullpage\Includes\Actions_Filters
+ * @subpackage 	WP_Fullpage\Includes\Absctract\Classes
+ */
+
+/**
  * The Fullpage Filters Class
+ * 
+ * @package 	WP_Fullpage\Includes\Actions_Filters
+ * @subpackage 	WP_Fullpage\Includes\Absctract\Classes
  */
 class WP_Fullpage_Filters extends WP_Fullpage_Base {
 

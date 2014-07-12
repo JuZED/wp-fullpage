@@ -1,7 +1,13 @@
 <?php
 
 /**
+ * @package WP_Fullpage\Includes\Absctract\Classes
+ */
+
+/**
  * The Abstract Fullpage Metabox Class
+ * 
+ * @package WP_Fullpage\Includes\Absctract\Classes
  */
 abstract class WP_Fullpage_Metabox_Base extends WP_Fullpage_Base {
 	

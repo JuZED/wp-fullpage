@@ -2,6 +2,9 @@
 
 /**
  * Main WP Fullpage Class
+ * 
+ * @package 	WP_Fullpage\Includes\Fullpage
+ * @subpackage 	WP_Fullpage\Includes\Absctract\Classes
  */
 final class WP_Fullpage extends WP_Fullpage_Base {
 
@@ -328,7 +331,7 @@ final class WP_Fullpage extends WP_Fullpage_Base {
 	 * For the parameter, if the file is called "header-special.php" then specify
 	 * "special".
 	 *
-	 * @example  WPFP()->get_header( 'special' );
+	 * WPFP()->get_header( 'special' );
 	 *
 	 * @param    string   $name   The name of the specialised fullpage header.
 	 *
@@ -349,7 +352,7 @@ final class WP_Fullpage extends WP_Fullpage_Base {
 	 * For the parameter, if the file is called "footer-special.php" then specify
 	 * "special".
 	 *
-	 * @example  WPFP()->get_footer( 'special' );
+	 * WPFP()->get_footer( 'special' );
 	 *
 	 * @param    string   $name   The name of the specialised fullpage footer.
 	 *
@@ -370,7 +373,7 @@ final class WP_Fullpage extends WP_Fullpage_Base {
 	 * For the parameter, if the file is called "navigation-special.php" then specify
 	 * "special".
 	 *
-	 * @example  WPFP()->get_navigation( 'special' );
+	 *WPFP()->get_navigation( 'special' );
 	 *
 	 * @param    string   $name   The name of the specialised fullpage navigation.
 	 *
@@ -391,7 +394,7 @@ final class WP_Fullpage extends WP_Fullpage_Base {
 	 * For the parameter, if the file is called "slides-navigation-special.php" then specify
 	 * "special".
 	 *
-	 * @example  WPFP()->get_slides_navigation( 'special' );
+	 * WPFP()->get_slides_navigation( 'special' );
 	 *
 	 * @param    string   $name   The name of the specialised fullpage slides navigation.
 	 *
@@ -412,7 +415,7 @@ final class WP_Fullpage extends WP_Fullpage_Base {
 	 * For the parameter, if the file is called "sidebar-special.php" then specify
 	 * "special".
 	 *
-	 * @example  WPFP()->get_sidebar( 'special' );
+	 * WPFP()->get_sidebar( 'special' );
 	 *
 	 * @param    string   $name   The name of the specialised fullpage sidebar.
 	 *
@@ -433,7 +436,7 @@ final class WP_Fullpage extends WP_Fullpage_Base {
 	 * For the parameter, if the file is called "sidebar-special.php" then specify
 	 * "sidebar" and "special".
 	 *
-	 * @example  WPFP()->get_layout( 'my_type', 'special' );
+	 * WPFP()->get_layout( 'my_type', 'special' );
 	 *
 	 * @param    string   $type   can be 'header', 'footer', 'sidebar', 'navigation', 'slides-navigation' or whatever you want
 	 * @param    string   $name   The name of the specialised fullpage layout.
@@ -481,7 +484,7 @@ final class WP_Fullpage extends WP_Fullpage_Base {
 	 * For the parameter, if the file is called "sections-special.php" then specify
 	 * "special".
 	 *
-	 * @example  WPFP()->get_sections( 'special' );
+	 * WPFP()->get_sections( 'special' );
 	 *
 	 * @param    string   $name   The name of the specialised fullpage sections loop.
 	 *
@@ -502,7 +505,7 @@ final class WP_Fullpage extends WP_Fullpage_Base {
 	 * For the parameter, if the file is called "slides-special.php" then specify
 	 * "special".
 	 *
-	 * @example  WPFP()->get_slides( 'special' );
+	 * WPFP()->get_slides( 'special' );
 	 *
 	 * @param    string   $name   The name of the specialised fullpage slides loop.
 	 *
@@ -526,7 +529,7 @@ final class WP_Fullpage extends WP_Fullpage_Base {
 	 * The method is looking for "$type-$name-the_post_name.php" and "$type-the_post_name.php" first.
 	 * So you can add a specific template for a section or a slide depending on its post_name.
 	 *
-	 * @example  WPFP()->get_loop( 'section', 'special' );
+	 * WPFP()->get_loop( 'section', 'special' );
 	 *
 	 * @param    string   $type   can be 'section' or 'slide'
 	 * @param    string   $name   The name of the specialised fullpage loop.
@@ -627,7 +630,7 @@ final class WP_Fullpage extends WP_Fullpage_Base {
 /**
  * Returns the main instance of WP_Fullpage to prevent the need to use globals.
  *
- * @example WPFP()->my_method() 
+ * WPFP()->my_method() 
  *
  * @return 	WP_Fullpage
  */

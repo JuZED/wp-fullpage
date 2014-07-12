@@ -5,6 +5,8 @@
  * This is the template that displays all slides by default.
  * Please note that this is the WP Fullpage construct of slides and that
  * other 'pages' on your WordPress site will use a different template.
+ * 
+ * @package 	WP_Fullpage\Templates\Loop
  */
 
 ?>

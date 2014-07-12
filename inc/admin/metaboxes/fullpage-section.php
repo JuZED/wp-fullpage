@@ -1,7 +1,15 @@
 <?php
 
 /**
+ * @package 	WP_Fullpage\Includes\Admin\Metaboxes
+ * @subpackage 	WP_Fullpage\Includes\Absctract\Classes
+ */
+
+/**
  * The Fullpage Section Type Metabox Class
+ * 
+ * @package 	WP_Fullpage\Includes\Admin\Metaboxes
+ * @subpackage 	WP_Fullpage\Includes\Absctract\Classes
  */
 class WP_Fullpage_Section_Type_Metabox extends WP_Fullpage_Metabox_Base {
 

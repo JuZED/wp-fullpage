@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>Docs For Class WP_Fullpage_Ajax</title>
+			<link rel="stylesheet" href="../../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
+		</head>
+		<body>
+			<div class="page-body">			
+<h2 class="class-name">Class WP_Fullpage_Ajax</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Description</div>
+	<div class="nav-bar">
+					<span class="disabled">Description</span> |
+													<a href="#sec-vars">Vars</a>
+						|											<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+						
+					</div>
+	<div class="info-box-body">
+        		<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">The Fullpage Ajax Class</p>
+		<p class="notes">
+			Located in <a class="field" href="_inc---ajax---ajax.php.html">/inc/ajax/ajax.php</a> (line <span class="field">14</span>)
+		</p>
+		
+				
+		<pre><a href="../../WP_Fullpage-Includes-Absctract-Classes/WP_Fullpage_Base.html">WP_Fullpage_Base</a>
+   |
+   --WP_Fullpage_Ajax</pre>
+	
+			</div>
+</div>
+
+
+
+
+	<a name="sec-method-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Method Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+																		<a href="#sec-vars">Vars</a>
+				 
+				|
+						<span class="disabled">Methods</span> (<a href="#sec-methods">details</a>)
+		</div>
+		<div class="info-box-body">			
+			<div class="method-summary">
+																																																																				
+												<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#get_fullpage_sections" title="details" class="method-name">get_fullpage_sections</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#get_fullpage_sections_sortables" title="details" class="method-name">get_fullpage_sections_sortables</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#get_fullpage_slides_sortables" title="details" class="method-name">get_fullpage_slides_sortables</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#get_posts_of_term" title="details" class="method-name">get_posts_of_term</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#get_posts_of_term_or_type_sortables" title="details" class="method-name">get_posts_of_term_or_type_sortables</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#get_posts_of_type" title="details" class="method-name">get_posts_of_type</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#get_section_slides" title="details" class="method-name">get_section_slides</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#init" title="details" class="method-name">init</a>
+											([<span class="var-type"></span>&nbsp;<span class="var-name">$dir</span> = <span class="var-default">__DIR__</span>], [<span class="var-type"></span>&nbsp;<span class="var-name">$file</span> = <span class="var-default">__FILE__</span>])
+									</div>
+								</div>
+		</div>
+	</div>		
+
+	<a name="sec-vars"></a>
+	<div class="info-box">
+		<div class="info-box-title">Variables</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+										<a href="#sec-var-summary">Vars</a> (<span class="disabled">details</span>)
+						
+			
+										| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+					</div>
+		<div class="info-box-body">
+										<h4>Inherited Variables</h4>
+				<A NAME='inherited_vars'><!-- --></A>
+									<p>Inherited from <span class="classname"><a href="../../WP_Fullpage-Includes-Absctract-Classes/WP_Fullpage_Base.html">WP_Fullpage_Base</a></span></p>
+					<blockquote>
+													<span class="var-title">
+								<span class="var-name"><a href="../../WP_Fullpage-Includes-Absctract-Classes/WP_Fullpage_Base.html#var$assets_url">WP_Fullpage_Base::$assets_url</a></span><br>
+							</span>
+													<span class="var-title">
+								<span class="var-name"><a href="../../WP_Fullpage-Includes-Absctract-Classes/WP_Fullpage_Base.html#var$rel_path">WP_Fullpage_Base::$rel_path</a></span><br>
+							</span>
+											</blockquote> 
+										
+		</div>
+	</div>
+	
+	<a name="sec-methods"></a>
+	<div class="info-box">
+		<div class="info-box-title">Methods</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+															<a href="#sec-vars">Vars</a>
+																	<a href="#sec-method-summary">Methods</a> (<span class="disabled">details</span>)
+						
+		</div>
+		<div class="info-box-body">
+			<A NAME='method_detail'></A>
+
+<a name="methodget_fullpage_sections" id="get_fullpage_sections"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">get_fullpage_sections</span> (line <span class="line-number">65</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Display the fullpage section post type list</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			get_fullpage_sections
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodget_fullpage_sections_sortables" id="get_fullpage_sections_sortables"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">get_fullpage_sections_sortables</span> (line <span class="line-number">232</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Display the fullpage section post type list</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			get_fullpage_sections_sortables
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodget_fullpage_slides_sortables" id="get_fullpage_slides_sortables"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">get_fullpage_slides_sortables</span> (line <span class="line-number">263</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Display the fullpage slide post type list</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			get_fullpage_slides_sortables
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodget_posts_of_term" id="get_posts_of_term"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">get_posts_of_term</span> (line <span class="line-number">145</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Display the posts of a term list</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			get_posts_of_term
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodget_posts_of_term_or_type_sortables" id="get_posts_of_term_or_type_sortables"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">get_posts_of_term_or_type_sortables</span> (line <span class="line-number">294</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Display the fullpage section post type list</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			get_posts_of_term_or_type_sortables
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodget_posts_of_type" id="get_posts_of_type"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">get_posts_of_type</span> (line <span class="line-number">192</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Display the posts of a type list</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			get_posts_of_type
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodget_section_slides" id="get_section_slides"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">get_section_slides</span> (line <span class="line-number">105</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Display the fullpage slide post type list</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			get_section_slides
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodinit" id="init"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">init</span> (line <span class="line-number">21</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Init Settings Page Object</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			init
+		</span>
+					([<span class="var-type"></span>&nbsp;<span class="var-name">$dir</span> = <span class="var-default">__DIR__</span>], [<span class="var-type"></span>&nbsp;<span class="var-name">$file</span> = <span class="var-default">__FILE__</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$dir</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$file</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../../WP_Fullpage-Includes-Absctract-Classes/WP_Fullpage_Base.html#methodinit">WP_Fullpage_Base::init()</a></dt>
+						<dd>Init Class</dd>
+					</dl>
+			
+	</div>
+							<h4>Inherited Methods</h4>
+				<a name='inherited_methods'><!-- --></a>	
+									<!-- =========== Summary =========== -->
+					<p>Inherited From <span class="classname"><a href="../../WP_Fullpage-Includes-Absctract-Classes/WP_Fullpage_Base.html">WP_Fullpage_Base</a></span></p>
+					<blockquote>
+													<span class="method-name"><a href="../../WP_Fullpage-Includes-Absctract-Classes/WP_Fullpage_Base.html#method__construct">WP_Fullpage_Base::__construct()</a></span><br>
+													<span class="method-name"><a href="../../WP_Fullpage-Includes-Absctract-Classes/WP_Fullpage_Base.html#methodinit">WP_Fullpage_Base::init()</a></span><br>
+											</blockquote>
+										
+		</div>
+	</div>
+
+
+	<p class="notes" id="credit">
+		Documentation generated on Sat, 12 Jul 2014 19:45:31 +0200 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.4</a>
+	</p>
+	</div></body>
+</html>
