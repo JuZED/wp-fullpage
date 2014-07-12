@@ -638,7 +638,7 @@
 					
 					</li>
 			
-					<!-- Sections Color -->
+					<!-- Slides Navigation Title -->
 					<li>
 				
 						<label for="slidesNavTitle">
