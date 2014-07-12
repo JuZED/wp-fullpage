@@ -5,7 +5,7 @@
 
 		$( '#fullpage' ).fullpage( {
 
-			verticalCentered: fullPageParams.verticalCentered == 'yes' ? true : false,
+			verticalCentered: false,
 			resize : fullPageParams.resize == 'yes' ? true : false,
 			sectionsColor : fullPageParams.sectionsColor,
 			anchors: fullPageParams.anchors,
