@@ -6,6 +6,13 @@
 class WP_Fullpage_Slide_Type_Metabox extends WP_Fullpage_Metabox_Base {
 
 	/**
+	 * Registerer and not excuded post types
+	 *
+	 * @var  array
+	 */
+	private $post_types; 
+
+	/**
 	 * Init Metaboxes Object
 	 *
 	 * @return  void
@@ -13,8 +20,6 @@ class WP_Fullpage_Slide_Type_Metabox extends WP_Fullpage_Metabox_Base {
 	public function init( $dir = __DIR__, $file = __FILE__ ) {
 
 		parent::init( __DIR__, __FILE__ );
-
-		$this->post_type = WPFP_FULLPAGE_SLIDE_PT;
 		
 		// Add actions and filters
 		$this->actions_filters();
@@ -61,11 +66,30 @@ class WP_Fullpage_Slide_Type_Metabox extends WP_Fullpage_Metabox_Base {
 	 */
 	public function add_meta_box( $post_type ) {
 		
-		if ( $this->post_type == $post_type ) {
-			
-			// Slide Options
-			$this->slide_meta_box();
-			
+		// Get all registered post types
+		$args = array(
+			'public' => true,
+		);
+
+		$registered_post_types = get_post_types( $args, 'names' );
+		$excluded_post_types   = array(
+			'attachment',
+			WPFP_FULLPAGE_PT,
+			WPFP_FULLPAGE_SECTION_PT,
+		);
+
+		foreach ( $registered_post_types as $registered_post_type ) {
+
+			if( ! in_array( $registered_post_type, $excluded_post_types ) && $post_type === $registered_post_type ) {
+
+				$this->post_types[] = $post_type;
+
+				$this->slide_meta_box( $post_type );
+
+				break;
+
+			}
+
 		}
 
 	} // END public function add_meta_box
@@ -73,16 +97,18 @@ class WP_Fullpage_Slide_Type_Metabox extends WP_Fullpage_Metabox_Base {
 	/**
 	 * Add Slide Options Metabox
 	 *
-	 * @return void
+	 * @param   string  $post_type  the post type
+	 *
+	 * @return  void
 	 */
-	private function slide_meta_box() {
+	private function slide_meta_box( $post_type ) {
 		
 		// Slide Options Metabox
 		add_meta_box(
 			'wpfp_slide_options',
 			__( 'WP Fullpage Options', WPFP_DOMAIN ),
 			array( &$this, 'render_slide_options_content' ),
-			$this->post_type,
+			$post_type,
 			'advanced',
 			'high'
 		);
@@ -191,7 +217,7 @@ class WP_Fullpage_Slide_Type_Metabox extends WP_Fullpage_Metabox_Base {
 		$post         = get_post();
 		$post_type    = get_post_type( $post );
 		
-		if( $this->post_type != $post_type )
+		if( ! in_array( $post_type, $this->post_types ) )
 			return;
 
 		WPFP_JS_Handlers()->jquery_tooltip( $dependencies );
