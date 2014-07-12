@@ -278,6 +278,27 @@ final class WP_Fullpage_Query {
 		switch ( $slides_options['slidesType'] ) {
 			
 			case 'post-section':
+				
+				// No need to redo a query
+				$section->slides      = array( clone $section );
+				$section->slide_count = 1;
+				
+				foreach( $section->slides as $key => &$slide ) {
+					
+					// Get Slide options
+					$slide_options = get_post_meta( $slide->ID, WPFP_SLIDE_PT_SLIDE_OPTIONS, true );
+
+					// Default section slides options
+					if( empty( $slide_options ) )
+						$slide_options = $section->slides_options;
+					
+					// Init Slide options
+					$slide->slide_options = apply_filters( 'wpfp_slide_slide_options', $slide_options, $key, $this );
+
+				}
+
+				return;
+			
 			case 'section':
 				
 				// No need to redo a query
@@ -375,9 +396,16 @@ final class WP_Fullpage_Query {
 		else {
 
 			foreach( $section->slides as $key => &$slide ) {
+					
+				// Get Slide options
+				$slide_options = get_post_meta( $slide->ID, WPFP_SLIDE_PT_SLIDE_OPTIONS, true );
+
+				// Default section slides options
+				if( empty( $slide_options ) )
+					$slide_options = $section->slides_options;
 				
-				// Init Slide options with section options
-				$slide->slide_options  = apply_filters( 'wpfp_slide_slide_options', $section->slides_options, $key, $this );
+				// Init Slide options
+				$slide->slide_options  = apply_filters( 'wpfp_slide_slide_options', $slide_options, $key, $this );
 
 			}
 
