@@ -574,6 +574,44 @@
 						<h5><?php _e( 'Sections Options', WPFP_DOMAIN );?></h5>
 
 					</li>
+							
+					<!-- Vertical Position -->
+					<li>
+
+						<label for="verticalPosition">
+						 	<?php _e( 'Vertical Position', WPFP_DOMAIN ); ?>
+						</label>
+
+						<select id="verticalPosition" name="<?php print WPFP_FULLPAGE_PT_SLIDES_OPTIONS; ?>[verticalPosition]" <?php WPFP_Helpers()->default_setting( isset( $VERTICALPOSITION ) ? $VERTICALPOSITION : 'center', true ); ?>>
+							
+							<option value="center" <?php selected( isset( $verticalPosition ) ? $verticalPosition : '', 'center' ); ?>><?php _e( 'Center', WPFP_DOMAIN ); ?></option>
+							<option value="top" <?php selected( isset( $verticalPosition ) ? $verticalPosition : '', 'top' ); ?>><?php _e( 'Top', WPFP_DOMAIN ); ?></option>
+							<option value="bottom" <?php selected( isset( $verticalPosition ) ? $verticalPosition : '', 'bottom' ); ?>><?php _e( 'Bottom', WPFP_DOMAIN ); ?></option>
+
+						</select>
+
+						<span class="wpfp-tip" data-tip="<?php _e( 'Vertical position of the content within slide.', WPFP_DOMAIN ); ?>"></span>
+
+					</li>
+					
+					<!-- Horizontal Position -->
+					<li>
+
+						<label for="horizontalPosition">
+						 	<?php _e( 'Horizontal Position', WPFP_DOMAIN ); ?>
+						</label>
+
+						<select id="horizontalPosition" name="<?php print WPFP_FULLPAGE_PT_SLIDES_OPTIONS; ?>[horizontalPosition]" <?php WPFP_Helpers()->default_setting( isset( $HORIZONTALPOSITION ) ? $HORIZONTALPOSITION : 'center', true ); ?>>
+							
+							<option value="center" <?php selected( isset( $horizontalPosition ) ? $horizontalPosition : '', 'center' ); ?>><?php _e( 'Center', WPFP_DOMAIN ); ?></option>
+							<option value="left" <?php selected( isset( $horizontalPosition ) ? $horizontalPosition : '', 'left' ); ?>><?php _e( 'Left', WPFP_DOMAIN ); ?></option>
+							<option value="right" <?php selected( isset( $horizontalPosition ) ? $horizontalPosition : '', 'right' ); ?>><?php _e( 'Right', WPFP_DOMAIN ); ?></option>
+
+						</select>
+
+						<span class="wpfp-tip" data-tip="<?php _e( 'Horizontal position of the content within slide.', WPFP_DOMAIN ); ?>"></span>
+
+					</li>
 
 					<li>
 				
@@ -741,7 +779,7 @@
 									<span class="wpfp-tip" data-tip="<?php _e( 'What do you want to order the list with.', WPFP_DOMAIN ); ?>"></span>
 								</label>
 								
-								<select data-placeholder="<?php _e( 'Choose an "Order By" method', WPFP_DOMAIN ); ?>" id="orderBy" name="<?php print WPFP_FULLPAGE_PT_CUSTOM_OPTIONS; ?>[orderBy]" <?php WPFP_Helpers()->default_setting( isset( $ORDERBY ) ? $ORDERBY : 'date', true ); ?>>
+								<select id="orderBy" name="<?php print WPFP_FULLPAGE_PT_CUSTOM_OPTIONS; ?>[orderBy]" <?php WPFP_Helpers()->default_setting( isset( $ORDERBY ) ? $ORDERBY : 'date', true ); ?>>
 									
 									<option value="date" <?php selected( isset( $orderBy ) ? $orderBy : '', 'date' ); ?>><?php _e( 'Date', WPFP_DOMAIN ); ?></option>
 									<option value="post__in" <?php selected( isset( $orderBy ) ? $orderBy : '', 'post__in' ); ?>><?php _e( 'Include Order', WPFP_DOMAIN ); ?></option>
@@ -779,7 +817,7 @@
 									<span class="wpfp-tip" data-tip="<?php _e( 'How do you want to order the list.', WPFP_DOMAIN ); ?>"></span>
 								</label>
 								
-								<select data-placeholder="<?php _e( 'Choose an order', WPFP_DOMAIN ); ?>" id="order" name="<?php print WPFP_FULLPAGE_PT_CUSTOM_OPTIONS; ?>[order]" <?php WPFP_Helpers()->default_setting( isset( $ORDER ) ? $ORDER : 'ASC', true ); ?>>
+								<select id="order" name="<?php print WPFP_FULLPAGE_PT_CUSTOM_OPTIONS; ?>[order]" <?php WPFP_Helpers()->default_setting( isset( $ORDER ) ? $ORDER : 'ASC', true ); ?>>
 									
 									<option value="ASC" <?php selected( isset( $order ) ? $order : '', 'ASC' ); ?>><?php _e( 'ASC', WPFP_DOMAIN ); ?></option>
 									<option value="DESC" <?php selected( isset( $order ) ? $order : '', 'DESC' ); ?>><?php _e( 'DESC', WPFP_DOMAIN ); ?></option>
