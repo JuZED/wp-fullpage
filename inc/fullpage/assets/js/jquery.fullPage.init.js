@@ -7,7 +7,6 @@
 
 			verticalCentered: false,
 			resize : fullPageParams.resize == 'yes' ? true : false,
-			sectionsColor : fullPageParams.sectionsColor,
 			anchors: fullPageParams.anchors,
 			scrollingSpeed: parseInt( fullPageParams.scrollingSpeed ),
 			easing: fullPageParams.easing,

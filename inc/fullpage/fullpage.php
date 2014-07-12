@@ -167,16 +167,12 @@ final class WP_Fullpage extends WP_Fullpage_Base {
 		$params          = WPFP_Query()->fullpage->fullpage_options;
 		$sections_option = WPFP_Query()->fullpage->sections_option;
 
-		$params['navigationTooltips'] = array();
-		$params['sectionsColor']      = array();
-		$params['anchors']            = array();
+		$params['anchors'] = array();
 
 		// Get the sections Fullpage params
 		foreach( WPFP_Query()->sections as $key => $section ) {
 
-			$params['navigationTooltips'][] = WPFP_Query()->get_section_nav_title( $key );
-			$params['sectionsColor'][]      = WPFP_Query()->get_section_color( $key );
-			$params['anchors'][]            = $section->post_name;
+			$params['anchors'][] = $section->post_name;
 
 		}
 

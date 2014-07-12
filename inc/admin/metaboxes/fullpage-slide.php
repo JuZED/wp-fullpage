@@ -10,7 +10,7 @@ class WP_Fullpage_Slide_Type_Metabox extends WP_Fullpage_Metabox_Base {
 	 *
 	 * @var  array
 	 */
-	private $post_types; 
+	private $post_types = array(); 
 
 	/**
 	 * Init Metaboxes Object

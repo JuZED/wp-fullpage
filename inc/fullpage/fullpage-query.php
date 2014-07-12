@@ -1022,16 +1022,22 @@ final class WP_Fullpage_Query {
 		$section_options = $this->sections[ $section_index ]->slides_options;
 		$fulpage_options = $this->fullpage->slides_options;
 
+		$vertical_position   = 'inherit';
+		$horizontal_position = 'inherit';
+
 		// the position options of the slide
-		$vertical_position   = $slide_options['verticalPosition'];
-		$horizontal_position = $slide_options['horizontalPosition'];
+		if( ! empty( $slide_options['verticalPosition'] ) )
+			$vertical_position = $slide_options['verticalPosition'];
+		
+		if( ! empty( $slide_options['horizontalPosition'] ) )
+			$horizontal_position = $slide_options['horizontalPosition'];
 
 		// the vertical position option of the section
 		if( 'inherit' === $vertical_position )
 			$vertical_position = $section_options['verticalPosition'];
 		
 		// the horizontal position option of the section
-		if( 'inherit' === $horizontal_position )
+		if(  empty( $horizontal_position ) || 'inherit' === $horizontal_position )
 			$horizontal_position = $section_options['horizontalPosition'];
 
 		// the vertical position option of the fullpage
@@ -1052,27 +1058,49 @@ final class WP_Fullpage_Query {
 	} // END public function get_slide_position
 
 	/**
-	 * Display or retrieve the section color.
+	 * Display or retrieve the slide color.
 	 *
-	 * @param   int      	$section_index  The section index.
-	 * @param   boolean  	$print   	 	Optional, default to false. Whether to display or return.
+	 * @param   int      	$section_index  	Optional. The section index. If empty, will take the current section.
+	 * @param   int      	$slide_index    	Optional. The section index. If empty, will take the current slide.
+	 * @param   boolean  	$print   	 		Optional, default to true. Whether to display or return.
 	 *
-	 * @return  null|string 		 	 Null on no title. String if $print parameter is false.
+	 * @return  string
 	 */
-	public function get_section_color( $section_index, $print = false ) {
+	public function get_slide_color( $section_index = -1, $slide_index = -1, $print = true ) {
+		
+		if( -1 === $section_index )
+			$section_index = $this->current_section;
+		
+		if( -1 === $slide_index )
+			$slide_index = $this->sections[ $section_index ]->current_slide;
 
-		$sections_option = $this->fullpage->sections_options;
-		$section_option  = $this->sections[ $section_index ]->section_options;
+		$slide_options   = $this->sections[ $section_index ]->slides[ $slide_index ]->slide_options;
+		$section_options = $this->sections[ $section_index ]->slides_options;
+		$fulpage_options = $this->fullpage->slides_options;
 
-		if( ! empty( $section_option['sectionColor'] ) )
-			$section_color = $section_option['sectionColor'];
+		$color = '';
+
+		// the color of the slide
+		if( ! empty( $slide_options['slideColor'] ) )
+			$color = $slide_options['slideColor'];
+
+		// the slide color option of the section
+		if( '' === $color )
+			$color = $section_options['slideColor'];
+		
+		// the slide color option of the fullpage
+		if( '' === $color )
+			$color = $fulpage_options['slideColor'];
+
+		if( $color )
+			$background_color = sprintf( 'background-color: %1s;', $color );
 		else
-			$section_color = $sections_option['sectionColor'];
+			$background_color = '';
 
 		if ( $print )
-			print $section_color;
+			print $background_color;
 		
-		return $section_color;
+		return $background_color;
 
 	} // END public function get_section_color
 
