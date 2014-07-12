@@ -365,6 +365,16 @@ final class WP_Fullpage_Query {
 			}
 
 		}
+		else {
+
+			foreach( $section->slides as $key => &$slide ) {
+				
+				// Init Slide options with section options
+				$slide->slide_options  = apply_filters( 'wpfp_slide_slide_options', $this->section->slides_options, $key, $this );
+
+			}
+
+		}
 
 		wp_reset_postdata();
 
