@@ -625,16 +625,16 @@
 					
 					</li>
 			
-					<!-- Sections Color -->
+					<!-- Slides Color -->
 					<li>
 				
-						<label for="sectionColor">
-						 	<?php _e( 'Section Color', WPFP_DOMAIN ); ?>
+						<label for="slideColor">
+						 	<?php _e( 'Slides Color', WPFP_DOMAIN ); ?>
 							
-							<span class="wpfp-tip" data-tip='<?php _e( 'Define the CSS background-color property for a section. Example : "#f2f2f2", "#4BBFC3", "#7BAABE", "whitesmoke", "#000".', WPFP_DOMAIN ); ?>'></span>
+							<span class="wpfp-tip" data-tip='<?php _e( 'Define the CSS background-color property for slides. Example : "#f2f2f2", "#4BBFC3", "#7BAABE", "whitesmoke", "#000".', WPFP_DOMAIN ); ?>'></span>
 						</label>
 						
-						<input type="text" id="sectionColor" name="<?php print WPFP_FULLPAGE_PT_SECTIONS_OPTIONS; ?>[sectionColor]" <?php WPFP_Helpers()->value( isset( $sectionColor ) ? $sectionColor : '', isset( $SECTIONCOLOR ) ? $SECTIONCOLOR : '' ); ?> />
+						<input type="text" id="slideColor" name="<?php print WPFP_FULLPAGE_PT_SLIDES_OPTIONS; ?>[slideColor]" <?php WPFP_Helpers()->value( isset( $slideColor ) ? $slideColor : '', isset( $SLIDECOLOR ) ? $SLIDECOLOR : '' ); ?> />
 					
 					</li>
 			

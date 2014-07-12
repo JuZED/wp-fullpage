@@ -583,19 +583,6 @@
 								<input type="text" id="navTitle" name="<?php print WPFP_SETTINGS_SECTIONS_OPTIONS; ?>[navTitle]" value="<?php print esc_attr( isset( $navTitle ) ? $navTitle : '' ); ?>" <?php WPFP_Helpers()->default_setting( '', true ); ?> />
 							
 							</li>
-					
-							<!-- Sections Color -->
-							<li>
-						
-								<label for="sectionColor">
-								 	<?php _e( 'Section Color', WPFP_DOMAIN ); ?>
-									
-									<span class="wpfp-tip" data-tip='<?php _e( 'Define the CSS background-color property for a section. Examples : "#f2f2f2", "#4BBFC3", "#7BAABE", "whitesmoke", "#000".', WPFP_DOMAIN ); ?>'></span>
-								</label>
-								
-								<input type="text" id="sectionColor" name="<?php print WPFP_SETTINGS_SECTIONS_OPTIONS; ?>[sectionColor]" value="<?php print esc_attr( isset( $sectionColor ) ? $sectionColor : '' ); ?>" <?php WPFP_Helpers()->default_setting( '', true ); ?> />
-							
-							</li>
 
 						</ul>
 
@@ -667,6 +654,19 @@
 								</label>
 								
 								<input type="text" id="slidesNavTitle" name="<?php print WPFP_SETTINGS_SLIDES_OPTIONS; ?>[slidesNavTitle]" value="<?php print esc_attr( isset( $slidesNavTitle ) ? $slidesNavTitle : '' ); ?>" <?php WPFP_Helpers()->default_setting( '', true ); ?> />
+							
+							</li>
+					
+							<!-- Slides Color -->
+							<li>
+						
+								<label for="slideColor">
+								 	<?php _e( 'Slides Color', WPFP_DOMAIN ); ?>
+									
+									<span class="wpfp-tip" data-tip='<?php _e( 'Define the CSS background-color property for slides. Examples : "#f2f2f2", "#4BBFC3", "#7BAABE", "whitesmoke", "#000".', WPFP_DOMAIN ); ?>'></span>
+								</label>
+								
+								<input type="text" id="slideColor" name="<?php print WPFP_SETTINGS_SECTIONS_OPTIONS; ?>[slideColor]" value="<?php print esc_attr( isset( $slideColor ) ? $slideColor : '' ); ?>" <?php WPFP_Helpers()->default_setting( '', true ); ?> />
 							
 							</li>
 

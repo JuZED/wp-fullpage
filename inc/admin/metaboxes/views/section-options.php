@@ -84,19 +84,6 @@
 						<span class="wpfp-tip" data-tip="<?php _e( 'Defines the position for the landscape navigation bar for sliders. Admits top and bottom as values. You may want to modify the CSS styles to determine the distance from the top or bottom as well as any other style such as color.', WPFP_DOMAIN ); ?>"></span>
 
 					</li>
-					
-					<!-- Section Color -->
-					<li>
-				
-						<label for="sectionColor">
-						 	<?php _e( 'Section Color', WPFP_DOMAIN ); ?>
-							
-							<span class="wpfp-tip" data-tip='<?php _e( 'Define the CSS background-color property for the section.', WPFP_DOMAIN ); ?>'></span>
-						</label>
-						
-						<input type="text" id="sectionColor" name="<?php print WPFP_SECTION_PT_SECTION_OPTIONS; ?>[sectionColor]" <?php WPFP_Helpers()->value( isset( $sectionColor ) ? $sectionColor : '', isset( $SECTIONSCOLOR ) ? $SECTIONSCOLOR : '' ); ?> />
-					
-					</li>
 
 				</ul>
 
@@ -170,6 +157,19 @@
 						</label>
 						
 						<input type="text" id="slidesNavTitle" name="<?php print WPFP_SECTION_PT_SLIDES_OPTIONS; ?>[slidesNavTitle]" <?php WPFP_Helpers()->value( isset( $slidesNavTitle ) ? $slidesNavTitle : '', isset( $SLIDESNAVTITLE ) ? $SLIDESNAVTITLE : '' ); ?> />
+					
+					</li>
+					
+					<!-- Slides Color -->
+					<li>
+				
+						<label for="slideColor">
+						 	<?php _e( 'Slides Color', WPFP_DOMAIN ); ?>
+							
+							<span class="wpfp-tip" data-tip='<?php _e( 'Define the CSS background-color property for the slides.', WPFP_DOMAIN ); ?>'></span>
+						</label>
+						
+						<input type="text" id="slideColor" name="<?php print WPFP_SECTION_PT_SLIDES_OPTIONS; ?>[slideColor]" <?php WPFP_Helpers()->value( isset( $slideColor ) ? $slideColor : '', isset( $SLIDECOLOR ) ? $SLIDECOLOR : '' ); ?> />
 					
 					</li>
 

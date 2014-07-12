@@ -69,6 +69,19 @@
 						<input type="text" id="slidesNavTitle" name="<?php print WPFP_SLIDE_PT_SLIDE_OPTIONS; ?>[slidesNavTitle]" <?php WPFP_Helpers()->value( isset( $slidesNavTitle ) ? $slidesNavTitle : '', isset( $SLIDESNAVTITLE ) ? $SLIDESNAVTITLE : '' ); ?> />
 					
 					</li>
+					
+					<!-- Slide Color -->
+					<li>
+				
+						<label for="slideColor">
+						 	<?php _e( 'Slide Color', WPFP_DOMAIN ); ?>
+							
+							<span class="wpfp-tip" data-tip='<?php _e( 'Define the CSS background-color property for the slide.', WPFP_DOMAIN ); ?>'></span>
+						</label>
+						
+						<input type="text" id="slideColor" name="<?php print WPFP_SLIDE_PT_SLIDE_OPTIONS; ?>[slideColor]" <?php WPFP_Helpers()->value( isset( $slideColor ) ? $slideColor : '', isset( $SLIDECOLOR ) ? $SLIDECOLOR : '' ); ?> />
+					
+					</li>
 
 				</ul>
 
