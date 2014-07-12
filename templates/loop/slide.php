@@ -9,9 +9,9 @@
 
 ?>
 
-<div class="slide fp-table <?php WPFP_Query()->get_slide_position(); ?>" data-anchor="<?php print WPFP_Query()->slide->post_name; ?>" data-bg="<?php print WPFP_Query()->get_slide_bg(); ?>">
+<div class="slide fp-table" data-anchor="<?php print WPFP_Query()->slide->post_name; ?>" data-bg="<?php print WPFP_Query()->get_slide_bg(); ?>">
 	
-	<div class="fp-tableCell">
+	<div class="fp-tableCell <?php WPFP_Query()->get_slide_position(); ?>">
 
 		<article <?php post_class( '', WPFP_Query()->get_slide_ID() ); ?>>
 
