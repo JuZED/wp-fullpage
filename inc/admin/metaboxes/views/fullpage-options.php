@@ -41,13 +41,6 @@
 						<h5><?php _e( 'Fullpage.js Options', WPFP_DOMAIN );?></h5>
 
 					</li>
-					
-					<!-- Title -->
-					<li>
-
-						<h5><?php _e( 'Slides Options', WPFP_DOMAIN );?></h5>
-
-					</li>
 							
 					<!-- Vertical Position -->
 					<li>
