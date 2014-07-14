@@ -61,10 +61,10 @@
 						<label for="slidesNavigation">
 						 	<?php _e( 'Slides Navigation', WPFP_DOMAIN ); ?>
 						</label>
-						<select id="slidesNavigation" name="<?php print WPFP_SECTION_PT_FULLPAGE_OPTIONS; ?>[slidesNavigation]" <?php WPFP_Helpers()->default_setting( isset( $SLIDESNAVIGATION ) ? $SLIDESNAVIGATION : 'top', true ); ?>>
+						<select id="slidesNavigation" name="<?php print WPFP_SECTION_PT_FULLPAGE_OPTIONS; ?>[slidesNavigation]" <?php WPFP_Helpers()->default_setting( isset( $SLIDESNAVIGATION ) ? $SLIDESNAVIGATION : 'yes', true ); ?>>
 							
 							<option value="inherit" <?php selected( isset( $slidesNavigation ) ? $slidesNavigation : '', 'inherit' ); ?>><?php _e( 'Inherit from FullPage', WPFP_DOMAIN ); ?></option>
-							<option value="yes" <?php selected( isset( $slidesNavigation ) ? $slidesNavigation : '', 'yes' ); ?>><?php _e( 'Yes', WPFP_DOMAIN ); ?></option>
+							<option value="yes" <?php selected( isset( $slidesNavigation ) ? $slidesNavigation : 'yes', 'yes' ); ?>><?php _e( 'Yes', WPFP_DOMAIN ); ?></option>
 							<option value="no" <?php selected( isset( $slidesNavigation ) ? $slidesNavigation : '', 'no' ); ?>><?php _e( 'No', WPFP_DOMAIN ); ?></option>
 
 						</select>
@@ -81,7 +81,7 @@
 						<select id="slidesNavPosition" name="<?php print WPFP_SECTION_PT_FULLPAGE_OPTIONS; ?>[slidesNavPosition]" <?php WPFP_Helpers()->default_setting( isset( $SLIDESNAVPOSITION ) ? $SLIDESNAVPOSITION : 'top', true ); ?>>
 							
 							<option value="inherit" <?php selected( isset( $slidesNavPosition ) ? $slidesNavPosition : '', 'inherit' ); ?>><?php _e( 'Inherit from FullPage', WPFP_DOMAIN ); ?></option>
-							<option value="top" <?php selected( isset( $slidesNavPosition ) ? $slidesNavPosition : '', 'top' ); ?>><?php _e( 'Top', WPFP_DOMAIN ); ?></option>
+							<option value="top" <?php selected( isset( $slidesNavPosition ) ? $slidesNavPosition : 'top', 'top' ); ?>><?php _e( 'Top', WPFP_DOMAIN ); ?></option>
 							<option value="bottom" <?php selected( isset( $slidesNavPosition ) ? $slidesNavPosition : '', 'bottom' ); ?>><?php _e( 'Bottom', WPFP_DOMAIN ); ?></option>
 
 						</select>
@@ -119,10 +119,10 @@
 						 	<?php _e( 'Vertical Position', WPFP_DOMAIN ); ?>
 						</label>
 
-						<select id="verticalPosition" name="<?php print WPFP_SECTION_PT_SLIDES_OPTIONS; ?>[verticalPosition]" <?php WPFP_Helpers()->default_setting( isset( $VERTICALPOSITION ) ? $VERTICALPOSITION : 'inherit', true ); ?>>
+						<select id="verticalPosition" name="<?php print WPFP_SECTION_PT_SLIDES_OPTIONS; ?>[verticalPosition]" <?php WPFP_Helpers()->default_setting( isset( $VERTICALPOSITION ) ? $VERTICALPOSITION : 'middle', true ); ?>>
 							
 							<option value="inherit" <?php selected( isset( $verticalPosition ) ? $verticalPosition : '', 'inherit' ); ?>><?php _e( 'Inherit from Fullpage', WPFP_DOMAIN ); ?></option>
-							<option value="middle" <?php selected( isset( $verticalPosition ) ? $verticalPosition : '', 'middle' ); ?>><?php _e( 'Middle', WPFP_DOMAIN ); ?></option>
+							<option value="middle" <?php selected( isset( $verticalPosition ) ? $verticalPosition : 'middle', 'middle' ); ?>><?php _e( 'Middle', WPFP_DOMAIN ); ?></option>
 							<option value="top" <?php selected( isset( $verticalPosition ) ? $verticalPosition : '', 'top' ); ?>><?php _e( 'Top', WPFP_DOMAIN ); ?></option>
 							<option value="bottom" <?php selected( isset( $verticalPosition ) ? $verticalPosition : '', 'bottom' ); ?>><?php _e( 'Bottom', WPFP_DOMAIN ); ?></option>
 
@@ -139,10 +139,10 @@
 						 	<?php _e( 'Horizontal Position', WPFP_DOMAIN ); ?>
 						</label>
 
-						<select id="horizontalPosition" name="<?php print WPFP_SECTION_PT_SLIDES_OPTIONS; ?>[horizontalPosition]" <?php WPFP_Helpers()->default_setting( isset( $HORIZONTALPOSITION ) ? $HORIZONTALPOSITION : 'inherit', true ); ?>>
+						<select id="horizontalPosition" name="<?php print WPFP_SECTION_PT_SLIDES_OPTIONS; ?>[horizontalPosition]" <?php WPFP_Helpers()->default_setting( isset( $HORIZONTALPOSITION ) ? $HORIZONTALPOSITION : 'center', true ); ?>>
 							
 							<option value="inherit" <?php selected( isset( $horizontalPosition ) ? $horizontalPosition : '', 'inherit' ); ?>><?php _e( 'Inherit from Fullpage', WPFP_DOMAIN ); ?></option>
-							<option value="center" <?php selected( isset( $horizontalPosition ) ? $horizontalPosition : '', 'center' ); ?>><?php _e( 'Center', WPFP_DOMAIN ); ?></option>
+							<option value="center" <?php selected( isset( $horizontalPosition ) ? $horizontalPosition : 'center', 'center' ); ?>><?php _e( 'Center', WPFP_DOMAIN ); ?></option>
 							<option value="left" <?php selected( isset( $horizontalPosition ) ? $horizontalPosition : '', 'left' ); ?>><?php _e( 'Left', WPFP_DOMAIN ); ?></option>
 							<option value="right" <?php selected( isset( $horizontalPosition ) ? $horizontalPosition : '', 'right' ); ?>><?php _e( 'Right', WPFP_DOMAIN ); ?></option>
 
@@ -306,9 +306,9 @@
 									<span class="wpfp-tip" data-tip="<?php _e( 'What do you want to order the list with.', WPFP_DOMAIN ); ?>"></span>
 								</label>
 								
-								<select data-placeholder='<?php _e( 'Choose an "Order By" method', WPFP_DOMAIN ); ?>' id="orderBy" name="<?php print WPFP_SECTION_PT_CUSTOM_OPTIONS; ?>[orderBy]" <?php WPFP_Helpers()->default_setting( isset( $ORDERBY ) ? $ORDERBY : '', true ); ?>>
+								<select data-placeholder='<?php _e( 'Choose an "Order By" method', WPFP_DOMAIN ); ?>' id="orderBy" name="<?php print WPFP_SECTION_PT_CUSTOM_OPTIONS; ?>[orderBy]" <?php WPFP_Helpers()->default_setting( isset( $ORDERBY ) ? $ORDERBY : 'date', true ); ?>>
 									
-									<option value="date" <?php selected( isset( $orderBy ) ? $orderBy : '', 'date' ); ?>><?php _e( 'Date', WPFP_DOMAIN ); ?></option>
+									<option value="date" <?php selected( isset( $orderBy ) ? $orderBy : 'date', 'date' ); ?>><?php _e( 'Date', WPFP_DOMAIN ); ?></option>
 									<option value="post__in" <?php selected( isset( $orderBy ) ? $orderBy : '', 'post__in' ); ?>><?php _e( 'Include Order', WPFP_DOMAIN ); ?></option>
 									<option value="ID" <?php selected( isset( $orderBy ) ? $orderBy : '', 'ID' ); ?>><?php _e( 'Post ID', WPFP_DOMAIN ); ?></option>
 									<option value="author" <?php selected( isset( $orderBy ) ? $orderBy : '', 'author' ); ?>><?php _e( 'Author', WPFP_DOMAIN ); ?></option>
@@ -344,9 +344,9 @@
 									<span class="wpfp-tip" data-tip="<?php _e( 'How do you want to order the list.', WPFP_DOMAIN ); ?>"></span>
 								</label>
 								
-								<select data-placeholder="<?php _e( 'Choose an order', WPFP_DOMAIN ); ?>" id="order" name="<?php print WPFP_SECTION_PT_CUSTOM_OPTIONS; ?>[order]" <?php WPFP_Helpers()->default_setting( isset( $ORDER ) ? $ORDER : '', true ); ?>>
+								<select data-placeholder="<?php _e( 'Choose an order', WPFP_DOMAIN ); ?>" id="order" name="<?php print WPFP_SECTION_PT_CUSTOM_OPTIONS; ?>[order]" <?php WPFP_Helpers()->default_setting( isset( $ORDER ) ? $ORDER : 'ASC', true ); ?>>
 									
-									<option value="ASC" <?php selected( isset( $order ) ? $order : '', 'ASC' ); ?>><?php _e( 'ASC', WPFP_DOMAIN ); ?></option>
+									<option value="ASC" <?php selected( isset( $order ) ? $order : 'ASC', 'ASC' ); ?>><?php _e( 'ASC', WPFP_DOMAIN ); ?></option>
 									<option value="DESC" <?php selected( isset( $order ) ? $order : '', 'DESC' ); ?>><?php _e( 'DESC', WPFP_DOMAIN ); ?></option>
 
 								</select>
