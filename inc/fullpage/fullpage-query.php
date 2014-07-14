@@ -1,10 +1,19 @@
 <?php
 
 /**
- * Main WP Fullpage Query Class
+ * WP Fullpage Query.
+ *
+ * The WP Fullpage Query Class and a function to access it.
+ *
+ * @author Julien Zerbib <contact@juzed.fr>
+ */
+
+/**
+ * Main WP Fullpage Query Class.
+ *
+ * The WP Fullpage Query Object and some Helpers to access it.
  * 
- * @package 	WP_Fullpage\Includes\Fullpage
- * @subpackage 	WP_Fullpage\Includes\Absctract\Classes
+ * @package 	WP_Fullpage
  */
 final class WP_Fullpage_Query {
 
@@ -67,9 +76,9 @@ final class WP_Fullpage_Query {
 	 *
 	 * Ensures only one instance of WP_Fullpage_Query is loaded or can be loaded.
 	 *
-	 * @see 	WPFP()
+	 * @see 	WPFP()				The function to simply use the class methods
 	 * 
-	 * @return  WP_Fullpage_Query - Main instance
+	 * @return  WP_Fullpage_Query	Main instance
 	 */
 	public static function instance() {
 		
@@ -1425,8 +1434,10 @@ final class WP_Fullpage_Query {
  * Returns the main instance of WP_Fullpage_Query to prevent the need to use globals.
  *
  * WPFP_Query()->my_method() 
+ * 
+ * @package 	WP_Fullpage
  *
- * @return 	WP_Fullpage_Query
+ * @return 		WP_Fullpage_Query
  */
 function WPFP_Query() {
 

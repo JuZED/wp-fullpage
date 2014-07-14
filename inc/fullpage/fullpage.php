@@ -1,10 +1,19 @@
 <?php
 
 /**
- * Main WP Fullpage Class
+ * WP Fullpage.
+ *
+ * The WP Fullpage Class and a function to access it.
+ *
+ * @author Julien Zerbib <contact@juzed.fr>
+ */
+
+/**
+ * Main WP Fullpage Class.
+ *
+ * The WP Fullpage Object and some Helpers to access it.
  * 
- * @package 	WP_Fullpage\Includes\Fullpage
- * @subpackage 	WP_Fullpage\Includes\Absctract\Classes
+ * @package 	WP_Fullpage
  */
 final class WP_Fullpage extends WP_Fullpage_Base {
 
@@ -18,9 +27,9 @@ final class WP_Fullpage extends WP_Fullpage_Base {
 	 *
 	 * Ensures only one instance of WP_Fullpage is loaded or can be loaded.
 	 *
-	 * @see 	WPFP()
+	 * @see 	WPFP()			The function to simply use the class methods
 	 * 
-	 * @return  WP_Fullpage - Main instance
+	 * @return  WP_Fullpage 	Main instance
 	 */
 	public static function instance() {
 		
@@ -631,8 +640,10 @@ final class WP_Fullpage extends WP_Fullpage_Base {
  * Returns the main instance of WP_Fullpage to prevent the need to use globals.
  *
  * WPFP()->my_method() 
+ * 
+ * @package 	WP_Fullpage
  *
- * @return 	WP_Fullpage
+ * @return 		WP_Fullpage
  */
 function WPFP() {
 

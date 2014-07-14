@@ -1,6 +1,8 @@
 <?php
 
 /**
+ * The Posts of Term List Template
+ * 
  * @package 	WP_Fullpage\Includes\Ajax\Views
  */
 

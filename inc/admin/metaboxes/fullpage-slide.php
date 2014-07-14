@@ -1,11 +1,6 @@
 <?php
 
 /**
- * @package 	WP_Fullpage\Includes\Admin\Metaboxes
- * @subpackage 	WP_Fullpage\Includes\Absctract\Classes
- */
-
-/**
  * The Fullpage Slide Type Metabox Class
  * 
  * @package 	WP_Fullpage\Includes\Admin\Metaboxes

@@ -1,6 +1,8 @@
 <?php
 
 /**
+ * Template for Fullpage Option Metabox
+ * 
  * @package 	WP_Fullpage\Includes\Metaboxes\Views
  */
 

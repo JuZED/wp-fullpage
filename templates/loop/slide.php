@@ -8,7 +8,6 @@
  * 
  * @package 	WP_Fullpage\Templates\Loop
  */
-
 ?>
 
 <div class="slide fp-table" data-anchor="<?php print WPFP_Query()->slide->post_name; ?>" data-bg="<?php print WPFP_Query()->get_slide_bg(); ?>" style="<?php WPFP_Query()->get_slide_color(); ?>">

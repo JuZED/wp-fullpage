@@ -1,6 +1,8 @@
 <?php
 
 /**
+ * The Posts List Template
+ * 
  * @package 	WP_Fullpage\Includes\Ajax\Views
  */
 

@@ -1,11 +1,6 @@
 <?php
 
 /**
- * @package 	WP_Fullpage\Includes\Admin\Setings
- * @subpackage 	WP_Fullpage\Includes\Absctract\Classes
- */
-
-/**
  * The Fullpage Settings Class
  * 
  * @package 	WP_Fullpage\Includes\Admin\Setings

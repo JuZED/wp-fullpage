@@ -1,10 +1,6 @@
 <?php
 
 /**
- * @package WP_Fullpage\Includes\Absctract
- */
-
-/**
  * WP Fullpage Abstracts Classes Init
  * 
  * @package WP_Fullpage\Includes\Absctract

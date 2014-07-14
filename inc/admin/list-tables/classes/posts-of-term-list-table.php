@@ -1,11 +1,6 @@
 <?php
 
 /**
- * @package 	WP_Fullpage\Includes\Admin\List_Tables\Classes
- * @subpackage 	WP_Fullpage\Includes\Absctract\Classes
- */
-
-/**
  * Posts of Term List Table class.
  * 
  * @package 	WP_Fullpage\Includes\Admin\List_Tables\Classes

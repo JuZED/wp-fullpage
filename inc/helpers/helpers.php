@@ -180,8 +180,10 @@ class WP_Fullpage_Helpers {
 
 /**
  * Returns the main instance of WP_Fullpage_Helpers to prevent the need to use globals.
+ * 
+ * @package 	WP_Fullpage\Includes\Helpers
  *
- * @return 	WP_Fullpage_Helpers
+ * @return 		WP_Fullpage_Helpers
  */
 function WPFP_Helpers() {
 

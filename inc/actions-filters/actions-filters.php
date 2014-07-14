@@ -1,11 +1,6 @@
 <?php
 
 /**
- * @package 	WP_Fullpage\Includes\Actions_Filters
- * @subpackage 	WP_Fullpage\Includes\Absctract\Classes
- */
-
-/**
  * The Fullpage Actions and Filters Class
  * 
  * @package 	WP_Fullpage\Includes\Actions_Filters

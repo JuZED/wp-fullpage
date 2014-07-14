@@ -1,6 +1,8 @@
 <?php
 
 /**
+ * Template for Slide Option Metabox
+ * 
  * @package 	WP_Fullpage\Includes\Metaboxes\Views
  */
 

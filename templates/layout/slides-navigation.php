@@ -1,11 +1,9 @@
 <?php
-
 /**
  * The template for displaying the Fullpage Slides Navigation
  * 
  * @package 	WP_Fullpage\Templates\Layout
  */
-
 ?>
 
 <?php

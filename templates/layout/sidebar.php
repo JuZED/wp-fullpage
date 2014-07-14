@@ -1,11 +1,9 @@
 <?php
-
 /**
  * The Sidebar containing the main widget area
  * 
  * @package 	WP_Fullpage\Templates\Layout
  */
-
 ?>
 
 <div id="secondary">

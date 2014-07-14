@@ -1,11 +1,6 @@
 <?php
 
 /**
- * @package 	WP_Fullpage\Includes\Admin\JS_Handlers
- * @subpackage 	WP_Fullpage\Includes\Absctract\Classes
- */
-
-/**
  * The Fullpage Javascript Handlers Class
  * 
  * @package 	WP_Fullpage\Includes\Admin\JS_Handlers
@@ -802,8 +797,10 @@ class WP_Fullpage_JS_Handlers extends WP_Fullpage_Base {
  * Returns the main instance of WP_Fullpage_JS_Handlers to prevent the need to use globals.
  *
  * WPFP_JS_Handlers()->my_method() 
+ * 
+ * @package 	WP_Fullpage\Includes\Admin\JS_Handlers
  *
- * @return 	WP_Fullpage_JS_Handlers
+ * @return 		WP_Fullpage_JS_Handlers
  */
 function WPFP_JS_Handlers() {
 

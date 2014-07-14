@@ -1,6 +1,8 @@
 <?php
 
 /**
+ * Template for Fullpage Settings Page
+ * 
  * @package 	WP_Fullpage\Includes\Settings\Views
  */
 

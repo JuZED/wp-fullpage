@@ -8,7 +8,6 @@
  * 
  * @package 	WP_Fullpage\Templates\Loop
  */
-
 ?>
 
 <div class="section" data-bg="<?php print WPFP_Query()->get_section_bg(); ?>">

@@ -1,11 +1,6 @@
 <?php
 
 /**
- * @package 	WP_Fullpage\Includes\Admin\List_Tables
- * @subpackage 	WP_Fullpage\Includes\Absctract\Classes
- */
-
-/**
  * WP Fullpage List Tables Classes
  * 
  * @package 	WP_Fullpage\Includes\Admin\List_Tables
