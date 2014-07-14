@@ -1,0 +1,2084 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>API Documentation</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="https://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+    <![endif]-->
+    <script src="https://code.jquery.com/jquery-1.11.0.min.js" type="text/javascript"></script>
+    <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.min.js" type="text/javascript"></script>
+    <script src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">API Documentation</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                    <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                    <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                            <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1394301787"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-1394301787" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/WP_Fullpage.html">WP_Fullpage</a></li>
+                                                    <li class="class"><a href="../classes/WP_Fullpage_Query.html">WP_Fullpage_Query</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="../namespaces/default.html">\</a> <i class="icon-level-up"></i>
+                                            </nav>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                    <h1><small>\</small>WP_Fullpage_Query</h1>
+                    <p><em>Main WP Fullpage Query Class.</em></p>
+                    <p>The WP Fullpage Query Object and some Helpers to access it.</p>
+
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <a href="../classes/WP_Fullpage_Query.html#method_instance" class="">instance()</a><br />
+                                                                    <a href="../classes/WP_Fullpage_Query.html#method___construct" class="">__construct()</a><br />
+                                                                    <a href="../classes/WP_Fullpage_Query.html#method_next_section" class="">next_section()</a><br />
+                                                                    <a href="../classes/WP_Fullpage_Query.html#method_next_slide" class="">next_slide()</a><br />
+                                                                    <a href="../classes/WP_Fullpage_Query.html#method_the_section" class="">the_section()</a><br />
+                                                                    <a href="../classes/WP_Fullpage_Query.html#method_the_slide" class="">the_slide()</a><br />
+                                                                    <a href="../classes/WP_Fullpage_Query.html#method_have_sections" class="">have_sections()</a><br />
+                                                                    <a href="../classes/WP_Fullpage_Query.html#method_have_slides" class="">have_slides()</a><br />
+                                                                    <a href="../classes/WP_Fullpage_Query.html#method_rewind_sections" class="">rewind_sections()</a><br />
+                                                                    <a href="../classes/WP_Fullpage_Query.html#method_rewind_slides" class="">rewind_slides()</a><br />
+                                                                    <a href="../classes/WP_Fullpage_Query.html#method_get_fullpage_ID" class="">get_fullpage_ID()</a><br />
+                                                                    <a href="../classes/WP_Fullpage_Query.html#method_get_section_ID" class="">get_section_ID()</a><br />
+                                                                    <a href="../classes/WP_Fullpage_Query.html#method_get_slide_ID" class="">get_slide_ID()</a><br />
+                                                                    <a href="../classes/WP_Fullpage_Query.html#method_get_fullpage_title" class="">get_fullpage_title()</a><br />
+                                                                    <a href="../classes/WP_Fullpage_Query.html#method_get_section_title" class="">get_section_title()</a><br />
+                                                                    <a href="../classes/WP_Fullpage_Query.html#method_get_slide_title" class="">get_slide_title()</a><br />
+                                                                    <a href="../classes/WP_Fullpage_Query.html#method_get_title" class="">get_title()</a><br />
+                                                                    <a href="../classes/WP_Fullpage_Query.html#method_get_fullpage_date" class="">get_fullpage_date()</a><br />
+                                                                    <a href="../classes/WP_Fullpage_Query.html#method_get_section_date" class="">get_section_date()</a><br />
+                                                                    <a href="../classes/WP_Fullpage_Query.html#method_get_slide_date" class="">get_slide_date()</a><br />
+                                                                    <a href="../classes/WP_Fullpage_Query.html#method_get_the_date" class="">get_the_date()</a><br />
+                                                                    <a href="../classes/WP_Fullpage_Query.html#method_get_fullpage_author" class="">get_fullpage_author()</a><br />
+                                                                    <a href="../classes/WP_Fullpage_Query.html#method_get_section_author" class="">get_section_author()</a><br />
+                                                                    <a href="../classes/WP_Fullpage_Query.html#method_get_slide_author" class="">get_slide_author()</a><br />
+                                                                    <a href="../classes/WP_Fullpage_Query.html#method_get_the_author" class="">get_the_author()</a><br />
+                                                                    <a href="../classes/WP_Fullpage_Query.html#method_get_section_nav_title" class="">get_section_nav_title()</a><br />
+                                                                    <a href="../classes/WP_Fullpage_Query.html#method_get_slide_nav_title" class="">get_slide_nav_title()</a><br />
+                                                                    <a href="../classes/WP_Fullpage_Query.html#method_get_slide_position" class="">get_slide_position()</a><br />
+                                                                    <a href="../classes/WP_Fullpage_Query.html#method_get_slide_color" class="">get_slide_color()</a><br />
+                                                                    <a href="../classes/WP_Fullpage_Query.html#method_get_fullpage_guid" class="">get_fullpage_guid()</a><br />
+                                                                    <a href="../classes/WP_Fullpage_Query.html#method_get_section_guid" class="">get_section_guid()</a><br />
+                                                                    <a href="../classes/WP_Fullpage_Query.html#method_get_slide_guid" class="">get_slide_guid()</a><br />
+                                                                    <a href="../classes/WP_Fullpage_Query.html#method_get_fullpage_bg" class="">get_fullpage_bg()</a><br />
+                                                                    <a href="../classes/WP_Fullpage_Query.html#method_get_section_bg" class="">get_section_bg()</a><br />
+                                                                    <a href="../classes/WP_Fullpage_Query.html#method_get_slide_bg" class="">get_slide_bg()</a><br />
+                                                                    <a href="../classes/WP_Fullpage_Query.html#method_get_bg" class="">get_bg()</a><br />
+                                                                    <a href="../classes/WP_Fullpage_Query.html#method_get_content" class="">get_content()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/WP_Fullpage_Query.html#property_fullpage" class="">$fullpage</a><br />
+                                                                    <a href="../classes/WP_Fullpage_Query.html#property_sections" class="">$sections</a><br />
+                                                                    <a href="../classes/WP_Fullpage_Query.html#property_section" class="">$section</a><br />
+                                                                    <a href="../classes/WP_Fullpage_Query.html#property_slide" class="">$slide</a><br />
+                                                                    <a href="../classes/WP_Fullpage_Query.html#property_section_count" class="">$section_count</a><br />
+                                                                    <a href="../classes/WP_Fullpage_Query.html#property_current_section" class="">$current_section</a><br />
+                                                                    <a href="../classes/WP_Fullpage_Query.html#property_in_the_section_loop" class="">$in_the_section_loop</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No constants found</em>
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <em>No protected methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/WP_Fullpage_Query.html#property__instance" class="">$_instance</a><br />
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <a href="../classes/WP_Fullpage_Query.html#method_init_fullpage" class="">init_fullpage()</a><br />
+                                                                    <a href="../classes/WP_Fullpage_Query.html#method_init_sections" class="">init_sections()</a><br />
+                                                                    <a href="../classes/WP_Fullpage_Query.html#method_init_slides" class="">init_slides()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No private properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                                                <span class="label label-info">final</span>
+                    
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/fullpage-query.html"><div class="path-wrapper">fullpage-query.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">\WP_Fullpage</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                    <div class="namespace-wrapper">\WP_Fullpage_Query</div>
+                            </dd>
+
+                        
+                        
+                        
+                        
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr><td colspan="2"><em>None found</em></td></tr>
+                                        </table>
+                </aside>
+            </div>
+
+                        
+                                    <a id="properties" name="properties"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Properties</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_fullpage" name="property_fullpage" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$fullpage</h3>
+                <pre class="signature">$fullpage : array</pre>
+                <p><em>The FUllpage.</em></p>
+                
+
+                                <h4>Type</h4>
+                array
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_sections" name="property_sections" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$sections</h3>
+                <pre class="signature">$sections : array</pre>
+                <p><em>List of sections.</em></p>
+                
+
+                                <h4>Type</h4>
+                array
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_section" name="property_section" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$section</h3>
+                <pre class="signature">$section : array</pre>
+                <p><em>The current section.</em></p>
+                
+
+                                <h4>Type</h4>
+                array
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_slide" name="property_slide" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$slide</h3>
+                <pre class="signature">$slide : array</pre>
+                <p><em>The current slide.</em></p>
+                
+
+                                <h4>Type</h4>
+                array
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_section_count" name="property_section_count" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$section_count</h3>
+                <pre class="signature">$section_count : integer</pre>
+                <p><em>The amount of sections for the current fullpage.</em></p>
+                
+
+                                <h4>Type</h4>
+                integer
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_current_section" name="property_current_section" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$current_section</h3>
+                <pre class="signature">$current_section : integer</pre>
+                <p><em>Index of the current section in the loop.</em></p>
+                
+
+                                <h4>Type</h4>
+                integer
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_in_the_section_loop" name="property_in_the_section_loop" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$in_the_section_loop</h3>
+                <pre class="signature">$in_the_section_loop : boolean</pre>
+                <p><em>Whether the section loop has started and the caller is in the loop.</em></p>
+                
+
+                                <h4>Type</h4>
+                boolean
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__instance" name="property__instance" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$_instance</h3>
+                <pre class="signature">$_instance : \WP_Fullpage_Query</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                <a href="../classes/WP_Fullpage_Query.html">\WP_Fullpage_Query</a>
+                &mdash; The single instance of the class                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                            
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_instance" name="method_instance" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">instance()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">instance() : \WP_Fullpage_Query</pre>
+                <p><em>Main WP_Fullpage_Query Instance</em></p>
+                <p>Ensures only one instance of WP_Fullpage_Query is loaded or can be loaded.</p>
+
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/WP_Fullpage_Query.html">\WP_Fullpage_Query</a>
+                                            &mdash; <p>Main instance</p>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="../namespaces/default.html#function_WPFP"><span class="namespace-wrapper">The function to simply use the class methods</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___construct" name="method___construct" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__construct()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__construct()</pre>
+                <p><em>Construct the Class object</em></p>
+                
+
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_next_section" name="method_next_section" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">next_section()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">next_section() : \WP_Post</pre>
+                <p><em>Set up the next section and iterate current section index.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    \WP_Post
+                                            &mdash; <p>Next section.</p>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_next_slide" name="method_next_slide" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">next_slide()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">next_slide() : \WP_Post</pre>
+                <p><em>Set up the next slide and iterate current slide index.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    \WP_Post
+                                            &mdash; <p>Next slide.</p>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_the_section" name="method_the_section" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">the_section()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">the_section() : void</pre>
+                <p><em>Sets up the current section.</em></p>
+                <p>Retrieves the next section, sets up the section, sets the 'in the section loop'
+property to true.</p>
+
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_the_slide" name="method_the_slide" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">the_slide()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">the_slide() : void</pre>
+                <p><em>Sets up the current slide.</em></p>
+                <p>Retrieves the next slide, sets up the slide, sets the 'in the slide loop'
+property to true.</p>
+
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_have_sections" name="method_have_sections" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">have_sections()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">have_sections() : boolean</pre>
+                <p><em>Whether there are more sections available in the loop.</em></p>
+                <p>Calls action 'sections_loop_end', when the loop is complete.</p>
+
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>True if sections are available, false if end of loop.</p>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_have_slides" name="method_have_slides" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">have_slides()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">have_slides() : boolean</pre>
+                <p><em>Whether there are more slides available in the loop.</em></p>
+                <p>Calls action 'slides_loop_end', when the loop is complete.</p>
+
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>True if slides are available, false if end of loop.</p>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_rewind_sections" name="method_rewind_sections" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">rewind_sections()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">rewind_sections() : void</pre>
+                <p><em>Rewind the sections and reset section index.</em></p>
+                
+
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_rewind_slides" name="method_rewind_slides" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">rewind_slides()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">rewind_slides( <span class="argument">$section_index</span>) : void</pre>
+                <p><em>Rewind the slides and reset slide index.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$section_index </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_get_fullpage_ID" name="method_get_fullpage_ID" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">get_fullpage_ID()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">get_fullpage_ID(boolean <span class="argument">$print</span>) : integer</pre>
+                <p><em>Display or retrieve the ID of the current fullpage in the fullpage Loop.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$print </td>
+                                <td><p>Optional, default to false. Whether to display or return.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                            &mdash; <p>the ID of the current fullpage</p>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_get_section_ID" name="method_get_section_ID" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">get_section_ID()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">get_section_ID(integer <span class="argument">$section_index</span>, boolean <span class="argument">$print</span>) : integer</pre>
+                <p><em>Display or retrieve the ID of the section in the fullpage Loop.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$section_index </td>
+                                <td><p>Optional. The section index. If empty, will take the current section.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$print </td>
+                                <td><p>Optional, default to false. Whether to display or return.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                            &mdash; <p>the ID of the section</p>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_get_slide_ID" name="method_get_slide_ID" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">get_slide_ID()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">get_slide_ID(integer <span class="argument">$section_index</span>, integer <span class="argument">$slide_index</span>, boolean <span class="argument">$print</span>) : integer</pre>
+                <p><em>Display or retrieve the ID of the slide in the section Loop.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$section_index </td>
+                                <td><p>Optional. The section index. If empty, will take the current section.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$slide_index </td>
+                                <td><p>Optional. The section index. If empty, will take the current slide.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$print </td>
+                                <td><p>Optional, default to false. Whether to display or return.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                            &mdash; <p>the ID of the slide</p>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_get_fullpage_title" name="method_get_fullpage_title" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">get_fullpage_title()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">get_fullpage_title(integer <span class="argument">$fullpage_ID</span>, string <span class="argument">$before</span>, string <span class="argument">$after</span>, boolean <span class="argument">$print</span>) : null|string</pre>
+                <p><em>Display or retrieve the fullpage title with optional content.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$fullpage_ID </td>
+                                <td><p>Optional. The fullpage ID. If empty, will take the current fullpae.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$before </td>
+                                <td><p>Optional. Content to prepend to the title.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$after </td>
+                                <td><p>Optional. Content to append to the title.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$print </td>
+                                <td><p>Optional, default to true. Whether to display or return.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    null|string
+                                            &mdash; <p>Null on no title. String if $print parameter is false.</p>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_get_section_title" name="method_get_section_title" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">get_section_title()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">get_section_title(integer <span class="argument">$section_ID</span>, string <span class="argument">$before</span>, string <span class="argument">$after</span>, boolean <span class="argument">$print</span>) : null|string</pre>
+                <p><em>Display or retrieve the section title with optional content.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$section_ID </td>
+                                <td><p>Optional. The section ID. If empty, will take the current section.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$before </td>
+                                <td><p>Optional. Content to prepend to the title.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$after </td>
+                                <td><p>Optional. Content to append to the title.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$print </td>
+                                <td><p>Optional, default to true. Whether to display or return.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    null|string
+                                            &mdash; <p>Null on no title. String if $print parameter is false.</p>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_get_slide_title" name="method_get_slide_title" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">get_slide_title()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">get_slide_title(integer <span class="argument">$slide_ID</span>, string <span class="argument">$before</span>, string <span class="argument">$after</span>, boolean <span class="argument">$print</span>) : null|string</pre>
+                <p><em>Display or retrieve the slide title with optional content.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$slide_ID </td>
+                                <td><p>Optional. The slide ID. If empty, will take the current slide.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$before </td>
+                                <td><p>Optional. Content to prepend to the title.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$after </td>
+                                <td><p>Optional. Content to append to the title.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$print </td>
+                                <td><p>Optional, default to true. Whether to display or return.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    null|string
+                                            &mdash; <p>Null on no title. String if $print parameter is false.</p>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_get_title" name="method_get_title" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">get_title()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">get_title(integer <span class="argument">$post_ID</span>, string <span class="argument">$before</span>, string <span class="argument">$after</span>) : null|string</pre>
+                <p><em>Retrieve the post title with optional content.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$post_ID </td>
+                                <td><p>The post ID.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$before </td>
+                                <td><p>Optional. Content to prepend to the title.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$after </td>
+                                <td><p>Optional. Content to append to the title.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    null|string
+                                            &mdash; <p>Null on $post_ID empty or no title. String else.</p>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_get_fullpage_date" name="method_get_fullpage_date" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">get_fullpage_date()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">get_fullpage_date(integer <span class="argument">$fullpage_ID</span>, string <span class="argument">$d</span>, boolean <span class="argument">$print</span>) : string</pre>
+                <p><em>Display or retrieve the date on which the fullpage was written.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$fullpage_ID </td>
+                                <td><p>Optional. The fullpage ID. If empty, will take the current fullpage.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$d </td>
+                                <td><p>Optional. PHP date format defaults to the date_format option if not specified.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$print </td>
+                                <td><p>Optional, default to true. Whether to display or return.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_get_section_date" name="method_get_section_date" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">get_section_date()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">get_section_date(integer <span class="argument">$section_ID</span>, string <span class="argument">$d</span>, boolean <span class="argument">$print</span>) : string</pre>
+                <p><em>Display or retrieve the date on which the section was written.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$section_ID </td>
+                                <td><p>Optional. The section ID. If empty, will take the current section.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$d </td>
+                                <td><p>Optional. PHP date format defaults to the date_format option if not specified.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$print </td>
+                                <td><p>Optional, default to true. Whether to display or return.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_get_slide_date" name="method_get_slide_date" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">get_slide_date()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">get_slide_date(integer <span class="argument">$slide_ID</span>, string <span class="argument">$d</span>, boolean <span class="argument">$print</span>) : string</pre>
+                <p><em>Display or retrieve the date on which the slide was written.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$slide_ID </td>
+                                <td><p>Optional. The slide ID. If empty, will take the current slide.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$d </td>
+                                <td><p>Optional. PHP date format defaults to the date_format option if not specified.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$print </td>
+                                <td><p>Optional, default to true. Whether to display or return.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_get_the_date" name="method_get_the_date" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">get_the_date()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">get_the_date(integer <span class="argument">$post_ID</span>, string <span class="argument">$d</span>) : string</pre>
+                <p><em>Retrieve the date on which the post was written.</em></p>
+                <p>Modify output with 'get_the_date' filter.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$post_ID </td>
+                                <td><p>Post ID</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$d </td>
+                                <td><p>Optional. PHP date format defaults to the date_format option if not specified.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>Date the current post was written.</p>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_get_fullpage_author" name="method_get_fullpage_author" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">get_fullpage_author()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">get_fullpage_author(integer <span class="argument">$fullpage_ID</span>, boolean <span class="argument">$print</span>) : string</pre>
+                <p><em>Display or retrieve the author of the fullpage.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$fullpage_ID </td>
+                                <td><p>Optional. The fullpage ID. If empty, will take the current fullpage.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$print </td>
+                                <td><p>Optional, default to true. Whether to display or return.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_get_section_author" name="method_get_section_author" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">get_section_author()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">get_section_author(integer <span class="argument">$section_ID</span>, boolean <span class="argument">$print</span>) : string</pre>
+                <p><em>Display or retrieve the author of the section.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$section_ID </td>
+                                <td><p>Optional. The section ID. If empty, will take the current section.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$print </td>
+                                <td><p>Optional, default to true. Whether to display or return.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_get_slide_author" name="method_get_slide_author" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">get_slide_author()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">get_slide_author(integer <span class="argument">$slide_ID</span>, boolean <span class="argument">$print</span>) : string</pre>
+                <p><em>Display or retrieve the author of the slide.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$slide_ID </td>
+                                <td><p>Optional. The slide ID. If empty, will take the current slide.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$print </td>
+                                <td><p>Optional, default to true. Whether to display or return.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_get_the_author" name="method_get_the_author" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">get_the_author()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">get_the_author(integer <span class="argument">$post_ID</span>) : string</pre>
+                <p><em>Retrieve the author of the post.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$post_ID </td>
+                                <td><p>The post ID.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_get_section_nav_title" name="method_get_section_nav_title" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">get_section_nav_title()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">get_section_nav_title(integer <span class="argument">$section_index</span>, boolean <span class="argument">$print</span>) : null|string</pre>
+                <p><em>Display or retrieve the section navigation title.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$section_index </td>
+                                <td><p>Optional. The section index. If empty, will take the current section.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$print </td>
+                                <td><p>Optional, default to false. Whether to display or return.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    null|string
+                                            &mdash; <p>Null on no title. String if $print parameter is false.</p>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_get_slide_nav_title" name="method_get_slide_nav_title" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">get_slide_nav_title()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">get_slide_nav_title(integer <span class="argument">$section_index</span>, integer <span class="argument">$slide_index</span>, boolean <span class="argument">$print</span>) : null|string</pre>
+                <p><em>Display or retrieve the slide navigation title.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$section_index </td>
+                                <td><p>Optional. The section index. If empty, will take the current section.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$slide_index </td>
+                                <td><p>Optional. The slide index. If empty, will take the current slide.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$print </td>
+                                <td><p>Optional, default to false. Whether to display or return.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    null|string
+                                            &mdash; <p>Null on no title. String if $print parameter is false.</p>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_get_slide_position" name="method_get_slide_position" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">get_slide_position()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">get_slide_position(integer <span class="argument">$section_index</span>, integer <span class="argument">$slide_index</span>, boolean <span class="argument">$print</span>) : string</pre>
+                <p><em>Display or retrieve the slide navigation position.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$section_index </td>
+                                <td><p>Optional. The section index. If empty, will take the current section.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$slide_index </td>
+                                <td><p>Optional. The slide index. If empty, will take the current slide.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$print </td>
+                                <td><p>Optional, default to true. Whether to display or return.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>could be something like 'top center', 'middle left', ...</p>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_get_slide_color" name="method_get_slide_color" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">get_slide_color()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">get_slide_color(integer <span class="argument">$section_index</span>, integer <span class="argument">$slide_index</span>, boolean <span class="argument">$print</span>) : string</pre>
+                <p><em>Display or retrieve the slide color.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$section_index </td>
+                                <td><p>Optional. The section index. If empty, will take the current section.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$slide_index </td>
+                                <td><p>Optional. The section index. If empty, will take the current slide.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$print </td>
+                                <td><p>Optional, default to true. Whether to display or return.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_get_fullpage_guid" name="method_get_fullpage_guid" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">get_fullpage_guid()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">get_fullpage_guid(integer <span class="argument">$fullpage_ID</span>, boolean <span class="argument">$print</span>) : string</pre>
+                <p><em>Display or retrieve the fullpage Unique Identifier (guid).</em></p>
+                <p>The guid will appear to be a link, but should not be used as an link to the
+post. The reason you should not use it as a link, is because of moving the
+blog across domains.</p>
+<p>Url is escaped to make it xml safe if displayed</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$fullpage_ID </td>
+                                <td><p>Optional. The fullpage ID. If empty, will take the current fullpae.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$print </td>
+                                <td><p>Optional, default to false. Whether to display or return.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_get_section_guid" name="method_get_section_guid" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">get_section_guid()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">get_section_guid(integer <span class="argument">$section_ID</span>, boolean <span class="argument">$print</span>) : string</pre>
+                <p><em>Display or retrieve the section Unique Identifier (guid).</em></p>
+                <p>The guid will appear to be a link, but should not be used as an link to the
+post. The reason you should not use it as a link, is because of moving the
+blog across domains.</p>
+<p>Url is escaped to make it xml safe if displayed</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$section_ID </td>
+                                <td><p>Optional. The section ID. If empty, will take the current section.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$print </td>
+                                <td><p>Optional, default to false. Whether to display or return.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_get_slide_guid" name="method_get_slide_guid" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">get_slide_guid()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">get_slide_guid(integer <span class="argument">$slide_ID</span>, boolean <span class="argument">$print</span>) : string</pre>
+                <p><em>Display or retrieve the slide Unique Identifier (guid).</em></p>
+                <p>The guid will appear to be a link, but should not be used as an link to the
+post. The reason you should not use it as a link, is because of moving the
+blog across domains.</p>
+<p>Url is escaped to make it xml safe if displayed</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$slide_ID </td>
+                                <td><p>Optional. The slide ID. If empty, will take the current slide</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$print </td>
+                                <td><p>Optional, default to false. Whether to display or return.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_get_fullpage_bg" name="method_get_fullpage_bg" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">get_fullpage_bg()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">get_fullpage_bg(integer <span class="argument">$fullpage_ID</span>, boolean <span class="argument">$print</span>) : string</pre>
+                <p><em>Display or retrieve the fullpage background.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$fullpage_ID </td>
+                                <td><p>Optional. The fullpage ID. If empty, will take the current fullpae.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$print </td>
+                                <td><p>Optional, default to false. Whether to display or return.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_get_section_bg" name="method_get_section_bg" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">get_section_bg()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">get_section_bg(integer <span class="argument">$section_ID</span>, boolean <span class="argument">$print</span>) : string</pre>
+                <p><em>Display or retrieve the section background.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$section_ID </td>
+                                <td><p>Optional. The section ID. If empty, will take the current section.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$print </td>
+                                <td><p>Optional, default to false. Whether to display or return.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_get_slide_bg" name="method_get_slide_bg" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">get_slide_bg()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">get_slide_bg(integer <span class="argument">$slide_ID</span>, boolean <span class="argument">$print</span>) : string</pre>
+                <p><em>Display or retrieve the slide background.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$slide_ID </td>
+                                <td><p>Optional. The slide ID. If empty, will take the current section.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$print </td>
+                                <td><p>Optional, default to false. Whether to display or return.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_get_bg" name="method_get_bg" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">get_bg()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">get_bg(integer <span class="argument">$post_ID</span>) : string</pre>
+                <p><em>Retrieve the post background.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$post_ID </td>
+                                <td><p>The post ID.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_get_content" name="method_get_content" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">get_content()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">get_content(integer <span class="argument">$section_index</span>, integer <span class="argument">$slide_index</span>, boolean <span class="argument">$print</span>, string <span class="argument">$more_link_text</span>, boolean <span class="argument">$strip_teaser</span>) : string</pre>
+                <p><em>Display or retrieve the slide content of the slide.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$section_index </td>
+                                <td><p>Optional. The section index. If empty, will take the current section.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$slide_index </td>
+                                <td><p>Optional. The section index. If empty, will take the current slide.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$print </td>
+                                <td><p>Optional, default to true. Whether to display or return.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$more_link_text </td>
+                                <td><p>Optional. Content for when there is more text.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$strip_teaser </td>
+                                <td><p>Optional. Strip teaser content before the more text. Default is false.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_init_fullpage" name="method_init_fullpage" class="anchor"></a>
+            <article class="method">
+                <h3 class="private ">init_fullpage()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">init_fullpage() : void</pre>
+                <p><em>Init the Fullpage</em></p>
+                
+
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_init_sections" name="method_init_sections" class="anchor"></a>
+            <article class="method">
+                <h3 class="private ">init_sections()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">init_sections() : void</pre>
+                <p><em>Init the Sections</em></p>
+                
+
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_init_slides" name="method_init_slides" class="anchor"></a>
+            <article class="method">
+                <h3 class="private ">init_slides()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">init_slides(integer <span class="argument">$section_index</span>) : void</pre>
+                <p><em>Init the Slides</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$section_index </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">fullpage-query.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/fullpage-query.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on July 14th, 2014 at 11:10.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>
