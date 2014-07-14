@@ -19,7 +19,7 @@ Wp Fullpage integrates the power of [fullPage.js](https://github.com/alvarotrigo
 4. Setup background colors and images, content position and many more.
 
 = Customization =
-1. Customisz FullPage templates and functionalities by copying the contents of "/wp-content/plugins/wp-fullpage/templates/" into "/wp-content/themes/your-theme/wp-fullpage/".
+1. Customize FullPage templates and functionalities by copying the contents of "/wp-content/plugins/wp-fullpage/templates/" into "/wp-content/themes/your-theme/wp-fullpage/".
 2. Many hook filters and actions are available too.
 
 [Contact me](http://www.juzed.fr/en/contact-form/ "Contact me") if you want to know how to customise WP FullPage.
