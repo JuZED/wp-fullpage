@@ -18,7 +18,11 @@ Wp Fullpage integrates the power of [fullPage.js](https://github.com/alvarotrigo
 2. Replace Sections and Slides by a list of any type of post
 3. Setup your Fullpage with many options from [fullPage.js](https://github.com/alvarotrigo/fullPage.js "fullPage.js").
 4. Setup background colors and images, content position and many more.
-5. Customise FullPage templates and functionalities by copying the contents of "/wp-content/plugins/wp-fullpage/templates/" in "/wp-content/themes/your-theme/wp-fullpage/".
+
+= Customization =
+
+1. Customisz FullPage templates and functionalities by copying the contents of "/wp-content/plugins/wp-fullpage/templates/" into "/wp-content/themes/your-theme/wp-fullpage/".
+2. Many hook filters and actions are available too.
 
 [Contact me](http://www.juzed.fr/en/contact-form/ "Contact me") if you want to know how to customise WP FullPage.
 
