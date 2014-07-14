@@ -42,27 +42,50 @@
 
 					</li>
 					
-					<!-- Vertical Centered -->
+					<!-- Title -->
 					<li>
 
-						<span class="label">
-						 	<?php _e( 'Vertical Centered', WPFP_DOMAIN ); ?>
-						</span>
+						<h5><?php _e( 'Slides Options', WPFP_DOMAIN );?></h5>
 
-						<div class="radio">
+					</li>
+							
+					<!-- Vertical Position -->
+					<li>
 
-							<input type="radio" id="verticalCentered-yes" name="<?php print WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS; ?>[verticalCentered]" value="yes" <?php WPFP_Helpers()->checked( isset( $verticalCentered ) ? $verticalCentered : 'no', isset( $VERTICALCENTERED ) ? $VERTICALCENTERED : 'no', 'yes' ); ?> />
-							<label for="verticalCentered-yes">
-							 	<?php _e( 'yes', WPFP_DOMAIN ); ?>
-							</label>
-							<input type="radio" id="verticalCentered-no" name="<?php print WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS; ?>[verticalCentered]" value="no" <?php WPFP_Helpers()->checked( isset( $verticalCentered ) ? $verticalCentered : 'no', isset( $VERTICALCENTERED ) ? $VERTICALCENTERED : 'no', 'no' ); ?> />
-							<label for="verticalCentered-no">
-							 	<?php _e( 'no', WPFP_DOMAIN ); ?>
-							</label>
+						<label for="verticalPosition">
+						 	<?php _e( 'Vertical Position', WPFP_DOMAIN ); ?>
+						</label>
 
-						</div>
+						<select id="verticalPosition" name="<?php print WPFP_FULLPAGE_PT_SLIDES_OPTIONS; ?>[verticalPosition]" <?php WPFP_Helpers()->default_setting( isset( $VERTICALPOSITION ) ? $VERTICALPOSITION : 'inherit', true ); ?>>
+							
+							<option value="inherit" <?php selected( isset( $verticalPosition ) ? $verticalPosition : '', 'inherit' ); ?>><?php _e( 'Inherit from Fullpage', WPFP_DOMAIN ); ?></option>
+							<option value="middle" <?php selected( isset( $verticalPosition ) ? $verticalPosition : '', 'middle' ); ?>><?php _e( 'Middle', WPFP_DOMAIN ); ?></option>
+							<option value="top" <?php selected( isset( $verticalPosition ) ? $verticalPosition : '', 'top' ); ?>><?php _e( 'Top', WPFP_DOMAIN ); ?></option>
+							<option value="bottom" <?php selected( isset( $verticalPosition ) ? $verticalPosition : '', 'bottom' ); ?>><?php _e( 'Bottom', WPFP_DOMAIN ); ?></option>
 
-						<span class="wpfp-tip" data-tip="<?php _e( 'Vertically centering of the content within sections.', WPFP_DOMAIN ); ?>"></span>
+						</select>
+
+						<span class="wpfp-tip" data-tip="<?php _e( 'Vertical position of the content within slide.', WPFP_DOMAIN ); ?>"></span>
+
+					</li>
+					
+					<!-- Horizontal Position -->
+					<li>
+
+						<label for="horizontalPosition">
+						 	<?php _e( 'Horizontal Position', WPFP_DOMAIN ); ?>
+						</label>
+
+						<select id="horizontalPosition" name="<?php print WPFP_FULLPAGE_PT_SLIDES_OPTIONS; ?>[horizontalPosition]" <?php WPFP_Helpers()->default_setting( isset( $HORIZONTALPOSITION ) ? $HORIZONTALPOSITION : 'inherit', true ); ?>>
+							
+							<option value="inherit" <?php selected( isset( $horizontalPosition ) ? $horizontalPosition : '', 'inherit' ); ?>><?php _e( 'Inherit from Fullpage', WPFP_DOMAIN ); ?></option>
+							<option value="center" <?php selected( isset( $horizontalPosition ) ? $horizontalPosition : '', 'center' ); ?>><?php _e( 'Center', WPFP_DOMAIN ); ?></option>
+							<option value="left" <?php selected( isset( $horizontalPosition ) ? $horizontalPosition : '', 'left' ); ?>><?php _e( 'Left', WPFP_DOMAIN ); ?></option>
+							<option value="right" <?php selected( isset( $horizontalPosition ) ? $horizontalPosition : '', 'right' ); ?>><?php _e( 'Right', WPFP_DOMAIN ); ?></option>
+
+						</select>
+
+						<span class="wpfp-tip" data-tip="<?php _e( 'Horizontal position of the content within slide.', WPFP_DOMAIN ); ?>"></span>
 
 					</li>
 					
@@ -306,7 +329,7 @@
 
 						</div>
 
-						<span class="wpfp-tip" data-tip="<?php _e( 'Defines whether to use the "automatic" scrolling or the "normal" one. It also has affects the way the sections fit in the browser/device window in tablets and mobile phones.', WPFP_DOMAIN ); ?>"></span>
+						<span class="wpfp-tip" data-tip='<?php _e( 'Defines whether to use the "automatic" scrolling or the "normal" one. It also has affects the way the sections fit in the browser/device window in tablets and mobile phones.', WPFP_DOMAIN ); ?>'></span>
 					
 					</li>
 					
@@ -503,7 +526,7 @@
 						 	<?php _e( 'On Leave', WPFP_DOMAIN ); ?>
 						</label>
 						<textarea cols="40" id="onLeave" name="<?php print WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS; ?>[onLeave]" <?php WPFP_Helpers()->default_setting( isset( $ONLEAVE ) ? $ONLEAVE : '', true ); ?>><?php print isset( $onLeave ) ? $onLeave : ''; ?></textarea>
-						<span class="wpfp-tip" data-tip="<?php _e( 'This callback is fired once the user leaves a section, in the transition to the new section.', WPFP_DOMAIN ); ?>"></span><a class="wpfp-goto" title="<?php _e( 'Go to callback definition.', WPFP_DOMAIN ); ?>" target="_blank" href="https://github.com/alvarotrigo/fullPage.js#onleave-index-nextindex-direction"></a>
+						<span class="wpfp-tip" data-tip='<?php _e( 'This callback is fired once the user leaves a section, in the transition to the new section. Use your own javascript code or customize the function "fullpageOnLeave" in "your-theme/wp-fullpage/js/jquery.fullpage.custom.js".', WPFP_DOMAIN ); ?>'></span><a class="wpfp-goto" title="<?php _e( 'Go to callback definition.', WPFP_DOMAIN ); ?>" target="_blank" href="https://github.com/alvarotrigo/fullPage.js#onleave-index-nextindex-direction"></a>
 
 					</li>
 					
@@ -514,7 +537,7 @@
 						 	<?php _e( 'After Load', WPFP_DOMAIN ); ?>
 						</label>
 						<textarea cols="40" id="afterLoad" name="<?php print WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS; ?>[afterLoad]" <?php WPFP_Helpers()->default_setting( isset( $AFTERLOAD ) ? $AFTERLOAD : '', true ); ?>><?php print isset( $afterLoad ) ? $afterLoad : ''; ?></textarea>
-						<span class="wpfp-tip" data-tip="<?php _e( 'Callback fired once the sections have been loaded, after the scrolling has ended.', WPFP_DOMAIN ); ?>"></span><a class="wpfp-goto" title="<?php _e( 'Go to callback definition.', WPFP_DOMAIN ); ?>" target="_blank" href="https://github.com/alvarotrigo/fullPage.js#afterload-anchorlink-index"></a>
+						<span class="wpfp-tip" data-tip='<?php _e( 'Callback fired once the sections have been loaded, after the scrolling has ended. Use your own javascript code or customize the function "fullpageAfterLoad" in "your-theme/wp-fullpage/js/jquery.fullpage.custom.js".', WPFP_DOMAIN ); ?>'></span><a class="wpfp-goto" title="<?php _e( 'Go to callback definition.', WPFP_DOMAIN ); ?>" target="_blank" href="https://github.com/alvarotrigo/fullPage.js#afterload-anchorlink-index"></a>
 
 					</li>
 					
@@ -525,7 +548,7 @@
 						 	<?php _e( 'After Render', WPFP_DOMAIN ); ?>
 						</label>
 						<textarea cols="40" id="afterRender" name="<?php print WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS; ?>[afterRender]" <?php WPFP_Helpers()->default_setting( isset( $AFTERRENDER ) ? $AFTERRENDER : '', true ); ?>><?php print isset( $afterRender ) ? $afterRender : ''; ?></textarea>
-						<span class="wpfp-tip" data-tip="<?php _e( 'This callback is fired just after the structure of the page is generated. This is the callback you want to use to initialize other plugins or fire any code which requires the document to be ready (as this plugin modifies the DOM to create the resulting structure).', WPFP_DOMAIN ); ?>"></span><a class="wpfp-goto" title="<?php _e( 'Go to callback definition.', WPFP_DOMAIN ); ?>" target="_blank" href="https://github.com/alvarotrigo/fullPage.js#afterrender"></a>
+						<span class="wpfp-tip" data-tip='<?php _e( 'This callback is fired just after the structure of the page is generated. This is the callback you want to use to initialize other plugins or fire any code which requires the document to be ready (as this plugin modifies the DOM to create the resulting structure). Use your own javascript code or customize the function "fullpageAfterRender" in "your-theme/wp-fullpage/js/jquery.fullpage.custom.js".', WPFP_DOMAIN ); ?>'></span><a class="wpfp-goto" title="<?php _e( 'Go to callback definition.', WPFP_DOMAIN ); ?>" target="_blank" href="https://github.com/alvarotrigo/fullPage.js#afterrender"></a>
 
 					</li>
 					
@@ -536,7 +559,7 @@
 						 	<?php _e( 'After Resize', WPFP_DOMAIN ); ?>
 						</label>
 						<textarea cols="40" id="afterResize" name="<?php print WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS; ?>[afterResize]" <?php WPFP_Helpers()->default_setting( isset( $AFTERRESIZE ) ? $AFTERRESIZE : '', true ); ?>><?php print isset( $afterResize ) ? $afterResize : ''; ?></textarea>
-						<span class="wpfp-tip" data-tip="<?php _e( 'This callback is fired after resizing the browser\'s window. Just after the sections are resized.', WPFP_DOMAIN ); ?>"></span><a class="wpfp-goto" title="<?php _e( 'Go to callback definition.', WPFP_DOMAIN ); ?>" target="_blank" href="https://github.com/alvarotrigo/fullPage.js#afterresize"></a>
+						<span class="wpfp-tip" data-tip='<?php _e( 'This callback is fired after resizing the browser\'s window. Just after the sections are resized. Use your own javascript code or customize the function "fullpageAfterResize" in "your-theme/wp-fullpage/js/jquery.fullpage.custom.js".', WPFP_DOMAIN ); ?>'></span><a class="wpfp-goto" title="<?php _e( 'Go to callback definition.', WPFP_DOMAIN ); ?>" target="_blank" href="https://github.com/alvarotrigo/fullPage.js#afterresize"></a>
 
 					</li>
 					
@@ -547,7 +570,7 @@
 						 	<?php _e( 'After Slide Load', WPFP_DOMAIN ); ?>
 						</label>
 						<textarea cols="40" id="afterSlideLoad" name="<?php print WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS; ?>[afterSlideLoad]" <?php WPFP_Helpers()->default_setting( isset( $AFTERSLIDELOAD ) ? $AFTERSLIDELOAD : '', true ); ?>><?php print isset( $afterSlideLoad ) ? $afterSlideLoad : ''; ?></textarea>
-						<span class="wpfp-tip" data-tip="<?php _e( 'Callback fired once the slide of a section have been loaded, after the scrolling has ended.', WPFP_DOMAIN ); ?>"></span><a class="wpfp-goto" title="<?php _e( 'Go to callback definition.', WPFP_DOMAIN ); ?>" target="_blank" href="https://github.com/alvarotrigo/fullPage.js#afterslideload-anchorlink-index-slideanchor-slideindex"></a>
+						<span class="wpfp-tip" data-tip='<?php _e( 'Callback fired once the slide of a section have been loaded, after the scrolling has ended. Use your own javascript code or customize the function "fullpageAfterSlideLoad" in "your-theme/wp-fullpage/js/jquery.fullpage.custom.js".', WPFP_DOMAIN ); ?>'></span><a class="wpfp-goto" title="<?php _e( 'Go to callback definition.', WPFP_DOMAIN ); ?>" target="_blank" href="https://github.com/alvarotrigo/fullPage.js#afterslideload-anchorlink-index-slideanchor-slideindex"></a>
 
 					</li>
 					
@@ -558,7 +581,7 @@
 						 	<?php _e( 'On Slide Leave', WPFP_DOMAIN ); ?>
 						</label>
 						<textarea cols="40" id="onSlideLeave" name="<?php print WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS; ?>[onSlideLeave]" <?php WPFP_Helpers()->default_setting( isset( $ONSLIDELEAVE ) ? $ONSLIDELEAVE : '', true ); ?>><?php print isset( $onSlideLeave ) ? $onSlideLeave : ''; ?></textarea>
-						<span class="wpfp-tip" data-tip="<?php _e( 'This callback is fired once the user leaves an slide to go to another, in the transition to the new slide. ', WPFP_DOMAIN ); ?>"></span><a class="wpfp-goto" title="<?php _e( 'Go to callback definition.', WPFP_DOMAIN ); ?>" target="_blank" href="https://github.com/alvarotrigo/fullPage.js#onslideleave-anchorlink-index-slideindex-direction"></a>
+						<span class="wpfp-tip" data-tip='<?php _e( 'This callback is fired once the user leaves an slide to go to another, in the transition to the new slide. Use your own javascript code or customize the function "fullpageSlideLeave" in "your-theme/wp-fullpage/js/jquery.fullpage.custom.js".', WPFP_DOMAIN ); ?>'></span><a class="wpfp-goto" title="<?php _e( 'Go to callback definition.', WPFP_DOMAIN ); ?>" target="_blank" href="https://github.com/alvarotrigo/fullPage.js#onslideleave-anchorlink-index-slideindex-direction"></a>
 
 					</li>
 
@@ -737,7 +760,7 @@
 
 								<span class="label">
 								 	<?php _e( 'Teaser', WPFP_DOMAIN ); ?>
-									<span class="wpfp-tip" data-tip='<?php _e( 'Check the box if you want to display the teaser.', WPFP_DOMAIN ); ?>'></span>
+									<span class="wpfp-tip" data-tip='<?php _e( 'Choose yes if you want to display the teaser.', WPFP_DOMAIN ); ?>'></span>
 								</span>
 
 								<div class="radio">

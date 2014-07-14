@@ -299,7 +299,7 @@
 
 								</div>
 
-								<span class="wpfp-tip" data-tip="<?php _e( 'Defines whether to use the "automatic" scrolling or the "normal" one. It also has affects the way the sections fit in the browser/device window in tablets and mobile phones.', WPFP_DOMAIN ); ?>"></span>
+								<span class="wpfp-tip" data-tip='<?php _e( 'Defines whether to use the "automatic" scrolling or the "normal" one. It also has affects the way the sections fit in the browser/device window in tablets and mobile phones.', WPFP_DOMAIN ); ?>'></span>
 							
 							</li>
 							
@@ -620,9 +620,9 @@
 								 	<?php _e( 'Vertical Position', WPFP_DOMAIN ); ?>
 								</label>
 
-								<select id="verticalPosition" name="<?php print WPFP_SETTINGS_SLIDES_OPTIONS; ?>[verticalPosition]" <?php WPFP_Helpers()->default_setting( 'center', true ); ?>>
+								<select id="verticalPosition" name="<?php print WPFP_SETTINGS_SLIDES_OPTIONS; ?>[verticalPosition]" <?php WPFP_Helpers()->default_setting( 'middle', true ); ?>>
 									
-									<option value="center" <?php selected( isset( $verticalPosition ) ? $verticalPosition : '', 'center' ); ?>><?php _e( 'Center', WPFP_DOMAIN ); ?></option>
+									<option value="middle" <?php selected( isset( $verticalPosition ) ? $verticalPosition : '', 'middle' ); ?>><?php _e( 'Middle', WPFP_DOMAIN ); ?></option>
 									<option value="top" <?php selected( isset( $verticalPosition ) ? $verticalPosition : '', 'top' ); ?>><?php _e( 'Top', WPFP_DOMAIN ); ?></option>
 									<option value="bottom" <?php selected( isset( $verticalPosition ) ? $verticalPosition : '', 'bottom' ); ?>><?php _e( 'Bottom', WPFP_DOMAIN ); ?></option>
 
