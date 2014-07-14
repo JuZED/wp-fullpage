@@ -709,7 +709,7 @@ final class WP_Fullpage_Query {
 	public function get_slide_title( $slide_ID = 0, $before = '', $after = '', $print = true ) {
 		
 		if( empty( $slide_ID ) )
-			$slide_ID = $this->section->slides[ $this->section->current_slide ]->ID;
+			$slide_ID = $this->slide->ID;
 		
 		$title = $this->get_title( $slide_ID, $before, $after );
 
@@ -931,6 +931,70 @@ final class WP_Fullpage_Query {
 		return apply_filters( 'the_author', $authordata->display_name );
 
 	} // END public function get_the_author
+
+	/**
+	 * Do the section has a slides navigation?
+	 *
+	 * @param   int      	$section_index  Optional. The section index. If empty, will take the current section.
+	 *
+	 * @return  bool
+	 */
+	public function section_has_slides_navigation( $section_index = -1 ) {
+		
+		if( -1 === $section_index )
+			$section_index = $this->current_section;
+
+		$section_ID               = $this->get_section_ID( $section_index );
+		$section_fullpage_options = $this->sections[ $section_index ]->fullpage_options;
+		$fullpage_options         = $this->fullpage->fullpage_options;
+
+		$slides_navigation = 'inherit';
+
+		// the slides navigation option of the section
+		if( ! empty( $section_fullpage_options['slidesNavigation'] ) )
+			$slides_navigation = $section_fullpage_options['slidesNavigation'];
+
+		// the default fullpage slides navigation
+		if( 'inherit' === $slides_navigation )
+			$slides_navigation = $fullpage_options['slidesNavigation'];
+		
+		return $slides_navigation === 'yes' ? true : false;
+
+	} // END public function section_has_slides_navigation
+
+	/**
+	 * Display or retrieve slides navigation position for a section.
+	 *
+	 * @param   int      	$section_index  Optional. The section index. If empty, will take the current section.
+	 * @param   boolean  	$print   		Optional, default to true. Whether to display or return.
+	 *
+	 * @return  string 						the position of slides navigation
+	 */
+	public function get_slides_navigation_position( $section_index = -1, $print = true ) {
+		
+		if( -1 === $section_index )
+			$section_index = $this->current_section;
+
+		$section_ID               = $this->get_section_ID( $section_index );
+		$section_fullpage_options = $this->sections[ $section_index ]->fullpage_options;
+		$fullpage_options         = $this->fullpage->fullpage_options;
+
+		$slides_navigation_position = 'inherit';
+
+		// the slides navigation position option of the section
+		if( ! empty( $section_fullpage_options['slidesNavPosition'] ) )
+			$slides_navigation_position = $section_fullpage_options['slidesNavPosition'];
+
+		// the default fullpage slides navigation position
+		if( 'inherit' === $slides_navigation_position )
+			$slides_navigation_position = $fullpage_options['slidesNavPosition'];
+
+		if ( $print )
+			print $slides_navigation_position;
+		
+		return $slides_navigation_position;
+
+	} // END public function get_slides_navigation_position
 
 	/**
 	 * Display or retrieve the section navigation title.
@@ -1189,7 +1253,7 @@ final class WP_Fullpage_Query {
 	public function get_slide_guid( $slide_ID = 0, $print = false ) {
 		
 		if( empty( $slide_ID ) )
-			$slide_ID = $this->section->slides[ $this->section->current_slide ]->ID;
+			$slide_ID = $this->slide->ID;
 		
 		$guid = get_the_guid( $slide_ID );
 
@@ -1247,7 +1311,7 @@ final class WP_Fullpage_Query {
 	/**
 	 * Display or retrieve the slide background.
 	 *
-	 * @param   int      $slide_ID   Optional. The slide ID. If empty, will take the current section.
+	 * @param   int      $slide_ID   Optional. The slide ID. If empty, will take the current slide.
 	 * @param   boolean  $print  	 Optional, default to false. Whether to display or return.
 	 * 
 	 * @return  string
@@ -1255,7 +1319,7 @@ final class WP_Fullpage_Query {
 	public function get_slide_bg( $slide_ID = 0, $print = false ) {
 				
 		if( empty( $slide_ID ) )
-			$slide_ID = $this->section->slides[ $this->section->current_slide ]->ID;
+			$slide_ID = $this->slide->ID;
 		
 		$background_image = $this->get_bg( $slide_ID );
 

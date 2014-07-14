@@ -12,13 +12,7 @@
 
 ?>
 
-	<?php
-
-		$position = WPFP_Query()->section->fullpage_options['slidesNavPosition'];
-
-	?>
-
-	<div class="fp-slidesNav <?php print $position; ?>">
+	<div class="fp-slidesNav <?php WPFP_Query()->get_slides_navigation_position(); ?>">
 		<ul>
 			<?php 
 
@@ -26,7 +20,7 @@
 
 				?>
 
-					<li data-tooltip="<?php print esc_html( WPFP_Query()->get_slide_title( $slide->ID, '', '', false ) ); ?>">
+					<li data-tooltip="<?php print esc_html( WPFP_Query()->get_slide_nav_title( -1, $key ) ); ?>">
 						<a href="#">
 							<span></span>
 						</a>
