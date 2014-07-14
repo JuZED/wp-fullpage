@@ -48,7 +48,7 @@
 						<label for="navTitle">
 						 	<?php _e( 'Navigation Title', WPFP_DOMAIN ); ?>
 							
-							<span class="wpfp-tip" data-tip='<?php _e( 'Which metadata do you want to use for the navigation tooltip in case it is being used. If the metadata is empty or does not exists, it will display the title instead. If empty, it will display post title.', WPFP_DOMAIN ); ?>'></span>
+							<span class="wpfp-tip" data-tip='<?php _e( 'Which metadata do you want to use for the navigation tooltip in case it is being used. If the metadata is empty or does not exists, it will display the title instead. If empty, it will use the FullPage option.', WPFP_DOMAIN ); ?>'></span>
 						</label>
 						
 						<input type="text" id="navTitle" name="<?php print WPFP_SECTION_PT_SECTION_OPTIONS; ?>[navTitle]" <?php WPFP_Helpers()->value( isset( $navTitle ) ? $navTitle : '', isset( $NAVTITLE ) ? $NAVTITLE : '' ); ?> />
@@ -163,7 +163,7 @@
 						<label for="slidesNavTitle">
 						 	<?php _e( 'Slides Navigation Title', WPFP_DOMAIN ); ?>
 							
-							<span class="wpfp-tip" data-tip='<?php _e( 'Which metadata do you want to use for the slides navigation tooltips in case they are being used. If the metadata is empty or does not exists, it will display the title instead. If empty, it will display post title.', WPFP_DOMAIN ); ?>'></span>
+							<span class="wpfp-tip" data-tip='<?php _e( 'Which metadata do you want to use for the slides navigation tooltips in case they are being used. If the metadata is empty or does not exists, it will display the title instead. If empty, it will use the FullPage option.', WPFP_DOMAIN ); ?>'></span>
 						</label>
 						
 						<input type="text" id="slidesNavTitle" name="<?php print WPFP_SECTION_PT_SLIDES_OPTIONS; ?>[slidesNavTitle]" <?php WPFP_Helpers()->value( isset( $slidesNavTitle ) ? $slidesNavTitle : '', isset( $SLIDESNAVTITLE ) ? $SLIDESNAVTITLE : '' ); ?> />
@@ -176,7 +176,7 @@
 						<label for="slideColor">
 						 	<?php _e( 'Slides Color', WPFP_DOMAIN ); ?>
 							
-							<span class="wpfp-tip" data-tip='<?php _e( 'Define the CSS background-color property for the slides.', WPFP_DOMAIN ); ?>'></span>
+							<span class="wpfp-tip" data-tip='<?php _e( 'Define the CSS background-color property for the slides. If empty, it will use the FullPage option.', WPFP_DOMAIN ); ?>'></span>
 						</label>
 						
 						<input type="text" id="slideColor" name="<?php print WPFP_SECTION_PT_SLIDES_OPTIONS; ?>[slideColor]" <?php WPFP_Helpers()->value( isset( $slideColor ) ? $slideColor : '', isset( $SLIDECOLOR ) ? $SLIDECOLOR : '' ); ?> />
@@ -260,7 +260,7 @@
 
 								<span class="label">
 								 	<?php _e( 'Teaser', WPFP_DOMAIN ); ?>
-									<span class="wpfp-tip" data-tip='<?php _e( 'Check the box if you want to display the teaser.', WPFP_DOMAIN ); ?>'></span>
+									<span class="wpfp-tip" data-tip='<?php _e( 'Choose yesf you want to display the teaser.', WPFP_DOMAIN ); ?>'></span>
 								</span>
 
 								<div class="radio">
@@ -312,7 +312,7 @@
 									<span class="wpfp-tip" data-tip="<?php _e( 'What do you want to order the list with.', WPFP_DOMAIN ); ?>"></span>
 								</label>
 								
-								<select data-placeholder="<?php _e( 'Choose an "Order By" method', WPFP_DOMAIN ); ?>" id="orderBy" name="<?php print WPFP_SECTION_PT_CUSTOM_OPTIONS; ?>[orderBy]" <?php WPFP_Helpers()->default_setting( isset( $ORDERBY ) ? $ORDERBY : '', true ); ?>>
+								<select data-placeholder='<?php _e( 'Choose an "Order By" method', WPFP_DOMAIN ); ?>' id="orderBy" name="<?php print WPFP_SECTION_PT_CUSTOM_OPTIONS; ?>[orderBy]" <?php WPFP_Helpers()->default_setting( isset( $ORDERBY ) ? $ORDERBY : '', true ); ?>>
 									
 									<option value="date" <?php selected( isset( $orderBy ) ? $orderBy : '', 'date' ); ?>><?php _e( 'Date', WPFP_DOMAIN ); ?></option>
 									<option value="post__in" <?php selected( isset( $orderBy ) ? $orderBy : '', 'post__in' ); ?>><?php _e( 'Include Order', WPFP_DOMAIN ); ?></option>
