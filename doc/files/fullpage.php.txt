@@ -162,7 +162,28 @@ final class WP_Fullpage extends WP_Fullpage_Base {
 			// Add Fullpage Styles
 			wp_enqueue_style( 'dashicons' );
 			wp_enqueue_style( 'jquery-fullPage', $this->assets_url . '/css/jquery.fullPage.css', array(), WPFP_VERSION );
-			wp_enqueue_style( 'jquery-fullPage-custom', $this->assets_url . '/css/jquery.fullPage.custom.css', array( 'jquery-fullPage', 'dashicons' ), WPFP_VERSION );
+			
+			// Get the path to 'jquery.fullpage.custom.css'.
+			// See if the file exists in the theme
+			$fullpage_custom_style_path = $this->locate_template(
+				trailingslashit( $this->style_path() ) . 'jquery.fullpage.custom.css'
+			);
+
+			// Convert the previous style path to an URL
+			$fullpage_custom_style_url = str_replace( 
+				array(
+					get_stylesheet_directory(),
+					get_template_directory(),
+					WPFP_REL_PATH,
+				), 
+				array(
+					get_stylesheet_directory_uri(),
+					get_template_directory_uri(),
+					WPFP_URL,
+				),
+				$fullpage_custom_style_path
+			);
+			wp_enqueue_style( 'jquery-fullPage-custom', $fullpage_custom_style_url, array( 'jquery-fullPage', 'dashicons' ), WPFP_VERSION );
 
 		}
 		
@@ -618,6 +639,17 @@ final class WP_Fullpage extends WP_Fullpage_Base {
 		return apply_filters( 'wpfp_script_path', WPFP_SCRIPT_PATH );
 		
 	} // END private function layout_path
+
+	/**
+	 * Get the style path.
+	 *
+	 * @return  string
+	 */
+	private function style_path() {
+
+		return apply_filters( 'wpfp_style_path', WPFP_STYLE_PATH );
+		
+	} // END private function style_path
 
 	/**
 	 * Get the loop path.
