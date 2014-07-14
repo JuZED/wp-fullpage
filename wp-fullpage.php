@@ -62,6 +62,7 @@ class WP_Fullpage_Launcher {
 		// Note: "add" is written with quotes, as CPTs don't get added to the DB,
 		// They are only referenced in the post_type column with a post entry, 
 		// when you add a post of this CPT.
+		require_once( dirname( __FILE__ ) . '/inc/abstracts/abstracts.php' );
 		require_once( dirname( __FILE__ ) . '/inc/post-types/post-types.php' );
 		$WP_Fullpage_Post_Types = new WP_Fullpage_Post_Types();
 		$WP_Fullpage_Post_Types->post_types_register();
