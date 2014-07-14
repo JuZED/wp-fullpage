@@ -5,8 +5,9 @@
  * This is the template that displays all slides by default.
  * Please note that this is the WP Fullpage construct of slides and that
  * other 'pages' on your WordPress site will use a different template.
+ * 
+ * @package 	WP_Fullpage\Templates\Loop
  */
-
 ?>
 
 <div class="slide fp-table" data-anchor="<?php print WPFP_Query()->slide->post_name; ?>" data-bg="<?php print WPFP_Query()->get_slide_bg(); ?>" style="<?php WPFP_Query()->get_slide_color(); ?>">

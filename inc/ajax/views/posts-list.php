@@ -1,3 +1,12 @@
+<?php
+
+/**
+ * The Posts List Template
+ * 
+ * @package 	WP_Fullpage\Includes\Ajax\Views
+ */
+
+?>
 
 <div class="bbm-modal__topbar">
 	<h2 class="bbm-modal__title">

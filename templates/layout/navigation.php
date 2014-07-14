@@ -1,7 +1,8 @@
 <?php
-
 /**
  * The template for displaying the Fullpage Navigation
+ * 
+ * @package 	WP_Fullpage\Templates\Layout
  */
 ?>
 

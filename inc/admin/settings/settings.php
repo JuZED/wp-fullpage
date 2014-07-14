@@ -2,6 +2,9 @@
 
 /**
  * The Fullpage Settings Class
+ * 
+ * @package 	WP_Fullpage\Includes\Admin\Setings
+ * @subpackage 	WP_Fullpage\Includes\Absctract\Classes
  */
 class WP_Fullpage_Settings extends WP_Fullpage_Base {
 	

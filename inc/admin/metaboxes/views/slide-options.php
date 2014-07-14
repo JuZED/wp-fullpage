@@ -1,3 +1,13 @@
+<?php
+
+/**
+ * Template for Slide Option Metabox
+ * 
+ * @package 	WP_Fullpage\Includes\Metaboxes\Views
+ */
+
+?>
+
 <h4><a href="#wpfp-settings"><?php _e( 'WP Fullpage Options', WPFP_DOMAIN ); ?></a></h4>
 
 <div id="settingsbox">

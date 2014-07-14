@@ -2,6 +2,9 @@
 
 /**
  * The Fullpage Javascript Handlers Class
+ * 
+ * @package 	WP_Fullpage\Includes\Admin\JS_Handlers
+ * @subpackage 	WP_Fullpage\Includes\Absctract\Classes
  */
 class WP_Fullpage_JS_Handlers extends WP_Fullpage_Base {
 
@@ -236,7 +239,6 @@ class WP_Fullpage_JS_Handlers extends WP_Fullpage_Base {
 	/**
 	 * Add Backbone Modal Posts List Handler
 	 * 
-	 * @example
 	 *          WPFP_JS_Handlers()->backbone_modal_posts_list( $args );
 	 *
 	 * 			where : $args = array(
@@ -304,7 +306,6 @@ class WP_Fullpage_JS_Handlers extends WP_Fullpage_Base {
 	/**
 	 * Add Backbone Modal Posts of Term List Handler
 	 * 
-	 * @example
 	 *          WPFP_JS_Handlers()->backbone_modal_posts_of_term_list( $args, $dependencies );
 	 *
 	 * 			where : $args = array(
@@ -372,7 +373,6 @@ class WP_Fullpage_JS_Handlers extends WP_Fullpage_Base {
 	/**
 	 * Add Backbone Modal Posts of Type List Handler
 	 * 
-	 * @example
 	 *          WPFP_JS_Handlers()->backbone_modal_posts_of_type_list( $args, $dependencies );
 	 *
 	 * 			where : $args = array(
@@ -440,7 +440,7 @@ class WP_Fullpage_JS_Handlers extends WP_Fullpage_Base {
 	/**
 	 * Add a jQuery Tooltip Handler
 	 * 
-	 * @example WPFP_JS_Handlers()->jquery_tooltip( $dependencies );
+	 * WPFP_JS_Handlers()->jquery_tooltip( $dependencies );
 	 *
 	 * @param   array   $dependencies  a full array of dependencies :
 	 *                          array( 
@@ -478,7 +478,7 @@ class WP_Fullpage_JS_Handlers extends WP_Fullpage_Base {
 	/**
 	 * Add Chosen jQuery
 	 * 
-	 * @example WPFP_JS_Handlers()->jquery_chosen( $dependencies );
+	 * WPFP_JS_Handlers()->jquery_chosen( $dependencies );
 	 *
 	 * @param   array   $dependencies  a full array of dependencies :
 	 *                          array( 
@@ -516,7 +516,6 @@ class WP_Fullpage_JS_Handlers extends WP_Fullpage_Base {
 	/**
 	 * Add a jQuery Tooltip Handler
 	 * 
-	 * @example
 	 *          WPFP_JS_Handlers()->jquery_sortables( $args, $dependencies );
 	 *
 	 * 			where : $args = array(
@@ -586,7 +585,6 @@ class WP_Fullpage_JS_Handlers extends WP_Fullpage_Base {
 	/**
 	 * Add a Reset Form Handler
 	 * 
-	 * @example
 	 *          WPFP_JS_Handlers()->reset_form( $selectors, $launcherSelector, $dependencies );
 	 *
 	 * @param   string   $selectors             the CSS selectors to bind
@@ -630,7 +628,6 @@ class WP_Fullpage_JS_Handlers extends WP_Fullpage_Base {
 	/**
 	 * Add a Color Picker
 	 * 
-	 * @example
 	 *          WPFP_JS_Handlers()->color_picker( $selectors, $dependencies );
 	 *
 	 * @param   string   $selectors             the CSS selectors to bind
@@ -679,7 +676,6 @@ class WP_Fullpage_JS_Handlers extends WP_Fullpage_Base {
 	/**
 	 * Add jquery ui button handler
 	 * 
-	 * @example
 	 *          WPFP_JS_Handlers()->jquery_button( $selectors, $dependencies );
 	 *
 	 * @param   string   $selectors             the CSS selectors to bind
@@ -725,7 +721,6 @@ class WP_Fullpage_JS_Handlers extends WP_Fullpage_Base {
 	/**
 	 * Add a jQuery UI Tabs Handler
 	 * 
-	 * @example
 	 *          WPFP_JS_Handlers()->jquery_ui_tabs( $dependencies );
 	 *
 	 * @param   array   $dependencies  a full array of dependencies :
@@ -762,7 +757,6 @@ class WP_Fullpage_JS_Handlers extends WP_Fullpage_Base {
 	 *
 	 * Ensure CSS and JS files are enqueued in the right way they are called
 	 *
-	 * @example 
 	 * 		WPFP_JS_Handlers()->last_dependencies( 
 	 * 			array( 
 	 * 				'js' => array( 
@@ -802,9 +796,11 @@ class WP_Fullpage_JS_Handlers extends WP_Fullpage_Base {
 /**
  * Returns the main instance of WP_Fullpage_JS_Handlers to prevent the need to use globals.
  *
- * @example WPFP_JS_Handlers()->my_method() 
+ * WPFP_JS_Handlers()->my_method() 
+ * 
+ * @package 	WP_Fullpage\Includes\Admin\JS_Handlers
  *
- * @return 	WP_Fullpage_JS_Handlers
+ * @return 		WP_Fullpage_JS_Handlers
  */
 function WPFP_JS_Handlers() {
 

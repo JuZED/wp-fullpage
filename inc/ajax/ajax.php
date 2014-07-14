@@ -2,6 +2,9 @@
 
 /**
  * The Fullpage Ajax Class
+ * 
+ * @package 	WP_Fullpage\Includes\Ajax
+ * @subpackage 	WP_Fullpage\Includes\Absctract\Classes
  */
 class WP_Fullpage_Ajax extends WP_Fullpage_Base {
 

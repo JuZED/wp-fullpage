@@ -2,6 +2,9 @@
 
 /**
  * The Fullpage Slide Type Metabox Class
+ * 
+ * @package 	WP_Fullpage\Includes\Admin\Metaboxes
+ * @subpackage 	WP_Fullpage\Includes\Absctract\Classes
  */
 class WP_Fullpage_Slide_Type_Metabox extends WP_Fullpage_Metabox_Base {
 

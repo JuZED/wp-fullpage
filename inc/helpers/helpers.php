@@ -2,6 +2,9 @@
 
 /**
  * The Fullpage Helpers Class
+ * 
+ * @package 	WP_Fullpage\Includes\Helpers
+ * @subpackage 	WP_Fullpage\Includes\Absctract\Classes
  */
 class WP_Fullpage_Helpers {
 
@@ -67,7 +70,6 @@ class WP_Fullpage_Helpers {
 	/**
 	 * Output buffering Clean
 	 *
-	 * @example
 	 * 		WPFP_Helpers()->ob_start();
 	 * 			?>
 	 * 				<some HTML>
@@ -87,7 +89,6 @@ class WP_Fullpage_Helpers {
 	/**
 	 * Define Properties of a Class
 	 *
-	 * @example 
 	 * 		WPFP_Helpers()->define_properties( $this, __DIR__, __FILE__ );
 	 * 		
 	 *   	Define the assets url of the Class : $this->assets_url
@@ -112,7 +113,6 @@ class WP_Fullpage_Helpers {
 	/**
 	 * Outputs the html checked attribute and define the default settings value.
 	 *
-	 * @example 
 	 * 		WPFP_Helpers()->checked( $theDataValue, $theSettingsValue, 'yes' );
 	 *
 	 * @param   string  $data_value    		the data value 
@@ -133,7 +133,6 @@ class WP_Fullpage_Helpers {
 	/**
 	 * Outputs the html value attribute and define the default settings value.
 	 *
-	 * @example 
 	 * 		WPFP_Helpers()->value( $theDataValue, $theSettingsValue );
 	 *
 	 * @param   string  $data_value    		the name of the value 
@@ -181,10 +180,10 @@ class WP_Fullpage_Helpers {
 
 /**
  * Returns the main instance of WP_Fullpage_Helpers to prevent the need to use globals.
+ * 
+ * @package 	WP_Fullpage\Includes\Helpers
  *
- * @example WPFP_Helpers()->my_method() 
- *
- * @return 	WP_Fullpage_Helpers
+ * @return 		WP_Fullpage_Helpers
  */
 function WPFP_Helpers() {
 
