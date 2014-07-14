@@ -68,11 +68,11 @@
 
 								<div class="radio">
 
-									<input type="radio" id="resize-yes" name="<?php print WPFP_SETTINGS_FULLPAGE_OPTIONS; ?>[resize]" value="yes" <?php checked( isset( $resize ) ? $resize : 'no', 'yes' ); ?> <?php WPFP_Helpers()->default_setting( 'yes', true ); ?> />
+									<input type="radio" id="resize-yes" name="<?php print WPFP_SETTINGS_FULLPAGE_OPTIONS; ?>[resize]" value="yes" <?php checked( isset( $resize ) ? $resize : 'yes', 'yes' ); ?> <?php WPFP_Helpers()->default_setting( 'yes', true ); ?> />
 									<label for="resize-yes">
 									 	<?php _e( 'yes', WPFP_DOMAIN ); ?>
 									</label>
-									<input type="radio" id="resize-no" name="<?php print WPFP_SETTINGS_FULLPAGE_OPTIONS; ?>[resize]" value="no" <?php checked( isset( $resize ) ? $resize : 'no', 'no' ); ?> <?php WPFP_Helpers()->default_setting( 'yes', true ); ?> />
+									<input type="radio" id="resize-no" name="<?php print WPFP_SETTINGS_FULLPAGE_OPTIONS; ?>[resize]" value="no" <?php checked( isset( $resize ) ? $resize : 'yes', 'no' ); ?> <?php WPFP_Helpers()->default_setting( 'yes', true ); ?> />
 									<label for="resize-no">
 									 	<?php _e( 'no', WPFP_DOMAIN ); ?>
 									</label>
@@ -102,7 +102,7 @@
 								</label>
 								<select id="easing" name="<?php print WPFP_SETTINGS_FULLPAGE_OPTIONS; ?>[easing]" <?php WPFP_Helpers()->default_setting( 'easeInQuad', true ); ?>>
 									
-									<option value="easeInQuad" <?php selected( isset( $easing ) ? $easing : '', 'easeInQuad' ); ?>><?php _e( 'Ease In Quad', WPFP_DOMAIN ); ?></option>
+									<option value="easeInQuad" <?php selected( isset( $easing ) ? $easing : 'easeInQuad', 'easeInQuad' ); ?>><?php _e( 'Ease In Quad', WPFP_DOMAIN ); ?></option>
 									<option value="easeOutQuad" <?php selected( isset( $easing ) ? $easing : '', 'easeOutQuad' ); ?>><?php _e( 'Ease Out Quad', WPFP_DOMAIN ); ?></option>
 									<option value="easeInOutQuad" <?php selected( isset( $easing ) ? $easing : '', 'easeInOutQuad' ); ?>><?php _e( 'Ease In Out Quad', WPFP_DOMAIN ); ?></option>
 									
@@ -136,11 +136,11 @@
 
 								<div class="radio">
 
-									<input type="radio" id="navigation-yes" name="<?php print WPFP_SETTINGS_FULLPAGE_OPTIONS; ?>[navigation]" value="yes" <?php checked( isset( $navigation ) ? $navigation : 'no', 'yes' ); ?> <?php WPFP_Helpers()->default_setting( 'yes', true ); ?> />
+									<input type="radio" id="navigation-yes" name="<?php print WPFP_SETTINGS_FULLPAGE_OPTIONS; ?>[navigation]" value="yes" <?php checked( isset( $navigation ) ? $navigation : 'yes', 'yes' ); ?> <?php WPFP_Helpers()->default_setting( 'yes', true ); ?> />
 									<label for="navigation-yes">
 									 	<?php _e( 'yes', WPFP_DOMAIN ); ?>
 									</label>
-									<input type="radio" id="navigation-no" name="<?php print WPFP_SETTINGS_FULLPAGE_OPTIONS; ?>[navigation]" value="no" <?php checked( isset( $navigation ) ? $navigation : 'no', 'no' ); ?> <?php WPFP_Helpers()->default_setting( 'yes', true ); ?> />
+									<input type="radio" id="navigation-no" name="<?php print WPFP_SETTINGS_FULLPAGE_OPTIONS; ?>[navigation]" value="no" <?php checked( isset( $navigation ) ? $navigation : 'yes', 'no' ); ?> <?php WPFP_Helpers()->default_setting( 'yes', true ); ?> />
 									<label for="navigation-no">
 									 	<?php _e( 'no', WPFP_DOMAIN ); ?>
 									</label>
@@ -157,10 +157,10 @@
 								<label for="navigationPosition">
 								 	<?php _e( 'Navigation Position', WPFP_DOMAIN ); ?>
 								</label>
-								<select id="navigationPosition" name="<?php print WPFP_SETTINGS_FULLPAGE_OPTIONS; ?>[navigationPosition]" <?php WPFP_Helpers()->default_setting( 'none', true ); ?>>
+								<select id="navigationPosition" name="<?php print WPFP_SETTINGS_FULLPAGE_OPTIONS; ?>[navigationPosition]" <?php WPFP_Helpers()->default_setting( 'left', true ); ?>>
 									
-									<option value="left" <?php selected( isset( $navigationPosition ) ? $navigationPosition : '', 'left' ); ?>><?php _e( 'Left', WPFP_DOMAIN ); ?></option>
-									<option value="right" <?php selected( isset( $navigationPosition ) ? $navigationPosition : '', 'right' ); ?>><?php _e( 'Right', WPFP_DOMAIN ); ?></option>
+									<option value="left" <?php selected( isset( $navigationPosition ) ? $navigationPosition : 'left', 'left' ); ?>><?php _e( 'Left', WPFP_DOMAIN ); ?></option>
+									<option value="right" <?php selected( isset( $navigationPosition ) ? $navigationPosition : 'left', 'right' ); ?>><?php _e( 'Right', WPFP_DOMAIN ); ?></option>
 
 								</select>
 								<span class="wpfp-tip" data-tip="<?php _e( 'It can be set to left or right and defines which position the navigation bar will be shown (if using one).', WPFP_DOMAIN ); ?>"></span>
@@ -176,11 +176,11 @@
 
 								<div class="radio">
 
-									<input type="radio" id="slidesNavigation-yes" name="<?php print WPFP_SETTINGS_FULLPAGE_OPTIONS; ?>[slidesNavigation]" value="yes" <?php checked( isset( $slidesNavigation ) ? $slidesNavigation : 'no', 'yes' ); ?> <?php WPFP_Helpers()->default_setting( 'yes', true ); ?> />
+									<input type="radio" id="slidesNavigation-yes" name="<?php print WPFP_SETTINGS_FULLPAGE_OPTIONS; ?>[slidesNavigation]" value="yes" <?php checked( isset( $slidesNavigation ) ? $slidesNavigation : 'yes', 'yes' ); ?> <?php WPFP_Helpers()->default_setting( 'yes', true ); ?> />
 									<label for="slidesNavigation-yes">
 									 	<?php _e( 'yes', WPFP_DOMAIN ); ?>
 									</label>
-									<input type="radio" id="slidesNavigation-no" name="<?php print WPFP_SETTINGS_FULLPAGE_OPTIONS; ?>[slidesNavigation]" value="no" <?php checked( isset( $slidesNavigation ) ? $slidesNavigation : 'no', 'no' ); ?> <?php WPFP_Helpers()->default_setting( 'yes', true ); ?> />
+									<input type="radio" id="slidesNavigation-no" name="<?php print WPFP_SETTINGS_FULLPAGE_OPTIONS; ?>[slidesNavigation]" value="no" <?php checked( isset( $slidesNavigation ) ? $slidesNavigation : 'yes', 'no' ); ?> <?php WPFP_Helpers()->default_setting( 'yes', true ); ?> />
 									<label for="slidesNavigation-no">
 									 	<?php _e( 'no', WPFP_DOMAIN ); ?>
 									</label>
@@ -199,8 +199,8 @@
 								</label>
 								<select id="slidesNavPosition" name="<?php print WPFP_SETTINGS_FULLPAGE_OPTIONS; ?>[slidesNavPosition]" <?php WPFP_Helpers()->default_setting( 'top', true ); ?>>
 									
-									<option value="top" <?php selected( isset( $slidesNavPosition ) ? $slidesNavPosition : '', 'top' ); ?>><?php _e( 'Top', WPFP_DOMAIN ); ?></option>
-									<option value="bottom" <?php selected( isset( $slidesNavPosition ) ? $slidesNavPosition : '', 'bottom' ); ?>><?php _e( 'Bottom', WPFP_DOMAIN ); ?></option>
+									<option value="top" <?php selected( isset( $slidesNavPosition ) ? $slidesNavPosition : 'top', 'top' ); ?>><?php _e( 'Top', WPFP_DOMAIN ); ?></option>
+									<option value="bottom" <?php selected( isset( $slidesNavPosition ) ? $slidesNavPosition : 'top', 'bottom' ); ?>><?php _e( 'Bottom', WPFP_DOMAIN ); ?></option>
 
 								</select>
 								<span class="wpfp-tip" data-tip="<?php _e( 'Defines the position for the landscape navigation bar for sliders. Admits top and bottom as values. You may want to modify the CSS styles to determine the distance from the top or bottom as well as any other style such as color.', WPFP_DOMAIN ); ?>"></span>
@@ -216,11 +216,11 @@
 	
 								<div class="radio">
 								
-									<input type="radio" id="loopBottom-yes" name="<?php print WPFP_SETTINGS_FULLPAGE_OPTIONS; ?>[loopBottom]" value="yes" <?php checked( isset( $loopBottom ) ? $loopBottom : 'no', 'yes' ); ?> <?php WPFP_Helpers()->default_setting( 'yes', true ); ?> />
+									<input type="radio" id="loopBottom-yes" name="<?php print WPFP_SETTINGS_FULLPAGE_OPTIONS; ?>[loopBottom]" value="yes" <?php checked( isset( $loopBottom ) ? $loopBottom : 'yes', 'yes' ); ?> <?php WPFP_Helpers()->default_setting( 'yes', true ); ?> />
 									<label for="loopBottom-yes">
 									 	<?php _e( 'yes', WPFP_DOMAIN ); ?>
 									</label>
-									<input type="radio" id="loopBottom-no" name="<?php print WPFP_SETTINGS_FULLPAGE_OPTIONS; ?>[loopBottom]" value="no" <?php checked( isset( $loopBottom ) ? $loopBottom : 'no', 'no' ); ?> <?php WPFP_Helpers()->default_setting( 'yes', true ); ?> />
+									<input type="radio" id="loopBottom-no" name="<?php print WPFP_SETTINGS_FULLPAGE_OPTIONS; ?>[loopBottom]" value="no" <?php checked( isset( $loopBottom ) ? $loopBottom : 'yes', 'no' ); ?> <?php WPFP_Helpers()->default_setting( 'yes', true ); ?> />
 									<label for="loopBottom-no">
 									 	<?php _e( 'no', WPFP_DOMAIN ); ?>
 									</label>
@@ -240,11 +240,11 @@
 
 								<div class="radio">
 									
-									<input type="radio" id="loopTop-yes" name="<?php print WPFP_SETTINGS_FULLPAGE_OPTIONS; ?>[loopTop]" value="yes" <?php checked( isset( $loopTop ) ? $loopTop : 'no', 'yes' ); ?> <?php WPFP_Helpers()->default_setting( 'yes', true ); ?> />
+									<input type="radio" id="loopTop-yes" name="<?php print WPFP_SETTINGS_FULLPAGE_OPTIONS; ?>[loopTop]" value="yes" <?php checked( isset( $loopTop ) ? $loopTop : 'yes', 'yes' ); ?> <?php WPFP_Helpers()->default_setting( 'yes', true ); ?> />
 									<label for="loopTop-yes">
 									 	<?php _e( 'yes', WPFP_DOMAIN ); ?>
 									</label>
-									<input type="radio" id="loopTop-no" name="<?php print WPFP_SETTINGS_FULLPAGE_OPTIONS; ?>[loopTop]" value="no" <?php checked( isset( $loopTop ) ? $loopTop : 'no', 'no' ); ?> <?php WPFP_Helpers()->default_setting( 'yes', true ); ?> />
+									<input type="radio" id="loopTop-no" name="<?php print WPFP_SETTINGS_FULLPAGE_OPTIONS; ?>[loopTop]" value="no" <?php checked( isset( $loopTop ) ? $loopTop : 'yes', 'no' ); ?> <?php WPFP_Helpers()->default_setting( 'yes', true ); ?> />
 									<label for="loopTop-no">
 									 	<?php _e( 'no', WPFP_DOMAIN ); ?>
 									</label>
@@ -264,11 +264,11 @@
 								
 								<div class="radio">
 									
-									<input type="radio" id="loopHorizontal-yes" name="<?php print WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS; ?>[loopHorizontal]" value="yes" <?php checked( isset( $loopHorizontal ) ? $loopHorizontal : 'no', 'yes' ); ?> <?php WPFP_Helpers()->default_setting( 'yes', true ); ?> />
+									<input type="radio" id="loopHorizontal-yes" name="<?php print WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS; ?>[loopHorizontal]" value="yes" <?php checked( isset( $loopHorizontal ) ? $loopHorizontal : 'yes', 'yes' ); ?> <?php WPFP_Helpers()->default_setting( 'yes', true ); ?> />
 									<label for="loopHorizontal-yes">
 									 	<?php _e( 'yes', WPFP_DOMAIN ); ?>
 									</label>
-									<input type="radio" id="loopHorizontal-no" name="<?php print WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS; ?>[loopHorizontal]" value="no" <?php checked( isset( $loopHorizontal ) ? $loopHorizontal : 'no', 'no' ); ?> <?php WPFP_Helpers()->default_setting( 'yes', true ); ?> />
+									<input type="radio" id="loopHorizontal-no" name="<?php print WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS; ?>[loopHorizontal]" value="no" <?php checked( isset( $loopHorizontal ) ? $loopHorizontal : 'yes', 'no' ); ?> <?php WPFP_Helpers()->default_setting( 'yes', true ); ?> />
 									<label for="loopHorizontal-no">
 									 	<?php _e( 'no', WPFP_DOMAIN ); ?>
 									</label>
@@ -288,11 +288,11 @@
 
 								<div class="radio">
 									
-									<input type="radio" id="autoScrolling-yes" name="<?php print WPFP_SETTINGS_FULLPAGE_OPTIONS; ?>[autoScrolling]" value="yes" <?php checked( isset( $autoScrolling ) ? $autoScrolling : 'no', 'yes' ); ?> <?php WPFP_Helpers()->default_setting( 'yes', true ); ?> />
+									<input type="radio" id="autoScrolling-yes" name="<?php print WPFP_SETTINGS_FULLPAGE_OPTIONS; ?>[autoScrolling]" value="yes" <?php checked( isset( $autoScrolling ) ? $autoScrolling : 'yes', 'yes' ); ?> <?php WPFP_Helpers()->default_setting( 'yes', true ); ?> />
 									<label for="autoScrolling-yes">
 									 	<?php _e( 'yes', WPFP_DOMAIN ); ?>
 									</label>
-									<input type="radio" id="autoScrolling-no" name="<?php print WPFP_SETTINGS_FULLPAGE_OPTIONS; ?>[autoScrolling]" value="no" <?php checked( isset( $autoScrolling ) ? $autoScrolling : 'no', 'no' ); ?> <?php WPFP_Helpers()->default_setting( 'yes', true ); ?> />
+									<input type="radio" id="autoScrolling-no" name="<?php print WPFP_SETTINGS_FULLPAGE_OPTIONS; ?>[autoScrolling]" value="no" <?php checked( isset( $autoScrolling ) ? $autoScrolling : 'yes', 'no' ); ?> <?php WPFP_Helpers()->default_setting( 'yes', true ); ?> />
 									<label for="autoScrolling-no">
 									 	<?php _e( 'no', WPFP_DOMAIN ); ?>
 									</label>
@@ -312,11 +312,11 @@
 
 								<div class="radio">
 									
-									<input type="radio" id="scrollOverflow-yes" name="<?php print WPFP_SETTINGS_FULLPAGE_OPTIONS; ?>[scrollOverflow]" value="yes" <?php checked( isset( $scrollOverflow ) ? $scrollOverflow : 'no', 'yes' ); ?> <?php WPFP_Helpers()->default_setting( 'yes', true ); ?> />
+									<input type="radio" id="scrollOverflow-yes" name="<?php print WPFP_SETTINGS_FULLPAGE_OPTIONS; ?>[scrollOverflow]" value="yes" <?php checked( isset( $scrollOverflow ) ? $scrollOverflow : 'yes', 'yes' ); ?> <?php WPFP_Helpers()->default_setting( 'yes', true ); ?> />
 									<label for="scrollOverflow-yes">
 									 	<?php _e( 'yes', WPFP_DOMAIN ); ?>
 									</label>
-									<input type="radio" id="scrollOverflow-no" name="<?php print WPFP_SETTINGS_FULLPAGE_OPTIONS; ?>[scrollOverflow]" value="no" <?php checked( isset( $scrollOverflow ) ? $scrollOverflow : 'no', 'no' ); ?> <?php WPFP_Helpers()->default_setting( 'yes', true ); ?> />
+									<input type="radio" id="scrollOverflow-no" name="<?php print WPFP_SETTINGS_FULLPAGE_OPTIONS; ?>[scrollOverflow]" value="no" <?php checked( isset( $scrollOverflow ) ? $scrollOverflow : 'yes', 'no' ); ?> <?php WPFP_Helpers()->default_setting( 'yes', true ); ?> />
 									<label for="scrollOverflow-no">
 									 	<?php _e( 'no', WPFP_DOMAIN ); ?>
 									</label>
@@ -336,11 +336,11 @@
 
 								<div class="radio">
 									
-									<input type="radio" id="css3-yes" name="<?php print WPFP_SETTINGS_FULLPAGE_OPTIONS; ?>[css3]" value="yes" <?php checked( isset( $css3 ) ? $css3 : 'no', 'yes' ); ?> <?php WPFP_Helpers()->default_setting( 'yes', true ); ?> />
+									<input type="radio" id="css3-yes" name="<?php print WPFP_SETTINGS_FULLPAGE_OPTIONS; ?>[css3]" value="yes" <?php checked( isset( $css3 ) ? $css3 : 'yes', 'yes' ); ?> <?php WPFP_Helpers()->default_setting( 'yes', true ); ?> />
 									<label for="css3-yes">
 									 	<?php _e( 'yes', WPFP_DOMAIN ); ?>
 									</label>
-									<input type="radio" id="css3-no" name="<?php print WPFP_SETTINGS_FULLPAGE_OPTIONS; ?>[css3]" value="no" <?php checked( isset( $css3 ) ? $css3 : 'no', 'no' ); ?> <?php WPFP_Helpers()->default_setting( 'yes', true ); ?> />
+									<input type="radio" id="css3-no" name="<?php print WPFP_SETTINGS_FULLPAGE_OPTIONS; ?>[css3]" value="no" <?php checked( isset( $css3 ) ? $css3 : 'yes', 'no' ); ?> <?php WPFP_Helpers()->default_setting( 'yes', true ); ?> />
 									<label for="css3-no">
 									 	<?php _e( 'no', WPFP_DOMAIN ); ?>
 									</label>
@@ -357,7 +357,7 @@
 								<label for="paddingTop">
 								 	<?php _e( 'Padding Top', WPFP_DOMAIN ); ?>
 								</label>
-								<input type="text" id="paddingTop" name="<?php print WPFP_SETTINGS_FULLPAGE_OPTIONS; ?>[paddingTop]" value="<?php print esc_attr( isset( $paddingTop ) ? $paddingTop : '' ); ?>" <?php WPFP_Helpers()->default_setting( '0', true ); ?> />
+								<input type="text" id="paddingTop" name="<?php print WPFP_SETTINGS_FULLPAGE_OPTIONS; ?>[paddingTop]" value="<?php print esc_attr( isset( $paddingTop ) ? $paddingTop : 0 ); ?>" <?php WPFP_Helpers()->default_setting( '0', true ); ?> />
 								<span class="wpfp-tip" data-tip="<?php _e( 'Defines the top padding for each section with a numerical value and its measure (paddingTop: \'10px\', paddingTop: \'10em\'...) Useful in case of using a fixed header.', WPFP_DOMAIN ); ?>"></span>
 
 							</li>
@@ -368,7 +368,7 @@
 								<label for="paddingBottom">
 								 	<?php _e( 'Padding Bottom', WPFP_DOMAIN ); ?>
 								</label>
-								<input type="text" id="paddingBottom" name="<?php print WPFP_SETTINGS_FULLPAGE_OPTIONS; ?>[paddingBottom]" value="<?php print esc_attr( isset( $paddingBottom ) ? $paddingBottom : '' ); ?>" <?php WPFP_Helpers()->default_setting( '0', true ); ?> />
+								<input type="text" id="paddingBottom" name="<?php print WPFP_SETTINGS_FULLPAGE_OPTIONS; ?>[paddingBottom]" value="<?php print esc_attr( isset( $paddingBottom ) ? $paddingBottom : 0 ); ?>" <?php WPFP_Helpers()->default_setting( '0', true ); ?> />
 								<span class="wpfp-tip" data-tip="<?php _e( 'Defines the bottom padding for each section with a numerical value and its measure (paddingBottom: \'10px\', paddingBottom: \'10em\'...). Useful in case of using a fixed footer.', WPFP_DOMAIN ); ?>"></span>
 
 							</li>
@@ -415,11 +415,11 @@
 
 								<div class="radio">
 									
-									<input type="radio" id="keyboardScrolling-yes" name="<?php print WPFP_SETTINGS_FULLPAGE_OPTIONS; ?>[keyboardScrolling]" value="yes" <?php checked( isset( $keyboardScrolling ) ? $keyboardScrolling : 'no', 'yes' ); ?> <?php WPFP_Helpers()->default_setting( 'yes', true ); ?> />
+									<input type="radio" id="keyboardScrolling-yes" name="<?php print WPFP_SETTINGS_FULLPAGE_OPTIONS; ?>[keyboardScrolling]" value="yes" <?php checked( isset( $keyboardScrolling ) ? $keyboardScrolling : 'yes', 'yes' ); ?> <?php WPFP_Helpers()->default_setting( 'yes', true ); ?> />
 									<label for="keyboardScrolling-yes">
 									 	<?php _e( 'yes', WPFP_DOMAIN ); ?>
 									</label>
-									<input type="radio" id="keyboardScrolling-no" name="<?php print WPFP_SETTINGS_FULLPAGE_OPTIONS; ?>[keyboardScrolling]" value="no" <?php checked( isset( $keyboardScrolling ) ? $keyboardScrolling : 'no', 'no' ); ?> <?php WPFP_Helpers()->default_setting( 'yes', true ); ?> />
+									<input type="radio" id="keyboardScrolling-no" name="<?php print WPFP_SETTINGS_FULLPAGE_OPTIONS; ?>[keyboardScrolling]" value="no" <?php checked( isset( $keyboardScrolling ) ? $keyboardScrolling : 'yes', 'no' ); ?> <?php WPFP_Helpers()->default_setting( 'yes', true ); ?> />
 									<label for="keyboardScrolling-no">
 									 	<?php _e( 'no', WPFP_DOMAIN ); ?>
 									</label>
@@ -450,11 +450,11 @@
 
 								<div class="radio">
 									
-									<input type="radio" id="continuousVertical-yes" name="<?php print WPFP_SETTINGS_FULLPAGE_OPTIONS; ?>[continuousVertical]" value="yes" <?php checked( isset( $continuousVertical ) ? $continuousVertical : 'no', 'yes' ); ?> <?php WPFP_Helpers()->default_setting( 'yes', true ); ?> />
+									<input type="radio" id="continuousVertical-yes" name="<?php print WPFP_SETTINGS_FULLPAGE_OPTIONS; ?>[continuousVertical]" value="yes" <?php checked( isset( $continuousVertical ) ? $continuousVertical : 'yes', 'yes' ); ?> <?php WPFP_Helpers()->default_setting( 'yes', true ); ?> />
 									<label for="continuousVertical-yes">
 									 	<?php _e( 'yes', WPFP_DOMAIN ); ?>
 									</label>
-									<input type="radio" id="continuousVertical-no" name="<?php print WPFP_SETTINGS_FULLPAGE_OPTIONS; ?>[continuousVertical]" value="no" <?php checked( isset( $continuousVertical ) ? $continuousVertical : 'no', 'no' ); ?> <?php WPFP_Helpers()->default_setting( 'yes', true ); ?> />
+									<input type="radio" id="continuousVertical-no" name="<?php print WPFP_SETTINGS_FULLPAGE_OPTIONS; ?>[continuousVertical]" value="no" <?php checked( isset( $continuousVertical ) ? $continuousVertical : 'yes', 'no' ); ?> <?php WPFP_Helpers()->default_setting( 'yes', true ); ?> />
 									<label for="continuousVertical-no">
 									 	<?php _e( 'no', WPFP_DOMAIN ); ?>
 									</label>
@@ -474,11 +474,11 @@
 
 								<div class="radio">
 									
-									<input type="radio" id="animateAnchor-yes" name="<?php print WPFP_SETTINGS_FULLPAGE_OPTIONS; ?>[animateAnchor]" value="yes" <?php checked( isset( $animateAnchor ) ? $animateAnchor : 'no', 'yes' ); ?> <?php WPFP_Helpers()->default_setting( 'yes', true ); ?> />
+									<input type="radio" id="animateAnchor-yes" name="<?php print WPFP_SETTINGS_FULLPAGE_OPTIONS; ?>[animateAnchor]" value="yes" <?php checked( isset( $animateAnchor ) ? $animateAnchor : 'yes', 'yes' ); ?> <?php WPFP_Helpers()->default_setting( 'yes', true ); ?> />
 									<label for="animateAnchor-yes">
 									 	<?php _e( 'yes', WPFP_DOMAIN ); ?>
 									</label>
-									<input type="radio" id="animateAnchor-no" name="<?php print WPFP_SETTINGS_FULLPAGE_OPTIONS; ?>[animateAnchor]" value="no" <?php checked( isset( $animateAnchor ) ? $animateAnchor : 'no', 'no' ); ?> <?php WPFP_Helpers()->default_setting( 'yes', true ); ?> />
+									<input type="radio" id="animateAnchor-no" name="<?php print WPFP_SETTINGS_FULLPAGE_OPTIONS; ?>[animateAnchor]" value="no" <?php checked( isset( $animateAnchor ) ? $animateAnchor : 'yes', 'no' ); ?> <?php WPFP_Helpers()->default_setting( 'yes', true ); ?> />
 									<label for="animateAnchor-no">
 									 	<?php _e( 'no', WPFP_DOMAIN ); ?>
 									</label>
@@ -495,7 +495,7 @@
 								<label for="onLeave">
 								 	<?php _e( 'On Leave', WPFP_DOMAIN ); ?>
 								</label>
-								<textarea cols="40" id="onLeave" name="<?php print WPFP_SETTINGS_FULLPAGE_OPTIONS; ?>[onLeave]" <?php WPFP_Helpers()->default_setting( 'fullpageOnLeave( index, nextIndex, direction );', true ); ?>><?php print isset( $onLeave ) ? $onLeave : ''; ?></textarea>
+								<textarea cols="40" id="onLeave" name="<?php print WPFP_SETTINGS_FULLPAGE_OPTIONS; ?>[onLeave]" <?php WPFP_Helpers()->default_setting( 'fullpageOnLeave( index, nextIndex, direction );', true ); ?>><?php print isset( $onLeave ) ? $onLeave : 'fullpageOnLeave( index, nextIndex, direction );'; ?></textarea>
 								<span class="wpfp-tip" data-tip='<?php _e( 'This callback is fired once the user leaves a section, in the transition to the new section. Use your own javascript code or customize the function "fullpageOnLeave" in "your-theme/wp-fullpage/js/jquery.fullpage.custom.js".', WPFP_DOMAIN ); ?>'></span><a class="wpfp-goto" title="<?php _e( 'Go to callback definition.', WPFP_DOMAIN ); ?>" target="_blank" href="https://github.com/alvarotrigo/fullPage.js#onleave-index-nextindex-direction"></a>
 
 							</li>
@@ -506,7 +506,7 @@
 								<label for="afterLoad">
 								 	<?php _e( 'After Load', WPFP_DOMAIN ); ?>
 								</label>
-								<textarea cols="40" id="afterLoad" name="<?php print WPFP_SETTINGS_FULLPAGE_OPTIONS; ?>[afterLoad]" <?php WPFP_Helpers()->default_setting( 'fullpageAfterLoad( anchorLink, index );', true ); ?>><?php print isset( $afterLoad ) ? $afterLoad : ''; ?></textarea>
+								<textarea cols="40" id="afterLoad" name="<?php print WPFP_SETTINGS_FULLPAGE_OPTIONS; ?>[afterLoad]" <?php WPFP_Helpers()->default_setting( 'fullpageAfterLoad( anchorLink, index );', true ); ?>><?php print isset( $afterLoad ) ? $afterLoad : 'fullpageAfterLoad( anchorLink, index );'; ?></textarea>
 								<span class="wpfp-tip" data-tip='<?php _e( 'Callback fired once the sections have been loaded, after the scrolling has ended. Use your own javascript code or customize the function "fullpageAfterLoad" in "your-theme/wp-fullpage/js/jquery.fullpage.custom.js".', WPFP_DOMAIN ); ?>'></span><a class="wpfp-goto" title="<?php _e( 'Go to callback definition.', WPFP_DOMAIN ); ?>" target="_blank" href="https://github.com/alvarotrigo/fullPage.js#afterload-anchorlink-index"></a>
 
 							</li>
@@ -517,7 +517,7 @@
 								<label for="afterRender">
 								 	<?php _e( 'After Render', WPFP_DOMAIN ); ?>
 								</label>
-								<textarea cols="40" id="afterRender" name="<?php print WPFP_SETTINGS_FULLPAGE_OPTIONS; ?>[afterRender]" <?php WPFP_Helpers()->default_setting( 'fullpageAfterRender();', true ); ?>><?php print isset( $afterRender ) ? $afterRender : ''; ?></textarea>
+								<textarea cols="40" id="afterRender" name="<?php print WPFP_SETTINGS_FULLPAGE_OPTIONS; ?>[afterRender]" <?php WPFP_Helpers()->default_setting( 'fullpageAfterRender();', true ); ?>><?php print isset( $afterRender ) ? $afterRender : 'fullpageAfterRender();'; ?></textarea>
 								<span class="wpfp-tip" data-tip='<?php _e( 'This callback is fired just after the structure of the page is generated. This is the callback you want to use to initialize other plugins or fire any code which requires the document to be ready (as this plugin modifies the DOM to create the resulting structure). Use your own javascript code or customize the function "fullpageAfterRender" in "your-theme/wp-fullpage/js/jquery.fullpage.custom.js".', WPFP_DOMAIN ); ?>'></span><a class="wpfp-goto" title="<?php _e( 'Go to callback definition.', WPFP_DOMAIN ); ?>" target="_blank" href="https://github.com/alvarotrigo/fullPage.js#afterrender"></a>
 
 							</li>
@@ -528,7 +528,7 @@
 								<label for="afterResize">
 								 	<?php _e( 'After Resize', WPFP_DOMAIN ); ?>
 								</label>
-								<textarea cols="40" id="afterResize" name="<?php print WPFP_SETTINGS_FULLPAGE_OPTIONS; ?>[afterResize]" <?php WPFP_Helpers()->default_setting( 'fullpageAfterResize();', true ); ?>><?php print isset( $afterResize ) ? $afterResize : ''; ?></textarea>
+								<textarea cols="40" id="afterResize" name="<?php print WPFP_SETTINGS_FULLPAGE_OPTIONS; ?>[afterResize]" <?php WPFP_Helpers()->default_setting( 'fullpageAfterResize();', true ); ?>><?php print isset( $afterResize ) ? $afterResize : 'fullpageAfterResize();'; ?></textarea>
 								<span class="wpfp-tip" data-tip='<?php _e( 'This callback is fired after resizing the browser\'s window. Just after the sections are resized. Use your own javascript code or customize the function "fullpageAfterResize" in "your-theme/wp-fullpage/js/jquery.fullpage.custom.js".', WPFP_DOMAIN ); ?>'></span><a class="wpfp-goto" title="<?php _e( 'Go to callback definition.', WPFP_DOMAIN ); ?>" target="_blank" href="https://github.com/alvarotrigo/fullPage.js#afterresize"></a>
 
 							</li>
@@ -539,7 +539,7 @@
 								<label for="afterSlideLoad">
 								 	<?php _e( 'After Slide Load', WPFP_DOMAIN ); ?>
 								</label>
-								<textarea cols="40" id="afterSlideLoad" name="<?php print WPFP_SETTINGS_FULLPAGE_OPTIONS; ?>[afterSlideLoad]" <?php WPFP_Helpers()->default_setting( 'fullpageAfterSlideLoad( anchorLink, index, slideAnchor, slideIndex );', true ); ?>><?php print isset( $afterSlideLoad ) ? $afterSlideLoad : ''; ?></textarea>
+								<textarea cols="40" id="afterSlideLoad" name="<?php print WPFP_SETTINGS_FULLPAGE_OPTIONS; ?>[afterSlideLoad]" <?php WPFP_Helpers()->default_setting( 'fullpageAfterSlideLoad( anchorLink, index, slideAnchor, slideIndex );', true ); ?>><?php print isset( $afterSlideLoad ) ? $afterSlideLoad : 'fullpageAfterSlideLoad( anchorLink, index, slideAnchor, slideIndex );'; ?></textarea>
 								<span class="wpfp-tip" data-tip='<?php _e( 'Callback fired once the slide of a section have been loaded, after the scrolling has ended. Use your own javascript code or customize the function "fullpageAfterSlideLoad" in "your-theme/wp-fullpage/js/jquery.fullpage.custom.js".', WPFP_DOMAIN ); ?>'></span><a class="wpfp-goto" title="<?php _e( 'Go to callback definition.', WPFP_DOMAIN ); ?>" target="_blank" href="https://github.com/alvarotrigo/fullPage.js#afterslideload-anchorlink-index-slideanchor-slideindex"></a>
 
 							</li>
@@ -550,7 +550,7 @@
 								<label for="onSlideLeave">
 								 	<?php _e( 'On Slide Leave', WPFP_DOMAIN ); ?>
 								</label>
-								<textarea cols="40" id="onSlideLeave" name="<?php print WPFP_SETTINGS_FULLPAGE_OPTIONS; ?>[onSlideLeave]" <?php WPFP_Helpers()->default_setting( 'fullpageSlideLeave( anchorLink, index, slideIndex, direction );', true ); ?>><?php print isset( $onSlideLeave ) ? $onSlideLeave : ''; ?></textarea>
+								<textarea cols="40" id="onSlideLeave" name="<?php print WPFP_SETTINGS_FULLPAGE_OPTIONS; ?>[onSlideLeave]" <?php WPFP_Helpers()->default_setting( 'fullpageSlideLeave( anchorLink, index, slideIndex, direction );', true ); ?>><?php print isset( $onSlideLeave ) ? $onSlideLeave : 'fullpageSlideLeave( anchorLink, index, slideIndex, direction );'; ?></textarea>
 								<span class="wpfp-tip" data-tip='<?php _e( 'This callback is fired once the user leaves an slide to go to another, in the transition to the new slide. Use your own javascript code or customize the function "fullpageSlideLeave" in "your-theme/wp-fullpage/js/jquery.fullpage.custom.js".', WPFP_DOMAIN ); ?>'></span><a class="wpfp-goto" title="<?php _e( 'Go to callback definition.', WPFP_DOMAIN ); ?>" target="_blank" href="https://github.com/alvarotrigo/fullPage.js#onslideleave-anchorlink-index-slideindex-direction"></a>
 
 							</li>
@@ -622,9 +622,9 @@
 
 								<select id="verticalPosition" name="<?php print WPFP_SETTINGS_SLIDES_OPTIONS; ?>[verticalPosition]" <?php WPFP_Helpers()->default_setting( 'middle', true ); ?>>
 									
-									<option value="middle" <?php selected( isset( $verticalPosition ) ? $verticalPosition : '', 'middle' ); ?>><?php _e( 'Middle', WPFP_DOMAIN ); ?></option>
-									<option value="top" <?php selected( isset( $verticalPosition ) ? $verticalPosition : '', 'top' ); ?>><?php _e( 'Top', WPFP_DOMAIN ); ?></option>
-									<option value="bottom" <?php selected( isset( $verticalPosition ) ? $verticalPosition : '', 'bottom' ); ?>><?php _e( 'Bottom', WPFP_DOMAIN ); ?></option>
+									<option value="middle" <?php selected( isset( $verticalPosition ) ? $verticalPosition : 'middle', 'middle' ); ?>><?php _e( 'Middle', WPFP_DOMAIN ); ?></option>
+									<option value="top" <?php selected( isset( $verticalPosition ) ? $verticalPosition : 'middle', 'top' ); ?>><?php _e( 'Top', WPFP_DOMAIN ); ?></option>
+									<option value="bottom" <?php selected( isset( $verticalPosition ) ? $verticalPosition : 'middle', 'bottom' ); ?>><?php _e( 'Bottom', WPFP_DOMAIN ); ?></option>
 
 								</select>
 
@@ -641,9 +641,9 @@
 
 								<select id="horizontalPosition" name="<?php print WPFP_SETTINGS_SLIDES_OPTIONS; ?>[horizontalPosition]" <?php WPFP_Helpers()->default_setting( 'center', true ); ?>>
 									
-									<option value="center" <?php selected( isset( $horizontalPosition ) ? $horizontalPosition : '', 'center' ); ?>><?php _e( 'Center', WPFP_DOMAIN ); ?></option>
-									<option value="left" <?php selected( isset( $horizontalPosition ) ? $horizontalPosition : '', 'left' ); ?>><?php _e( 'Left', WPFP_DOMAIN ); ?></option>
-									<option value="right" <?php selected( isset( $horizontalPosition ) ? $horizontalPosition : '', 'right' ); ?>><?php _e( 'Right', WPFP_DOMAIN ); ?></option>
+									<option value="center" <?php selected( isset( $horizontalPosition ) ? $horizontalPosition : 'center', 'center' ); ?>><?php _e( 'Center', WPFP_DOMAIN ); ?></option>
+									<option value="left" <?php selected( isset( $horizontalPosition ) ? $horizontalPosition : 'center', 'left' ); ?>><?php _e( 'Left', WPFP_DOMAIN ); ?></option>
+									<option value="right" <?php selected( isset( $horizontalPosition ) ? $horizontalPosition : 'center', 'right' ); ?>><?php _e( 'Right', WPFP_DOMAIN ); ?></option>
 
 								</select>
 
@@ -707,11 +707,11 @@
 
 								<div class="radio">
 									
-									<input type="radio" id="teaserDisplay-yes" name="<?php print WPFP_SETTINGS_CUSTOM_OPTIONS; ?>[teaserDisplay]" value="yes" <?php checked( isset( $teaserDisplay ) ? $teaserDisplay : 'no', 'yes' ); ?> <?php WPFP_Helpers()->default_setting( 'yes', true ); ?> />
+									<input type="radio" id="teaserDisplay-yes" name="<?php print WPFP_SETTINGS_CUSTOM_OPTIONS; ?>[teaserDisplay]" value="yes" <?php checked( isset( $teaserDisplay ) ? $teaserDisplay : 'yes', 'yes' ); ?> <?php WPFP_Helpers()->default_setting( 'yes', true ); ?> />
 									<label for="teaserDisplay-yes">
 									 	<?php _e( 'yes', WPFP_DOMAIN ); ?>
 									</label>
-									<input type="radio" id="teaserDisplay-no" name="<?php print WPFP_SETTINGS_CUSTOM_OPTIONS; ?>[teaserDisplay]" value="no" <?php checked( isset( $teaserDisplay ) ? $teaserDisplay : 'no', 'no' ); ?> <?php WPFP_Helpers()->default_setting( 'yes', true ); ?> />
+									<input type="radio" id="teaserDisplay-no" name="<?php print WPFP_SETTINGS_CUSTOM_OPTIONS; ?>[teaserDisplay]" value="no" <?php checked( isset( $teaserDisplay ) ? $teaserDisplay : 'yes', 'no' ); ?> <?php WPFP_Helpers()->default_setting( 'yes', true ); ?> />
 									<label for="teaserDisplay-no">
 									 	<?php _e( 'no', WPFP_DOMAIN ); ?>
 									</label>
@@ -756,7 +756,7 @@
 								
 								<select id="orderBy" name="<?php print WPFP_SETTINGS_CUSTOM_OPTIONS; ?>[orderBy]" <?php WPFP_Helpers()->default_setting( 'date', true ); ?>>
 									
-									<option value="date" <?php selected( isset( $orderBy ) ? $orderBy : '', 'date' ); ?>><?php _e( 'Date', WPFP_DOMAIN ); ?></option>
+									<option value="date" <?php selected( isset( $orderBy ) ? $orderBy : 'date', 'date' ); ?>><?php _e( 'Date', WPFP_DOMAIN ); ?></option>
 									<option value="post__in" <?php selected( isset( $orderBy ) ? $orderBy : '', 'post__in' ); ?>><?php _e( 'Include Order', WPFP_DOMAIN ); ?></option>
 									<option value="ID" <?php selected( isset( $orderBy ) ? $orderBy : '', 'ID' ); ?>><?php _e( 'Post ID', WPFP_DOMAIN ); ?></option>
 									<option value="author" <?php selected( isset( $orderBy ) ? $orderBy : '', 'author' ); ?>><?php _e( 'Author', WPFP_DOMAIN ); ?></option>
@@ -794,7 +794,7 @@
 								
 								<select id="order" name="<?php print WPFP_SETTINGS_CUSTOM_OPTIONS; ?>[order]" <?php WPFP_Helpers()->default_setting( 'ASC', true ); ?>>
 									
-									<option value="ASC" <?php selected( isset( $order ) ? $order : '', 'ASC' ); ?>><?php _e( 'ASC', WPFP_DOMAIN ); ?></option>
+									<option value="ASC" <?php selected( isset( $order ) ? $order : 'ASC', 'ASC' ); ?>><?php _e( 'ASC', WPFP_DOMAIN ); ?></option>
 									<option value="DESC" <?php selected( isset( $order ) ? $order : '', 'DESC' ); ?>><?php _e( 'DESC', WPFP_DOMAIN ); ?></option>
 
 								</select>
