@@ -14,7 +14,7 @@ Wp Fullpage integrates the power of [fullPage.js](https://github.com/alvarotrigo
 
 = How to use =
 1. Create Fullpage Sections and Slides and integrates them into a Fullpage.
-2. Replace Sections and Slides by a list of any type of post
+2. Replace Sections and Slides by a list of any type of post.
 3. Setup your Fullpage with many options from [fullPage.js](https://github.com/alvarotrigo/fullPage.js "fullPage.js").
 4. Setup background colors and images, content position and many more.
 
