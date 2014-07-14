@@ -73,7 +73,7 @@
 						<label for="slidesNavTitle">
 						 	<?php _e( 'Slide Navigation Title', WPFP_DOMAIN ); ?>
 							
-							<span class="wpfp-tip" data-tip='<?php _e( 'Which metadata do you want to use for the slide navigation tooltip in case it is being used. If the metadata is empty or does not exists, it will display the title instead. If empty, it will display post title.', WPFP_DOMAIN ); ?>'></span>
+							<span class="wpfp-tip" data-tip='<?php _e( 'Which metadata do you want to use for the slide navigation tooltip in case it is being used. If the metadata is empty or does not exists, it will use the Section option.', WPFP_DOMAIN ); ?>'></span>
 						</label>
 						
 						<input type="text" id="slidesNavTitle" name="<?php print WPFP_SLIDE_PT_SLIDE_OPTIONS; ?>[slidesNavTitle]" <?php WPFP_Helpers()->value( isset( $slidesNavTitle ) ? $slidesNavTitle : '', isset( $SLIDESNAVTITLE ) ? $SLIDESNAVTITLE : '' ); ?> />
