@@ -31,19 +31,16 @@
 					<a href="#sections-options">
 						<?php _e( 'Sections Options', WPFP_DOMAIN );?>
 					</a>
-					<span class="wpfp-tip tabs-tip" data-tip='<?php _e( 'Options for sections of a post type or a taxonomy.', WPFP_DOMAIN ); ?>'></span>
 				</li>
 				<li>
 					<a href="#slides-options">
 						<?php _e( 'Slides Options', WPFP_DOMAIN );?>
 					</a>
-					<span class="wpfp-tip tabs-tip" data-tip='<?php _e( 'Options for slides of a post type or a taxonomy.', WPFP_DOMAIN ); ?>'></span>
 				</li>
 				<li>
 					<a href="#custom-options">
 						<?php _e( 'Custom Options', WPFP_DOMAIN );?>
 					</a>
-					<span class="wpfp-tip tabs-tip" data-tip='<?php _e( 'Custom Options for sections and slides of a post type or a taxonomy.', WPFP_DOMAIN ); ?>'></span>
 				</li>
 			</ul>
 
@@ -499,7 +496,7 @@
 								 	<?php _e( 'On Leave', WPFP_DOMAIN ); ?>
 								</label>
 								<textarea cols="40" id="onLeave" name="<?php print WPFP_SETTINGS_FULLPAGE_OPTIONS; ?>[onLeave]" <?php WPFP_Helpers()->default_setting( 'fullpageOnLeave( index, nextIndex, direction );', true ); ?>><?php print isset( $onLeave ) ? $onLeave : ''; ?></textarea>
-								<span class="wpfp-tip" data-tip="<?php _e( 'This callback is fired once the user leaves a section, in the transition to the new section.', WPFP_DOMAIN ); ?>"></span><a class="wpfp-goto" title="<?php _e( 'Go to callback definition.', WPFP_DOMAIN ); ?>" target="_blank" href="https://github.com/alvarotrigo/fullPage.js#onleave-index-nextindex-direction"></a>
+								<span class="wpfp-tip" data-tip='<?php _e( 'This callback is fired once the user leaves a section, in the transition to the new section. Use your own javascript code or customize the function "fullpageOnLeave" in "your-theme/wp-fullpage/js/jquery.fullpage.custom.js".', WPFP_DOMAIN ); ?>'></span><a class="wpfp-goto" title="<?php _e( 'Go to callback definition.', WPFP_DOMAIN ); ?>" target="_blank" href="https://github.com/alvarotrigo/fullPage.js#onleave-index-nextindex-direction"></a>
 
 							</li>
 							
@@ -510,7 +507,7 @@
 								 	<?php _e( 'After Load', WPFP_DOMAIN ); ?>
 								</label>
 								<textarea cols="40" id="afterLoad" name="<?php print WPFP_SETTINGS_FULLPAGE_OPTIONS; ?>[afterLoad]" <?php WPFP_Helpers()->default_setting( 'fullpageAfterLoad( anchorLink, index );', true ); ?>><?php print isset( $afterLoad ) ? $afterLoad : ''; ?></textarea>
-								<span class="wpfp-tip" data-tip="<?php _e( 'Callback fired once the sections have been loaded, after the scrolling has ended.', WPFP_DOMAIN ); ?>"></span><a class="wpfp-goto" title="<?php _e( 'Go to callback definition.', WPFP_DOMAIN ); ?>" target="_blank" href="https://github.com/alvarotrigo/fullPage.js#afterload-anchorlink-index"></a>
+								<span class="wpfp-tip" data-tip='<?php _e( 'Callback fired once the sections have been loaded, after the scrolling has ended. Use your own javascript code or customize the function "fullpageAfterLoad" in "your-theme/wp-fullpage/js/jquery.fullpage.custom.js".', WPFP_DOMAIN ); ?>'></span><a class="wpfp-goto" title="<?php _e( 'Go to callback definition.', WPFP_DOMAIN ); ?>" target="_blank" href="https://github.com/alvarotrigo/fullPage.js#afterload-anchorlink-index"></a>
 
 							</li>
 							
@@ -521,7 +518,7 @@
 								 	<?php _e( 'After Render', WPFP_DOMAIN ); ?>
 								</label>
 								<textarea cols="40" id="afterRender" name="<?php print WPFP_SETTINGS_FULLPAGE_OPTIONS; ?>[afterRender]" <?php WPFP_Helpers()->default_setting( 'fullpageAfterRender();', true ); ?>><?php print isset( $afterRender ) ? $afterRender : ''; ?></textarea>
-								<span class="wpfp-tip" data-tip="<?php _e( 'This callback is fired just after the structure of the page is generated. This is the callback you want to use to initialize other plugins or fire any code which requires the document to be ready (as this plugin modifies the DOM to create the resulting structure).', WPFP_DOMAIN ); ?>"></span><a class="wpfp-goto" title="<?php _e( 'Go to callback definition.', WPFP_DOMAIN ); ?>" target="_blank" href="https://github.com/alvarotrigo/fullPage.js#afterrender"></a>
+								<span class="wpfp-tip" data-tip='<?php _e( 'This callback is fired just after the structure of the page is generated. This is the callback you want to use to initialize other plugins or fire any code which requires the document to be ready (as this plugin modifies the DOM to create the resulting structure). Use your own javascript code or customize the function "fullpageAfterRender" in "your-theme/wp-fullpage/js/jquery.fullpage.custom.js".', WPFP_DOMAIN ); ?>'></span><a class="wpfp-goto" title="<?php _e( 'Go to callback definition.', WPFP_DOMAIN ); ?>" target="_blank" href="https://github.com/alvarotrigo/fullPage.js#afterrender"></a>
 
 							</li>
 							
@@ -532,7 +529,7 @@
 								 	<?php _e( 'After Resize', WPFP_DOMAIN ); ?>
 								</label>
 								<textarea cols="40" id="afterResize" name="<?php print WPFP_SETTINGS_FULLPAGE_OPTIONS; ?>[afterResize]" <?php WPFP_Helpers()->default_setting( 'fullpageAfterResize();', true ); ?>><?php print isset( $afterResize ) ? $afterResize : ''; ?></textarea>
-								<span class="wpfp-tip" data-tip="<?php _e( 'This callback is fired after resizing the browser\'s window. Just after the sections are resized.', WPFP_DOMAIN ); ?>"></span><a class="wpfp-goto" title="<?php _e( 'Go to callback definition.', WPFP_DOMAIN ); ?>" target="_blank" href="https://github.com/alvarotrigo/fullPage.js#afterresize"></a>
+								<span class="wpfp-tip" data-tip='<?php _e( 'This callback is fired after resizing the browser\'s window. Just after the sections are resized. Use your own javascript code or customize the function "fullpageAfterResize" in "your-theme/wp-fullpage/js/jquery.fullpage.custom.js".', WPFP_DOMAIN ); ?>'></span><a class="wpfp-goto" title="<?php _e( 'Go to callback definition.', WPFP_DOMAIN ); ?>" target="_blank" href="https://github.com/alvarotrigo/fullPage.js#afterresize"></a>
 
 							</li>
 							
@@ -543,7 +540,7 @@
 								 	<?php _e( 'After Slide Load', WPFP_DOMAIN ); ?>
 								</label>
 								<textarea cols="40" id="afterSlideLoad" name="<?php print WPFP_SETTINGS_FULLPAGE_OPTIONS; ?>[afterSlideLoad]" <?php WPFP_Helpers()->default_setting( 'fullpageAfterSlideLoad( anchorLink, index, slideAnchor, slideIndex );', true ); ?>><?php print isset( $afterSlideLoad ) ? $afterSlideLoad : ''; ?></textarea>
-								<span class="wpfp-tip" data-tip="<?php _e( 'Callback fired once the slide of a section have been loaded, after the scrolling has ended.', WPFP_DOMAIN ); ?>"></span><a class="wpfp-goto" title="<?php _e( 'Go to callback definition.', WPFP_DOMAIN ); ?>" target="_blank" href="https://github.com/alvarotrigo/fullPage.js#afterslideload-anchorlink-index-slideanchor-slideindex"></a>
+								<span class="wpfp-tip" data-tip='<?php _e( 'Callback fired once the slide of a section have been loaded, after the scrolling has ended. Use your own javascript code or customize the function "fullpageAfterSlideLoad" in "your-theme/wp-fullpage/js/jquery.fullpage.custom.js".', WPFP_DOMAIN ); ?>'></span><a class="wpfp-goto" title="<?php _e( 'Go to callback definition.', WPFP_DOMAIN ); ?>" target="_blank" href="https://github.com/alvarotrigo/fullPage.js#afterslideload-anchorlink-index-slideanchor-slideindex"></a>
 
 							</li>
 							
@@ -554,7 +551,7 @@
 								 	<?php _e( 'On Slide Leave', WPFP_DOMAIN ); ?>
 								</label>
 								<textarea cols="40" id="onSlideLeave" name="<?php print WPFP_SETTINGS_FULLPAGE_OPTIONS; ?>[onSlideLeave]" <?php WPFP_Helpers()->default_setting( 'fullpageSlideLeave( anchorLink, index, slideIndex, direction );', true ); ?>><?php print isset( $onSlideLeave ) ? $onSlideLeave : ''; ?></textarea>
-								<span class="wpfp-tip" data-tip="<?php _e( 'This callback is fired once the user leaves an slide to go to another, in the transition to the new slide. ', WPFP_DOMAIN ); ?>"></span><a class="wpfp-goto" title="<?php _e( 'Go to callback definition.', WPFP_DOMAIN ); ?>" target="_blank" href="https://github.com/alvarotrigo/fullPage.js#onslideleave-anchorlink-index-slideindex-direction"></a>
+								<span class="wpfp-tip" data-tip='<?php _e( 'This callback is fired once the user leaves an slide to go to another, in the transition to the new slide. Use your own javascript code or customize the function "fullpageSlideLeave" in "your-theme/wp-fullpage/js/jquery.fullpage.custom.js".', WPFP_DOMAIN ); ?>'></span><a class="wpfp-goto" title="<?php _e( 'Go to callback definition.', WPFP_DOMAIN ); ?>" target="_blank" href="https://github.com/alvarotrigo/fullPage.js#onslideleave-anchorlink-index-slideindex-direction"></a>
 
 							</li>
 
@@ -721,7 +718,7 @@
 
 								</div>
 
-								<span class="wpfp-tip" data-tip='<?php _e( 'Check the box if you want to display the teaser.', WPFP_DOMAIN ); ?>'></span>
+								<span class="wpfp-tip" data-tip='<?php _e( 'Select yes if you want to display the teaser.', WPFP_DOMAIN ); ?>'></span>
 								
 							</li>
 
