@@ -13,14 +13,12 @@ Change your WordPress website to a Fullscreen Scrolling one using fullPage.js
 Wp Fullpage integrates the power of [fullPage.js](https://github.com/alvarotrigo/fullPage.js "fullPage.js") into your WordPress website.
 
 = How to use =
-
 1. Create Fullpage Sections and Slides and integrates them into a Fullpage.
 2. Replace Sections and Slides by a list of any type of post
 3. Setup your Fullpage with many options from [fullPage.js](https://github.com/alvarotrigo/fullPage.js "fullPage.js").
 4. Setup background colors and images, content position and many more.
 
 = Customization =
-
 1. Customisz FullPage templates and functionalities by copying the contents of "/wp-content/plugins/wp-fullpage/templates/" into "/wp-content/themes/your-theme/wp-fullpage/".
 2. Many hook filters and actions are available too.
 
