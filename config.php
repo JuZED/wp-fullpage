@@ -37,6 +37,7 @@ define( 'WPFP_ASSETS_URL', WPFP_URL . 'assets/' );
 define( 'WPFP_TEMPLATE_PATH', 'wp-fullpage/' );
 define( 'WPFP_LAYOUT_PATH', 'layout/' );
 define( 'WPFP_SCRIPT_PATH', 'js/' );
+define( 'WPFP_STYLE_PATH', 'css/' );
 define( 'WPFP_LOOP_PATH', 'loop/' );
 
 /**
