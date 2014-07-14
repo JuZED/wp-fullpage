@@ -127,7 +127,7 @@ final class WP_Fullpage extends WP_Fullpage_Base {
 			wp_enqueue_script( 'jquery-slimscroll', $this->assets_url . '/js/jquery.slimscroll.min.js', array( 'jquery' ), WPFP_VERSION );
 			wp_enqueue_script( 'jquery-easings', $this->assets_url . '/js/jquery.easings.min.js', array( 'jquery' ), WPFP_VERSION );
 			wp_enqueue_script( 'jquery-pseudo', $this->assets_url . '/js/jquery.pseudo.js', array( 'jquery' ), WPFP_VERSION );
-			wp_enqueue_script( 'jquery-fullpage', $this->assets_url . '/js/jquery.fullPage.js', array( 'jquery-slimscroll', 'jquery-easings' ), WPFP_VERSION );
+			wp_enqueue_script( 'jquery-fullpage', $this->assets_url . '/js/jquery.fullPage.min.js', array( 'jquery-slimscroll', 'jquery-easings' ), WPFP_VERSION );
 			
 			// Get the path to 'jquery.fullpage.custom.js'.
 			// See if the file exists in the theme
