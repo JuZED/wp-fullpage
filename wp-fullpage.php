@@ -1,9 +1,9 @@
 <?php 
 
 /** 
- * Plugin Name: WP Fullpage
+ * Plugin Name: WP FullPage
  * Plugin URI: http://www.juzed.fr/
- * Description: Change your WordPress website to a Fullscreen Scrolling one using FullPage.js
+ * Description: Change your WordPress website to a Fullscreen Scrolling one using fullPage.js
  * Version: 1.0 
  * Author: Julien Zerbib
  * Author URI: http://www.juzed.fr/
@@ -26,7 +26,7 @@
  */
 
 /**
- * The Fullpage Launcher Class
+ * The FullPage Launcher Class
  * 
  * @package WP_Fullpage
  */
