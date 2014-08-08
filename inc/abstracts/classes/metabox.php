@@ -2,6 +2,8 @@
 
 /**
  * The Abstract Fullpage Metabox Class
+ * 
+ * @package WP_Fullpage\Includes\Absctract\Classes
  */
 abstract class WP_Fullpage_Metabox_Base extends WP_Fullpage_Base {
 	
@@ -43,6 +45,7 @@ abstract class WP_Fullpage_Metabox_Base extends WP_Fullpage_Base {
 		if ( ! current_user_can( 'edit_post', $post_id ) )
 			return false;
 
+		// Check if the data exists
 		if( ! isset( $_POST[ $data ] ) )
 			return false;
 

@@ -1,7 +1,19 @@
 <?php
 
 /**
- * Main WP Fullpage Class
+ * WP Fullpage.
+ *
+ * The WP Fullpage Class and a function to access it.
+ *
+ * @author Julien Zerbib <contact@juzed.fr>
+ */
+
+/**
+ * Main WP Fullpage Class.
+ *
+ * The WP Fullpage Object and some Helpers to access it.
+ * 
+ * @package 	WP_Fullpage
  */
 final class WP_Fullpage extends WP_Fullpage_Base {
 
@@ -15,9 +27,9 @@ final class WP_Fullpage extends WP_Fullpage_Base {
 	 *
 	 * Ensures only one instance of WP_Fullpage is loaded or can be loaded.
 	 *
-	 * @see 	WPFP()
+	 * @see 	WPFP()			The function to simply use the class methods
 	 * 
-	 * @return  WP_Fullpage - Main instance
+	 * @return  WP_Fullpage 	Main instance
 	 */
 	public static function instance() {
 		
@@ -115,14 +127,16 @@ final class WP_Fullpage extends WP_Fullpage_Base {
 			wp_enqueue_script( 'jquery-slimscroll', $this->assets_url . '/js/jquery.slimscroll.min.js', array( 'jquery' ), WPFP_VERSION );
 			wp_enqueue_script( 'jquery-easings', $this->assets_url . '/js/jquery.easings.min.js', array( 'jquery' ), WPFP_VERSION );
 			wp_enqueue_script( 'jquery-pseudo', $this->assets_url . '/js/jquery.pseudo.js', array( 'jquery' ), WPFP_VERSION );
-			// wp_enqueue_script( 'jquery-fullpage', $this->assets_url . '/js/jquery.fullPage.min.js', array( 'jquery', 'jquery-slimscroll', 'jquery-easings' ), WPFP_VERSION );
-			wp_enqueue_script( 'jquery-fullpage', $this->assets_url . '/js/jquery.fullPage.js', array( 'jquery', 'jquery-slimscroll', 'jquery-easings' ), WPFP_VERSION );
+			wp_enqueue_script( 'jquery-fullpage', $this->assets_url . '/js/jquery.fullPage.min.js', array( 'jquery-slimscroll', 'jquery-easings' ), WPFP_VERSION );
 			
-			$fullpage_custom_events_script_path = $this->locate_template(
-				trailingslashit( $this->script_path() ) . 'jquery.fullpage.custom-events.js'
+			// Get the path to 'jquery.fullpage.custom.js'.
+			// See if the file exists in the theme
+			$fullpage_custom_script_path = $this->locate_template(
+				trailingslashit( $this->script_path() ) . 'jquery.fullpage.custom.js'
 			);
 
-			$fullpage_custom_events_script_url = str_replace( 
+			// Convert the previous script path to an URL
+			$fullpage_custom_script_url = str_replace( 
 				array(
 					get_stylesheet_directory(),
 					get_template_directory(),
@@ -133,33 +147,43 @@ final class WP_Fullpage extends WP_Fullpage_Base {
 					get_template_directory_uri(),
 					WPFP_URL,
 				),
-				$fullpage_custom_events_script_path
+				$fullpage_custom_script_path
 			);
 
-			if( $fullpage_custom_events_script_url ) {
-
-				wp_enqueue_script( 'jquery-fullpage-custom-events', $fullpage_custom_events_script_url, array( 'jquery', 'jquery-fullpage', 'jquery-slimscroll', 'jquery-easings', 'jquery-pseudo' ), WPFP_VERSION );
-
-				$dependencies = array( 'jquery-fullpage-custom-events' );
-
-			}
-			else {
-
-				$dependencies = array( 'jquery', 'jquery-fullpage', 'jquery-slimscroll', 'jquery-easings' );
-
-			}
-
-			wp_enqueue_script( 'jquery-fullpage-init', $this->assets_url . '/js/jquery.fullPage.init.js', $dependencies, WPFP_VERSION );
-			
-			// Add Fullpage Styles
-			wp_enqueue_style( 'dashicons' );
-			wp_enqueue_style( 'jquery-fullPage', $this->assets_url . '/css/jquery.fullPage.css', array(), WPFP_VERSION );
-			wp_enqueue_style( 'jquery-fullPage-init', $this->assets_url . '/css/jquery.fullPage.custom.css', array( 'jquery-fullPage', 'dashicons' ), WPFP_VERSION );
+			wp_enqueue_script( 'jquery-fullpage-custom', $fullpage_custom_script_url, array( 'jquery-fullpage', 'jquery-pseudo' ), WPFP_VERSION );
+			wp_enqueue_script( 'jquery-fullpage-init', $this->assets_url . '/js/jquery.fullPage.init.js', array( 'jquery-fullpage-custom' ), WPFP_VERSION );
 
 			// Init Fullpage Params
 			$params = $this->init_fullpage_params();
 
-			wp_localize_script( 'jquery-fullpage-init', 'fullPageParams', $params );
+			// Fullpage params are added to the custom events script so they are available for fullpage init too
+			wp_localize_script( 'jquery-fullpage-custom', 'fullPageParams', $params );
+			
+			// Add Fullpage Styles
+			wp_enqueue_style( 'dashicons' );
+			wp_enqueue_style( 'jquery-fullPage', $this->assets_url . '/css/jquery.fullPage.css', array(), WPFP_VERSION );
+			
+			// Get the path to 'jquery.fullpage.custom.css'.
+			// See if the file exists in the theme
+			$fullpage_custom_style_path = $this->locate_template(
+				trailingslashit( $this->style_path() ) . 'jquery.fullpage.custom.css'
+			);
+
+			// Convert the previous style path to an URL
+			$fullpage_custom_style_url = str_replace( 
+				array(
+					get_stylesheet_directory(),
+					get_template_directory(),
+					WPFP_REL_PATH,
+				), 
+				array(
+					get_stylesheet_directory_uri(),
+					get_template_directory_uri(),
+					WPFP_URL,
+				),
+				$fullpage_custom_style_path
+			);
+			wp_enqueue_style( 'jquery-fullPage-custom', $fullpage_custom_style_url, array( 'jquery-fullPage', 'dashicons' ), WPFP_VERSION );
 
 		}
 		
@@ -168,7 +192,7 @@ final class WP_Fullpage extends WP_Fullpage_Base {
 	/**
 	 * Init Fullpage.js params
 	 * 
-	 * @return  void
+	 * @return  array	an array of fullpage params
 	 */
 	public function init_fullpage_params() {
 
@@ -176,13 +200,12 @@ final class WP_Fullpage extends WP_Fullpage_Base {
 		$params          = WPFP_Query()->fullpage->fullpage_options;
 		$sections_option = WPFP_Query()->fullpage->sections_option;
 
-		$params['navigationTooltips'] = array();
+		$params['anchors'] = array();
 
+		// Get the sections Fullpage params
 		foreach( WPFP_Query()->sections as $key => $section ) {
 
-			$params['navigationTooltips'][] = WPFP_Query()->get_section_nav_title( $section->ID );
-			$params['sectionsColor'][]      = WPFP_Query()->get_section_color( $key );
-			$params['anchors'][]            = $section->post_name;
+			$params['anchors'][] = $section->post_name;
 
 		}
 
@@ -237,7 +260,7 @@ final class WP_Fullpage extends WP_Fullpage_Base {
 		if ( $template )
 			load_template( $template, false );
 
-	} // END public function wc_get_template_part
+	} // END public function get_template_part
 
 	/**
 	 * Get templates passing attributes and including the file.
@@ -338,7 +361,7 @@ final class WP_Fullpage extends WP_Fullpage_Base {
 	 * For the parameter, if the file is called "header-special.php" then specify
 	 * "special".
 	 *
-	 * @example  WPFP()->get_header( 'special' );
+	 * WPFP()->get_header( 'special' );
 	 *
 	 * @param    string   $name   The name of the specialised fullpage header.
 	 *
@@ -359,7 +382,7 @@ final class WP_Fullpage extends WP_Fullpage_Base {
 	 * For the parameter, if the file is called "footer-special.php" then specify
 	 * "special".
 	 *
-	 * @example  WPFP()->get_footer( 'special' );
+	 * WPFP()->get_footer( 'special' );
 	 *
 	 * @param    string   $name   The name of the specialised fullpage footer.
 	 *
@@ -380,7 +403,7 @@ final class WP_Fullpage extends WP_Fullpage_Base {
 	 * For the parameter, if the file is called "navigation-special.php" then specify
 	 * "special".
 	 *
-	 * @example  WPFP()->get_navigation( 'special' );
+	 *WPFP()->get_navigation( 'special' );
 	 *
 	 * @param    string   $name   The name of the specialised fullpage navigation.
 	 *
@@ -401,7 +424,7 @@ final class WP_Fullpage extends WP_Fullpage_Base {
 	 * For the parameter, if the file is called "slides-navigation-special.php" then specify
 	 * "special".
 	 *
-	 * @example  WPFP()->get_slides_navigation( 'special' );
+	 * WPFP()->get_slides_navigation( 'special' );
 	 *
 	 * @param    string   $name   The name of the specialised fullpage slides navigation.
 	 *
@@ -422,7 +445,7 @@ final class WP_Fullpage extends WP_Fullpage_Base {
 	 * For the parameter, if the file is called "sidebar-special.php" then specify
 	 * "special".
 	 *
-	 * @example  WPFP()->get_sidebar( 'special' );
+	 * WPFP()->get_sidebar( 'special' );
 	 *
 	 * @param    string   $name   The name of the specialised fullpage sidebar.
 	 *
@@ -443,7 +466,7 @@ final class WP_Fullpage extends WP_Fullpage_Base {
 	 * For the parameter, if the file is called "sidebar-special.php" then specify
 	 * "sidebar" and "special".
 	 *
-	 * @example  WPFP()->get_layout( 'my_type', 'special' );
+	 * WPFP()->get_layout( 'my_type', 'special' );
 	 *
 	 * @param    string   $type   can be 'header', 'footer', 'sidebar', 'navigation', 'slides-navigation' or whatever you want
 	 * @param    string   $name   The name of the specialised fullpage layout.
@@ -453,7 +476,7 @@ final class WP_Fullpage extends WP_Fullpage_Base {
 	public function get_layout( $type, $name = null ) {
 		
 		/**
-		 * Fires before the fullpage layout template file is loaded.
+		 * Fires before the layout template file is loaded.
 		 *
 		 * The hook allows a specific layout template file to be used in place of the
 		 * default layout template file. If your file is called header-new.php,
@@ -491,7 +514,7 @@ final class WP_Fullpage extends WP_Fullpage_Base {
 	 * For the parameter, if the file is called "sections-special.php" then specify
 	 * "special".
 	 *
-	 * @example  WPFP()->get_sections( 'special' );
+	 * WPFP()->get_sections( 'special' );
 	 *
 	 * @param    string   $name   The name of the specialised fullpage sections loop.
 	 *
@@ -512,7 +535,7 @@ final class WP_Fullpage extends WP_Fullpage_Base {
 	 * For the parameter, if the file is called "slides-special.php" then specify
 	 * "special".
 	 *
-	 * @example  WPFP()->get_slides( 'special' );
+	 * WPFP()->get_slides( 'special' );
 	 *
 	 * @param    string   $name   The name of the specialised fullpage slides loop.
 	 *
@@ -530,12 +553,15 @@ final class WP_Fullpage extends WP_Fullpage_Base {
 	 * Includes the fullpage loop template for a theme or if a name is specified then a
 	 * specialised loop will be included.
 	 *
-	 * For the parameter, if the file is called "sections-special.php" then specify
-	 * "sections" and "special".
+	 * For the parameters, if the file is called "section-special.php" then specify
+	 * "section" and "special".
 	 *
-	 * @example  WPFP()->get_loop( 'sections', 'special' );
+	 * The method is looking for "$type-$name-the_post_name.php" and "$type-the_post_name.php" first.
+	 * So you can add a specific template for a section or a slide depending on its post_name.
 	 *
-	 * @param    string   $type   can be 'sections' or 'slides'
+	 * WPFP()->get_loop( 'section', 'special' );
+	 *
+	 * @param    string   $type   can be 'section' or 'slide'
 	 * @param    string   $name   The name of the specialised fullpage loop.
 	 *
 	 * @return void
@@ -561,9 +587,12 @@ final class WP_Fullpage extends WP_Fullpage_Base {
 			WPFP_Query()->$the_type();
 
 			$template  = false;
+			$post_name = WPFP_Query()->$type->post_name;
 
 			$template = $this->locate_template(
 				array(
+					trailingslashit( $loop_path ) . "{$type}-{$name}-{$post_name}.php",
+					trailingslashit( $loop_path ) . "{$type}-{$post_name}.php",
 					trailingslashit( $loop_path ) . "{$type}-{$name}.php",
 					trailingslashit( $loop_path ) . "{$type}.php",
 				)
@@ -576,7 +605,7 @@ final class WP_Fullpage extends WP_Fullpage_Base {
 
 		}
 	
-	} // END public function get_sections
+	} // END public function get_loop
 
 	/**
 	 * Get the template path.
@@ -612,6 +641,17 @@ final class WP_Fullpage extends WP_Fullpage_Base {
 	} // END private function layout_path
 
 	/**
+	 * Get the style path.
+	 *
+	 * @return  string
+	 */
+	private function style_path() {
+
+		return apply_filters( 'wpfp_style_path', WPFP_STYLE_PATH );
+		
+	} // END private function style_path
+
+	/**
 	 * Get the loop path.
 	 *
 	 * @return  string
@@ -631,9 +671,11 @@ final class WP_Fullpage extends WP_Fullpage_Base {
 /**
  * Returns the main instance of WP_Fullpage to prevent the need to use globals.
  *
- * @example WPFP()->my_method() 
+ * WPFP()->my_method() 
+ * 
+ * @package 	WP_Fullpage
  *
- * @return 	WP_Fullpage
+ * @return 		WP_Fullpage
  */
 function WPFP() {
 

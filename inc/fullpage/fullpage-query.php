@@ -1,7 +1,19 @@
 <?php
 
 /**
- * Main WP Fullpage Query Class
+ * WP Fullpage Query.
+ *
+ * The WP Fullpage Query Class and a function to access it.
+ *
+ * @author Julien Zerbib <contact@juzed.fr>
+ */
+
+/**
+ * Main WP Fullpage Query Class.
+ *
+ * The WP Fullpage Query Object and some Helpers to access it.
+ * 
+ * @package 	WP_Fullpage
  */
 final class WP_Fullpage_Query {
 
@@ -64,9 +76,9 @@ final class WP_Fullpage_Query {
 	 *
 	 * Ensures only one instance of WP_Fullpage_Query is loaded or can be loaded.
 	 *
-	 * @see 	WPFP()
+	 * @see 	WPFP()				The function to simply use the class methods
 	 * 
-	 * @return  WP_Fullpage_Query - Main instance
+	 * @return  WP_Fullpage_Query	Main instance
 	 */
 	public static function instance() {
 		
@@ -101,11 +113,13 @@ final class WP_Fullpage_Query {
 
 		$this->fullpage = $post;
 
+		// Get Fullpage options
 		$fullpage_options = get_post_meta( $post->ID, WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS, true );
 		$sections_options = get_post_meta( $post->ID, WPFP_FULLPAGE_PT_SECTIONS_OPTIONS, true );
 		$slides_options   = get_post_meta( $post->ID, WPFP_FULLPAGE_PT_SLIDES_OPTIONS, true );
 		$custom_options   = get_post_meta( $post->ID, WPFP_FULLPAGE_PT_CUSTOM_OPTIONS, true );
 
+		// Init Fullpage options
 		$this->fullpage->fullpage_options = apply_filters( 'wpfp_fullpage_fullpage_option', $fullpage_options, $post->ID );
 		$this->fullpage->sections_options = apply_filters( 'wpfp_fullpage_sections_option', $sections_options, $post->ID );
 		$this->fullpage->slides_options   = apply_filters( 'wpfp_fullpage_slides_option', $slides_options, $post->ID );
@@ -129,6 +143,7 @@ final class WP_Fullpage_Query {
 		if( empty( $sections_options ) )
 			return;
 
+		// Prepare Args for the query
 		switch ( $sections_options['sectionsType'] ) {
 			
 			case 'sections':
@@ -211,13 +226,17 @@ final class WP_Fullpage_Query {
 					// Whether the slide loop has started and the caller is in the loop.
 					$section->in_the_slide_loop = false;
 
-					$section_options = get_post_meta( $section->ID, WPFP_SECTION_PT_SECTION_OPTIONS, true );
-					$slides_options  = get_post_meta( $section->ID, WPFP_SECTION_PT_SLIDES_OPTIONS, true );
-					$custom_options  = get_post_meta( $section->ID, WPFP_SECTION_PT_CUSTOM_OPTIONS, true );
+					// Get Section options
+					$fullpage_options = get_post_meta( $section->ID, WPFP_SECTION_PT_FULLPAGE_OPTIONS, true );
+					$section_options  = get_post_meta( $section->ID, WPFP_SECTION_PT_SECTION_OPTIONS, true );
+					$slides_options   = get_post_meta( $section->ID, WPFP_SECTION_PT_SLIDES_OPTIONS, true );
+					$custom_options   = get_post_meta( $section->ID, WPFP_SECTION_PT_CUSTOM_OPTIONS, true );
 
-					$section->section_options = apply_filters( 'wpfp_section_section_options', $section_options, $key, $this );
-					$section->slides_options  = apply_filters( 'wpfp_section_slides_options', $slides_options, $key, $this );
-					$section->custom_options  = apply_filters( 'wpfp_section_custom_options', $custom_options, $key, $this );
+					// Init Section options
+					$section->fullpage_options = apply_filters( 'wpfp_section_fullpage_options', $fullpage_options, $key, $this );
+					$section->section_options  = apply_filters( 'wpfp_section_section_options', $section_options, $key, $this );
+					$section->slides_options   = apply_filters( 'wpfp_section_slides_options', $slides_options, $key, $this );
+					$section->custom_options   = apply_filters( 'wpfp_section_custom_options', $custom_options, $key, $this );
 
 					$this->init_slides( $key );
 
@@ -234,6 +253,7 @@ final class WP_Fullpage_Query {
 					// Whether the slide loop has started and the caller is in the loop.
 					$section->in_the_slide_loop = false;
 
+					// Init Section options with Fullpage options
 					$section->section_options = apply_filters( 'wpfp_section_section_options', $this->fullpage->sections_options, $key, $this );
 					$section->slides_options  = apply_filters( 'wpfp_section_slides_options', $this->fullpage->slides_options, $key, $this );
 					$section->custom_options  = apply_filters( 'wpfp_section_custom_options', $this->fullpage->custom_options, $key, $this );
@@ -270,10 +290,39 @@ final class WP_Fullpage_Query {
 		switch ( $slides_options['slidesType'] ) {
 			
 			case 'post-section':
-			case 'section':
 				
+				// No need to redo a query
 				$section->slides      = array( clone $section );
 				$section->slide_count = 1;
+				
+				foreach( $section->slides as $key => &$slide ) {
+					
+					// Get Slide options
+					$slide_options = get_post_meta( $slide->ID, WPFP_SLIDE_PT_SLIDE_OPTIONS, true );
+
+					// Default section slides options
+					if( empty( $slide_options ) )
+						$slide_options = $section->slides_options;
+					
+					// Init Slide options
+					$slide->slide_options = apply_filters( 'wpfp_slide_slide_options', $slide_options, $key, $this );
+
+				}
+
+				return;
+			
+			case 'section':
+				
+				// No need to redo a query
+				$section->slides      = array( clone $section );
+				$section->slide_count = 1;
+				
+				foreach( $section->slides as $key => &$slide ) {
+					
+					// Init Slide options with section options
+					$slide->slide_options  = apply_filters( 'wpfp_slide_slide_options', $section->slides_options, $key, $this );
+
+				}
 
 				return;
 			
@@ -347,8 +396,28 @@ final class WP_Fullpage_Query {
 
 			foreach( $section->slides as $key => &$slide ) {
 				
+				// Get Slide options
 				$slide_options = get_post_meta( $slide->ID, WPFP_SLIDE_PT_SLIDE_OPTIONS, true );
+				
+				// Init Slide options
 				$slide->slide_options = apply_filters( 'wpfp_slide_slide_options', $slide_options, $key, $this );
+
+			}
+
+		}
+		else {
+
+			foreach( $section->slides as $key => &$slide ) {
+					
+				// Get Slide options
+				$slide_options = get_post_meta( $slide->ID, WPFP_SLIDE_PT_SLIDE_OPTIONS, true );
+
+				// Default section slides options
+				if( empty( $slide_options ) )
+					$slide_options = $section->slides_options;
+				
+				// Init Slide options
+				$slide->slide_options  = apply_filters( 'wpfp_slide_slide_options', $slide_options, $key, $this );
 
 			}
 
@@ -380,9 +449,9 @@ final class WP_Fullpage_Query {
 	 */
 	public function next_slide() {
 
-		$this->sections[ $this->current_section ]->current_slide++;
+		$this->section->current_slide++;
 
-		$this->slide = $this->sections[ $this->current_section ]->slide = $this->sections[ $this->current_section ]->slides[ $this->sections[ $this->current_section ]->current_slide ];
+		$this->slide = $this->section->slide = $this->section->slides[ $this->section->current_slide ];
 
 		return $this->slide;
 
@@ -400,7 +469,8 @@ final class WP_Fullpage_Query {
 
 		$this->in_the_section_loop = true;
 
-		if ( $this->current_section == -1 ) // loop has just started
+		// loop has just started
+		if ( $this->current_section == -1 )
 			do_action_ref_array( 'wpfp_section_loop_start', array( &$this ) );
 
 		$this->section = $this->next_section();
@@ -417,12 +487,13 @@ final class WP_Fullpage_Query {
 	 */
 	public function the_slide() {
 		
-		$this->sections[ $this->current_section ]->in_the_slide_loop = true;
+		$this->section->in_the_slide_loop = true;
 
-		if ( $this->sections[ $this->current_section ]->current_slide == -1 ) // loop has just started
+		// loop has just started
+		if ( $this->section->current_slide == -1 )
 			do_action_ref_array( 'wpfp_slide_loop_start', array( &$this ) );
 
-		$this->slide = $this->sections[ $this->current_section ]->slide = $this->next_slide();
+		$this->slide = $this->section->slide = $this->next_slide();
 
 	} // END public function the_slide
 
@@ -441,6 +512,7 @@ final class WP_Fullpage_Query {
 
 		} elseif ( $this->current_section + 1 == $this->section_count && $this->section_count > 0 ) {
 
+			// loop has ended
 			do_action_ref_array( 'wpfp_sections_loop_end', array( &$this ) );
 			
 			// Do some cleaning up after the loop
@@ -463,12 +535,13 @@ final class WP_Fullpage_Query {
 	 */
 	public function have_slides() {
 
-		if ( $this->sections[ $this->current_section ]->current_slide + 1 < $this->sections[ $this->current_section ]->slide_count ) {
+		if ( $this->section->current_slide + 1 < $this->section->slide_count ) {
 			
 			return true;
 
-		} elseif ( $this->sections[ $this->current_section ]->current_slide + 1 == $this->sections[ $this->current_section ]->slide_count && $this->sections[ $this->current_section ]->slide_count > 0 ) {
+		} elseif ( $this->section->current_slide + 1 == $this->section->slide_count && $this->section->slide_count > 0 ) {
 
+			// loop has ended
 			do_action_ref_array( 'wpfp_slides_loop_end', array( &$this ) );
 
 			// Do some cleaning up after the loop
@@ -476,7 +549,7 @@ final class WP_Fullpage_Query {
 
 		}
 
-		$this->sections[ $this->current_section ]->in_the_slide_loop = false;
+		$this->section->in_the_slide_loop = false;
 
 		return false;
 
@@ -539,9 +612,9 @@ final class WP_Fullpage_Query {
 	 *
 	 * @return  int              		 the ID of the section
 	 */
-	public function get_section_ID( $section_index = 0, $print = false ) {
+	public function get_section_ID( $section_index = -1, $print = false ) {
 		
-		if( empty( $section_index ) )
+		if( -1 === $section_index )
 			$section_index = $this->current_section;
 
 		if( $print )
@@ -560,12 +633,12 @@ final class WP_Fullpage_Query {
 	 *
 	 * @return  int              		 the ID of the slide
 	 */
-	public function get_slide_ID( $section_index = 0, $slide_index = 0, $print = false ) {
+	public function get_slide_ID( $section_index = -1, $slide_index = -1, $print = false ) {
 		
-		if( empty( $section_index ) )
+		if( -1 === $section_index )
 			$section_index = $this->current_section;
 		
-		if( empty( $slide_index ) )
+		if( -1 === $slide_index )
 			$slide_index = $this->sections[ $section_index ]->current_slide;
 
 		if( $print )
@@ -579,13 +652,13 @@ final class WP_Fullpage_Query {
 	 * Display or retrieve the fullpage title with optional content.
 	 *
 	 * @param   int      	$fullpage_ID  Optional. The fullpage ID. If empty, will take the current fullpae.
-	 * @param   boolean  	$print   	  Optional, default to false. Whether to display or return.
 	 * @param   string   	$before  	  Optional. Content to prepend to the title.
 	 * @param   string   	$after   	  Optional. Content to append to the title.
+	 * @param   boolean  	$print   	  Optional, default to true. Whether to display or return.
 	 *
 	 * @return  null|string 		 	  Null on no title. String if $print parameter is false.
 	 */
-	public function get_fullpage_title( $fullpage_ID = 0, $print = false, $before = '', $after = '' ) {
+	public function get_fullpage_title( $fullpage_ID = 0, $before = '', $after = '', $print = true ) {
 			
 		if( empty( $fullpage_ID ) )
 			$fullpage_ID = $this->fullpage->ID;
@@ -603,16 +676,16 @@ final class WP_Fullpage_Query {
 	 * Display or retrieve the section title with optional content.
 	 *
 	 * @param   int      	$section_ID  Optional. The section ID. If empty, will take the current section.
-	 * @param   boolean  	$print   	 Optional, default to false. Whether to display or return.
 	 * @param   string   	$before  	 Optional. Content to prepend to the title.
 	 * @param   string   	$after   	 Optional. Content to append to the title.
+	 * @param   boolean  	$print   	 Optional, default to true. Whether to display or return.
 	 *
 	 * @return  null|string 		 	 Null on no title. String if $print parameter is false.
 	 */
-	public function get_section_title( $section_ID = 0, $print = false, $before = '', $after = '' ) {
+	public function get_section_title( $section_ID = 0, $before = '', $after = '', $print = true ) {
 			
 		if( empty( $section_ID ) )
-			$section_ID = $this->sections[ $this->current_section ]->ID;
+			$section_ID = $this->section->ID;
 		
 		$title = $this->get_title( $section_ID, $before, $after );
 
@@ -627,16 +700,16 @@ final class WP_Fullpage_Query {
 	 * Display or retrieve the slide title with optional content.
 	 *
 	 * @param   int      	$slide_ID    Optional. The slide ID. If empty, will take the current slide.
-	 * @param   boolean  	$print   	 Optional, default to false. Whether to display or return.
 	 * @param   string   	$before  	 Optional. Content to prepend to the title.
 	 * @param   string   	$after   	 Optional. Content to append to the title.
+	 * @param   boolean  	$print   	 Optional, default to true. Whether to display or return.
 	 *
 	 * @return  null|string 		 	 Null on no title. String if $print parameter is false.
 	 */
-	public function get_slide_title( $slide_ID = 0, $print = false, $before = '', $after = '' ) {
+	public function get_slide_title( $slide_ID = 0, $before = '', $after = '', $print = true ) {
 		
 		if( empty( $slide_ID ) )
-			$slide_ID = $this->sections[ $this->current_section ]->slides[ $this->sections[ $this->current_section ]->current_slide ]->ID;
+			$slide_ID = $this->slide->ID;
 		
 		$title = $this->get_title( $slide_ID, $before, $after );
 
@@ -673,55 +746,437 @@ final class WP_Fullpage_Query {
 	} // END public function get_title
 
 	/**
+	 * Display or retrieve the date on which the fullpage was written.
+	 *
+	 * @param   int      	$fullpage_ID  	Optional. The fullpage ID. If empty, will take the current fullpage.
+	 * @param   string      $d    			Optional. PHP date format defaults to the date_format option if not specified.
+	 * @param   boolean  	$print   	 	Optional, default to true. Whether to display or return.
+	 *
+	 * @return  string
+	 */
+	public function get_fullpage_date( $fullpage_ID = 0, $d = '', $print = true ) {
+			
+		if( empty( $fullpage_ID ) )
+			$fullpage_ID = $this->fullpage->ID;
+		
+		$date = $this->get_the_date( $fullpage_ID, $d );
+
+		if ( $date )
+			print $date;
+		
+		return $date;
+
+	} // END public function get_fullpage_date
+
+	/**
+	 * Display or retrieve the date on which the section was written.
+	 *
+	 * @param   int      	$section_ID  	Optional. The section ID. If empty, will take the current section.
+	 * @param   string      $d    			Optional. PHP date format defaults to the date_format option if not specified.
+	 * @param   boolean  	$print   	 	Optional, default to true. Whether to display or return.
+	 *
+	 * @return  string
+	 */
+	public function get_section_date( $section_ID = 0, $d = '', $print = true ) {
+			
+		if( empty( $section_ID ) )
+			$section_ID = $this->section->ID;
+		
+		$date = $this->get_the_date( $section_ID, $d );
+
+		if ( $date )
+			print $date;
+		
+		return $date;
+
+	} // END public function get_section_date
+
+	/**
+	 * Display or retrieve the date on which the slide was written.
+	 *
+	 * @param   int      	$slide_ID  	Optional. The slide ID. If empty, will take the current slide.
+	 * @param   string      $d    		Optional. PHP date format defaults to the date_format option if not specified.
+	 * @param   boolean  	$print   	Optional, default to true. Whether to display or return.
+	 *
+	 * @return  string
+	 */
+	public function get_slide_date( $slide_ID = 0, $d = '', $print = true ) {
+			
+		if( empty( $slide_ID ) )
+			$slide_ID = $this->slide->ID;
+		
+		$date = $this->get_the_date( $slide_ID, $d );
+
+		if ( $date )
+			print $date;
+		
+		return $date;
+
+	} // END public function get_slide_date
+
+	/**
+	 * Retrieve the date on which the post was written.
+	 *
+	 * Modify output with 'get_the_date' filter.
+	 *
+	 * @param  int 			$post_ID 	Post ID
+	 * @param  string      	$d    		Optional. PHP date format defaults to the date_format option if not specified.
+	 * 
+	 * @return string 				Date the current post was written.
+	 */
+	public function get_the_date( $post_ID, $d = '' ) {
+		
+		$post = get_post( $post_ID );
+
+		if ( '' == $d )
+			$the_date = mysql2date( get_option( 'date_format' ), $post->post_date );
+		else
+			$the_date = mysql2date( $d, $post->post_date );
+
+		/**
+		 * Filter the date a post was published.
+		 *
+		 * @param string      $the_date The formatted date.
+		 * @param string      $d        PHP date format. Defaults to 'date_format' option if not specified.
+		 * @param int|WP_Post $post     The post object or ID.
+		 */
+		return apply_filters( 'get_the_date', $the_date, $d, $post );
+
+	} // END public function get_the_date
+
+	/**
+	 * Display or retrieve the author of the fullpage.
+	 *
+	 * @param   int      	$fullpage_ID  	Optional. The fullpage ID. If empty, will take the current fullpage.
+	 * @param   boolean  	$print   	 	Optional, default to true. Whether to display or return.
+	 *
+	 * @return  string
+	 */
+	public function get_fullpage_author( $fullpage_ID = 0, $print = true ) {
+			
+		if( empty( $fullpage_ID ) )
+			$fullpage_ID = $this->fullpage->ID;
+		
+		$author = $this->get_the_author( $fullpage_ID );
+
+		if ( $author )
+			print $author;
+		
+		return $author;
+
+	} // END public function get_fullpage_author
+
+	/**
+	 * Display or retrieve the author of the section.
+	 *
+	 * @param   int      	$section_ID  	Optional. The section ID. If empty, will take the current section.
+	 * @param   boolean  	$print   	 	Optional, default to true. Whether to display or return.
+	 *
+	 * @return  string
+	 */
+	public function get_section_author( $section_ID = 0, $print = true ) {
+			
+		if( empty( $section_ID ) )
+			$section_ID = $this->section->ID;
+		
+		$author = $this->get_the_author( $section_ID );
+
+		if ( $author )
+			print $author;
+		
+		return $author;
+
+	} // END public function get_section_author
+
+	/**
+	 * Display or retrieve the author of the slide.
+	 *
+	 * @param   int      	$slide_ID  	Optional. The slide ID. If empty, will take the current slide.
+	 * @param   boolean  	$print   	Optional, default to true. Whether to display or return.
+	 *
+	 * @return  string
+	 */
+	public function get_slide_author( $slide_ID = 0, $print = true ) {
+			
+		if( empty( $slide_ID ) )
+			$slide_ID = $this->slide->ID;
+		
+		$author = $this->get_the_author( $slide_ID );
+
+		if ( $author )
+			print $author;
+		
+		return $author;
+
+	} // END public function get_slide_author
+
+	/**
+	 * Retrieve the author of the post.
+	 *
+	 * @param   int      	$post_ID  	The post ID.
+	 *
+	 * @return  string
+	 */
+	public function get_the_author( $post_ID ) {
+		
+		$post       = get_post( $post_ID );
+		$user_id    = $post->post_author;
+		$authordata = get_userdata( $user_id );
+
+		/**
+		 * Filter the display name of the post author.
+		 *
+		 * @param string $authordata->display_name The author's display name.
+		 */
+		return apply_filters( 'the_author', $authordata->display_name );
+
+	} // END public function get_the_author
+
+	/**
+	 * Do the section has a slides navigation?
+	 *
+	 * @param   int      	$section_index  Optional. The section index. If empty, will take the current section.
+	 *
+	 * @return  bool
+	 */
+	public function section_has_slides_navigation( $section_index = -1 ) {
+		
+		if( -1 === $section_index )
+			$section_index = $this->current_section;
+
+		$section_ID               = $this->get_section_ID( $section_index );
+		$section_fullpage_options = $this->sections[ $section_index ]->fullpage_options;
+		$fullpage_options         = $this->fullpage->fullpage_options;
+
+		$slides_navigation = 'inherit';
+
+		// the slides navigation option of the section
+		if( ! empty( $section_fullpage_options['slidesNavigation'] ) )
+			$slides_navigation = $section_fullpage_options['slidesNavigation'];
+
+		// the default fullpage slides navigation
+		if( 'inherit' === $slides_navigation )
+			$slides_navigation = $fullpage_options['slidesNavigation'];
+		
+		return $slides_navigation === 'yes' ? true : false;
+
+	} // END public function section_has_slides_navigation
+
+	/**
+	 * Display or retrieve slides navigation position for a section.
+	 *
+	 * @param   int      	$section_index  Optional. The section index. If empty, will take the current section.
+	 * @param   boolean  	$print   		Optional, default to true. Whether to display or return.
+	 *
+	 * @return  string 						the position of slides navigation
+	 */
+	public function get_slides_navigation_position( $section_index = -1, $print = true ) {
+		
+		if( -1 === $section_index )
+			$section_index = $this->current_section;
+
+		$section_ID               = $this->get_section_ID( $section_index );
+		$section_fullpage_options = $this->sections[ $section_index ]->fullpage_options;
+		$fullpage_options         = $this->fullpage->fullpage_options;
+
+		$slides_navigation_position = 'inherit';
+
+		// the slides navigation position option of the section
+		if( ! empty( $section_fullpage_options['slidesNavPosition'] ) )
+			$slides_navigation_position = $section_fullpage_options['slidesNavPosition'];
+
+		// the default fullpage slides navigation position
+		if( 'inherit' === $slides_navigation_position )
+			$slides_navigation_position = $fullpage_options['slidesNavPosition'];
+
+		if ( $print )
+			print $slides_navigation_position;
+		
+		return $slides_navigation_position;
+
+	} // END public function get_slides_navigation_position
+
+	/**
 	 * Display or retrieve the section navigation title.
 	 *
-	 * @param   int      	$section_ID  Optional. The section ID. If empty, will take the current section.
-	 * @param   boolean  	$print   	 Optional, default to false. Whether to display or return.
+	 * @param   int      	$section_index  Optional. The section index. If empty, will take the current section.
+	 * @param   boolean  	$print   	 	Optional, default to false. Whether to display or return.
 	 *
 	 * @return  null|string 		 	 Null on no title. String if $print parameter is false.
 	 */
-	public function get_section_nav_title( $section_ID = 0, $print = false ) {
-			
-		if( empty( $section_ID ) )
-			$section_ID = $this->sections[ $this->current_section ]->ID;
+	public function get_section_nav_title( $section_index = -1, $print = false ) {
+		
+		if( -1 === $section_index )
+			$section_index = $this->current_section;
 
-		$sections_option = $this->fullpage->sections_option;
+		$section_ID       = $this->get_section_ID( $section_index );
+		$section_options  = $this->sections[ $section_index ]->section_options;
+		$sections_options = $this->fullpage->sections_options;
 
-		if( ! empty( $sections_option['navTitle'] ) )
-			$nav_title = get_post_meta( $section_ID, $sections_option['navTitle'], true );
+		// the navTitle option of the section
+		if( ! empty( $section_options['navTitle'] ) )
+			$nav_title = get_post_meta( $section_ID, $section_options['navTitle'], true );
 
+		// the default fullpage navTitle
+		if( empty( $nav_title ) && ! empty( $sections_options['navTitle'] ) )
+			$nav_title = get_post_meta( $section_ID, $sections_options['navTitle'], true );
+
+		// the section title
 		if( empty( $nav_title ) )
-			$nav_title = $this->get_section_title( $section_ID );
+			$nav_title = $this->get_section_title( $section_ID, '', '', false );
 
 		if ( $print )
 			print $nav_title;
 		
 		return $nav_title;
 
-	} // END public function get_slide_title
+	} // END public function get_section_nav_title
 
 	/**
-	 * Display or retrieve the section color.
+	 * Display or retrieve the slide navigation title.
 	 *
-	 * @param   int      	$section_index  The section index.
-	 * @param   boolean  	$print   	 	Optional, default to false. Whether to display or return.
+	 * @param   int      	$section_index  	Optional. The section index. If empty, will take the current section.
+	 * @param   int      	$slide_index  		Optional. The slide index. If empty, will take the current slide.
+	 * @param   boolean  	$print   	 		Optional, default to false. Whether to display or return.
 	 *
-	 * @return  null|string 		 	 Null on no title. String if $print parameter is false.
+	 * @return  null|string 		 	 		Null on no title. String if $print parameter is false.
 	 */
-	public function get_section_color( $section_index, $print = false ) {
+	public function get_slide_nav_title( $section_index = -1, $slide_index = -1, $print = false ) {
+		
+		if( -1 === $section_index )
+			$section_index = $this->current_section;
+		
+		if( -1 === $slide_index )
+			$slide_index = $this->sections[ $section_index ]->current_slide;
 
-		$sections_option = $this->fullpage->sections_options;
-		$section_option  = $this->sections[ $section_index ]->section_options;
+		$slide_ID         = $this->get_slide_ID( $section_index, $slide_index );
+		$slide_options    = $this->sections[ $section_index ]->slides[ $slide_index ]->slide_options;
+		$section_options  = $this->sections[ $section_index ]->section_options;
+		$sections_options = $this->fullpage->sections_options;
 
-		if( ! empty( $section_option['sectionColor'] ) )
-			$section_color = $section_option['sectionColor'];
-		else
-			$section_color = $sections_option['sectionColor'];
+		// the navTitle option of the slide
+		if( ! empty( $slide_options['navTitle'] ) )
+			$nav_title = get_post_meta( $slide_ID, $slide_options['navTitle'], true );
+
+		// the navTitle option of the section
+		if( empty( $nav_title ) && ! empty( $section_options['navTitle'] ) )
+			$nav_title = get_post_meta( $slide_ID, $section_options['navTitle'], true );
+
+		// the default fullpage navTitle
+		if( empty( $nav_title ) && ! empty( $sections_options['navTitle'] ) )
+			$nav_title = get_post_meta( $slide_ID, $sections_options['navTitle'], true );
+
+		// the slide title
+		if( empty( $nav_title ) )
+			$nav_title = $this->get_slide_title( $slide_ID, '', '', false );
 
 		if ( $print )
-			print $section_color;
+			print $nav_title;
 		
-		return $section_color;
+		return $nav_title;
+
+	} // END public function get_slide_nav_title
+
+	/**
+	 * Display or retrieve the slide navigation position.
+	 *
+	 * @param   int      	$section_index  	Optional. The section index. If empty, will take the current section.
+	 * @param   int      	$slide_index  		Optional. The slide index. If empty, will take the current slide.
+	 * @param   boolean  	$print   	 		Optional, default to true. Whether to display or return.
+	 *
+	 * @return  string 		 	 				could be something like 'top center', 'middle left', ...
+	 */
+	public function get_slide_position( $section_index = -1, $slide_index = -1, $print = true ) {
+		
+		if( -1 === $section_index )
+			$section_index = $this->current_section;
+		
+		if( -1 === $slide_index )
+			$slide_index = $this->sections[ $section_index ]->current_slide;
+
+		$slide_options   = $this->sections[ $section_index ]->slides[ $slide_index ]->slide_options;
+		$section_options = $this->sections[ $section_index ]->slides_options;
+		$fulpage_options = $this->fullpage->slides_options;
+
+		$vertical_position   = 'inherit';
+		$horizontal_position = 'inherit';
+
+		// the position options of the slide
+		if( ! empty( $slide_options['verticalPosition'] ) )
+			$vertical_position = $slide_options['verticalPosition'];
+		
+		if( ! empty( $slide_options['horizontalPosition'] ) )
+			$horizontal_position = $slide_options['horizontalPosition'];
+
+		// the vertical position option of the section
+		if( 'inherit' === $vertical_position )
+			$vertical_position = $section_options['verticalPosition'];
+		
+		// the horizontal position option of the section
+		if(  empty( $horizontal_position ) || 'inherit' === $horizontal_position )
+			$horizontal_position = $section_options['horizontalPosition'];
+
+		// the vertical position option of the fullpage
+		if( 'inherit' === $vertical_position )
+			$vertical_position = $fulpage_options['verticalPosition'];
+		
+		// the horizontal position option of the fullpage
+		if( 'inherit' === $horizontal_position )
+			$horizontal_position = $fulpage_options['horizontalPosition'];
+
+		$position = sprintf( '%1s %2s', $vertical_position, $horizontal_position );
+
+		if ( $print )
+			print $position;
+		
+		return $position;
+
+	} // END public function get_slide_position
+
+	/**
+	 * Display or retrieve the slide color.
+	 *
+	 * @param   int      	$section_index  	Optional. The section index. If empty, will take the current section.
+	 * @param   int      	$slide_index    	Optional. The section index. If empty, will take the current slide.
+	 * @param   boolean  	$print   	 		Optional, default to true. Whether to display or return.
+	 *
+	 * @return  string
+	 */
+	public function get_slide_color( $section_index = -1, $slide_index = -1, $print = true ) {
+		
+		if( -1 === $section_index )
+			$section_index = $this->current_section;
+		
+		if( -1 === $slide_index )
+			$slide_index = $this->sections[ $section_index ]->current_slide;
+
+		$slide_options   = $this->sections[ $section_index ]->slides[ $slide_index ]->slide_options;
+		$section_options = $this->sections[ $section_index ]->slides_options;
+		$fulpage_options = $this->fullpage->slides_options;
+
+		$color = '';
+
+		// the color of the slide
+		if( ! empty( $slide_options['slideColor'] ) )
+			$color = $slide_options['slideColor'];
+
+		// the slide color option of the section
+		if( '' === $color )
+			$color = $section_options['slideColor'];
+		
+		// the slide color option of the fullpage
+		if( '' === $color )
+			$color = $fulpage_options['slideColor'];
+
+		if( $color )
+			$background_color = sprintf( 'background-color: %1s;', $color );
+		else
+			$background_color = '';
+
+		if ( $print )
+			print $background_color;
+		
+		return $background_color;
 
 	} // END public function get_section_color
 
@@ -770,7 +1225,7 @@ final class WP_Fullpage_Query {
 	public function get_section_guid( $section_ID = 0, $print = false ) {
 				
 		if( empty( $section_ID ) )
-			$section_ID = $this->sections[ $this->current_section ]->ID;
+			$section_ID = $this->section->ID;
 		
 		$guid = get_the_guid( $section_ID );
 
@@ -798,7 +1253,7 @@ final class WP_Fullpage_Query {
 	public function get_slide_guid( $slide_ID = 0, $print = false ) {
 		
 		if( empty( $slide_ID ) )
-			$slide_ID = $this->sections[ $this->current_section ]->slides[ $this->sections[ $this->current_section ]->current_slide ]->ID;
+			$slide_ID = $this->slide->ID;
 		
 		$guid = get_the_guid( $slide_ID );
 
@@ -822,7 +1277,12 @@ final class WP_Fullpage_Query {
 		if( empty( $fullpage_ID ) )
 			$fullpage_ID = $this->fullpage->ID;
 		
-		return $this->get_bg( $fullpage_ID, $print );
+		$background_image = $this->get_bg( $fullpage_ID );
+
+		if( $print )
+			print $background_image;
+
+		return $background_image;
 
 	} // END public function get_section_bg
 
@@ -837,16 +1297,21 @@ final class WP_Fullpage_Query {
 	public function get_section_bg( $section_ID = 0, $print = false ) {
 				
 		if( empty( $section_ID ) )
-			$section_ID = $this->sections[ $this->current_section ]->ID;
+			$section_ID = $this->section->ID;
 		
-		return $this->get_bg( $section_ID, $print );
+		$background_image = $this->get_bg( $section_ID );
+
+		if( $print )
+			print $background_image;
+
+		return $background_image;
 
 	} // END public function get_section_bg
 
 	/**
 	 * Display or retrieve the slide background.
 	 *
-	 * @param   int      $slide_ID   Optional. The slide ID. If empty, will take the current section.
+	 * @param   int      $slide_ID   Optional. The slide ID. If empty, will take the current slide.
 	 * @param   boolean  $print  	 Optional, default to false. Whether to display or return.
 	 * 
 	 * @return  string
@@ -854,21 +1319,25 @@ final class WP_Fullpage_Query {
 	public function get_slide_bg( $slide_ID = 0, $print = false ) {
 				
 		if( empty( $slide_ID ) )
-			$slide_ID = $this->sections[ $this->current_section ]->slides[ $this->sections[ $this->current_section ]->current_slide ]->ID;
+			$slide_ID = $this->slide->ID;
 		
-		return $this->get_bg( $slide_ID, $print );
+		$background_image = $this->get_bg( $slide_ID );
+
+		if( $print )
+			print $background_image;
+
+		return $background_image;
 
 	} // END public function get_slide_bg
 
 	/**
-	 * Display or retrieve the slide background.
+	 * Retrieve the post background.
 	 *
-	 * @param   int      $post_ID   Optional. The post ID.
-	 * @param   boolean  $print  	Optional, default to false. Whether to display or return.
+	 * @param   int      $post_ID   The post ID.
 	 * 
 	 * @return  string
 	 */
-	public function get_bg( $post_ID, $print = false ) {
+	public function get_bg( $post_ID ) {
 		
 		$background_image = '';
 
@@ -876,12 +1345,9 @@ final class WP_Fullpage_Query {
 			
 			$post_thumbnail_id = get_post_thumbnail_id( $post_ID );
 			$post_thumbnail    = wp_get_attachment_image_src( $post_thumbnail_id, 'full' );
-			$background_image  = sprintf( 'data-bg="%1s"', $post_thumbnail[0] );
+			$background_image  = $post_thumbnail[0];
 
 		}
-
-		if( $print )
-			print $background_image;
 
 		return $background_image;
 
@@ -892,18 +1358,18 @@ final class WP_Fullpage_Query {
 	 *
 	 * @param   int      $section_index  	Optional. The section index. If empty, will take the current section.
 	 * @param   int      $slide_index    	Optional. The section index. If empty, will take the current slide.
-	 * @param   boolean  $print  		 	Optional, default to false. Whether to display or return.
+	 * @param   boolean  $print  		 	Optional, default to true. Whether to display or return.
 	 * @param   string   $more_link_text 	Optional. Content for when there is more text.
 	 * @param   bool 						$strip_teaser Optional. Strip teaser content before the more text. Default is false.
 	 *
 	 * @return  string
 	 */
-	public function get_content( $section_index = 0, $slide_index = 0, $print = false, $more_link_text = null, $strip_teaser = false) {
+	public function get_content( $section_index = -1, $slide_index = -1, $print = true, $more_link_text = null, $strip_teaser = false) {
 		
-		if( empty( $section_index ) )
+		if( -1 === $section_index )
 			$section_index = $this->current_section;
 		
-		if( empty( $slide_index ) )
+		if( -1 === $slide_index )
 			$slide_index = $this->sections[ $section_index ]->current_slide;
 
 		$slide_ID         = $this->sections[ $section_index ]->slides[ $slide_index ]->ID;
@@ -951,7 +1417,7 @@ final class WP_Fullpage_Query {
 		$content = $post->post_content;
 
 		if ( null === $more_link_text )
-			$more_link_text = __( '(more&hellip;)' );
+			$more_link_text = __( '(more&hellip;)', WPFP_DOMAIN );
 
 		$output = '';
 		$has_teaser = false;
@@ -1031,9 +1497,11 @@ final class WP_Fullpage_Query {
 /**
  * Returns the main instance of WP_Fullpage_Query to prevent the need to use globals.
  *
- * @example WPFP_Query()->my_method() 
+ * WPFP_Query()->my_method() 
+ * 
+ * @package 	WP_Fullpage
  *
- * @return 	WP_Fullpage_Query
+ * @return 		WP_Fullpage_Query
  */
 function WPFP_Query() {
 

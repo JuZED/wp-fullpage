@@ -1,3 +1,12 @@
+<?php
+
+/**
+ * The Posts Sortables List Template
+ * 
+ * @package 	WP_Fullpage\Includes\Ajax\Views
+ */
+
+?>
 	
 <?php
 	if( have_posts() ) :

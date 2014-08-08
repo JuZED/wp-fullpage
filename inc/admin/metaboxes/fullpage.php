@@ -2,6 +2,9 @@
 
 /**
  * The Fullpage Type Metabox Class
+ * 
+ * @package 	WP_Fullpage\Includes\Admin\Metaboxes
+ * @subpackage 	WP_Fullpage\Includes\Absctract\Classes
  */
 class WP_Fullpage_Fullpage_Type_Metabox extends WP_Fullpage_Metabox_Base {
 
@@ -32,6 +35,7 @@ class WP_Fullpage_Fullpage_Type_Metabox extends WP_Fullpage_Metabox_Base {
 		add_action( 'load-post.php', array( &$this, 'metaboxes_init' ) );
 		add_action( 'load-post-new.php', array( &$this, 'metaboxes_init' ) );
 		
+		// Add some scripts
 		add_action( 'admin_enqueue_scripts', array( &$this, 'admin_enqueue_scripts' ) );
 
 	} // END private function actions_filters
@@ -435,6 +439,8 @@ class WP_Fullpage_Fullpage_Type_Metabox extends WP_Fullpage_Metabox_Base {
 		if( $this->post_type != $post_type )
 			return;
 
+		WPFP_JS_Handlers()->color_picker( '#slideColor', $dependencies );
+
 		$args = array(
 			array(
 				'launcherID' => 'bbm-sections-list-launcher',
@@ -513,7 +519,7 @@ class WP_Fullpage_Fullpage_Type_Metabox extends WP_Fullpage_Metabox_Base {
 
 		WPFP_JS_Handlers()->jquery_sortables( $args, $dependencies );
 
-		WPFP_JS_Handlers()->chosen_jquery( $dependencies );
+		WPFP_JS_Handlers()->jquery_chosen( $dependencies );
 
 		WPFP_JS_Handlers()->jquery_button( '.radio', $dependencies );
 

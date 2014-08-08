@@ -2,6 +2,9 @@
 
 /**
  * The Fullpage Javascript Handlers Class
+ * 
+ * @package 	WP_Fullpage\Includes\Admin\JS_Handlers
+ * @subpackage 	WP_Fullpage\Includes\Absctract\Classes
  */
 class WP_Fullpage_JS_Handlers extends WP_Fullpage_Base {
 
@@ -33,35 +36,17 @@ class WP_Fullpage_JS_Handlers extends WP_Fullpage_Base {
 		return self::$_instance;
 
 	} // END public static function instance
-
+	
 	/**
-	 * Define Backbone Constants
-	 * 
-	 * @return  void
-	 */
-	public static function define_constants() {
-		
-		define( 'WPFP_BBM_PREFIX', 'bbm' );	
-		define( 'WPFP_BBM_CLOSE_BUTTON', sprintf( '%1s-%2s', WPFP_BBM_PREFIX, 'close-button' ) );	
-		define( 'WPFP_BBM_ADD_BUTTON', sprintf( '%1s-%2s', WPFP_BBM_PREFIX, 'add-button' ) );	
-		define( 'WPFP_BBM_LOADS_CONTENT', sprintf( '%1s-%2s', WPFP_BBM_PREFIX, 'loads-content' ) );	
-		define( 'WPFP_BBM_SEARCH_INPUT', sprintf( '%1s-%2s', WPFP_BBM_PREFIX, 'search-input' ) );	
-		define( 'WPFP_BBM_PAGE_INPUT', sprintf( '%1s-%2s', WPFP_BBM_PREFIX, 'page-input' ) );	
-		define( 'WPFP_BBM_DATE_SELECT', sprintf( '%1s-%2s', WPFP_BBM_PREFIX, 'date-select' ) );	
-		define( 'WPFP_BBM_CAT_SELECT', sprintf( '%1s-%2s', WPFP_BBM_PREFIX, 'cat-select' ) );	
-		define( 'WPFP_BBM_SELECT_ALL', sprintf( '%1s-%2s', WPFP_BBM_PREFIX, 'select-all' ) );	
-
-	} // END public static function define_constants
-
-	/**
-	 * Init Settings Page Object
+	 * Init Fullpage Javascript Handlers
 	 *
 	 * @return  void
 	 */
 	public function init( $dir = __DIR__, $file = __FILE__ ) {
-
-		parent::init( __DIR__, __FILE__ );
-
+		
+		// Base Init
+		parent::init( $dir, $file );
+		
 	} // END public function init
 
 	/**
@@ -254,7 +239,6 @@ class WP_Fullpage_JS_Handlers extends WP_Fullpage_Base {
 	/**
 	 * Add Backbone Modal Posts List Handler
 	 * 
-	 * @example
 	 *          WPFP_JS_Handlers()->backbone_modal_posts_list( $args );
 	 *
 	 * 			where : $args = array(
@@ -322,7 +306,6 @@ class WP_Fullpage_JS_Handlers extends WP_Fullpage_Base {
 	/**
 	 * Add Backbone Modal Posts of Term List Handler
 	 * 
-	 * @example
 	 *          WPFP_JS_Handlers()->backbone_modal_posts_of_term_list( $args, $dependencies );
 	 *
 	 * 			where : $args = array(
@@ -390,7 +373,6 @@ class WP_Fullpage_JS_Handlers extends WP_Fullpage_Base {
 	/**
 	 * Add Backbone Modal Posts of Type List Handler
 	 * 
-	 * @example
 	 *          WPFP_JS_Handlers()->backbone_modal_posts_of_type_list( $args, $dependencies );
 	 *
 	 * 			where : $args = array(
@@ -458,7 +440,7 @@ class WP_Fullpage_JS_Handlers extends WP_Fullpage_Base {
 	/**
 	 * Add a jQuery Tooltip Handler
 	 * 
-	 * @example WPFP_JS_Handlers()->jquery_tooltip( $dependencies );
+	 * WPFP_JS_Handlers()->jquery_tooltip( $dependencies );
 	 *
 	 * @param   array   $dependencies  a full array of dependencies :
 	 *                          array( 
@@ -496,7 +478,7 @@ class WP_Fullpage_JS_Handlers extends WP_Fullpage_Base {
 	/**
 	 * Add Chosen jQuery
 	 * 
-	 * @example WPFP_JS_Handlers()->jquery_chosen( $dependencies );
+	 * WPFP_JS_Handlers()->jquery_chosen( $dependencies );
 	 *
 	 * @param   array   $dependencies  a full array of dependencies :
 	 *                          array( 
@@ -512,7 +494,7 @@ class WP_Fullpage_JS_Handlers extends WP_Fullpage_Base {
 	 *
 	 * @return   void                    			
 	 */
-	public function chosen_jquery( &$dependencies ) {
+	public function jquery_chosen( &$dependencies ) {
 
 		wp_enqueue_style( 'wpfp-chosen-jquery', $this->assets_url . 'css/chosen.min.css', array(), WPFP_VERSION );
 		wp_enqueue_script( 'wpfp-chosen-jquery-min', $this->assets_url . 'js/chosen.jquery.min.js', array( 'jquery' ), WPFP_VERSION );
@@ -529,12 +511,11 @@ class WP_Fullpage_JS_Handlers extends WP_Fullpage_Base {
 			)
 		);
 
-	} // END public function chosen_jquery
+	} // END public function jquery_chosen
 
 	/**
 	 * Add a jQuery Tooltip Handler
 	 * 
-	 * @example
 	 *          WPFP_JS_Handlers()->jquery_sortables( $args, $dependencies );
 	 *
 	 * 			where : $args = array(
@@ -604,26 +585,7 @@ class WP_Fullpage_JS_Handlers extends WP_Fullpage_Base {
 	/**
 	 * Add a Reset Form Handler
 	 * 
-	 * @example
 	 *          WPFP_JS_Handlers()->reset_form( $selectors, $launcherSelector, $dependencies );
-	 *
-	 * 			where : $args = array(
-	 *		  		array(
-	 *			   		'ajaxAction'       => 'my_first_ajax_action',
-	 *			   		'postType'         => 'my_first_post_type',
-	 *			     	'sortableID'       => 'my_first_post_type_sortable_selector',
-	 *			     	'inputID'          => 'my_first_post_type_input_selector',
-	 *			     	'nonce'            => 'my_first_nonce',
-	 *		       	),
-	 *		  		array(
-	 *			   		'ajaxAction'       => 'my_second_ajax_action',
-	 *			   		'postType'         => 'my_second_post_type',
-	 *			     	'sortableID'       => 'my_second_post_type_sortable_selector',
-	 *			     	'inputID'          => 'my_second_post_type_input_selector',
-	 *			     	'nonce'            => 'my_second_nonce',
-	 *		       	),
-	 *	         );
-	 *
 	 *
 	 * @param   string   $selectors             the CSS selectors to bind
 	 * @param   string   $launcherSelector      the CSS selector for the launcher
@@ -664,28 +626,57 @@ class WP_Fullpage_JS_Handlers extends WP_Fullpage_Base {
 	} // END public function reset_form
 
 	/**
+	 * Add a Color Picker
+	 * 
+	 *          WPFP_JS_Handlers()->color_picker( $selectors, $dependencies );
+	 *
+	 * @param   string   $selectors             the CSS selectors to bind
+	 * @param   array    $dependencies          a full array of dependencies :
+	 *                          array( 
+	 *                     			'js' => array(
+	 *                     				'js-dependencie-1-handle',
+	 *                     				'js-dependencie-2-handle',
+	 *                     			),
+	 *                     			'css' => array(
+	 *                     				'css-dependencie-1-handle',
+	 *                     				'css-dependencie-2-handle',
+	 *                     			) 
+	 *                     		)
+	 *
+	 * @return   void                    			
+	 */
+	public function color_picker( $selectors, &$dependencies ) {
+
+		wp_enqueue_style( 'wp-color-picker' );
+		wp_enqueue_style( 'color-picker-custom', $this->assets_url . 'css/color-picker.custom.css', array( 'wp-color-picker' ), WPFP_VERSION );
+		
+		wp_enqueue_script( 'wp-color-picker' );
+
+		$params = array(
+			'selectors' => $selectors,
+		);
+
+		wp_enqueue_script( 'color-picker-init', $this->assets_url . 'js/color-picker.init.js', array( 'wp-color-picker' ), WPFP_VERSION );
+		wp_localize_script( 'color-picker-init', 'wpfpColorPickerParams', $params );
+		
+		$this->last_dependencies( 
+			$dependencies, 
+			array( 
+				'js'  => array(
+					'color-picker-init',
+				),
+				'css' => array(
+					'color-picker-custom',
+				) 
+			)
+		);
+
+	} // END public function color_picker
+
+	/**
 	 * Add jquery ui button handler
 	 * 
-	 * @example
 	 *          WPFP_JS_Handlers()->jquery_button( $selectors, $dependencies );
-	 *
-	 * 			where : $args = array(
-	 *		  		array(
-	 *			   		'ajaxAction'       => 'my_first_ajax_action',
-	 *			   		'postType'         => 'my_first_post_type',
-	 *			     	'sortableID'       => 'my_first_post_type_sortable_selector',
-	 *			     	'inputID'          => 'my_first_post_type_input_selector',
-	 *			     	'nonce'            => 'my_first_nonce',
-	 *		       	),
-	 *		  		array(
-	 *			   		'ajaxAction'       => 'my_second_ajax_action',
-	 *			   		'postType'         => 'my_second_post_type',
-	 *			     	'sortableID'       => 'my_second_post_type_sortable_selector',
-	 *			     	'inputID'          => 'my_second_post_type_input_selector',
-	 *			     	'nonce'            => 'my_second_nonce',
-	 *		       	),
-	 *	         );
-	 *
 	 *
 	 * @param   string   $selectors             the CSS selectors to bind
 	 * @param   array    $dependencies          a full array of dependencies :
@@ -730,26 +721,7 @@ class WP_Fullpage_JS_Handlers extends WP_Fullpage_Base {
 	/**
 	 * Add a jQuery UI Tabs Handler
 	 * 
-	 * @example
 	 *          WPFP_JS_Handlers()->jquery_ui_tabs( $dependencies );
-	 *
-	 * 			where : $args = array(
-	 *		  		array(
-	 *			   		'ajaxAction'       => 'my_first_ajax_action',
-	 *			   		'postType'         => 'my_first_post_type',
-	 *			     	'sortableID'       => 'my_first_post_type_sortable_selector',
-	 *			     	'inputID'          => 'my_first_post_type_input_selector',
-	 *			     	'nonce'            => 'my_first_nonce',
-	 *		       	),
-	 *		  		array(
-	 *			   		'ajaxAction'       => 'my_second_ajax_action',
-	 *			   		'postType'         => 'my_second_post_type',
-	 *			     	'sortableID'       => 'my_second_post_type_sortable_selector',
-	 *			     	'inputID'          => 'my_second_post_type_input_selector',
-	 *			     	'nonce'            => 'my_second_nonce',
-	 *		       	),
-	 *	         );
-	 *
 	 *
 	 * @param   array   $dependencies  a full array of dependencies :
 	 *                          array( 
@@ -785,7 +757,6 @@ class WP_Fullpage_JS_Handlers extends WP_Fullpage_Base {
 	 *
 	 * Ensure CSS and JS files are enqueued in the right way they are called
 	 *
-	 * @example 
 	 * 		WPFP_JS_Handlers()->last_dependencies( 
 	 * 			array( 
 	 * 				'js' => array( 
@@ -822,15 +793,14 @@ class WP_Fullpage_JS_Handlers extends WP_Fullpage_Base {
 
 } // END class WP_Fullpage_JS_Handlers
 
-// Define Backbone Constants
-WP_Fullpage_JS_Handlers::define_constants();
-
 /**
  * Returns the main instance of WP_Fullpage_JS_Handlers to prevent the need to use globals.
  *
- * @example WPFP_JS_Handlers()->my_method() 
+ * WPFP_JS_Handlers()->my_method() 
+ * 
+ * @package 	WP_Fullpage\Includes\Admin\JS_Handlers
  *
- * @return 	WP_Fullpage_JS_Handlers
+ * @return 		WP_Fullpage_JS_Handlers
  */
 function WPFP_JS_Handlers() {
 

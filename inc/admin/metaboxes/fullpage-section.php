@@ -2,6 +2,9 @@
 
 /**
  * The Fullpage Section Type Metabox Class
+ * 
+ * @package 	WP_Fullpage\Includes\Admin\Metaboxes
+ * @subpackage 	WP_Fullpage\Includes\Absctract\Classes
  */
 class WP_Fullpage_Section_Type_Metabox extends WP_Fullpage_Metabox_Base {
 
@@ -32,6 +35,7 @@ class WP_Fullpage_Section_Type_Metabox extends WP_Fullpage_Metabox_Base {
 		add_action( 'load-post.php', array( &$this, 'metaboxes_init' ) );
 		add_action( 'load-post-new.php', array( &$this, 'metaboxes_init' ) );
 		
+		// Add some scripts
 		add_action( 'admin_enqueue_scripts', array( &$this, 'admin_enqueue_scripts' ) );
 
 	} // END private function actions_filters
@@ -97,6 +101,12 @@ class WP_Fullpage_Section_Type_Metabox extends WP_Fullpage_Metabox_Base {
 	 */
 	public function render_section_options_content( $post ) {
 		
+		// Fullpage Options
+		$fullpage_options = $this->prepare_fullpage_options( $post );
+
+		extract( $fullpage_options['options'] );
+		extract( array_change_key_case( $fullpage_options['default'], CASE_UPPER ) );
+		
 		// Section Options
 		$section_options = $this->prepare_section_options( $post );
 
@@ -121,7 +131,39 @@ class WP_Fullpage_Section_Type_Metabox extends WP_Fullpage_Metabox_Base {
 	} // END public function render_section_options_content
 	
 	/**
-	 * Prepare Custom Options.
+	 * Prepare Fullpage Options.
+	 *
+	 * @param  WP_Post $post The post object.
+	 *
+	 * @return array         an array of params
+	 *                          array(
+	 *                          	options => the options,
+	 *                          	default => the default option
+	 *                          )
+	 */
+	private function prepare_fullpage_options( $post ) {
+	
+		// Add an nonce field so we can check for it later.
+		wp_nonce_field( WPFP_SECTION_PT_FULLPAGE_OPTIONS, WPFP_SECTION_PT_FULLPAGE_OPTIONS . '_nonce' );
+
+		// Retrieving an existing value from the database.
+		$fullpage_options = (array) get_post_meta( $post->ID, WPFP_SECTION_PT_FULLPAGE_OPTIONS, true );
+		
+		// restrieving default settings
+		$default_fullpage_options = get_option( WPFP_SETTINGS_FULLPAGE_OPTIONS, array() );
+		
+		// Parsing options with default from Settings
+		$fullpage_options = wp_parse_args( $fullpage_options, $default_fullpage_options );
+
+		return array(
+			'options' => $fullpage_options,
+			'default' => $default_fullpage_options,
+		);
+
+	} // END private function prepare_fullpage_options
+	
+	/**
+	 * Prepare Section Options.
 	 *
 	 * @param  WP_Post $post The post object.
 	 *
@@ -140,14 +182,14 @@ class WP_Fullpage_Section_Type_Metabox extends WP_Fullpage_Metabox_Base {
 		$section_options = (array) get_post_meta( $post->ID, WPFP_SECTION_PT_SECTION_OPTIONS, true );
 		
 		// restrieving default settings
-		$default_fullpage_options = get_option( WPFP_SETTINGS_SECTIONS_OPTIONS, array() );
+		$default_section_options = get_option( WPFP_SETTINGS_SECTIONS_OPTIONS, array() );
 		
 		// Parsing options with default from Settings
-		$section_options = wp_parse_args( $section_options, $default_fullpage_options );
+		$section_options = wp_parse_args( $section_options, $default_section_options );
 
 		return array(
 			'options' => $section_options,
-			'default' => $default_fullpage_options,
+			'default' => $default_section_options,
 		);
 
 	} // END private function prepare_section_options
@@ -268,6 +310,9 @@ class WP_Fullpage_Section_Type_Metabox extends WP_Fullpage_Metabox_Base {
 	 */
 	public function save( $post_id ) {
 		
+		// Save Fullpage Options
+		$this->save_fullpage_options( $post_id );
+		
 		// Save Section Options
 		$this->save_section_options( $post_id );
 
@@ -278,6 +323,30 @@ class WP_Fullpage_Section_Type_Metabox extends WP_Fullpage_Metabox_Base {
 		$this->save_custom_options( $post_id );
 
 	} // public function save
+
+	/**
+	 * Save Fullpage Options
+	 *
+	 * @param  int  $post_id  The ID of the post being saved.
+	 *
+	 * @return void
+	 */
+	private function save_fullpage_options( $post_id ) {
+
+		/*
+		 * We need to verify this came from the our screen and with proper authorization,
+		 * because save_post can be triggered at other times.
+		 */
+		if( ! $this->is_it_safe( $post_id, WPFP_SECTION_PT_FULLPAGE_OPTIONS, WPFP_SECTION_PT_FULLPAGE_OPTIONS, WPFP_SECTION_PT_FULLPAGE_OPTIONS . '_nonce' ) )
+			return $post_id;
+
+		// Sanitize the user inputs.
+		$fullpage_options = $_POST[ WPFP_SECTION_PT_FULLPAGE_OPTIONS ];
+
+		// Update the meta field.
+		update_post_meta( $post_id, WPFP_SECTION_PT_FULLPAGE_OPTIONS, $fullpage_options );
+
+	} // private function save_fullpage_options
 
 	/**
 	 * Save Section Options
@@ -370,6 +439,8 @@ class WP_Fullpage_Section_Type_Metabox extends WP_Fullpage_Metabox_Base {
 		if( $this->post_type != $post_type )
 			return;
 
+		WPFP_JS_Handlers()->color_picker( '#slideColor', $dependencies );
+
 		$args = array(
 			array(
 				'launcherID' => 'bbm-slides-list-launcher',
@@ -452,7 +523,7 @@ class WP_Fullpage_Section_Type_Metabox extends WP_Fullpage_Metabox_Base {
 
 		WPFP_JS_Handlers()->jquery_button( '.radio', $dependencies );
 
-		WPFP_JS_Handlers()->chosen_jquery( $dependencies );
+		WPFP_JS_Handlers()->jquery_chosen( $dependencies );
 
 		wp_enqueue_style( 'section-options', $this->assets_url . 'css/section-options.css', $dependencies['css'], WPFP_VERSION );
 

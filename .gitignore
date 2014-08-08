@@ -35,6 +35,7 @@ Icon
 .Spotlight-V100
 .Trashes
 
+# Project ignored files
 inc/ajax/spec.php
 juzed.png
 juzed53bc3f8bd3f25.png
@@ -42,7 +43,11 @@ palette-2.png
 palette.png
 todo.php
 Wp Fullpage Banner.psd
+<<<<<<< HEAD
 IGNORE/paper-10.jpg
 IGNORE/paper-11.jpg
 IGNORE/wordpress-logo-notext-rgb.png
 IGNORE/wordpress-logo-simplified-rgb.png
+=======
+IGNORE/*
+>>>>>>> develop

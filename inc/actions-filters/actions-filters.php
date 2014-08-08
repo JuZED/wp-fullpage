@@ -2,6 +2,9 @@
 
 /**
  * The Fullpage Actions and Filters Class
+ * 
+ * @package 	WP_Fullpage\Includes\Actions_Filters
+ * @subpackage 	WP_Fullpage\Includes\Absctract\Classes
  */
 class WP_Fullpage_Actions_Filters extends WP_Fullpage_Base {
 

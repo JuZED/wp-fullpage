@@ -16,7 +16,7 @@ WPFP()->get_header(); ?>
 		while ( have_posts() ) : the_post();
 
 			// Start the sections Loop.
-			WPFP()->get_sections();
+			WPFP()->get_sections( WPFP_Query()->fullpage->post_name );
 
 		endwhile;
 
@@ -24,7 +24,12 @@ WPFP()->get_header(); ?>
 
 </div><!-- #fullpage -->
 
-
 <?php
-WPFP()->get_sidebar();
+
+$navigation = WPFP_Query()->fullpage->fullpage_options['navigation'];
+
+if( 'yes' === $navigation )
+	WPFP()->get_navigation( WPFP_Query()->fullpage->post_name );
+
+// WPFP()->get_sidebar();
 WPFP()->get_footer();

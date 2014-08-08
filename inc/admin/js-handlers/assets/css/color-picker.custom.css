@@ -1,0 +1,25 @@
+
+.wp-color-result {
+	border: 1px solid #FFF000;
+	color: #17A5C7;
+	margin: 0 6px 6px 0;
+	height: 30px; }
+
+	.wp-color-result:hover {
+		background: #fafafa;
+		border-color: #2ea2cc;
+		color: #222; }
+
+		.wp-color-result:after,
+		.wp-color-result:hover:after {
+			color: #17A5C7;
+			line-height: 27px;
+			height: 30px; }
+
+.button.button-small.wp-picker-clear {
+	line-height: 30px;
+	height: 34px;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	border-color: #FFF000;
+	background-color: rgba(26, 205, 255, 0.32); }

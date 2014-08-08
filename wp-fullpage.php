@@ -1,31 +1,34 @@
 <?php 
-/* 
-Plugin Name: WP Fullpage
-Plugin URI: http://www.juzed.fr/
-Description: Add Fullpage.js Features to your Blog 
-Version: 1.0 
-Author: Julien Zerbib
-Author URI: http://www.juzed.fr/
-  
-  
-	Copyright 2013  Julien Zerbib  ( email : contact@juzed.fr )
 
-	This program is free software; you can redistribute it and/or modify
-	it under the terms of the GNU General Public License, version 2, as 
-	published by the Free Software Foundation.
-
-	This program is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU General Public License for more details.
-
-	You should have received a copy of the GNU General Public License
-	along with this program; if not, write to the Free Software
-	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
-*/
+/** 
+ * Plugin Name: WP FullPage
+ * Plugin URI: http://www.juzed.fr/
+ * Description: Change your WordPress website to a Fullscreen Scrolling one using fullPage.js
+ * Version: 1.0 
+ * Author: Julien Zerbib
+ * Author URI: http://www.juzed.fr/
+ * 
+ * 
+ * 		Copyright 2013  Julien Zerbib  ( email : contact@juzed.fr )
+ * 
+ * 		This program is free software; you can redistribute it and/or modify
+ * 	 	it under the terms of the GNU General Public License, version 2, as 
+ * 	 	published by the Free Software Foundation.
+ * 
+ * 		This program is distributed in the hope that it will be useful,
+ * 	 	but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * 	  	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * 	   	GNU General Public License for more details.
+ * 
+ * 		You should have received a copy of the GNU General Public License
+ * 	 	along with this program; if not, write to the Free Software
+ * 	  	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ */
 
 /**
- * The Fullpage Launcher Class
+ * The FullPage Launcher Class
+ * 
+ * @package WP_Fullpage
  */
 class WP_Fullpage_Launcher {
 
@@ -59,6 +62,8 @@ class WP_Fullpage_Launcher {
 		// Note: "add" is written with quotes, as CPTs don't get added to the DB,
 		// They are only referenced in the post_type column with a post entry, 
 		// when you add a post of this CPT.
+		require_once( dirname( __FILE__ ) . '/config.php' );
+		require_once( dirname( __FILE__ ) . '/inc/abstracts/abstracts.php' );
 		require_once( dirname( __FILE__ ) . '/inc/post-types/post-types.php' );
 		$WP_Fullpage_Post_Types = new WP_Fullpage_Post_Types();
 		$WP_Fullpage_Post_Types->post_types_register();
@@ -82,7 +87,7 @@ class WP_Fullpage_Launcher {
 
 } // END class WP_Fullpage_Launcher
 
-// Installation and uninstallation hooks
+// Plugin Activation and Deactivation hooks
 register_activation_hook( __FILE__, array( 'WP_Fullpage_Launcher', 'activate' ) );
 register_deactivation_hook( __FILE__, array( 'WP_Fullpage_Launcher', 'deactivate' ) );
 

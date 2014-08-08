@@ -1,13 +1,16 @@
 <?php
 
+/**
+ * Require WordPress Class
+ */
 require_once( ABSPATH . 'wp-admin/includes/class-wp-list-table.php' );
 require_once( ABSPATH . 'wp-admin/includes/class-wp-posts-list-table.php' );
 
 /**
  * Fullpage Posts List Table class.
- *
- * @package WordPress
- * @subpackage List_Table
+ * 
+ * @package 	WP_Fullpage\Includes\Absctract\Classes
+ * @subpackage 	WordPress
  */
 abstract class WP_Fullpage_Posts_List_Table extends WP_Posts_List_Table {
 
@@ -42,6 +45,12 @@ abstract class WP_Fullpage_Posts_List_Table extends WP_Posts_List_Table {
 		global $avail_post_stati, $wp_query, $per_page, $mode;
 
 		$avail_post_stati           = wp_edit_posts_query();
+
+		// Unset Trash status
+		foreach( $avail_post_stati as $key => $post_status )
+			if( 'trash' === $post_status )
+				unset( $avail_post_stati[ $key ] );
+
 		$this->hierarchical_display = ( is_post_type_hierarchical( $this->screen->post_type ) && 'menu_order title' == $wp_query->query['orderby'] );
 		$total_items                = $this->hierarchical_display ? $wp_query->post_count : $wp_query->found_posts;
 		$post_type                  = $this->screen->post_type;
@@ -79,15 +88,16 @@ abstract class WP_Fullpage_Posts_List_Table extends WP_Posts_List_Table {
 		if ( !empty($locked_post_status) )
 			return array();
 		
-		$status_links       = array();
-		$base_classes       = array( WPFP_BBM_LOADS_CONTENT );
-		$num_posts          = wp_count_posts( $post_type, 'readable' );
-		$classes            = $base_classes;
-		$current_user_id    = get_current_user_id();
-		$ajax_params        = $this->ajax_params;
-		$ajax_params['s']   = '';
-		$ajax_params['m']   = '';
-		$ajax_params['cat'] = '';
+		$status_links         = array();
+		$base_classes         = array( WPFP_BBM_LOADS_CONTENT );
+		$num_posts            = wp_count_posts( $post_type, 'readable' );
+		$classes              = $base_classes;
+		$current_user_id      = get_current_user_id();
+		$ajax_params          = $this->ajax_params;
+		$ajax_params['s']     = '';
+		$ajax_params['m']     = '';
+		$ajax_params['cat']   = '';
+		$ajax_params['paged'] = '';
 
 		if ( $this->user_posts_count ) {
 
@@ -96,7 +106,7 @@ abstract class WP_Fullpage_Posts_List_Table extends WP_Posts_List_Table {
 
 			$ajax_params['author'] = $current_user_id;
 
-			$status_links['mine']   = "<a data-params='" . json_encode( $ajax_params ) . "' href='#' class='" . implode( ' ', $classes ) . "'>" . sprintf( _nx( 'Mine <span class="count">(%s)</span>', 'Mine <span class="count">(%s)</span>', $this->user_posts_count, 'posts' ), number_format_i18n( $this->user_posts_count ) ) . '</a>';
+			$status_links['mine']    = "<a data-params='" . json_encode( $ajax_params ) . "' href='#' class='" . implode( ' ', $classes ) . "'>" . sprintf( _nx( 'Mine <span class="count">(%s)</span>', 'Mine <span class="count">(%s)</span>', $this->user_posts_count, 'posts' ), number_format_i18n( $this->user_posts_count ) ) . '</a>';
 			$ajax_params['allposts'] = 1;
 
 		}
@@ -736,6 +746,7 @@ abstract class WP_Fullpage_Posts_List_Table extends WP_Posts_List_Table {
 			return;
 
 		$input_id = $input_id . '-search-input';
+
 		?>
 			<p class="search-box">
 				<label class="screen-reader-text" for="<?php print $input_id ?>"><?php print $text; ?>:</label>
@@ -809,7 +820,7 @@ abstract class WP_Fullpage_Posts_List_Table extends WP_Posts_List_Table {
 		
 		$ajax_params['paged'] = min( $total_pages, $current+1 );
 
-		$page_links[]     = sprintf( "<a data-params='%s' class='%s' title='%s' href='#'>%s</a>",
+		$page_links[] = sprintf( "<a data-params='%s' class='%s' title='%s' href='#'>%s</a>",
 			json_encode( $ajax_params ),
 			'next-page' . $disable_last . ' ' . WPFP_BBM_LOADS_CONTENT,
 			esc_attr__( 'Go to the next page' ),

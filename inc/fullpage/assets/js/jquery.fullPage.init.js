@@ -5,18 +5,14 @@
 
 		$( '#fullpage' ).fullpage( {
 
-			verticalCentered: fullPageParams.verticalCentered == 'yes' ? true : false,
+			verticalCentered: false,
 			resize : fullPageParams.resize == 'yes' ? true : false,
-			sectionsColor : fullPageParams.sectionsColor,
 			anchors: fullPageParams.anchors,
 			scrollingSpeed: parseInt( fullPageParams.scrollingSpeed ),
 			easing: fullPageParams.easing,
-			menu: fullPageParams.menu == 'false' ? false : fullPageParams.menu,
-			navigation: fullPageParams.navigation == 'yes' ? true : false,
-			navigationPosition: fullPageParams.navigationPosition,
-			navigationTooltips: fullPageParams.navigationTooltips,
-			slidesNavigation: fullPageParams.slidesNavigation == 'yes' ? true : false,
-			slidesNavPosition: fullPageParams.slidesNavPosition,
+			menu: '#fp-nav',
+			navigation: false,
+			slidesNavigation: false,
 			loopBottom: fullPageParams.loopBottom == 'yes' ? true : false,
 			loopTop: fullPageParams.loopTop == 'yes' ? true : false,
 			loopHorizontal: fullPageParams.loopHorizontal == 'yes' ? true : false,

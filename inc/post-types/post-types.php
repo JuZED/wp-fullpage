@@ -2,6 +2,9 @@
 
 /**
  * WP Fullpage Post Types
+ * 
+ * @package 	WP_Fullpage\Includes\Post_Types
+ * @subpackage 	WP_Fullpage\Includes\Absctract\Classes
  */
 class WP_Fullpage_Post_Types extends WP_Fullpage_Base {
 
@@ -156,7 +159,7 @@ class WP_Fullpage_Post_Types extends WP_Fullpage_Base {
 	} // END public function fullpage_section_type_register
 
 	/**
-	 * 'slide' post type
+	 * 'fullpage-slide' post type
 	 * 
 	 * @return  void
 	 */

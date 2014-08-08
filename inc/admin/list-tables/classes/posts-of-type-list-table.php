@@ -2,6 +2,9 @@
 
 /**
  * Fullpage Posts of type List Table class.
+ * 
+ * @package 	WP_Fullpage\Includes\Admin\List_Tables\Classes
+ * @subpackage 	WP_Fullpage\Includes\Absctract\Classes
  */
 class WP_Fullpage_Posts_Of_Type_List_Table extends WP_Fullpage_Posts_List_Table {
 
@@ -67,15 +70,16 @@ class WP_Fullpage_Posts_Of_Type_List_Table extends WP_Fullpage_Posts_List_Table 
 		if ( !empty($locked_post_status) )
 			return array();
 		
-		$status_links       = array();
-		$base_classes       = array( WPFP_BBM_LOADS_CONTENT );
-		$num_posts          = wp_count_posts( $post_type, 'readable' );
-		$classes            = $base_classes;
-		$current_user_id    = get_current_user_id();
-		$ajax_params        = $this->ajax_params;
-		$ajax_params['s']   = '';
-		$ajax_params['m']   = '';
-		$ajax_params['cat'] = '';
+		$status_links         = array();
+		$base_classes         = array( WPFP_BBM_LOADS_CONTENT );
+		$num_posts            = wp_count_posts( $post_type, 'readable' );
+		$classes              = $base_classes;
+		$current_user_id      = get_current_user_id();
+		$ajax_params          = $this->ajax_params;
+		$ajax_params['s']     = '';
+		$ajax_params['m']     = '';
+		$ajax_params['cat']   = '';
+		$ajax_params['paged'] = '';
 
 		if ( $this->user_posts_count ) {
 
