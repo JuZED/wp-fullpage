@@ -40,8 +40,8 @@ class WP_Fullpage_Filters extends WP_Fullpage_Base {
 	 */
 	public function wp_dropdown_pages( $output ) {
 		
-		// Avoid other page than "Settings / Reading" to be modified
-		if( ! strpos( $output, "name='page_on_front'" ) || ! strpos( $output, "<option value=\"0\">" . __( '&mdash; Select &mdash;' ) . "</option>" ) )
+		// Avoid other option than "page_on_front" in "Settings / Reading" to be modified
+		if( ! strpos( $output, "name='page_on_front'" ) )
 			return $output;
 
 		$fullpages = get_posts( array(
