@@ -38,5 +38,9 @@ Read the [full documentation](http://docs.juzed.fr/wp-fullpage "WP FullPage Docu
 4. Go to "Settings/Wp FullPage" for default settings.
 
 == Changelog ==
+= 1.2 =
+*   Condition updated. 
+= 1.1 =
+*   Dropdown Pages Filter to add Fullpage Post Type pages to "Settings / Reading" Page. 
 = 1.0 =
 *   Initial release. 

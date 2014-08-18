@@ -61,7 +61,7 @@ class WP_Fullpage_Filters extends WP_Fullpage_Base {
 
 		return str_replace( '</select>', walk_page_dropdown_tree( $fullpages, 0, $args ) . '</select>', $output );
 		
-	} // END public function init_textdomain
+	} // END public function wp_dropdown_pages
 
 } // END class WP_Fullpage_Filters
 
