@@ -27,41 +27,35 @@ class WP_Fullpage_Filters extends WP_Fullpage_Base {
 	 */
 	public function filters() {
 
-		add_filter( 'wp_dropdown_pages', array( &$this, 'wp_dropdown_pages' ) );
+		// Add Fullpage to dropdown
+		add_filter( 'get_pages', array( &$this, 'add_fullpage_to_dropdown' ), 10, 2 );
 
 	} // END public function filters
-
+	
 	/**
-	 * Dropdown Pages Filter to add Fullpage Post Type pages to "Settings / Reading" Page
+	 * Add Fullpage to dropdown
 	 *
-	 * @param   string  $output  
+	 * @param   array   $pages  
+	 * @param   array   $r      
 	 *
-	 * @return  string           
+	 * @return  array              
 	 */
-	public function wp_dropdown_pages( $output ) {
+	public function add_fullpage_to_dropdown( $pages, $r ) {
 		
-		// Avoid other option than "page_on_front" in "Settings / Reading" to be modified
-		if( strpos( $output, "name='page_on_front'" ) === false )
-			return $output;
+		if( ! empty( $r['name'] ) && 'page_on_front' == $r['name'] ) {
+			
+			$args = array(
+				'post_type' => 'fullpage'
+			);
 
-		$fullpages = get_posts( array(
-			'post_type'      => 'fullpage',
-			'posts_per_page' => -1,
-			'orderBy'        => 'title',
-			'order'          => 'ASC',
-		) );
+			$items = get_posts( $args );
+			$pages = array_merge( $pages, $items );
 
-		$args = array(
-			'child_of' => 0,
-			'selected' => get_option( 'page_on_front' ),
-			'echo'     => 0,
-		);
+		}
 
-		extract( $args, EXTR_SKIP );
+		return $pages;
 
-		return str_replace( '</select>', walk_page_dropdown_tree( $fullpages, 0, $args ) . '</select>', $output );
-		
-	} // END public function wp_dropdown_pages
+	} // END public function add_fullpage_to_dropdown
 
 } // END class WP_Fullpage_Filters
 

@@ -113,6 +113,9 @@ class WP_Fullpage_Post_Types extends WP_Fullpage_Base {
 
 		register_post_type( WPFP_FULLPAGE_PT, $args );
 
+		// Removes slug form fullpage post type
+		new WP_Fullpage_Slugless_Rewrites( WPFP_FULLPAGE_PT, array( 'query_var', false ) );
+
 	} // END public function fullpage_type_register
 
 	/**
