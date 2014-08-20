@@ -38,7 +38,12 @@ Read the [full documentation](http://docs.juzed.fr/wp-fullpage "WP FullPage Docu
 3. Activate the plugin through the "Plugins" menu in WordPress.
 4. Go to "Settings/Wp FullPage" for default settings.
 
+== Upgrade Notice ==
+Deactivate than reactivate the plugin after upgrade to refresh permalinks.
+
 == Changelog ==
+= 1.3 =
+*   Remove fullpage post-type in permalink and add fullpage to the front page dropdown. 
 = 1.2 =
 *   Condition updated. 
 = 1.1 =
