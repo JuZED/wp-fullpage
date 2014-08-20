@@ -3,7 +3,7 @@ Contributors: Julien Zerbib
 Tags: fullpage, fullscreen, scrolling
 Requires at least: 3.5
 Tested up to: 3.9.1
-Stable tag: 1.3
+Stable tag: 1.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -14,7 +14,6 @@ Wp Fullpage integrates the power of [fullPage.js](https://github.com/alvarotrigo
 
 = New Features =
 1. Fullpage are now available as front page.
-2. Fullpage post type is now empty in the premalink (like pages permalink).
 
 = How to use =
 1. Create Fullpage Sections and Slides and integrates them into a Fullpage.
@@ -42,6 +41,8 @@ Read the [full documentation](http://docs.juzed.fr/wp-fullpage "WP FullPage Docu
 Deactivate than reactivate the plugin after upgrade to refresh permalinks.
 
 == Changelog ==
+= 1.4 =
+*   Removing of feature of empty post type in permalink for fullpage post type. 
 = 1.3 =
 *   Remove fullpage post-type in permalink and add fullpage to the front page dropdown. 
 = 1.2 =
