@@ -709,7 +709,11 @@ final class WP_Fullpage_Query {
 	public function get_slide_title( $slide_ID = 0, $before = '', $after = '', $print = true ) {
 		
 		if( empty( $slide_ID ) )
+<<<<<<< HEAD
 			$slide_ID = $this->slide->ID;
+=======
+			$slide_ID = $this->section->slides[ $this->section->current_slide ]->ID;
+>>>>>>> Feature-Documentation
 		
 		$title = $this->get_title( $slide_ID, $before, $after );
 
@@ -933,6 +937,7 @@ final class WP_Fullpage_Query {
 	} // END public function get_the_author
 
 	/**
+<<<<<<< HEAD
 	 * Do the section has a slides navigation?
 	 *
 	 * @param   int      	$section_index  Optional. The section index. If empty, will take the current section.
@@ -997,6 +1002,8 @@ final class WP_Fullpage_Query {
 	} // END public function get_slides_navigation_position
 
 	/**
+=======
+>>>>>>> Feature-Documentation
 	 * Display or retrieve the section navigation title.
 	 *
 	 * @param   int      	$section_index  Optional. The section index. If empty, will take the current section.
@@ -1253,7 +1260,11 @@ final class WP_Fullpage_Query {
 	public function get_slide_guid( $slide_ID = 0, $print = false ) {
 		
 		if( empty( $slide_ID ) )
+<<<<<<< HEAD
 			$slide_ID = $this->slide->ID;
+=======
+			$slide_ID = $this->section->slides[ $this->section->current_slide ]->ID;
+>>>>>>> Feature-Documentation
 		
 		$guid = get_the_guid( $slide_ID );
 
@@ -1311,7 +1322,11 @@ final class WP_Fullpage_Query {
 	/**
 	 * Display or retrieve the slide background.
 	 *
+<<<<<<< HEAD
 	 * @param   int      $slide_ID   Optional. The slide ID. If empty, will take the current slide.
+=======
+	 * @param   int      $slide_ID   Optional. The slide ID. If empty, will take the current section.
+>>>>>>> Feature-Documentation
 	 * @param   boolean  $print  	 Optional, default to false. Whether to display or return.
 	 * 
 	 * @return  string
@@ -1319,7 +1334,11 @@ final class WP_Fullpage_Query {
 	public function get_slide_bg( $slide_ID = 0, $print = false ) {
 				
 		if( empty( $slide_ID ) )
+<<<<<<< HEAD
 			$slide_ID = $this->slide->ID;
+=======
+			$slide_ID = $this->section->slides[ $this->section->current_slide ]->ID;
+>>>>>>> Feature-Documentation
 		
 		$background_image = $this->get_bg( $slide_ID );
 
