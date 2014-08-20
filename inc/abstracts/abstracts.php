@@ -52,6 +52,9 @@ class WP_Fullpage_Abstracts {
 		
 		// Fullpage Metabox Class
 		require_once( $this->abstract_class_path . 'metabox.php' );
+		
+		// Fullpage Slugless Rewrites
+		require_once( $this->abstract_class_path . 'slugless-rewrites.php' );
 
 	} // END private function includes
 
