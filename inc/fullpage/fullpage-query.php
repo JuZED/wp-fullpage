@@ -1267,17 +1267,18 @@ final class WP_Fullpage_Query {
 	/**
 	 * Display or retrieve the fullpage background.
 	 *
-	 * @param   int      $fullpage_ID   Optional. The fullpage ID. If empty, will take the current fullpae.
+	 * @param   int      $fullpage_ID   Optional. The fullpage ID. If empty, will take the current fullpage.
 	 * @param   boolean  $print   		Optional, default to false. Whether to display or return.
+	 * @param   string   $size          Optional, default to 'full'.
 	 * 
 	 * @return  string
 	 */
-	public function get_fullpage_bg( $fullpage_ID = 0, $print = false ) {
+	public function get_fullpage_bg( $fullpage_ID = 0, $print = false, $size = 'full' ) {
 			
 		if( empty( $fullpage_ID ) )
 			$fullpage_ID = $this->fullpage->ID;
 		
-		$background_image = $this->get_bg( $fullpage_ID );
+		$background_image = $this->get_bg( $fullpage_ID, $size );
 
 		if( $print )
 			print $background_image;
@@ -1291,15 +1292,16 @@ final class WP_Fullpage_Query {
 	 *
 	 * @param   int      $section_ID   Optional. The section ID. If empty, will take the current section.
 	 * @param   boolean  $print  	   Optional, default to false. Whether to display or return.
+	 * @param   string   $size          Optional, default to 'full'.
 	 * 
 	 * @return  string
 	 */
-	public function get_section_bg( $section_ID = 0, $print = false ) {
+	public function get_section_bg( $section_ID = 0, $print = false, $size = 'full' ) {
 				
 		if( empty( $section_ID ) )
 			$section_ID = $this->section->ID;
 		
-		$background_image = $this->get_bg( $section_ID );
+		$background_image = $this->get_bg( $section_ID, $size );
 
 		if( $print )
 			print $background_image;
@@ -1313,15 +1315,16 @@ final class WP_Fullpage_Query {
 	 *
 	 * @param   int      $slide_ID   Optional. The slide ID. If empty, will take the current slide.
 	 * @param   boolean  $print  	 Optional, default to false. Whether to display or return.
+	 * @param   string   $size          Optional, default to 'full'.
 	 * 
 	 * @return  string
 	 */
-	public function get_slide_bg( $slide_ID = 0, $print = false ) {
+	public function get_slide_bg( $slide_ID = 0, $print = false, $size = 'full' ) {
 				
 		if( empty( $slide_ID ) )
 			$slide_ID = $this->slide->ID;
 		
-		$background_image = $this->get_bg( $slide_ID );
+		$background_image = $this->get_bg( $slide_ID, $size );
 
 		if( $print )
 			print $background_image;
@@ -1334,17 +1337,18 @@ final class WP_Fullpage_Query {
 	 * Retrieve the post background.
 	 *
 	 * @param   int      $post_ID   The post ID.
+	 * @param   string   $size      Optional, default to 'full'.
 	 * 
 	 * @return  string
 	 */
-	public function get_bg( $post_ID ) {
+	public function get_bg( $post_ID, $size = 'full' ) {
 		
 		$background_image = '';
 
 		if( has_post_thumbnail( $post_ID ) ) {
 			
 			$post_thumbnail_id = get_post_thumbnail_id( $post_ID );
-			$post_thumbnail    = wp_get_attachment_image_src( $post_thumbnail_id, 'full' );
+			$post_thumbnail    = wp_get_attachment_image_src( $post_thumbnail_id, $size );
 			$background_image  = $post_thumbnail[0];
 
 		}

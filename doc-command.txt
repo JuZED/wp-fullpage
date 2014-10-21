@@ -1,0 +1,1 @@
+phpdoc -d ./inc/fullpage/ -t ./doc/

@@ -136,10 +136,10 @@
                                 <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-471323048"></a>
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1788416514"></a>
                                 <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
             </div>
-            <div id="namespace-471323048" class="accordion-body collapse in">
+            <div id="namespace-1788416514" class="accordion-body collapse in">
                 <div class="accordion-inner">
 
                     
@@ -1815,7 +1815,7 @@ blog across domains.</p>
             <article class="method">
                 <h3 class="public ">get_fullpage_bg()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">get_fullpage_bg(integer <span class="argument">$fullpage_ID</span>, boolean <span class="argument">$print</span>) : string</pre>
+                <pre class="signature" style="margin-right: 54px;">get_fullpage_bg(integer <span class="argument">$fullpage_ID</span>, boolean <span class="argument">$print</span>, string <span class="argument">$size</span>) : string</pre>
                 <p><em>Display or retrieve the fullpage background.</em></p>
                 
 
@@ -1824,12 +1824,17 @@ blog across domains.</p>
                                                     <tr>
                                 <td>integer</td>
                                 <td>$fullpage_ID </td>
-                                <td><p>Optional. The fullpage ID. If empty, will take the current fullpae.</p></td>
+                                <td><p>Optional. The fullpage ID. If empty, will take the current fullpage.</p></td>
                             </tr>
                                                     <tr>
                                 <td>boolean</td>
                                 <td>$print </td>
                                 <td><p>Optional, default to false. Whether to display or return.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$size </td>
+                                <td><p>Optional, default to 'full'.</p></td>
                             </tr>
                                             </table>
                 
@@ -1855,7 +1860,7 @@ blog across domains.</p>
             <article class="method">
                 <h3 class="public ">get_section_bg()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">get_section_bg(integer <span class="argument">$section_ID</span>, boolean <span class="argument">$print</span>) : string</pre>
+                <pre class="signature" style="margin-right: 54px;">get_section_bg(integer <span class="argument">$section_ID</span>, boolean <span class="argument">$print</span>, string <span class="argument">$size</span>) : string</pre>
                 <p><em>Display or retrieve the section background.</em></p>
                 
 
@@ -1870,6 +1875,11 @@ blog across domains.</p>
                                 <td>boolean</td>
                                 <td>$print </td>
                                 <td><p>Optional, default to false. Whether to display or return.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$size </td>
+                                <td><p>Optional, default to 'full'.</p></td>
                             </tr>
                                             </table>
                 
@@ -1895,7 +1905,7 @@ blog across domains.</p>
             <article class="method">
                 <h3 class="public ">get_slide_bg()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">get_slide_bg(integer <span class="argument">$slide_ID</span>, boolean <span class="argument">$print</span>) : string</pre>
+                <pre class="signature" style="margin-right: 54px;">get_slide_bg(integer <span class="argument">$slide_ID</span>, boolean <span class="argument">$print</span>, string <span class="argument">$size</span>) : string</pre>
                 <p><em>Display or retrieve the slide background.</em></p>
                 
 
@@ -1910,6 +1920,11 @@ blog across domains.</p>
                                 <td>boolean</td>
                                 <td>$print </td>
                                 <td><p>Optional, default to false. Whether to display or return.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$size </td>
+                                <td><p>Optional, default to 'full'.</p></td>
                             </tr>
                                             </table>
                 
@@ -1935,7 +1950,7 @@ blog across domains.</p>
             <article class="method">
                 <h3 class="public ">get_bg()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">get_bg(integer <span class="argument">$post_ID</span>) : string</pre>
+                <pre class="signature" style="margin-right: 54px;">get_bg(integer <span class="argument">$post_ID</span>, string <span class="argument">$size</span>) : string</pre>
                 <p><em>Retrieve the post background.</em></p>
                 
 
@@ -1945,6 +1960,11 @@ blog across domains.</p>
                                 <td>integer</td>
                                 <td>$post_ID </td>
                                 <td><p>The post ID.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$size </td>
+                                <td><p>Optional, default to 'full'.</p></td>
                             </tr>
                                             </table>
                 
@@ -2151,7 +2171,7 @@ blog across domains.</p>
                 <section class="span10 offset1">
                     <hr />
                     Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
-                    on July 14th, 2014 at 17:49.
+                    on August 24th, 2014 at 17:16.
                 </section>
             </section>
         </section>
