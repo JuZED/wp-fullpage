@@ -42,7 +42,7 @@ Deactivate than reactivate the plugin after upgrade to refresh permalinks.
 
 == Changelog ==
 = 1.5 =
-*   BackOffice debugging and fullPage.js upgrade
+*   fullPage.js Upgrade to 2.4.1 and bug fixes in Back Office
 = 1.4 =
 *   Removing of feature of empty post type in permalink for fullpage post type. 
 = 1.3 =
