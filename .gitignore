@@ -26,7 +26,8 @@ $RECYCLE.BIN/
 .LSOverride
 
 # Icon must ends with two \r.
-Icon
+Icon
+
 
 # Thumbnails
 ._*
@@ -43,11 +44,4 @@ palette-2.png
 palette.png
 todo.php
 Wp Fullpage Banner.psd
-<<<<<<< HEAD
-IGNORE/paper-10.jpg
-IGNORE/paper-11.jpg
-IGNORE/wordpress-logo-notext-rgb.png
-IGNORE/wordpress-logo-simplified-rgb.png
-=======
 IGNORE/*
->>>>>>> develop
