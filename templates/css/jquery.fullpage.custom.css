@@ -177,7 +177,7 @@
 	background-position: 50% 50%;
 	z-index: 0;
 	opacity: 0;
-	-webkit-transition: opacity 0.3s ease-out;
-	-moz-transition: opacity 0.3s ease-out;
-	-ms-transition: opacity 0.3s ease-out;
-	transition: opacity 0.3s ease-out; }
+	-webkit-transition: opacity 0.9s ease-out;
+	-moz-transition: opacity 0.9s ease-out;
+	-ms-transition: opacity 0.9s ease-out;
+	transition: opacity 0.9s ease-out; }
