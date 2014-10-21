@@ -55,10 +55,9 @@
 			
 			this.template = _.template( content );
 
-			if( Backbone.$( '#' + this.prefix ).length > 0 )
-				Backbone.$( '#' + this.prefix ).replaceWith( this.render().el );
-			else
-				Backbone.$( 'body' ).append( this.render().el );
+			Backbone.$( '#' + this.prefix ).empty().detach();
+			
+			Backbone.$( 'body' ).append( this.render().el );
 
 		};
 

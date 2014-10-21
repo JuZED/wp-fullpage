@@ -436,3 +436,14 @@
 
 		#settingsbox .reset.settings-reset .button-large:hover {
 			background: rgba(0, 169, 216, 0.43); }
+
+.ui-helper-clearfix:after {
+	clear: both;
+}
+
+.ui-helper-clearfix:after, 
+.ui-helper-clearfix:before {
+	content: "";
+	display: table;
+	border-collapse: collapse;
+}

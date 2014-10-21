@@ -33,8 +33,6 @@
 
 			Backbone.ModalPostsList.prototype.constructor.apply( this, this.args );
 
-			this.ajaxGetContent( this.ajaxParams );
-
 		};
 
 		ModalPostsOfTermList.prototype.updateNewPosts = function( newValues ) {
