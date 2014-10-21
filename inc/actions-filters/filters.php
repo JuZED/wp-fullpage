@@ -41,8 +41,8 @@ class WP_Fullpage_Filters extends WP_Fullpage_Base {
 	 * @return  array              
 	 */
 	public function add_fullpage_to_dropdown( $pages, $r ) {
-		
-		if( ! empty( $r['name'] ) && 'page_on_front' == $r['name'] ) {
+
+		if( ! empty( $r['name'] ) && ( 'page_on_front' == $r['name'] || '_customize-dropdown-pages-page_on_front' == $r['name'] ) ) {
 			
 			$args = array(
 				'post_type' => 'fullpage'
