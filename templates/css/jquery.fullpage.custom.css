@@ -181,3 +181,46 @@
 	-moz-transition: opacity 0.9s ease-out;
 	-ms-transition: opacity 0.9s ease-out;
 	transition: opacity 0.9s ease-out; }
+
+#wpfp-menu {
+	position: fixed;
+	z-index: 10000;
+	margin: 10px; }
+
+	#wpfp-menu > li {
+		display: inline-block;
+		position: relative; }
+
+		#wpfp-menu li a {
+			color: #666666;
+			padding: 2px 10px;
+			display: block;
+			background-color: rgba(230, 230, 230, 0.8);
+			border-radius: 2px; }
+
+		#wpfp-menu li.active > a,
+		#wpfp-menu li > a:hover {
+			color: #ffffff;
+			background-color: rgba(130, 130, 130, 0.8); }
+
+			#wpfp-menu li li a {
+				border-radius: 0px;
+				min-width: 10em; }
+
+			#wpfp-menu li li:first-child a {
+				margin-top: 2px;
+				border-radius: 2px 2px 0px 0px; }
+
+			#wpfp-menu li li:last-child a {
+				border-radius: 0px 0px 2px 2px; }
+		
+		#wpfp-menu li ul {
+			position: absolute; }
+			
+			#wpfp-menu li ul li {
+				display: block;
+				margin-top: -100vh;
+				transition: all 0.5s ease-out; }
+			
+			#wpfp-menu li:hover ul li {
+				margin-top: 0px; }
