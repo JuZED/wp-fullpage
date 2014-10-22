@@ -19,7 +19,10 @@
 			postTypeElChange,
 			sectionsTypeChange,
 			orderByChange,
-			teaserDisplayChange;
+			teaserDisplayChange,
+			pageOptions = $( '#fullpage-page-options' ),
+			isItFullPageChange,
+			settingsbox = $( '#settingsbox' );
 
 		toggleTaxonomyLaunchers = function () {
 
@@ -149,6 +152,19 @@
 
 		}
 
+		isItFullPageChange = function( e ) {
+
+			e.preventDefault();
+			
+			if( $( this ).is( ':checked' ) ) {
+				if( 'yes' === $( this ).val() )
+					settingsbox.show();
+				else
+					settingsbox.hide();
+			}
+		
+		}
+
 		$( '.chzn-select' ).chosen();
 		
 		$( '[id$="' + chosen_term_suffix + '"]' ).hide();
@@ -172,6 +188,12 @@
 		
 		$( "#settingsbox" ).tabs()
 			.addClass( "ui-tabs-vertical" );
+
+		// Page Options
+		if( 0 < pageOptions.length ) {
+			pageOptions.find( 'input' ).change( isItFullPageChange )
+				.trigger( 'change' );
+		}
 
 	} );
 

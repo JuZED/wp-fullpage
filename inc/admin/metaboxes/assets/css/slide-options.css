@@ -62,12 +62,12 @@
 		-webkit-box-shadow: 6px 6px 0px #C7C6C6; }
 
 	#settingsbox .inside {
-    padding: 0 12px 12px;
-    line-height: 1.4em;
-    font-size: 13px;
-    margin: 11px 0;
-    position: relative;
-    background: #f3f3f3; }
+	    padding: 0 12px 12px;
+	    line-height: 1.4em;
+	    font-size: 13px;
+	    margin: 11px 0;
+	    position: relative;
+	    background: #f3f3f3; }
 
 	#settingsbox #fullpage-options { 
 		width: 100%;

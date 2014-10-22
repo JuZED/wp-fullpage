@@ -30,7 +30,7 @@ class WP_Fullpage_Metaboxes extends WP_Fullpage_Metabox_Base {
 	private function includes() {
 
 		// limit meta box to fullpage post types
-		$post_types = array( WPFP_FULLPAGE_PT, WPFP_FULLPAGE_SECTION_PT, WPFP_FULLPAGE_SLIDE_PT );
+		$post_types = array( 'page', WPFP_FULLPAGE_PT, WPFP_FULLPAGE_SECTION_PT, WPFP_FULLPAGE_SLIDE_PT );
 
 		foreach( $post_types as $post_type ) {
 

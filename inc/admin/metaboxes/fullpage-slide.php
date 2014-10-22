@@ -109,7 +109,7 @@ class WP_Fullpage_Slide_Type_Metabox extends WP_Fullpage_Metabox_Base {
 		// Slide Options Metabox
 		add_meta_box(
 			'wpfp_slide_options',
-			__( 'WP Fullpage Options', WPFP_DOMAIN ),
+			__( 'WP Fullpage Slide Options', WPFP_DOMAIN ),
 			array( &$this, 'render_slide_options_content' ),
 			$post_type,
 			'advanced',

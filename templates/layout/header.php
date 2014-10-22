@@ -31,3 +31,9 @@
 </head>
 
 <body <?php body_class(); ?>>
+
+	<?php 
+
+		// Add a complete fullpage menu with sections and slides under sections
+		// Uncomment the next line to show it
+		// WPFP()->get_sidebar( 'menu' );

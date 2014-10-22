@@ -1,12 +1,12 @@
 <?php
 
 /**
- * The Fullpage Section Type Metabox Class
+ * The Page Metabox Class
  * 
  * @package 	WP_Fullpage\Includes\Admin\Metaboxes
  * @subpackage 	WP_Fullpage\Includes\Absctract\Classes
  */
-class WP_Fullpage_Section_Type_Metabox extends WP_Fullpage_Metabox_Base {
+class WP_Fullpage_Page_Type_Metabox extends WP_Fullpage_Metabox_Base {
 
 	/**
 	 * Init Metaboxes Object
@@ -17,7 +17,7 @@ class WP_Fullpage_Section_Type_Metabox extends WP_Fullpage_Metabox_Base {
 
 		parent::init( __DIR__, __FILE__ );
 
-		$this->post_type = WPFP_FULLPAGE_SECTION_PT;
+		$this->post_type = 'page';
 		
 		// Add actions and filters
 		$this->actions_filters();
@@ -66,53 +66,53 @@ class WP_Fullpage_Section_Type_Metabox extends WP_Fullpage_Metabox_Base {
 		
 		if ( $this->post_type == $post_type ) {
 			
-			// Section Options
-			$this->section_meta_box();
+			// Fullpage Options
+			$this->fullpage_meta_box();
 			
 		}
 
 	} // END public function add_meta_box
 	
 	/**
-	 * Add Section Options Metabox
+	 * Add Fullpage Options Metabox
 	 *
 	 * @return void
 	 */
-	private function section_meta_box() {
+	private function fullpage_meta_box() {
 		
-		// Section Options Metabox
+		// Fullpage Options Metabox
 		add_meta_box(
-			'wpfp_section_options',
-			__( 'WP Fullpage Section Options', WPFP_DOMAIN ),
-			array( &$this, 'render_section_options_content' ),
+			'wpfp_fullpage_options',
+			__( 'WP Fullpage Options', WPFP_DOMAIN ),
+			array( &$this, 'render_fullpage_options_content' ),
 			$this->post_type,
 			'advanced',
 			'high'
 		);
 
-	} // END private function section_meta_box
+	} // END private function fullpage_meta_box
 	
 	/**
-	 * Render Section Options Meta Box content.
+	 * Render Fullpage Options Meta Box content.
 	 *
 	 * @param  WP_Post $post The post object.
 	 *
 	 * @return void
 	 */
-	public function render_section_options_content( $post ) {
-		
-		// Fullpage Options
+	public function render_fullpage_options_content( $post ) {
+	
+		// Fullpage.js Options
 		$fullpage_options = $this->prepare_fullpage_options( $post );
 
 		extract( $fullpage_options['options'] );
 		extract( array_change_key_case( $fullpage_options['default'], CASE_UPPER ) );
 		
-		// Section Options
-		$section_options = $this->prepare_section_options( $post );
+		// Sections Options
+		$sections_options = $this->prepare_sections_options( $post );
 
-		extract( $section_options['options'] );
-		extract( array_change_key_case( $section_options['default'], CASE_UPPER ) );
-			
+		extract( $sections_options['options'] );
+		extract( array_change_key_case( $sections_options['default'], CASE_UPPER ) );
+		
 		// Slides Options
 		$slides_options = $this->prepare_slides_options( $post );
 
@@ -126,9 +126,9 @@ class WP_Fullpage_Section_Type_Metabox extends WP_Fullpage_Metabox_Base {
 		extract( array_change_key_case( $custom_options['default'], CASE_UPPER ) );
 
 		// Render metabox
-		include( $this->rel_path . 'views/section-options.php' );
+		include( $this->rel_path . 'views/page-options.php' );
 
-	} // END public function render_section_options_content
+	} // END public function render_fullpage_options_content
 	
 	/**
 	 * Prepare Fullpage Options.
@@ -144,10 +144,10 @@ class WP_Fullpage_Section_Type_Metabox extends WP_Fullpage_Metabox_Base {
 	private function prepare_fullpage_options( $post ) {
 	
 		// Add an nonce field so we can check for it later.
-		wp_nonce_field( WPFP_SECTION_PT_FULLPAGE_OPTIONS, WPFP_SECTION_PT_FULLPAGE_OPTIONS . '_nonce' );
+		wp_nonce_field( WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS, WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS . '_nonce' );
 
 		// Retrieving an existing value from the database.
-		$fullpage_options = (array) get_post_meta( $post->ID, WPFP_SECTION_PT_FULLPAGE_OPTIONS, true );
+		$fullpage_options = (array) get_post_meta( $post->ID, WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS, true );
 		
 		// restrieving default settings
 		$default_fullpage_options = get_option( WPFP_SETTINGS_FULLPAGE_OPTIONS, array() );
@@ -163,7 +163,7 @@ class WP_Fullpage_Section_Type_Metabox extends WP_Fullpage_Metabox_Base {
 	} // END private function prepare_fullpage_options
 	
 	/**
-	 * Prepare Section Options.
+	 * Prepare Sections Options.
 	 *
 	 * @param  WP_Post $post The post object.
 	 *
@@ -173,26 +173,69 @@ class WP_Fullpage_Section_Type_Metabox extends WP_Fullpage_Metabox_Base {
 	 *                          	default => the default option
 	 *                          )
 	 */
-	private function prepare_section_options( $post ) {
-	
+	private function prepare_sections_options( $post ) {
+		
 		// Add an nonce field so we can check for it later.
-		wp_nonce_field( WPFP_SECTION_PT_SECTION_OPTIONS, WPFP_SECTION_PT_SECTION_OPTIONS . '_nonce' );
+		wp_nonce_field( WPFP_FULLPAGE_PT_SECTIONS_OPTIONS, WPFP_FULLPAGE_PT_SECTIONS_OPTIONS . '_nonce' );
 
 		// Retrieving an existing value from the database.
-		$section_options = (array) get_post_meta( $post->ID, WPFP_SECTION_PT_SECTION_OPTIONS, true );
+		$sections_options = (array) get_post_meta( $post->ID, WPFP_FULLPAGE_PT_SECTIONS_OPTIONS, true );
 		
 		// restrieving default settings
-		$default_section_options = get_option( WPFP_SETTINGS_SECTIONS_OPTIONS, array() );
-		
-		// Parsing options with default from Settings
-		$section_options = wp_parse_args( $section_options, $default_section_options );
+		$default_sections_options = get_option( WPFP_SETTINGS_SECTIONS_OPTIONS, array() );
 
-		return array(
-			'options' => $section_options,
-			'default' => $default_section_options,
+		// Parsing options with default from Settings
+		$sections_options = wp_parse_args( $sections_options, $default_sections_options );
+
+		// Retrieve registered Taxonomies 
+		$args = array(
+			'public' => true,
 		);
 
-	} // END private function prepare_section_options
+		$_taxonomies = get_taxonomies( $args, 'objects', 'and' );
+		
+		$sections_options['taxonomies'] = array();
+		$sections_options['terms']      = array();
+
+		foreach( $_taxonomies as $key => $_taxonomy ) {
+
+			$_terms = get_terms( array( $_taxonomy->name ), array( 'hide_empty' => false ) );
+
+			// We keep only taxonomies with terms
+			if( $_terms ) {
+				$sections_options['taxonomies'][ $key ]        = $_taxonomy;
+				$sections_options['terms'][ $_taxonomy->name ] = $_terms;
+			}
+
+		}
+		
+		// Retrieve registered Post types 
+		$args = array(
+			'public' => true,
+		);
+
+		$sections_options['post_types'] = get_post_types( $args, 'objects', 'and' );
+
+		$post_types_to_remove = array(
+			'attachment',
+			'fullpage',
+			'fullpage-section',
+			'fullpage-slide',
+		);
+
+		foreach( $sections_options['post_types'] as $key => $post_type ) {
+
+			if( in_array( $key, $post_types_to_remove ) )
+				unset( $sections_options['post_types'][ $key ] );
+
+		}
+
+		return array(
+			'options' => $sections_options,
+			'default' => $default_sections_options,
+		);
+
+	} // END private function prepare_sections_options
 	
 	/**
 	 * Prepare Slides Options.
@@ -208,66 +251,23 @@ class WP_Fullpage_Section_Type_Metabox extends WP_Fullpage_Metabox_Base {
 	private function prepare_slides_options( $post ) {
 		
 		// Add an nonce field so we can check for it later.
-		wp_nonce_field( WPFP_SECTION_PT_SLIDES_OPTIONS, WPFP_SECTION_PT_SLIDES_OPTIONS . '_nonce' );
+		wp_nonce_field( WPFP_FULLPAGE_PT_SLIDES_OPTIONS, WPFP_FULLPAGE_PT_SLIDES_OPTIONS . '_nonce' );
 
 		// Retrieving an existing value from the database.
-		$slides_options = (array) get_post_meta( $post->ID, WPFP_SECTION_PT_SLIDES_OPTIONS, true );
+		$slides_options = (array) get_post_meta( $post->ID, WPFP_FULLPAGE_PT_SLIDES_OPTIONS, true );
 		
 		// restrieving default settings
 		$default_slides_options = get_option( WPFP_SETTINGS_SLIDES_OPTIONS, array() );
-		
+
 		// Parsing options with default from Settings
 		$slides_options = wp_parse_args( $slides_options, $default_slides_options );
-
-		// Retrieve registered Taxonomies 
-		$args = array(
-			'public' => true,
-		);
-
-		$_taxonomies = get_taxonomies( $args, 'objects', 'and' );
-		
-		$slides_options['taxonomies'] = array();
-		$slides_options['terms']      = array();
-
-		foreach( $_taxonomies as $key => $_taxonomy ) {
-
-			$_terms = get_terms( array( $_taxonomy->name ), array( 'hide_empty' => false ) );
-
-			// We keep only taxonomies with terms
-			if( $_terms ) {
-				$slides_options['taxonomies'][ $key ]        = $_taxonomy;
-				$slides_options['terms'][ $_taxonomy->name ] = $_terms;
-			}
-
-		}
-		
-		// Retrieve registered Post types 
-		$args = array(
-			'public' => true,
-		);
-
-		$slides_options['post_types'] = get_post_types( $args, 'objects', 'and' );
-
-		$post_types_to_remove = array(
-			'attachment',
-			'fullpage',
-			'fullpage-section',
-			'fullpage-slide',
-		);
-
-		foreach( $slides_options['post_types'] as $key => $post_type ) {
-
-			if( in_array( $key, $post_types_to_remove ) )
-				unset( $slides_options['post_types'][ $key ] );
-
-		}
 
 		return array(
 			'options' => $slides_options,
 			'default' => $default_slides_options,
 		);
 
-	} // END private function prepare_section_options
+	} // END private function prepare_slides_options
 	
 	/**
 	 * Prepare Custom Options.
@@ -281,16 +281,16 @@ class WP_Fullpage_Section_Type_Metabox extends WP_Fullpage_Metabox_Base {
 	 *                          )
 	 */
 	private function prepare_custom_options( $post ) {
-	
+		
 		// Add an nonce field so we can check for it later.
-		wp_nonce_field( WPFP_SECTION_PT_CUSTOM_OPTIONS, WPFP_SECTION_PT_CUSTOM_OPTIONS . '_nonce' );
+		wp_nonce_field( WPFP_FULLPAGE_PT_CUSTOM_OPTIONS, WPFP_FULLPAGE_PT_CUSTOM_OPTIONS . '_nonce' );
 
 		// Retrieving an existing value from the database.
-		$custom_options = (array) get_post_meta( $post->ID, WPFP_SECTION_PT_CUSTOM_OPTIONS, true );
+		$custom_options = (array) get_post_meta( $post->ID, WPFP_FULLPAGE_PT_CUSTOM_OPTIONS, true );
 		
 		// restrieving default settings
 		$default_custom_options = get_option( WPFP_SETTINGS_CUSTOM_OPTIONS, array() );
-		
+
 		// Parsing options with default from Settings
 		$custom_options = wp_parse_args( $custom_options, $default_custom_options );
 
@@ -310,67 +310,67 @@ class WP_Fullpage_Section_Type_Metabox extends WP_Fullpage_Metabox_Base {
 	 */
 	public function save( $post_id ) {
 		
-		// Save Fullpage Options
+		// Save Fullpage.js Options
 		$this->save_fullpage_options( $post_id );
-		
-		// Save Section Options
-		$this->save_section_options( $post_id );
+
+		// Save Sections Options
+		$this->save_sections_options( $post_id );
 
 		// Save Slides Options
 		$this->save_slides_options( $post_id );
-		
+
 		// Save Custom Options
 		$this->save_custom_options( $post_id );
 
 	} // public function save
 
 	/**
-	 * Save Fullpage Options
+	 * Save Fullpage.js Options
 	 *
 	 * @param  int  $post_id  The ID of the post being saved.
 	 *
 	 * @return void
 	 */
 	private function save_fullpage_options( $post_id ) {
-
+	
 		/*
 		 * We need to verify this came from the our screen and with proper authorization,
 		 * because save_post can be triggered at other times.
 		 */
-		if( ! $this->is_it_safe( $post_id, WPFP_SECTION_PT_FULLPAGE_OPTIONS, WPFP_SECTION_PT_FULLPAGE_OPTIONS, WPFP_SECTION_PT_FULLPAGE_OPTIONS . '_nonce' ) )
+		if( ! $this->is_it_safe( $post_id, WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS, WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS, WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS . '_nonce' ) )
 			return $post_id;
 
 		// Sanitize the user inputs.
-		$fullpage_options = $_POST[ WPFP_SECTION_PT_FULLPAGE_OPTIONS ];
+		$fullpage_options = $_POST[ WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS ];
 
 		// Update the meta field.
-		update_post_meta( $post_id, WPFP_SECTION_PT_FULLPAGE_OPTIONS, $fullpage_options );
+		update_post_meta( $post_id, WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS, $fullpage_options );
 
 	} // private function save_fullpage_options
 
 	/**
-	 * Save Section Options
+	 * Save Sections Options
 	 *
 	 * @param  int  $post_id  The ID of the post being saved.
 	 *
 	 * @return void
 	 */
-	private function save_section_options( $post_id ) {
-
+	private function save_sections_options( $post_id ) {
+	
 		/*
 		 * We need to verify this came from the our screen and with proper authorization,
 		 * because save_post can be triggered at other times.
 		 */
-		if( ! $this->is_it_safe( $post_id, WPFP_SECTION_PT_SECTION_OPTIONS, WPFP_SECTION_PT_SECTION_OPTIONS, WPFP_SECTION_PT_SECTION_OPTIONS . '_nonce' ) )
+		if( ! $this->is_it_safe( $post_id, WPFP_FULLPAGE_PT_SECTIONS_OPTIONS, WPFP_FULLPAGE_PT_SECTIONS_OPTIONS, WPFP_FULLPAGE_PT_SECTIONS_OPTIONS . '_nonce' ) )
 			return $post_id;
 
 		// Sanitize the user inputs.
-		$section_options = $_POST[ WPFP_SECTION_PT_SECTION_OPTIONS ];
+		$sections_options = $_POST[ WPFP_FULLPAGE_PT_SECTIONS_OPTIONS ];
 
 		// Update the meta field.
-		update_post_meta( $post_id, WPFP_SECTION_PT_SECTION_OPTIONS, $section_options );
+		update_post_meta( $post_id, WPFP_FULLPAGE_PT_SECTIONS_OPTIONS, $sections_options );
 
-	} // private function save_section_options
+	} // private function save_sections_options
 
 	/**
 	 * Save Slides Options
@@ -385,14 +385,14 @@ class WP_Fullpage_Section_Type_Metabox extends WP_Fullpage_Metabox_Base {
 		 * We need to verify this came from the our screen and with proper authorization,
 		 * because save_post can be triggered at other times.
 		 */
-		if( ! $this->is_it_safe( $post_id, WPFP_SECTION_PT_SLIDES_OPTIONS, WPFP_SECTION_PT_SLIDES_OPTIONS, WPFP_SECTION_PT_SLIDES_OPTIONS . '_nonce' ) )
+		if( ! $this->is_it_safe( $post_id, WPFP_FULLPAGE_PT_SLIDES_OPTIONS, WPFP_FULLPAGE_PT_SLIDES_OPTIONS, WPFP_FULLPAGE_PT_SLIDES_OPTIONS . '_nonce' ) )
 			return $post_id;
 
 		// Sanitize the user inputs.
-		$slides_options = $_POST[ WPFP_SECTION_PT_SLIDES_OPTIONS ];
+		$sections_options = $_POST[ WPFP_FULLPAGE_PT_SLIDES_OPTIONS ];
 
 		// Update the meta field.
-		update_post_meta( $post_id, WPFP_SECTION_PT_SLIDES_OPTIONS, $slides_options );
+		update_post_meta( $post_id, WPFP_FULLPAGE_PT_SLIDES_OPTIONS, $sections_options );
 
 	} // private function save_slides_options
 
@@ -402,26 +402,26 @@ class WP_Fullpage_Section_Type_Metabox extends WP_Fullpage_Metabox_Base {
 	 * @param  int  $post_id  The ID of the post being saved.
 	 *
 	 * @return void
-	 */
+	 */	
 	private function save_custom_options( $post_id ) {
-
+	
 		/*
 		 * We need to verify this came from the our screen and with proper authorization,
 		 * because save_post can be triggered at other times.
 		 */
-		if( ! $this->is_it_safe( $post_id, WPFP_SECTION_PT_CUSTOM_OPTIONS, WPFP_SECTION_PT_CUSTOM_OPTIONS, WPFP_SECTION_PT_CUSTOM_OPTIONS . '_nonce' ) )
+		if( ! $this->is_it_safe( $post_id, WPFP_FULLPAGE_PT_CUSTOM_OPTIONS, WPFP_FULLPAGE_PT_CUSTOM_OPTIONS, WPFP_FULLPAGE_PT_CUSTOM_OPTIONS . '_nonce' ) )
 			return $post_id;
 
 		// Sanitize the user inputs.
-		$custom_options = $_POST[ WPFP_SECTION_PT_CUSTOM_OPTIONS ];
+		$custom_options = $_POST[ WPFP_FULLPAGE_PT_CUSTOM_OPTIONS ];
 
 		// Update the meta field.
-		update_post_meta( $post_id, WPFP_SECTION_PT_CUSTOM_OPTIONS, $custom_options );
+		update_post_meta( $post_id, WPFP_FULLPAGE_PT_CUSTOM_OPTIONS, $custom_options );
 
 	} // private function save_custom_options
 	
 	/**
-	 * Add some scripts and styles to Section Post Type metabox.
+	 * Add some scripts and styles to Fullpage Post Type metabox.
 	 *
 	 * @param string $hook the current admin page
 	 *
@@ -443,10 +443,10 @@ class WP_Fullpage_Section_Type_Metabox extends WP_Fullpage_Metabox_Base {
 
 		$args = array(
 			array(
-				'launcherID' => 'bbm-slides-list-launcher',
-				'inputID'    => 'slides-list',
-				'ajaxAction' => 'wpfp_get_section_slides',
-				'nonce'      => wp_create_nonce( WPFP_GET_SECTION_SLIDES_ACTION )
+				'launcherID' => 'bbm-sections-list-launcher',
+				'inputID'    => 'sections-list',
+				'ajaxAction' => 'wpfp_get_fullpage_sections',
+				'nonce'      => wp_create_nonce( WPFP_GET_FULLPAGE_SECTIONS_ACTION )
 			),
 		);
 
@@ -490,11 +490,11 @@ class WP_Fullpage_Section_Type_Metabox extends WP_Fullpage_Metabox_Base {
 
 		$args = array(
 			array(
-				'ajaxAction' => 'wpfp_get_fullpage_slides_sortables',
-				'nonce'      => wp_create_nonce( WPFP_GET_SECTION_SLIDES_SORTABLES_ACTION ),
-				'sortableID' => 'sortableSlides',
-				'inputID'    => 'slides-list',
-				'postType'   => WPFP_FULLPAGE_SLIDE_PT,
+				'ajaxAction' => 'wpfp_get_fullpage_sections_sortables',
+				'nonce'      => wp_create_nonce( WPFP_GET_FULLPAGE_SECTIONS_SORTABLES_ACTION ),
+				'sortableID' => 'sortableSections',
+				'inputID'    => 'sections-list',
+				'postType'   => WPFP_FULLPAGE_SECTION_PT,
 				'sortable'   => true,
 			),
 			array(
@@ -519,13 +519,13 @@ class WP_Fullpage_Section_Type_Metabox extends WP_Fullpage_Metabox_Base {
 
 		WPFP_JS_Handlers()->jquery_sortables( $args, $dependencies );
 
-		WPFP_JS_Handlers()->reset_form( '#wpfp_section_options', '#wpfp_reset', $dependencies );
+		WPFP_JS_Handlers()->jquery_chosen( $dependencies );
 
 		WPFP_JS_Handlers()->jquery_button( '.radio', $dependencies );
 
-		WPFP_JS_Handlers()->jquery_chosen( $dependencies );
+		WPFP_JS_Handlers()->reset_form( '#wpfp_fullpage_options', '#wpfp_reset', $dependencies );
 
-		wp_enqueue_style( 'section-options', $this->assets_url . 'css/section-options.css', $dependencies['css'], WPFP_VERSION );
+		wp_enqueue_style( 'fullpage-options', $this->assets_url . 'css/fullpage-options.css', $dependencies['css'], WPFP_VERSION );
 
 		$args = array(
 			'includedPostsOfTermLauncherClass' => 'bbm-included-posts-of-term-launcher',
@@ -538,12 +538,12 @@ class WP_Fullpage_Section_Type_Metabox extends WP_Fullpage_Metabox_Base {
 
 		WPFP_JS_Handlers()->jquery_ui_tabs( $dependencies );
 
-		wp_enqueue_script( 'section-options-init', $this->assets_url . 'js/section-options.init.js', $dependencies['js'], WPFP_VERSION );
-		wp_localize_script( 'section-options-init' , 'wpfpFPOParams' , $args );
+		wp_enqueue_script( 'fullpage-options-init', $this->assets_url . 'js/fullpage-options.init.js', $dependencies['js'], WPFP_VERSION );
+		wp_localize_script( 'fullpage-options-init' , 'wpfpFPOParams' , $args );
 
 	} // END public function admin_enqueue_scripts
 
-} // END class WP_Fullpage_Section_Type_Metabox
+} // END class WP_Fullpage_Page_Type_Metabox
 
 // instantiate the Settings class
-$WP_Fullpage_Section_Type_Metabox = new WP_Fullpage_Section_Type_Metabox();
+$WP_Fullpage_Page_Type_Metabox = new WP_Fullpage_Page_Type_Metabox();
