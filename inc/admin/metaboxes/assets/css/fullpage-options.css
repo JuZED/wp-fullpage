@@ -39,6 +39,14 @@
 			-webkit-transform: rotate(90deg);
 			transform: rotate(90deg); }
 
+#fullpage-page-options li {
+	top: auto;
+	display: inline-block;
+	margin-top: 30px;
+	width: 100%;
+	padding: 0;	}
+
+#fullpage-page-options, 
 #settingsbox { 
 	position: relative;
 	min-width: 255px;
@@ -65,6 +73,7 @@
 		box-shadow: 6px 6px 0px #C7C6C6;
 		-webkit-box-shadow: 6px 6px 0px #C7C6C6; }
 
+	#fullpage-page-options .inside,
 	#settingsbox .inside {
 		padding: 0 12px 12px;
 		line-height: 1.4em;
@@ -74,7 +83,8 @@
 		box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.46);
 		-webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.46);
 		border-radius: 2px;
-		background: #f3f3f3; }
+		background: #f3f3f3;
+		font-family: Verdana,Arial,sans-serif; }
 
 	#settingsbox #settings-tabs { 
 		width: auto;
@@ -162,6 +172,7 @@
   					-webkit-text-shadow: 2px 2px 1px #17A5C7;
   					text-shadow: 2px 2px 1px #17A5C7; }
 
+	#fullpage-page-options,
 	#settingsbox #fullpage-options,
 	#settingsbox #sections-options { 
 		width: 100%;
@@ -171,6 +182,8 @@
 		border-radius: 2px;
 		background: rgba(243, 243, 243, 0.27); }
 
+.fullpage-page-options label,
+.fullpage-page-options .label,
 .fullpage-options label,
 .fullpage-options .label,
 .sections-options label,
@@ -184,6 +197,7 @@
 	margin-right: 20px;
 	color: #17A5C7; }
 
+.fullpage-page-options .radio label,
 .fullpage-options .radio label,
 .sections-options .radio label {
 	padding: 0 10px;
@@ -197,6 +211,7 @@
 	color: #17A5C7;
 	border-style: solid;
 	background: #ffffff;
+	font-weight: normal;
 	line-height: 26px;
 	border-radius: 0;
 	-webkit-border-radius: 0;
@@ -205,31 +220,37 @@
 	-webkit-box-shadow: none;
 	box-shadow: none; }
 
+	.fullpage-page-options .radio label:hover,
 	.fullpage-options .radio label:hover,
 	.sections-options .radio label:hover {
 		color: #555555; }
 
+.fullpage-page-options li,
 .fullpage-options li,
 .sections-options li {
 	position: relative;
 	clear: both; }
 
+	.fullpage-page-options .radio label:nth-last-child(1),
 	.fullpage-options .radio label:nth-last-child(1),
 	.sections-options .radio label:nth-last-child(1) {
 		border-width: 1px 1px 1px 0;
 		border-radius: 0 2px 2px 0;
 		margin-left: -5px; }
 
+		.fullpage-page-options .radio label.ui-state-active:nth-last-child(1),
 		.fullpage-options .radio label.ui-state-active:nth-last-child(1),
 		.sections-options .radio label.ui-state-active:nth-last-child(1) {
 			background: #17A5C7;
 			color: #eeeeee; }
 
+	.fullpage-page-options .radio label:nth-child(2),
 	.fullpage-options .radio label:nth-child(2),
 	.sections-options .radio label:nth-child(2) {
 		border-width: 1px 0 1px 1px;
 		border-radius: 2px 0 0 2px; }
 
+		.fullpage-page-options .radio label.ui-state-active:nth-child(2),
 		.fullpage-options .radio label.ui-state-active:nth-child(2),
 		.sections-options .radio label.ui-state-active:nth-child(2) {
 			background: #FFF000;
@@ -246,6 +267,7 @@
 	left: 0;
 	margin-left: 10px; }
 
+.fullpage-page-options label,
 .fullpage-options label,
 .sections-options label {
 	padding-left: 40px;
@@ -256,11 +278,13 @@
 	font-weight: bold;
 	margin-right: 20px; }
 
+.fullpage-page-options li,
 .fullpage-options li,
 .sections-options li {
 	position: relative;
 	clear: both; }
 
+	.fullpage-page-options > li:nth-child(1),
 	.fullpage-options > li:nth-child(1),
 	.sections-options > li:nth-child(1) {
 		padding: 10px 0; }
@@ -376,6 +400,7 @@
 .wpfp-goto {
 	margin-left: 10px; }
 
+#fullpage-page-options input[type=radio],
 #settingsbox input[type=radio] {
 	border: 1px solid #17A5C7;
 	color: #1ACDFF; }
@@ -388,6 +413,7 @@
 #settingsbox input[type=number], 
 #settingsbox input[type=password], 
 #settingsbox input[type=radio], 
+#fullpage-page-options input[type=radio], 
 #settingsbox input[type=search], 
 #settingsbox input[type=tel], 
 #settingsbox input[type=text], 
@@ -406,6 +432,7 @@
 	#settingsbox input[type=number]:focus, 
 	#settingsbox input[type=password]:focus, 
 	#settingsbox input[type=radio]:focus, 
+	#fullpage-page-options input[type=radio]:focus, 
 	#settingsbox input[type=search]:focus, 
 	#settingsbox input[type=tel]:focus, 
 	#settingsbox input[type=text]:focus, 
@@ -416,6 +443,7 @@
 		-webkit-box-shadow: 0 0 2px rgba(26,205,255,.8);
 		box-shadow: 0 0 2px rgba(26,205,255,.8); }
 
+	#fullpage-page-options .button,
 	#settingsbox .button {
 		background: #17A5C7;
 		border-color: #FFF000;
@@ -426,6 +454,7 @@
 		transition: .3s all ease-in-out;
 		-webkit-transition: .3s all ease-in-out; }
 
+		#fullpage-page-options  .button:hover,
 		#settingsbox .button:hover {
 			background: rgba(23, 165, 199, 0.7); }
 
@@ -447,3 +476,14 @@
 
 		#settingsbox .reset.settings-reset .button-large:hover {
 			background: rgba(0, 169, 216, 0.43); }
+
+.ui-helper-clearfix:after {
+	clear: both;
+}
+
+.ui-helper-clearfix:after, 
+.ui-helper-clearfix:before {
+	content: "";
+	display: table;
+	border-collapse: collapse;
+}

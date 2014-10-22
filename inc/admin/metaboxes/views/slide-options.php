@@ -8,7 +8,7 @@
 
 ?>
 
-<h4><a href="#wpfp-settings"><?php _e( 'WP Fullpage Options', WPFP_DOMAIN ); ?></a></h4>
+<h4><a href="#wpfp-settings"><?php _e( 'WP Fullpage Slide Options', WPFP_DOMAIN ); ?></a></h4>
 
 <div id="settingsbox">
 

@@ -108,7 +108,7 @@ final class WP_Fullpage_Query {
 
 		global $post;
 
-		if( empty( $post ) || 'fullpage' != $post->post_type )
+		if( empty( $post ) || ( 'fullpage' != $post->post_type && 'page' != $post->post_type ) )
 			return;
 
 		$this->fullpage = $post;
