@@ -97,7 +97,7 @@ final class WP_Fullpage extends WP_Fullpage_Base {
 		if( is_page() ) {
 
 			$fullpage_options = get_post_meta( get_queried_object_id(), WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS, true );
-			$isItFullpage     = $fullpage_options['isItFullpage'];
+			$isItFullpage     = ! empty( $fullpage_options['isItFullpage'] ) ? $fullpage_options['isItFullpage'] : 'no' ;
 		
 		}
 
