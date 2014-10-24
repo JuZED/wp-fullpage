@@ -3,7 +3,7 @@ Contributors: Julien Zerbib
 Tags: fullpage, fullscreen, scrolling
 Requires at least: 3.5
 Tested up to: 4.0
-Stable tag: 2.0
+Stable tag: 2.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -45,6 +45,8 @@ Read the [full documentation](http://docs.juzed.fr/wp-fullpage "WP FullPage Docu
 Deactivate than reactivate the plugin after upgrade to refresh permalinks.
 
 == Changelog ==
+= 2.0.1 =
+*   Bug fixes
 = 2.0 =
 *   FullPage options added to Pages
 = 1.5 =
