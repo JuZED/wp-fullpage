@@ -19,6 +19,7 @@
 			postTypeElChange,
 			slidesTypeChange,
 			orderByChange,
+			accordionToggler,
 			teaserDisplayChange;
 
 		toggleTaxonomyLaunchers = function () {
@@ -153,6 +154,15 @@
 
 		}
 
+		accordionToggler = function( e ) {
+
+			$( this ).toggleClass( 'active' )
+				.next()
+				.find( '.accordion-container' )
+				.slideToggle( 'slow' );
+
+		}
+
 		$( '.chzn-select' ).chosen();
 		
 		$( '[id$="' + chosen_term_suffix + '"]' ).hide();
@@ -176,6 +186,8 @@
 		
 		$( "#settingsbox" ).tabs()
 			.addClass( "ui-tabs-vertical" );
+		
+		$( '#slides-options .accordion-toggler' ).click( accordionToggler );
 
 	} );
 

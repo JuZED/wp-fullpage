@@ -3,7 +3,8 @@
 
 	$( function() {
 
-		var orderByChange;
+		var orderByChange,
+			accordionToggler;
 
 		orderByChange = function( e ) {
 
@@ -18,11 +19,19 @@
 
 		}
 
+		accordionToggler = function( e ) {
+
+			$( this ).toggleClass( 'active' )
+				.next()
+				.find( '.accordion-container' )
+				.slideToggle( 'slow' );
+
+		}
+
 		$( '#orderBy' ).change( orderByChange )
 			.trigger( 'change' );
 
-		$( "#settingsbox" ).tabs()
-			.addClass( "ui-tabs-vertical" );
+		$( '.accordion-toggler' ).click( accordionToggler );
 
 	} );
 

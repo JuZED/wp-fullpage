@@ -231,6 +231,8 @@ class WP_Fullpage_Slide_Type_Metabox extends WP_Fullpage_Metabox_Base {
 
 		wp_enqueue_style( 'slide-options', $this->assets_url . 'css/slide-options.css', $dependencies['css'], WPFP_VERSION );
 
+		wp_enqueue_script( 'slide-options-init', $this->assets_url . 'js/slide-options.init.js', $dependencies['js'], WPFP_VERSION );
+
 	} // END public function admin_enqueue_scripts
 
 } // END class WP_Fullpage_Slide_Type_Metabox

@@ -4,32 +4,45 @@
 	$( function() {
 
 		$( '#fullpage' ).fullpage( {
-
-			verticalCentered: false,
-			resize : fullPageParams.resize == 'yes' ? true : false,
-			anchors: fullPageParams.anchors,
-			scrollingSpeed: parseInt( fullPageParams.scrollingSpeed ),
-			easing: fullPageParams.easing,
+			
+			// Navigation
 			menu: '#fp-nav',
+			anchors: fullPageParams.anchors,
 			navigation: false,
 			slidesNavigation: false,
+
+			// Scrolling
+			css3: fullPageParams.css3 == 'yes' ? true : false,
+			scrollingSpeed: parseInt( fullPageParams.scrollingSpeed ),
+			autoScrolling: fullPageParams.autoScrolling == 'yes' ? true : false,
+			easing: fullPageParams.easing,
+			easingcss3: fullPageParams.easingCss3,
 			loopBottom: fullPageParams.loopBottom == 'yes' ? true : false,
 			loopTop: fullPageParams.loopTop == 'yes' ? true : false,
 			loopHorizontal: fullPageParams.loopHorizontal == 'yes' ? true : false,
-			autoScrolling: fullPageParams.autoScrolling == 'yes' ? true : false,
+			continuousVertical: fullPageParams.continuousVertical == 'yes' ? true : false,
+			normalScrollElements: fullPageParams.normalScrollElements,
 			scrollOverflow: fullPageParams.scrollOverflow == 'yes' ? true : false,
-			css3: fullPageParams.css3 == 'yes' ? true : false,
+			touchSensitivity: parseInt( fullPageParams.touchSensitivity ),
+			normalScrollElementTouchThreshold: fullPageParams.normalScrollElementTouchThreshold,
+
+			// Accessibility
+			keyboardScrolling: fullPageParams.keyboardScrolling == 'yes' ? true : false,
+			animateAnchor: fullPageParams.animateAnchor == 'yes' ? true : false,
+
+			// Design
+			verticalCentered: false,
+			resize : fullPageParams.resize == 'yes' ? true : false,
 			paddingTop: fullPageParams.paddingTop,
 			paddingBottom: fullPageParams.paddingBottom,
 			fixedElements: fullPageParams.fixedElements,
-			normalScrollElements: fullPageParams.normalScrollElements,
-			normalScrollElementTouchThreshold: fullPageParams.normalScrollElementTouchThreshold,
-			keyboardScrolling: fullPageParams.keyboardScrolling == 'yes' ? true : false,
-			touchSensitivity: parseInt( fullPageParams.touchSensitivity ),
-			continuousVertical: fullPageParams.continuousVertical == 'yes' ? true : false,
-			animateAnchor: fullPageParams.animateAnchor == 'yes' ? true : false,
+			responsive: fullPageParams.responsive, // TODO			
 
-			//events
+			// Custom selectors
+			sectionSelector: '.section',
+			slideSelector: '.slide',
+
+			// Events
 			onLeave: function( index, nextIndex, direction ) {
 
 				eval( fullPageParams.onLeave );
@@ -71,4 +84,3 @@
 	} );
 
 } )( jQuery );
-	

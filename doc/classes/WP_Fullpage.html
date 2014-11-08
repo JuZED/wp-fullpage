@@ -136,10 +136,10 @@
                                 <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-29910052"></a>
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-214502039"></a>
                                 <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
             </div>
-            <div id="namespace-29910052" class="accordion-body collapse in">
+            <div id="namespace-214502039" class="accordion-body collapse in">
                 <div class="accordion-inner">
 
                     
@@ -610,7 +610,7 @@
             <article class="method">
                 <h3 class="public ">get_header()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">get_header(string <span class="argument">$name</span>) : void</pre>
+                <pre class="signature" style="margin-right: 54px;">get_header(string <span class="argument">$name</span>, string <span class="argument">$post_type</span>) : void</pre>
                 <p><em>Load Fullpage header template.</em></p>
                 <p>Includes the fullpage header template for a theme or if a name is specified then a
 specialised header will be included.</p>
@@ -624,6 +624,11 @@ specialised header will be included.</p>
                                 <td>string</td>
                                 <td>$name </td>
                                 <td><p>The name of the specialised fullpage header.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$post_type </td>
+                                <td><p>the type of the current post in the loop. Can be 'fullpage', 'section' or 'slide'</p></td>
                             </tr>
                                             </table>
                 
@@ -647,7 +652,7 @@ specialised header will be included.</p>
             <article class="method">
                 <h3 class="public ">get_footer()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">get_footer(string <span class="argument">$name</span>) : void</pre>
+                <pre class="signature" style="margin-right: 54px;">get_footer(string <span class="argument">$name</span>, string <span class="argument">$post_type</span>) : void</pre>
                 <p><em>Load Fullpage footer template.</em></p>
                 <p>Includes the fullpage footer template for a theme or if a name is specified then a
 specialised footer will be included.</p>
@@ -661,6 +666,11 @@ specialised footer will be included.</p>
                                 <td>string</td>
                                 <td>$name </td>
                                 <td><p>The name of the specialised fullpage footer.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$post_type </td>
+                                <td><p>the type of the current post in the loop. Can be 'fullpage', 'section' or 'slide'</p></td>
                             </tr>
                                             </table>
                 
@@ -684,7 +694,7 @@ specialised footer will be included.</p>
             <article class="method">
                 <h3 class="public ">get_navigation()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">get_navigation(string <span class="argument">$name</span>) : void</pre>
+                <pre class="signature" style="margin-right: 54px;">get_navigation(string <span class="argument">$name</span>, string <span class="argument">$post_type</span>) : void</pre>
                 <p><em>Load Fullpage navigation template.</em></p>
                 <p>Includes the fullpage navigation template for a theme or if a name is specified then a
 specialised navigation will be included.</p>
@@ -698,6 +708,11 @@ specialised navigation will be included.</p>
                                 <td>string</td>
                                 <td>$name </td>
                                 <td><p>The name of the specialised fullpage navigation.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$post_type </td>
+                                <td><p>the type of the current post in the loop. Can be 'fullpage', 'section' or 'slide'</p></td>
                             </tr>
                                             </table>
                 
@@ -721,7 +736,7 @@ specialised navigation will be included.</p>
             <article class="method">
                 <h3 class="public ">get_slides_navigation()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">get_slides_navigation(string <span class="argument">$name</span>) : void</pre>
+                <pre class="signature" style="margin-right: 54px;">get_slides_navigation(string <span class="argument">$name</span>, string <span class="argument">$post_type</span>) : void</pre>
                 <p><em>Load Fullpage slides navigation template.</em></p>
                 <p>Includes the fullpage slides navigation template for a theme or if a name is specified then a
 specialised slides navigation will be included.</p>
@@ -735,6 +750,11 @@ specialised slides navigation will be included.</p>
                                 <td>string</td>
                                 <td>$name </td>
                                 <td><p>The name of the specialised fullpage slides navigation.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$post_type </td>
+                                <td><p>the type of the current post in the loop. Can be 'fullpage', 'section' or 'slide'</p></td>
                             </tr>
                                             </table>
                 
@@ -758,7 +778,7 @@ specialised slides navigation will be included.</p>
             <article class="method">
                 <h3 class="public ">get_sidebar()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">get_sidebar(string <span class="argument">$name</span>) : void</pre>
+                <pre class="signature" style="margin-right: 54px;">get_sidebar(string <span class="argument">$name</span>, string <span class="argument">$post_type</span>) : void</pre>
                 <p><em>Load Fullpage sidebar template.</em></p>
                 <p>Includes the fullpage sidebar template for a theme or if a name is specified then a
 specialised sidebar will be included.</p>
@@ -772,6 +792,11 @@ specialised sidebar will be included.</p>
                                 <td>string</td>
                                 <td>$name </td>
                                 <td><p>The name of the specialised fullpage sidebar.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$post_type </td>
+                                <td><p>the type of the current post in the loop. Can be 'fullpage', 'section' or 'slide'</p></td>
                             </tr>
                                             </table>
                 
@@ -795,7 +820,7 @@ specialised sidebar will be included.</p>
             <article class="method">
                 <h3 class="public ">get_layout()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">get_layout(string <span class="argument">$type</span>, string <span class="argument">$name</span>) : void</pre>
+                <pre class="signature" style="margin-right: 54px;">get_layout(string <span class="argument">$type</span>, string <span class="argument">$name</span>, string <span class="argument">$post_type</span>) : void</pre>
                 <p><em>Load a Fullpage layout template.</em></p>
                 <p>Includes the fullpage sidebar template for a theme or if a name is specified then a
 specialised sidebar will be included.</p>
@@ -814,6 +839,11 @@ specialised sidebar will be included.</p>
                                 <td>string</td>
                                 <td>$name </td>
                                 <td><p>The name of the specialised fullpage layout.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$post_type </td>
+                                <td><p>the type of the current post in the loop. Can be 'fullpage', 'section' or 'slide'</p></td>
                             </tr>
                                             </table>
                 
@@ -1170,7 +1200,7 @@ So you can add a specific template for a section or a slide depending on its pos
             <h3 id="source-view-label">fullpage.php</h3>
         </div>
         <div class="modal-body">
-            <pre data-src="../files/fullpage.php.txt" class="language-php line-numbers"></pre>
+            <pre data-src="../files/fullpage.txt" class="language-php line-numbers"></pre>
         </div>
     </div>
 
@@ -1210,7 +1240,7 @@ So you can add a specific template for a section or a slide depending on its pos
                 <section class="span10 offset1">
                     <hr />
                     Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
-                    on October 24th, 2014 at 11:51.
+                    on November 8th, 2014 at 13:32.
                 </section>
             </section>
         </section>

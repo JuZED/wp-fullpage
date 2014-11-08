@@ -20,6 +20,7 @@
 			sectionsTypeChange,
 			orderByChange,
 			teaserDisplayChange,
+			accordionToggler,
 			pageOptions = $( '#fullpage-page-options' ),
 			isItFullPageChange,
 			settingsbox = $( '#settingsbox' );
@@ -158,11 +159,20 @@
 			
 			if( $( this ).is( ':checked' ) ) {
 				if( 'yes' === $( this ).val() )
-					settingsbox.show();
+					settingsbox.slideDown( 'slow' );
 				else
-					settingsbox.hide();
+					settingsbox.slideUp( 'fast' );
 			}
 		
+		}
+
+		accordionToggler = function( e ) {
+
+			$( this ).toggleClass( 'active' )
+				.next()
+				.find( '.accordion-container' )
+				.slideToggle( 'slow' );
+
 		}
 
 		$( '.chzn-select' ).chosen();
@@ -185,15 +195,13 @@
 
 		$( '#teaserDisplay' ).change( teaserDisplayChange )
 			.trigger( 'change' );
-		
-		$( "#settingsbox" ).tabs()
-			.addClass( "ui-tabs-vertical" );
 
 		// Page Options
-		if( 0 < pageOptions.length ) {
+		if( 0 < pageOptions.length )
 			pageOptions.find( 'input' ).change( isItFullPageChange )
 				.trigger( 'change' );
-		}
+		
+		$( '#sections-options .accordion-toggler' ).click( accordionToggler );
 
 	} );
 

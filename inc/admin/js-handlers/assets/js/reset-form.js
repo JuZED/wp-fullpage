@@ -11,19 +11,21 @@
 
 			if ( confirm( wpfpResetFormParams.confirmText ) ) {
 
-				$( 'input, select, textarea', wpfpResetFormParams.selectors ).not( '[type="radio"], [type="checkbox"], [type="submit"], [type="button"], [type="image"], [type="hidden"]' ).each( function() {
+				var $form = $( this ).parents( '#settingsbox' ).first();
+
+				$form.find( 'input, select, textarea' ).not( '.no-reset, [type="radio"], [type="checkbox"], [type="submit"], [type="button"], [type="image"], [type="hidden"]' ).each( function() {
 
 					var _this = $( this ),
-						dataDefault = _this.data( 'default' );;
+						dataDefault = _this.data( 'default' );
 
 					if( dataDefault != undefined )
-						_this.val( _this.data( 'default' ) );
+						_this.val( dataDefault );
 
 					_this.trigger( 'change' );
 
 				} );
 
-				$( 'input[type="radio"], input[type="checkbox"]', wpfpResetFormParams.selectors ).each( function() {
+				$form.find( 'input[type="radio"], input[type="checkbox"]' ).not( '.no-reset' ).each( function() {
 
 					var _this = $( this ),
 						dataDefault = _this.data( 'default' );
