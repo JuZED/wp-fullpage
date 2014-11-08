@@ -49,6 +49,8 @@ Read the [full documentation](http://docs.juzed.fr/wp-fullpage "WP FullPage Docu
 Deactivate than reactivate the plugin after upgrade to refresh permalinks.
 
 == Changelog ==
+= 2.2 =
+*   New options added
 = 2.1 =
 *   UI improvments + fullPage.js upgrade to 2.4.3 
 = 2.0.1 =
