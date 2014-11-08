@@ -155,6 +155,21 @@ var fullpageConsoleLog,
 		}
 
 		/**
+		 * Initialising Backgrounds
+		 */
+		$( '.section' ).each( function() {
+
+			fullpageSetBackground( $( this ) );
+
+			$( this ).find( '.slide' ).each( function() {
+
+				fullpageSetBackground( $( this ) );
+				
+			} );
+
+		} );
+
+		/**
 		 * Slides Navigation tooltips
 		 */
 		$( document ).on( {
