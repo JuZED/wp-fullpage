@@ -1178,7 +1178,76 @@ final class WP_Fullpage_Query {
 		
 		return $background_color;
 
-	} // END public function get_section_color
+	} // END public function get_slide_color
+
+	/**
+	 * Display or retrieve the fullpage easing.
+	 * Only work if css3 is activated.
+	 * Returns empty string if not. 
+	 *
+	 * @param   boolean  	$print   	Optional, default to true. Whether to display or return.
+	 *
+	 * @return  string
+	 */
+	public function get_fullpage_easing( $print = true ) {
+		
+		$fulpage_options = $this->fullpage->fullpage_options;
+
+		$easing = '';
+
+		// if css3 is deactivated returns an empty string
+		if( ! empty( $fulpage_options['css3'] ) && 'yes' !== $fulpage_options['css3'] )
+			return '';
+
+		// the easing option of the fullpage
+		if( '' === $easing )
+			$easing = $fulpage_options['easingCss3'];
+
+		if ( $print )
+			print $easing;
+		
+		return $easing;
+
+	} // END public function get_fullpage_easing
+
+	/**
+	 * Display or retrieve the section easing.
+	 * Only work if css3 is activated.
+	 * Returns empty string if not. 
+	 *
+	 * @param   int      	$section_index  	Optional. The section index. If empty, will take the current section.
+	 * @param   boolean  	$print   	 		Optional, default to true. Whether to display or return.
+	 *
+	 * @return  string
+	 */
+	public function get_section_easing( $section_index = -1, $print = true ) {
+		
+		if( -1 === $section_index )
+			$section_index = $this->current_section;
+
+		$section_options = $this->sections[ $section_index ]->fullpage_options;
+		$fulpage_options = $this->fullpage->fullpage_options;
+
+		$easing = '';
+
+		// if css3 is deactivated returns an empty string
+		if( ! empty( $fulpage_options['css3'] ) && 'yes' !== $fulpage_options['css3'] )
+			return '';
+
+		// the easing option of the section
+		if( ! empty( $section_options['easingCss3'] ) )
+			$easing = $section_options['easingCss3'];
+
+		// the easing option of the fullpage
+		if( '' === $easing || 'inherit' === $easing )
+			$easing = $fulpage_options['easingCss3'];
+
+		if ( $print )
+			print $easing;
+		
+		return $easing;
+
+	} // END public function get_section_easing
 
 	/**
 	 * Display or retrieve the fullpage Unique Identifier (guid).
@@ -1285,7 +1354,7 @@ final class WP_Fullpage_Query {
 
 		return $background_image;
 
-	} // END public function get_section_bg
+	} // END public function get_fullpage_bg
 
 	/**
 	 * Display or retrieve the section background.

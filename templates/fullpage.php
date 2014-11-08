@@ -9,7 +9,7 @@
 
 WPFP()->get_header(); ?>
 
-<div id="fullpage">
+<div id="fullpage" class="<?php WPFP_Query()->get_fullpage_easing(); ?>">
 
 	<?php
 

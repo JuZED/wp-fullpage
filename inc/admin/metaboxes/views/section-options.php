@@ -884,6 +884,100 @@
 						<?php WPFP_Helpers()->td_end(); ?>
 
 					<?php WPFP_Helpers()->tr_end(); ?>
+							
+					<!-- Scrolling toggler -->
+					<?php WPFP_Helpers()->tr_start( '', 'accordion-toggler' ); ?>
+
+						<?php WPFP_Helpers()->td_start( '', '', 2 ); ?>
+
+							<?php
+
+								WPFP_Helpers()->label( __( 'Scrolling', WPFP_DOMAIN ) );
+
+							?>
+
+						<?php WPFP_Helpers()->td_end(); ?>
+
+					<?php WPFP_Helpers()->tr_end(); ?>
+							
+					<!-- Scrolling container -->
+					<?php WPFP_Helpers()->tr_start(); ?>
+						
+						<?php WPFP_Helpers()->td_start( '', '', 2 ); ?>
+				
+							<div class="accordion-container">
+
+								<?php WPFP_Helpers()->table_start( '', 'form-table' ); ?>
+							
+									<!-- CSS3 Transition effect -->
+									<?php WPFP_Helpers()->tr_start(); ?>
+										
+										<?php WPFP_Helpers()->th_start( 'row', '', 'title-desc' ); ?>
+											
+											<?php
+
+												WPFP_Helpers()->label( __( 'Horizontal CSS3 Transition effect', WPFP_DOMAIN ), 'easingCss3' );
+
+											?>
+														
+											<?php
+
+												WPFP_Helpers()->tooltip( __( 'Defines the transition effect to use for the horizontal scrolling in case of CSS3.', WPFP_DOMAIN ), 'wpfp-tip' );
+
+											?>
+
+										<?php WPFP_Helpers()->th_end(); ?>
+
+										<?php WPFP_Helpers()->td_start(); ?>
+
+											<?php
+
+												WPFP_Helpers()->select( WPFP_SECTION_PT_FULLPAGE_OPTIONS, 'easingCss3', array(
+													'inherit'           => __( 'Inherit from FullPage', WPFP_DOMAIN ),
+													'linear'            => __( 'Linear', WPFP_DOMAIN ),
+													'ease'              => __( 'Ease', WPFP_DOMAIN ),
+													'ease-in'           => __( 'Ease In', WPFP_DOMAIN ),
+													'ease-out'          => __( 'Ease Out', WPFP_DOMAIN ),
+													'ease-in-out'       => __( 'Ease In Out', WPFP_DOMAIN ),
+													'ease-in-sine'      => __( 'Ease In Sine', WPFP_DOMAIN ),
+													'ease-out-sine'     => __( 'Ease Out Sine', WPFP_DOMAIN ),
+													'ease-in-out-sine'  => __( 'Ease In Out Sine', WPFP_DOMAIN ),
+													'ease-in-circ'      => __( 'Ease In Circ', WPFP_DOMAIN ),
+													'ease-out-circ'     => __( 'Ease Out Circ', WPFP_DOMAIN ),
+													'ease-in-out-circ'  => __( 'Ease In Out Circ', WPFP_DOMAIN ),
+													'ease-in-quad'      => __( 'Ease In Quad', WPFP_DOMAIN ),
+													'ease-out-quad'     => __( 'Ease Out Quad', WPFP_DOMAIN ),
+													'ease-in-out-quad'  => __( 'Ease In Out Quad', WPFP_DOMAIN ),
+													'ease-in-cubic'     => __( 'Ease In Cubic', WPFP_DOMAIN ),
+													'ease-out-cubic'    => __( 'Ease Out Cubic', WPFP_DOMAIN ),
+													'ease-in-out-cubic' => __( 'Ease In Out Cubic', WPFP_DOMAIN ),
+													'ease-in-quart'     => __( 'Ease In Quart', WPFP_DOMAIN ),
+													'ease-out-quart'    => __( 'Ease Out Quart', WPFP_DOMAIN ),
+													'ease-in-out-quart' => __( 'Ease In Out Quart', WPFP_DOMAIN ),
+													'ease-in-quint'     => __( 'Ease In Quint', WPFP_DOMAIN ),
+													'ease-out-quint'    => __( 'Ease Out Quint', WPFP_DOMAIN ),
+													'ease-in-out-quint' => __( 'Ease In Out Quint', WPFP_DOMAIN ),
+													'ease-in-expo'      => __( 'Ease In Expo', WPFP_DOMAIN ),
+													'ease-out-expo'     => __( 'Ease Out Expo', WPFP_DOMAIN ),
+													'ease-in-out-expo'  => __( 'Ease In Out Expo', WPFP_DOMAIN ),
+													'ease-in-back'      => __( 'Ease In Back', WPFP_DOMAIN ),
+													'ease-out-back'     => __( 'Ease Out Back', WPFP_DOMAIN ),
+													'ease-in-out-back'  => __( 'Ease In Out Back', WPFP_DOMAIN ),
+												), isset( $easingCss3 ) ? $easingCss3 : 'linear', isset( $EASINGCSS3 ) ? $EASINGCSS3 : 'linear' );
+
+											?>
+
+										<?php WPFP_Helpers()->td_end(); ?>
+
+									<?php WPFP_Helpers()->tr_end(); ?>
+								
+								<?php WPFP_Helpers()->table_end(); ?>
+							
+							</div>
+
+						<?php WPFP_Helpers()->td_end(); ?>
+					
+					<?php WPFP_Helpers()->tr_end(); ?>
 										
 					<!-- Navigation toggler -->
 					<?php WPFP_Helpers()->tr_start( '', 'accordion-toggler' ); ?>
