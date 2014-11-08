@@ -136,10 +136,10 @@
                                 <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-837697429"></a>
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1817420071"></a>
                                 <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
             </div>
-            <div id="namespace-837697429" class="accordion-body collapse in">
+            <div id="namespace-1817420071" class="accordion-body collapse in">
                 <div class="accordion-inner">
 
                     
@@ -213,6 +213,8 @@
                                                                     <a href="../classes/WP_Fullpage_Query.html#method_get_slide_nav_title" class="">get_slide_nav_title()</a><br />
                                                                     <a href="../classes/WP_Fullpage_Query.html#method_get_slide_position" class="">get_slide_position()</a><br />
                                                                     <a href="../classes/WP_Fullpage_Query.html#method_get_slide_color" class="">get_slide_color()</a><br />
+                                                                    <a href="../classes/WP_Fullpage_Query.html#method_get_fullpage_easing" class="">get_fullpage_easing()</a><br />
+                                                                    <a href="../classes/WP_Fullpage_Query.html#method_get_section_easing" class="">get_section_easing()</a><br />
                                                                     <a href="../classes/WP_Fullpage_Query.html#method_get_fullpage_guid" class="">get_fullpage_guid()</a><br />
                                                                     <a href="../classes/WP_Fullpage_Query.html#method_get_section_guid" class="">get_section_guid()</a><br />
                                                                     <a href="../classes/WP_Fullpage_Query.html#method_get_slide_guid" class="">get_slide_guid()</a><br />
@@ -1682,6 +1684,83 @@ property to true.</p>
 
                                     <div class="row-fluid">
         <div class="span8 content class">
+            <a id="method_get_fullpage_easing" name="method_get_fullpage_easing" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">get_fullpage_easing()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">get_fullpage_easing(boolean <span class="argument">$print</span>) : string</pre>
+                <p><em>Display or retrieve the fullpage easing.</em></p>
+                <p>Only work if css3 is activated.
+Returns empty string if not.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$print </td>
+                                <td><p>Optional, default to true. Whether to display or return.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_get_section_easing" name="method_get_section_easing" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">get_section_easing()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">get_section_easing(integer <span class="argument">$section_index</span>, boolean <span class="argument">$print</span>) : string</pre>
+                <p><em>Display or retrieve the section easing.</em></p>
+                <p>Only work if css3 is activated.
+Returns empty string if not.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$section_index </td>
+                                <td><p>Optional. The section index. If empty, will take the current section.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$print </td>
+                                <td><p>Optional, default to true. Whether to display or return.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
             <a id="method_get_fullpage_guid" name="method_get_fullpage_guid" class="anchor"></a>
             <article class="method">
                 <h3 class="public ">get_fullpage_guid()</h3>
@@ -2171,7 +2250,7 @@ blog across domains.</p>
                 <section class="span10 offset1">
                     <hr />
                     Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
-                    on November 8th, 2014 at 13:32.
+                    on November 8th, 2014 at 19:58.
                 </section>
             </section>
         </section>

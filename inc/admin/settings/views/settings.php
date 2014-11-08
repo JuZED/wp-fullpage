@@ -275,6 +275,37 @@
 												<?php WPFP_Helpers()->td_end(); ?>
 
 											<?php WPFP_Helpers()->tr_end(); ?>
+									
+											<!-- Responsive -->
+											<?php WPFP_Helpers()->tr_start(); ?>
+												
+												<?php WPFP_Helpers()->th_start( 'row', '', 'title-desc' ); ?>
+												
+													<?php
+
+														WPFP_Helpers()->label( __( 'Responsive', WPFP_DOMAIN ), 'fixedElements' );
+
+													?>
+																
+													<?php
+
+														WPFP_Helpers()->tooltip( __( 'A normal scroll (Auto Scrolling:false) will be used under the defined width in pixels. A class fp-responsive is added to the plugin&apos;s container in case the user wants to use it for his own responsive CSS. For example, if set to 900, whenver the browser&apos;s width is less than 900 the plugin will scroll like a normal site.', WPFP_DOMAIN ), 'wpfp-tip' );
+
+													?>
+
+												<?php WPFP_Helpers()->th_end(); ?>
+
+												<?php WPFP_Helpers()->td_start(); ?>
+										
+													<?php
+
+														WPFP_Helpers()->number( WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS, 'responsive', isset( $responsive ) ? $responsive : 0, 0, 0, 10, 'small-text' );
+
+													?>
+																
+												<?php WPFP_Helpers()->td_end(); ?>
+
+											<?php WPFP_Helpers()->tr_end(); ?>
 
 										<?php WPFP_Helpers()->table_end(); ?>
 

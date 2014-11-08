@@ -996,6 +996,37 @@
 										<?php WPFP_Helpers()->td_end(); ?>
 
 									<?php WPFP_Helpers()->tr_end(); ?>
+									
+									<!-- Responsive -->
+									<?php WPFP_Helpers()->tr_start(); ?>
+										
+										<?php WPFP_Helpers()->th_start( 'row', '', 'title-desc' ); ?>
+										
+											<?php
+
+												WPFP_Helpers()->label( __( 'Responsive', WPFP_DOMAIN ), 'fixedElements' );
+
+											?>
+														
+											<?php
+
+												WPFP_Helpers()->tooltip( __( 'A normal scroll (Auto Scrolling:false) will be used under the defined width in pixels. A class fp-responsive is added to the plugin&apos;s container in case the user wants to use it for his own responsive CSS. For example, if set to 900, whenver the browser&apos;s width is less than 900 the plugin will scroll like a normal site.', WPFP_DOMAIN ), 'wpfp-tip' );
+
+											?>
+
+										<?php WPFP_Helpers()->th_end(); ?>
+
+										<?php WPFP_Helpers()->td_start(); ?>
+								
+											<?php
+
+												WPFP_Helpers()->number( WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS, 'responsive', isset( $responsive ) ? $responsive : 0, isset( $RESPONSIVE ) ? $RESPONSIVE : 0, 0, 10, 'small-text' );
+
+											?>
+														
+										<?php WPFP_Helpers()->td_end(); ?>
+
+									<?php WPFP_Helpers()->tr_end(); ?>
 
 								<?php WPFP_Helpers()->table_end(); ?>
 
@@ -1400,35 +1431,35 @@
 											<?php
 
 												WPFP_Helpers()->select( WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS, 'easingCss3', array(
-													'linear'                                    => __( 'Linear', WPFP_DOMAIN ),
-													'ease'                                      => __( 'Ease', WPFP_DOMAIN ),
-													'ease-in'                                   => __( 'Ease In', WPFP_DOMAIN ),
-													'ease-out'                                  => __( 'Ease Out', WPFP_DOMAIN ),
-													'ease-in-out'                               => __( 'Ease In Out', WPFP_DOMAIN ),
-													'cubic-bezier(0.470, 0.000, 0.745, 0.715)'  => __( 'Ease In Sine', WPFP_DOMAIN ),
-													'cubic-bezier(0.390, 0.575, 0.565, 1.000)'  => __( 'Ease Out Sine', WPFP_DOMAIN ),
-													'cubic-bezier(0.445, 0.050, 0.550, 0.950)'  => __( 'Ease In Out Sine', WPFP_DOMAIN ),
-													'cubic-bezier(0.600, 0.040, 0.980, 0.335)'  => __( 'Ease In Circ', WPFP_DOMAIN ),
-													'cubic-bezier(0.075, 0.820, 0.165, 1.000)'  => __( 'Ease Out Circ', WPFP_DOMAIN ),
-													'cubic-bezier(0.785, 0.135, 0.150, 0.860)'  => __( 'Ease In Out Circ', WPFP_DOMAIN ),
-													'cubic-bezier(0.550, 0.085, 0.680, 0.530)'  => __( 'Ease In Quad', WPFP_DOMAIN ),
-													'cubic-bezier(0.250, 0.460, 0.450, 0.940)'  => __( 'Ease Out Quad', WPFP_DOMAIN ),
-													'cubic-bezier(0.455, 0.030, 0.515, 0.955)'  => __( 'Ease In Out Quad', WPFP_DOMAIN ),
-													'cubic-bezier(0.550, 0.055, 0.675, 0.190)'  => __( 'Ease In Cubic', WPFP_DOMAIN ),
-													'cubic-bezier(0.215, 0.610, 0.355, 1.000)'  => __( 'Ease Out Cubic', WPFP_DOMAIN ),
-													'cubic-bezier(0.645, 0.045, 0.355, 1.000)'  => __( 'Ease In Out Cubic', WPFP_DOMAIN ),
-													'cubic-bezier(0.895, 0.030, 0.685, 0.220)'  => __( 'Ease In Quart', WPFP_DOMAIN ),
-													'cubic-bezier(0.165, 0.840, 0.440, 1.000)'  => __( 'Ease Out Quart', WPFP_DOMAIN ),
-													'cubic-bezier(0.770, 0.000, 0.175, 1.000)'  => __( 'Ease In Out Quart', WPFP_DOMAIN ),
-													'cubic-bezier(0.755, 0.050, 0.855, 0.060)'  => __( 'Ease In Quint', WPFP_DOMAIN ),
-													'cubic-bezier(0.230, 1.000, 0.320, 1.000)'  => __( 'Ease Out Quint', WPFP_DOMAIN ),
-													'cubic-bezier(0.860, 0.000, 0.070, 1.000)'  => __( 'Ease In Out Quint', WPFP_DOMAIN ),
-													'cubic-bezier(0.950, 0.050, 0.795, 0.035)'  => __( 'Ease In Expo', WPFP_DOMAIN ),
-													'cubic-bezier(0.190, 1.000, 0.220, 1.000)'  => __( 'Ease Out Expo', WPFP_DOMAIN ),
-													'cubic-bezier(1.000, 0.000, 0.000, 1.000)'  => __( 'Ease In Out Expo', WPFP_DOMAIN ),
-													'cubic-bezier(0.600, -0.280, 0.735, 0.045)' => __( 'Ease In Back', WPFP_DOMAIN ),
-													'cubic-bezier(0.175, 0.885, 0.320, 1.275)'  => __( 'Ease Out Back', WPFP_DOMAIN ),
-													'cubic-bezier(0.680, 0, 0.265, 1.550)'      => __( 'Ease In Out Back', WPFP_DOMAIN ),
+													'linear'            => __( 'Linear', WPFP_DOMAIN ),
+													'ease'              => __( 'Ease', WPFP_DOMAIN ),
+													'ease-in'           => __( 'Ease In', WPFP_DOMAIN ),
+													'ease-out'          => __( 'Ease Out', WPFP_DOMAIN ),
+													'ease-in-out'       => __( 'Ease In Out', WPFP_DOMAIN ),
+													'ease-in-sine'      => __( 'Ease In Sine', WPFP_DOMAIN ),
+													'ease-out-sine'     => __( 'Ease Out Sine', WPFP_DOMAIN ),
+													'ease-in-out-sine'  => __( 'Ease In Out Sine', WPFP_DOMAIN ),
+													'ease-in-circ'      => __( 'Ease In Circ', WPFP_DOMAIN ),
+													'ease-out-circ'     => __( 'Ease Out Circ', WPFP_DOMAIN ),
+													'ease-in-out-circ'  => __( 'Ease In Out Circ', WPFP_DOMAIN ),
+													'ease-in-quad'      => __( 'Ease In Quad', WPFP_DOMAIN ),
+													'ease-out-quad'     => __( 'Ease Out Quad', WPFP_DOMAIN ),
+													'ease-in-out-quad'  => __( 'Ease In Out Quad', WPFP_DOMAIN ),
+													'ease-in-cubic'     => __( 'Ease In Cubic', WPFP_DOMAIN ),
+													'ease-out-cubic'    => __( 'Ease Out Cubic', WPFP_DOMAIN ),
+													'ease-in-out-cubic' => __( 'Ease In Out Cubic', WPFP_DOMAIN ),
+													'ease-in-quart'     => __( 'Ease In Quart', WPFP_DOMAIN ),
+													'ease-out-quart'    => __( 'Ease Out Quart', WPFP_DOMAIN ),
+													'ease-in-out-quart' => __( 'Ease In Out Quart', WPFP_DOMAIN ),
+													'ease-in-quint'     => __( 'Ease In Quint', WPFP_DOMAIN ),
+													'ease-out-quint'    => __( 'Ease Out Quint', WPFP_DOMAIN ),
+													'ease-in-out-quint' => __( 'Ease In Out Quint', WPFP_DOMAIN ),
+													'ease-in-expo'      => __( 'Ease In Expo', WPFP_DOMAIN ),
+													'ease-out-expo'     => __( 'Ease Out Expo', WPFP_DOMAIN ),
+													'ease-in-out-expo'  => __( 'Ease In Out Expo', WPFP_DOMAIN ),
+													'ease-in-back'      => __( 'Ease In Back', WPFP_DOMAIN ),
+													'ease-out-back'     => __( 'Ease Out Back', WPFP_DOMAIN ),
+													'ease-in-out-back'  => __( 'Ease In Out Back', WPFP_DOMAIN ),
 												), isset( $easingCss3 ) ? $easingCss3 : 'linear', isset( $EASINGCSS3 ) ? $EASINGCSS3 : 'linear' );
 
 											?>

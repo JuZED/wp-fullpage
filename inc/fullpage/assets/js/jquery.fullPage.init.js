@@ -16,7 +16,7 @@
 			scrollingSpeed: parseInt( fullPageParams.scrollingSpeed ),
 			autoScrolling: fullPageParams.autoScrolling == 'yes' ? true : false,
 			easing: fullPageParams.easing,
-			easingcss3: fullPageParams.easingCss3,
+			easingcss3: '',
 			loopBottom: fullPageParams.loopBottom == 'yes' ? true : false,
 			loopTop: fullPageParams.loopTop == 'yes' ? true : false,
 			loopHorizontal: fullPageParams.loopHorizontal == 'yes' ? true : false,
@@ -36,7 +36,7 @@
 			paddingTop: fullPageParams.paddingTop,
 			paddingBottom: fullPageParams.paddingBottom,
 			fixedElements: fullPageParams.fixedElements,
-			responsive: fullPageParams.responsive, // TODO			
+			responsive: fullPageParams.responsive,			
 
 			// Custom selectors
 			sectionSelector: '.section',
