@@ -1,5 +1,5 @@
 /**
- * fullPage 2.4.1
+ * fullPage 2.4.3
  * https://github.com/alvarotrigo/fullPage.js
  * MIT licensed
  *
@@ -10,39 +10,49 @@
 	$.fn.fullpage = function(options) {
 		// Create some defaults, extending them with any options that were provided
 		options = $.extend({
-			"verticalCentered": true,
-			'resize': true,
-			'sectionsColor' : [],
-			'anchors':[],
-			'scrollingSpeed': 700,
-			'easing': 'easeInQuart',
+			//navigation
 			'menu': false,
+			'anchors':[],
 			'navigation': false,
 			'navigationPosition': 'right',
 			'navigationColor': '#000',
 			'navigationTooltips': [],
 			'slidesNavigation': false,
 			'slidesNavPosition': 'bottom',
-			'controlArrowColor': '#fff',
+
+			//scrolling
+			'css3': false,
+			'scrollingSpeed': 700,
+			'autoScrolling': true,
+			'easing': 'easeInQuart',
+			'easingcss3': 'ease',
 			'loopBottom': false,
 			'loopTop': false,
 			'loopHorizontal': true,
-			'autoScrolling': true,
+			'continuousVertical': false,
 			'fitSection': false,
+			'normalScrollElements': null,
 			'scrollOverflow': false,
-			'css3': false,
+			'touchSensitivity': 5,
+			'normalScrollElementTouchThreshold': 5,
+
+			//Accessibility
+			'keyboardScrolling': true,
+			'animateAnchor': true,
+
+			//design
+			'controlArrowColor': '#fff',
+			"verticalCentered": true,
+			'resize': true,
+			'sectionsColor' : [],
 			'paddingTop': 0,
 			'paddingBottom': 0,
 			'fixedElements': null,
-			'normalScrollElements': null,
-			'keyboardScrolling': true,
-			'touchSensitivity': 5,
-			'continuousVertical': false,
-			'animateAnchor': true,
-			'normalScrollElementTouchThreshold': 5,
+			'responsive': 0,
+
+			//Custom selectors
 			'sectionSelector': '.section',
 			'slideSelector': '.slide',
-			'responsive': 0,
 
 
 			//events
@@ -263,9 +273,7 @@
 		var isTouchDevice = navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry|BB10|Windows Phone|Tizen|Bada)/);
 		var isTouch = (('ontouchstart' in window) || (navigator.msMaxTouchPoints > 0));
 		var container = $(this);
-		var windowsHeight = $(window).height() - parseFloat(options.paddingTop) - parseFloat(options.paddingBottom);
-		options.paddingTop = 0;
-		options.paddingBottom = 0;
+		var windowsHeight = $(window).height();
 		var isMoving = false;
 		var isResizing = false;
 		var lastScrolledDestiny;
@@ -420,6 +428,7 @@
 				$.isFunction( options.afterRender ) && options.afterRender.call( this);
 			}
 
+			responsive();
 
 			//getting the anchor link in the URL and deleting the `#`
 			var value =  window.location.hash.replace('#', '').split('/');
@@ -1162,7 +1171,7 @@
 			if(options.css3){
 				var translate3d = 'translate3d(-' + destinyPos.left + 'px, 0px, 0px)';
 
-				slides.find('.fp-slidesContainer').toggleClass('fp-easing', options.scrollingSpeed>0).css(getTransforms(translate3d));
+				addAnimation(slides.find('.fp-slidesContainer'), options.scrollingSpeed>0).css(getTransforms(translate3d));
 
 				setTimeout(function(){
 					afterSlideLoads();
@@ -1216,14 +1225,41 @@
 	    		if ($(window).width() < options.responsive ){
 	    			if(!isResponsive){
 	    				$.fn.fullpage.setAutoScrolling(false);
+	    				$('#fp-nav').hide();
 						container.addClass('fp-responsive');
 	    			}
 	    		}else if(isResponsive){
 	    			$.fn.fullpage.setAutoScrolling(true);
+	    			$('#fp-nav').show();
 					container.removeClass('fp-responsive');
 	    		}
 	    	}
 	    }
+
+	    /**
+		* Toogles transition animations for the given element
+		*/
+		function addAnimation(element, adding){
+			var transition = 'all ' + options.scrollingSpeed + 'ms ' + options.easingcss3;
+
+			if(adding){
+				element.removeClass('fp-notransition');
+				return element.css({
+					'-webkit-transition': transition,
+         			'transition': transition
+           		});
+			}
+
+			//removing the animation
+			return removeAnimation(element);
+		}
+
+		/**
+		* Remove transition animations for the given element
+		*/
+		function removeAnimation(element){
+			return element.addClass('fp-notransition');
+		}
 
 		/**
 		 * Resizing of the font size depending on the window size as well as some of the images on the site.
@@ -1397,7 +1433,7 @@
 		* Adds a css3 transform property to the container class with or without animation depending on the animated param.
 		*/
 		function transformContainer(translate3d, animated){
-			container.toggleClass('fp-easing', animated);
+			addAnimation(container, animated);
 
 			container.css(getTransforms(translate3d));
 		}
@@ -1719,7 +1755,8 @@
 				$(this).removeClass('fp-table active');
 			})
 
-			container.find('.fp-easing').removeClass('fp-easing');
+			removeAnimation(container);
+			removeAnimation(container.find('.fp-easing'));
 
 			//Unwrapping content
 			container.find('.fp-tableCell, .fp-slidesContainer, .fp-slides').each(function(){

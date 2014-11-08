@@ -387,13 +387,14 @@ final class WP_Fullpage extends WP_Fullpage_Base {
 	 *
 	 * WPFP()->get_header( 'special' );
 	 *
-	 * @param    string   $name   The name of the specialised fullpage header.
+	 * @param    string   $name   		The name of the specialised fullpage header.
+	 * @param    string   $post_type   	the type of the current post in the loop. Can be 'fullpage', 'section' or 'slide'
 	 *
 	 * @return   void
 	 */
-	public function get_header( $name = null ) {
+	public function get_header( $name = '', $post_type = 'fullpage' ) {
 		
-		$this->get_layout( 'header', $name );
+		$this->get_layout( 'header', $name, $post_type );
 	
 	} // END public function get_header
 
@@ -408,13 +409,14 @@ final class WP_Fullpage extends WP_Fullpage_Base {
 	 *
 	 * WPFP()->get_footer( 'special' );
 	 *
-	 * @param    string   $name   The name of the specialised fullpage footer.
+	 * @param    string   $name   		The name of the specialised fullpage footer.
+	 * @param    string   $post_type   	the type of the current post in the loop. Can be 'fullpage', 'section' or 'slide'
 	 *
 	 * @return   void
 	 */
-	public function get_footer( $name = null ) {
+	public function get_footer( $name = '', $post_type = 'fullpage' ) {
 		
-		$this->get_layout( 'footer', $name );
+		$this->get_layout( 'footer', $name, $post_type );
 	
 	} // END public function get_footer
 
@@ -429,13 +431,14 @@ final class WP_Fullpage extends WP_Fullpage_Base {
 	 *
 	 *WPFP()->get_navigation( 'special' );
 	 *
-	 * @param    string   $name   The name of the specialised fullpage navigation.
+	 * @param    string   $name   		The name of the specialised fullpage navigation.
+	 * @param    string   $post_type   	the type of the current post in the loop. Can be 'fullpage', 'section' or 'slide'
 	 *
 	 * @return   void
 	 */
-	public function get_navigation( $name = null ) {
+	public function get_navigation( $name = '', $post_type = 'fullpage' ) {
 		
-		$this->get_layout( 'navigation', $name );
+		$this->get_layout( 'navigation', $name, $post_type );
 	
 	} // END public function get_navigation
 
@@ -450,13 +453,14 @@ final class WP_Fullpage extends WP_Fullpage_Base {
 	 *
 	 * WPFP()->get_slides_navigation( 'special' );
 	 *
-	 * @param    string   $name   The name of the specialised fullpage slides navigation.
+	 * @param    string   $name   		The name of the specialised fullpage slides navigation.
+	 * @param    string   $post_type   	the type of the current post in the loop. Can be 'fullpage', 'section' or 'slide'
 	 *
 	 * @return   void
 	 */
-	public function get_slides_navigation( $name = null ) {
+	public function get_slides_navigation( $name = '', $post_type = 'section' ) {
 		
-		$this->get_layout( 'slides-navigation', $name );
+		$this->get_layout( 'slides-navigation', $name, $post_type );
 	
 	} // END public function get_slides_navigation
 
@@ -471,13 +475,14 @@ final class WP_Fullpage extends WP_Fullpage_Base {
 	 *
 	 * WPFP()->get_sidebar( 'special' );
 	 *
-	 * @param    string   $name   The name of the specialised fullpage sidebar.
+	 * @param    string   $name   		The name of the specialised fullpage sidebar.
+	 * @param    string   $post_type   	the type of the current post in the loop. Can be 'fullpage', 'section' or 'slide'
 	 *
 	 * @return   void
 	 */
-	public function get_sidebar( $name = null ) {
+	public function get_sidebar( $name = '', $post_type = 'fullpage' ) {
 		
-		$this->get_layout( 'sidebar', $name );
+		$this->get_layout( 'sidebar', $name, $post_type );
 	
 	} // END public function get_sidebar
 
@@ -492,12 +497,13 @@ final class WP_Fullpage extends WP_Fullpage_Base {
 	 *
 	 * WPFP()->get_layout( 'my_type', 'special' );
 	 *
-	 * @param    string   $type   can be 'header', 'footer', 'sidebar', 'navigation', 'slides-navigation' or whatever you want
-	 * @param    string   $name   The name of the specialised fullpage layout.
+	 * @param    string   $type   		can be 'header', 'footer', 'sidebar', 'navigation', 'slides-navigation' or whatever you want
+	 * @param    string   $name   		The name of the specialised fullpage layout.
+	 * @param    string   $post_type   	the type of the current post in the loop. Can be 'fullpage', 'section' or 'slide'
 	 *
 	 * @return void
 	 */
-	public function get_layout( $type, $name = null ) {
+	public function get_layout( $type, $name = '', $post_type = 'fullpage' ) {
 		
 		/**
 		 * Fires before the layout template file is loaded.
@@ -508,20 +514,19 @@ final class WP_Fullpage extends WP_Fullpage_Base {
 		 */
 		do_action( "get_{$type}", $name );
 
-		$name        = (string) $name;
+		$post_name   = WPFP_Query()->$post_type->post_name;
 		$layout_path = $this->layout_path();
 		$template    = false;
 		
-		if ( '' !== $name )
-			$template = $this->locate_template(
-				trailingslashit( $layout_path ) . "{$type}-{$name}.php"
-			);
-		
-		if( ! $template )
-			$template = $this->locate_template(
-				trailingslashit( $layout_path ) . "{$type}.php"
-			);		
-
+		$template = $this->locate_template(
+			array(
+				trailingslashit( $layout_path ) . "{$type}-{$name}-{$post_name}.php",
+				trailingslashit( $layout_path ) . "{$type}-{$post_name}.php",
+				trailingslashit( $layout_path ) . "{$type}-{$name}.php",
+				trailingslashit( $layout_path ) . "{$type}.php",
+			)
+		);
+	
 		$template = apply_filters( 'wpfp_get_layout_template', $template, $type, $name );
 
 		if( $template )
@@ -544,7 +549,7 @@ final class WP_Fullpage extends WP_Fullpage_Base {
 	 *
 	 * @return void
 	 */
-	public function get_sections( $name = null ) {
+	public function get_sections( $name = '' ) {
 		
 		$this->get_loop( 'section', $name );
 	
@@ -565,7 +570,7 @@ final class WP_Fullpage extends WP_Fullpage_Base {
 	 *
 	 * @return void
 	 */
-	public function get_slides( $name = null ) {
+	public function get_slides( $name = '' ) {
 
 		$this->get_loop( 'slide', $name );
 		
@@ -590,7 +595,7 @@ final class WP_Fullpage extends WP_Fullpage_Base {
 	 *
 	 * @return void
 	 */
-	public function get_loop( $type, $name = null ) {
+	public function get_loop( $type, $name = '' ) {
 		
 		/**
 		 * Fires before the fullpage loop.
@@ -601,7 +606,6 @@ final class WP_Fullpage extends WP_Fullpage_Base {
 		 */
 		do_action( "get_{$type}s", $name );
 
-		$name       = (string) $name;
 		$loop_path  = $this->loop_path();
 		$have_types = "have_{$type}s";
 		$the_type   = "the_{$type}";

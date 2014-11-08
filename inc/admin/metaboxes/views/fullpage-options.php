@@ -8,1125 +8,2069 @@
 
 ?>
 
-<h4><a href="#wpfp-settings"><?php _e( 'WP Fullpage Options', WPFP_DOMAIN ); ?></a></h4>
-
 <div id="settingsbox">
-
-	<ul id="settings-tabs">
-		<li>
-			<a href="#fullpage-options">
-				<?php _e( 'Fullpage Options', WPFP_DOMAIN );?>
-			</a>
-			<a class="wpfp-goto" title="<?php _e( 'Read full Fullpage.js documentation on GitHub.', WPFP_DOMAIN ); ?>" target="_blank" href="https://github.com/alvarotrigo/fullPage.js#introduction"></a>
-		</li>
-		<li>
-			<a href="#sections-options">
-				<?php _e( 'Sections Options', WPFP_DOMAIN );?>
-			</a>
-			<span class="wpfp-tip tabs-tip" data-tip='<?php _e( 'Options for sections of a post type or a taxonomy.', WPFP_DOMAIN ); ?>'></span>
-		</li>
-	</ul>
-
-	<div id="fullpage-options">
-
-		<div class="inside">
-
-			<div class="setting-panel">
-
-				<ul class="fullpage-options">
-					
-					<!-- Title -->
-					<li>
-
-						<h5><?php _e( 'Fullpage.js Options', WPFP_DOMAIN );?></h5>
-
-					</li>
-							
-					<!-- Vertical Position -->
-					<li>
-
-						<label for="verticalPosition">
-						 	<?php _e( 'Vertical Position', WPFP_DOMAIN ); ?>
-						</label>
-
-						<select id="verticalPosition" name="<?php print WPFP_FULLPAGE_PT_SLIDES_OPTIONS; ?>[verticalPosition]" <?php WPFP_Helpers()->default_setting( isset( $VERTICALPOSITION ) ? $VERTICALPOSITION : 'middle', true ); ?>>
-							
-							<option value="middle" <?php selected( isset( $verticalPosition ) ? $verticalPosition : 'middle', 'middle' ); ?>><?php _e( 'Middle', WPFP_DOMAIN ); ?></option>
-							<option value="top" <?php selected( isset( $verticalPosition ) ? $verticalPosition : '', 'top' ); ?>><?php _e( 'Top', WPFP_DOMAIN ); ?></option>
-							<option value="bottom" <?php selected( isset( $verticalPosition ) ? $verticalPosition : '', 'bottom' ); ?>><?php _e( 'Bottom', WPFP_DOMAIN ); ?></option>
-
-						</select>
-
-						<span class="wpfp-tip" data-tip="<?php _e( 'Vertical position of the content within slide.', WPFP_DOMAIN ); ?>"></span>
-
-					</li>
-					
-					<!-- Horizontal Position -->
-					<li>
-
-						<label for="horizontalPosition">
-						 	<?php _e( 'Horizontal Position', WPFP_DOMAIN ); ?>
-						</label>
-
-						<select id="horizontalPosition" name="<?php print WPFP_FULLPAGE_PT_SLIDES_OPTIONS; ?>[horizontalPosition]" <?php WPFP_Helpers()->default_setting( isset( $HORIZONTALPOSITION ) ? $HORIZONTALPOSITION : 'center', true ); ?>>
-							
-							<option value="center" <?php selected( isset( $horizontalPosition ) ? $horizontalPosition : 'center', 'center' ); ?>><?php _e( 'Center', WPFP_DOMAIN ); ?></option>
-							<option value="left" <?php selected( isset( $horizontalPosition ) ? $horizontalPosition : '', 'left' ); ?>><?php _e( 'Left', WPFP_DOMAIN ); ?></option>
-							<option value="right" <?php selected( isset( $horizontalPosition ) ? $horizontalPosition : '', 'right' ); ?>><?php _e( 'Right', WPFP_DOMAIN ); ?></option>
-
-						</select>
-
-						<span class="wpfp-tip" data-tip="<?php _e( 'Horizontal position of the content within slide.', WPFP_DOMAIN ); ?>"></span>
-
-					</li>
-					
-					<!-- Resize -->
-					<li>
-
-						<span class="label">
-						 	<?php _e( 'Resize', WPFP_DOMAIN ); ?>
-						</span>
-
-						<div class="radio">
-
-							<input type="radio" id="resize-yes" name="<?php print WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS; ?>[resize]" value="yes" <?php WPFP_Helpers()->checked( isset( $resize ) ? $resize : 'yes', isset( $RESIZE ) ? $RESIZE : 'yes', 'yes' ); ?> />
-							<label for="resize-yes">
-							 	<?php _e( 'yes', WPFP_DOMAIN ); ?>
-							</label>
-							<input type="radio" id="resize-no" name="<?php print WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS; ?>[resize]" value="no" <?php WPFP_Helpers()->checked( isset( $resize ) ? $resize : 'yes', isset( $RESIZE ) ? $RESIZE : 'yes', 'no' ); ?> />
-							<label for="resize-no">
-							 	<?php _e( 'no', WPFP_DOMAIN ); ?>
-							</label>
-
-						</div>
-
-						<span class="wpfp-tip" data-tip="<?php _e( 'Whether you want to resize the text when the window is resized.', WPFP_DOMAIN ); ?>"></span>
-
-					</li>
-					
-					<!-- Scrolling Speed -->
-					<li>
-
-						<label for="scrollingSpeed">
-						 	<?php _e( 'Scrolling Speed', WPFP_DOMAIN ); ?>
-						</label>
-						<input type="number" id="scrollingSpeed" name="<?php print WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS; ?>[scrollingSpeed]" step="10" min="0" class="small-text" <?php WPFP_Helpers()->value( isset( $scrollingSpeed ) ? $scrollingSpeed : 700, isset( $SCROLLINGSPEED ) ? $SCROLLINGSPEED : 700 ); ?> />
-						<span class="wpfp-tip" data-tip="<?php _e( 'Speed in miliseconds for the scrolling transitions.', WPFP_DOMAIN ); ?>"></span>
-
-					</li>
-					
-					<!-- Easing -->
-					<li>
-
-						<label for="easing">
-						 	<?php _e( 'Easing', WPFP_DOMAIN ); ?>
-						</label>
-						<select id="easing" name="<?php print WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS; ?>[easing]" <?php WPFP_Helpers()->default_setting( isset( $EASING ) ? $EASING : 'easeInQuad', true ); ?>>
-							
-							<option value="easeInQuad" <?php selected( isset( $easing ) ? $easing : 'easeInQuad', 'easeInQuad' ); ?>><?php _e( 'Ease In Quad', WPFP_DOMAIN ); ?></option>
-							<option value="easeOutQuad" <?php selected( isset( $easing ) ? $easing : '', 'easeOutQuad' ); ?>><?php _e( 'Ease Out Quad', WPFP_DOMAIN ); ?></option>
-							<option value="easeInOutQuad" <?php selected( isset( $easing ) ? $easing : '', 'easeInOutQuad' ); ?>><?php _e( 'Ease In Out Quad', WPFP_DOMAIN ); ?></option>
-							
-							<option value="easeInCubic" <?php selected( isset( $easing ) ? $easing : '', 'easeInCubic' ); ?>><?php _e( 'Ease In Cubic', WPFP_DOMAIN ); ?></option>
-							<option value="easeOutCubic" <?php selected( isset( $easing ) ? $easing : '', 'easeOutCubic' ); ?>><?php _e( 'Ease Out Cubic', WPFP_DOMAIN ); ?></option>
-							<option value="easeInOutCubic" <?php selected( isset( $easing ) ? $easing : '', 'easeInOutCubic' ); ?>><?php _e( 'Ease In Out Cubic', WPFP_DOMAIN ); ?></option>
-							
-							<option value="easeInQuart" <?php selected( isset( $easing ) ? $easing : '', 'easeInQuart' ); ?>><?php _e( 'Ease In Quart', WPFP_DOMAIN ); ?></option>
-							<option value="easeOutQuart" <?php selected( isset( $easing ) ? $easing : '', 'easeOutQuart' ); ?>><?php _e( 'Ease Out Quart', WPFP_DOMAIN ); ?></option>
-							<option value="easeInOutQuart" <?php selected( isset( $easing ) ? $easing : '', 'easeInOutQuart' ); ?>><?php _e( 'Ease In Out Quart', WPFP_DOMAIN ); ?></option>
-							
-							<option value="easeInQuint" <?php selected( isset( $easing ) ? $easing : '', 'easeInQuint' ); ?>><?php _e( 'Ease In Quint', WPFP_DOMAIN ); ?></option>
-							<option value="easeOutQuint" <?php selected( isset( $easing ) ? $easing : '', 'easeOutQuint' ); ?>><?php _e( 'Ease Out Quint', WPFP_DOMAIN ); ?></option>
-							<option value="easeInOutQuint" <?php selected( isset( $easing ) ? $easing : '', 'easeInOutQuint' ); ?>><?php _e( 'Ease In Out Quint', WPFP_DOMAIN ); ?></option>
-							
-							<option value="easeInExpo" <?php selected( isset( $easing ) ? $easing : '', 'easeInExpo' ); ?>><?php _e( 'Ease In Expo', WPFP_DOMAIN ); ?></option>
-							<option value="easeOutExpo" <?php selected( isset( $easing ) ? $easing : '', 'easeOutExpo' ); ?>><?php _e( 'Ease Out Expo', WPFP_DOMAIN ); ?></option>
-							<option value="easeInOutExpo" <?php selected( isset( $easing ) ? $easing : '', 'easeInOutExpo' ); ?>><?php _e( 'Ease In Out Expo', WPFP_DOMAIN ); ?></option>
-
-						</select>
-						<span class="wpfp-tip" data-tip="<?php _e( 'Defines the transition effect to use for the vertical and horizontal scrolling.', WPFP_DOMAIN ); ?>"></span>
-
-					</li>
-					
-					<!-- Navigation -->
-					<li>
-
-						<span class="label">
-						 	<?php _e( 'Navigation', WPFP_DOMAIN ); ?>
-						</span>
-
-						<div class="radio">
-
-							<input type="radio" id="navigation-yes" name="<?php print WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS; ?>[navigation]" value="yes" <?php WPFP_Helpers()->checked( isset( $navigation ) ? $navigation : 'yes', isset( $NAVIGATION ) ? $NAVIGATION : 'yes', 'yes' ); ?> />
-							<label for="navigation-yes">
-							 	<?php _e( 'yes', WPFP_DOMAIN ); ?>
-							</label>
-							<input type="radio" id="navigation-no" name="<?php print WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS; ?>[navigation]" value="no" <?php WPFP_Helpers()->checked( isset( $navigation ) ? $navigation : 'yes', isset( $NAVIGATION ) ? $NAVIGATION : 'yes', 'no' ); ?> />
-							<label for="navigation-no">
-							 	<?php _e( 'no', WPFP_DOMAIN ); ?>
-							</label>
-						
-						</div>
-
-						<span class="wpfp-tip" data-tip="<?php _e( 'If set to true, it will show a navigation bar made up of small circles.', WPFP_DOMAIN ); ?>"></span>
-
-					</li>
-					
-					<!-- Navigation Position -->
-					<li>
-
-						<label for="navigationPosition">
-						 	<?php _e( 'Navigation Position', WPFP_DOMAIN ); ?>
-						</label>
-						<select id="navigationPosition" name="<?php print WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS; ?>[navigationPosition]" <?php WPFP_Helpers()->default_setting( isset( $NAVIGATIONPOSITION ) ? $NAVIGATIONPOSITION : 'left', true ); ?>>
-							
-							<option value="left" <?php selected( isset( $navigationPosition ) ? $navigationPosition : 'left', 'left' ); ?>><?php _e( 'Left', WPFP_DOMAIN ); ?></option>
-							<option value="right" <?php selected( isset( $navigationPosition ) ? $navigationPosition : '', 'right' ); ?>><?php _e( 'Right', WPFP_DOMAIN ); ?></option>
-
-						</select>
-						<span class="wpfp-tip" data-tip="<?php _e( 'It can be set to left or right and defines which position the navigation bar will be shown (if using one).', WPFP_DOMAIN ); ?>"></span>
-
-					</li>
-					
-					<!-- Slides Navigation -->
-					<li>
-
-						<span class="label">
-						 	<?php _e( 'Slides Navigation', WPFP_DOMAIN ); ?>
-						</span>
-
-						<div class="radio">
-
-							<input type="radio" id="slidesNavigation-yes" name="<?php print WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS; ?>[slidesNavigation]" value="yes" <?php WPFP_Helpers()->checked( isset( $slidesNavigation ) ? $slidesNavigation : 'yes', isset( $SLIDESNAVIGATION ) ? $SLIDESNAVIGATION : 'yes', 'yes' ); ?> />
-							<label for="slidesNavigation-yes">
-							 	<?php _e( 'yes', WPFP_DOMAIN ); ?>
-							</label>
-							<input type="radio" id="slidesNavigation-no" name="<?php print WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS; ?>[slidesNavigation]" value="no" <?php WPFP_Helpers()->checked( isset( $slidesNavigation ) ? $slidesNavigation : 'yes', isset( $SLIDESNAVIGATION ) ? $SLIDESNAVIGATION : 'yes', 'no' ); ?> />
-							<label for="slidesNavigation-no">
-							 	<?php _e( 'no', WPFP_DOMAIN ); ?>
-							</label>
-
-						</div>
-
-						<span class="wpfp-tip" data-tip="<?php _e( 'If set to true it will show a navigation bar made up of small circles for each landscape slider on the site.', WPFP_DOMAIN ); ?>"></span>
-
-					</li>
-					
-					<!-- Slides Nav Position -->
-					<li>
-
-						<label for="slidesNavPosition">
-						 	<?php _e( 'Slides Nav Position', WPFP_DOMAIN ); ?>
-						</label>
-						<select id="slidesNavPosition" name="<?php print WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS; ?>[slidesNavPosition]" <?php WPFP_Helpers()->default_setting( isset( $SLIDESNAVPOSITION ) ? $SLIDESNAVPOSITION : 'top', true ); ?>>
-							
-							<option value="top" <?php selected( isset( $slidesNavPosition ) ? $slidesNavPosition : 'top', 'top' ); ?>><?php _e( 'Top', WPFP_DOMAIN ); ?></option>
-							<option value="bottom" <?php selected( isset( $slidesNavPosition ) ? $slidesNavPosition : '', 'bottom' ); ?>><?php _e( 'Bottom', WPFP_DOMAIN ); ?></option>
-
-						</select>
-						<span class="wpfp-tip" data-tip="<?php _e( 'Defines the position for the landscape navigation bar for sliders. Admits top and bottom as values. You may want to modify the CSS styles to determine the distance from the top or bottom as well as any other style such as color.', WPFP_DOMAIN ); ?>"></span>
-
-					</li>
-					
-					<!-- Loop Bottom -->
-					<li>
-
-						<span class="label">
-						 	<?php _e( 'Loop Bottom', WPFP_DOMAIN ); ?>
-						</span>
-
-						<div class="radio">
-						
-							<input type="radio" id="loopBottom-yes" name="<?php print WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS; ?>[loopBottom]" value="yes" <?php WPFP_Helpers()->checked( isset( $loopBottom ) ? $loopBottom : 'yes', isset( $LOOPBOTTOM ) ? $LOOPBOTTOM : 'yes', 'yes' ); ?> />
-							<label for="loopBottom-yes">
-							 	<?php _e( 'yes', WPFP_DOMAIN ); ?>
-							</label>
-							<input type="radio" id="loopBottom-no" name="<?php print WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS; ?>[loopBottom]" value="no" <?php WPFP_Helpers()->checked( isset( $loopBottom ) ? $loopBottom : 'yes', isset( $LOOPBOTTOM ) ? $LOOPBOTTOM : 'yes', 'no' ); ?> />
-							<label for="loopBottom-no">
-							 	<?php _e( 'no', WPFP_DOMAIN ); ?>
-							</label>
-
-						</div>
-
-						<span class="wpfp-tip" data-tip="<?php _e( 'Defines whether scrolling down in the last section should scroll to the first one or not.', WPFP_DOMAIN ); ?>"></span>
-
-					</li>
-					
-					<!-- Loop Top -->
-					<li>
-
-						<span class="label">
-						 	<?php _e( 'Loop Top', WPFP_DOMAIN ); ?>
-						</span>
-
-						<div class="radio">
-							
-							<input type="radio" id="loopTop-yes" name="<?php print WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS; ?>[loopTop]" value="yes" <?php WPFP_Helpers()->checked( isset( $loopTop ) ? $loopTop : 'yes', isset( $LOOPTOP ) ? $LOOPTOP : 'yes', 'yes' ); ?> />
-							<label for="loopTop-yes">
-							 	<?php _e( 'yes', WPFP_DOMAIN ); ?>
-							</label>
-							<input type="radio" id="loopTop-no" name="<?php print WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS; ?>[loopTop]" value="no" <?php WPFP_Helpers()->checked( isset( $loopTop ) ? $loopTop : 'yes', isset( $LOOPTOP ) ? $LOOPTOP : 'yes', 'no' ); ?> />
-							<label for="loopTop-no">
-							 	<?php _e( 'no', WPFP_DOMAIN ); ?>
-							</label>
-						
-						</div>
-						
-						<span class="wpfp-tip" data-tip="<?php _e( 'Defines whether scrolling up in the first section should scroll to the last one or not.', WPFP_DOMAIN ); ?>"></span>
-
-					</li>
-					
-					<!-- Loop Horizontal -->
-					<li>
-
-						<span class="label">
-						 	<?php _e( 'Loop Horizontal', WPFP_DOMAIN ); ?>
-						</span>
-						
-						<div class="radio">
-							
-							<input type="radio" id="loopHorizontal-yes" name="<?php print WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS; ?>[loopHorizontal]" value="yes" <?php WPFP_Helpers()->checked( isset( $loopHorizontal ) ? $loopHorizontal : 'yes', isset( $LOOPHORIZONTAL ) ? $LOOPHORIZONTAL : 'yes', 'yes' ); ?> />
-							<label for="loopHorizontal-yes">
-							 	<?php _e( 'yes', WPFP_DOMAIN ); ?>
-							</label>
-							<input type="radio" id="loopHorizontal-no" name="<?php print WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS; ?>[loopHorizontal]" value="no" <?php WPFP_Helpers()->checked( isset( $loopHorizontal ) ? $loopHorizontal : 'yes', isset( $LOOPHORIZONTAL ) ? $LOOPHORIZONTAL : 'yes', 'no' ); ?> />
-							<label for="loopHorizontal-no">
-							 	<?php _e( 'no', WPFP_DOMAIN ); ?>
-							</label>
-						
-						</div>
-						
-						<span class="wpfp-tip" data-tip="<?php _e( 'Defines whether horizontal sliders will loop after reaching the last or previous slide or not.', WPFP_DOMAIN ); ?>"></span>
-
-					</li>
-					
-					<!-- Auto Scrolling -->
-					<li>
-
-						<span class="label">
-						 	<?php _e( 'Auto Scrolling', WPFP_DOMAIN ); ?>
-						</span>
-
-						<div class="radio">
-							
-							<input type="radio" id="autoScrolling-yes" name="<?php print WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS; ?>[autoScrolling]" value="yes" <?php WPFP_Helpers()->checked( isset( $autoScrolling ) ? $autoScrolling : 'yes', isset( $AUTOSCROLLING ) ? $AUTOSCROLLING : 'yes', 'yes' ); ?> />
-							<label for="autoScrolling-yes">
-							 	<?php _e( 'yes', WPFP_DOMAIN ); ?>
-							</label>
-							<input type="radio" id="autoScrolling-no" name="<?php print WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS; ?>[autoScrolling]" value="no" <?php WPFP_Helpers()->checked( isset( $autoScrolling ) ? $autoScrolling : 'yes', isset( $AUTOSCROLLING ) ? $AUTOSCROLLING : 'yes', 'no' ); ?> />
-							<label for="autoScrolling-no">
-							 	<?php _e( 'no', WPFP_DOMAIN ); ?>
-							</label>
-
-						</div>
-
-						<span class="wpfp-tip" data-tip='<?php _e( 'Defines whether to use the "automatic" scrolling or the "normal" one. It also has affects the way the sections fit in the browser/device window in tablets and mobile phones.', WPFP_DOMAIN ); ?>'></span>
-					
-					</li>
-					
-					<!-- Scroll Overflow -->
-					<li>
-
-						<span class="label">
-						 	<?php _e( 'Scroll Overflow', WPFP_DOMAIN ); ?>
-						</span>
-
-						<div class="radio">
-							
-							<input type="radio" id="scrollOverflow-yes" name="<?php print WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS; ?>[scrollOverflow]" value="yes" <?php WPFP_Helpers()->checked( isset( $scrollOverflow ) ? $scrollOverflow : 'yes', isset( $SCROLLOVERFLOW ) ? $SCROLLOVERFLOW : 'yes', 'yes' ); ?> />
-							<label for="scrollOverflow-yes">
-							 	<?php _e( 'yes', WPFP_DOMAIN ); ?>
-							</label>
-							<input type="radio" id="scrollOverflow-no" name="<?php print WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS; ?>[scrollOverflow]" value="no" <?php WPFP_Helpers()->checked( isset( $scrollOverflow ) ? $scrollOverflow : 'yes', isset( $SCROLLOVERFLOW ) ? $SCROLLOVERFLOW : 'yes', 'no' ); ?> />
-							<label for="scrollOverflow-no">
-							 	<?php _e( 'no', WPFP_DOMAIN ); ?>
-							</label>
-						
-						</div>
-
-						<span class="wpfp-tip" data-tip="<?php _e( 'Defines whether or not to create a scroll for the section in case its content is bigger than the height of it.', WPFP_DOMAIN ); ?>"></span>
-
-					</li>
-					
-					<!-- CSS 3 -->
-					<li>
-
-						<span class="label">
-						 	<?php _e( 'CSS 3', WPFP_DOMAIN ); ?>
-						</span>
-
-						<div class="radio">
-
-							<input type="radio" id="css3-yes" name="<?php print WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS; ?>[css3]" value="yes" <?php WPFP_Helpers()->checked( isset( $css3 ) ? $css3 : 'yes', isset( $CSS3 ) ? $CSS3 : 'yes', 'yes' ); ?> />
-							<label for="css3-yes">
-							 	<?php _e( 'yes', WPFP_DOMAIN ); ?>
-							</label>
-							<input type="radio" id="css3-no" name="<?php print WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS; ?>[css3]" value="no" <?php WPFP_Helpers()->checked( isset( $css3 ) ? $css3 : 'yes', isset( $CSS3 ) ? $CSS3 : 'yes', 'no' ); ?> />
-							<label for="css3-no">
-							 	<?php _e( 'no', WPFP_DOMAIN ); ?>
-							</label>
-						
-						</div>
-
-						<span class="wpfp-tip" data-tip="<?php _e( 'Defines wheter to use JavaScript or CSS3 transforms to scroll within sections and slides. Useful to speed up the movement in tablet and mobile devices with browsers supporting CSS3. If this option is set to true and the browser doesn\'t support CSS3, a jQuery fallback will be used instead.', WPFP_DOMAIN ); ?>"></span>
-
-					</li>
-					
-					<!-- Padding Top -->
-					<li>
-
-						<label for="paddingTop">
-						 	<?php _e( 'Padding Top', WPFP_DOMAIN ); ?>
-						</label>
-						<input type="text" id="paddingTop" name="<?php print WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS; ?>[paddingTop]" <?php WPFP_Helpers()->value( isset( $paddingTop ) ? $paddingTop : 0, isset( $PADDINGTOP ) ? $PADDINGTOP : 0 ); ?> />
-						<span class="wpfp-tip" data-tip="<?php _e( 'Defines the top padding for each section with a numerical value and its measure (paddingTop: \'10px\', paddingTop: \'10em\'...) Useful in case of using a fixed header.', WPFP_DOMAIN ); ?>"></span>
-
-					</li>
-					
-					<!-- Padding Bottom -->
-					<li>
-
-						<label for="paddingBottom">
-						 	<?php _e( 'Padding Bottom', WPFP_DOMAIN ); ?>
-						</label>
-						<input type="text" id="paddingBottom" name="<?php print WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS; ?>[paddingBottom]" <?php WPFP_Helpers()->value( isset( $paddingBottom ) ? $paddingBottom : 0, isset( $PADDINGBOTTOM ) ? $PADDINGBOTTOM : 0 ); ?> />
-						<span class="wpfp-tip" data-tip="<?php _e( 'Defines the bottom padding for each section with a numerical value and its measure (paddingBottom: \'10px\', paddingBottom: \'10em\'...). Useful in case of using a fixed footer.', WPFP_DOMAIN ); ?>"></span>
-
-					</li>
-							
-					<!-- Fixed Elements -->
-					<li>
-
-						<label for="fixedElements">
-						 	<?php _e( 'Fixed Elements', WPFP_DOMAIN ); ?>
-						</label>
-						<input type="text" id="fixedElements" name="<?php print WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS; ?>[fixedElements]" <?php WPFP_Helpers()->value( isset( $fixedElements ) ? $fixedElements : '', isset( $FIXEDELEMENTS ) ? $FIXEDELEMENTS : '' ); ?> />
-						<span class="wpfp-tip" data-tip="<?php _e( 'Defines which elements will be taken off the scrolling structure of the plugin which is necesary when using the css3 option to keep them fixed. It requires a string with the jQuery selectors for those elements. (For example: \'#element1, .element2\')', WPFP_DOMAIN ); ?>"></span>
-
-					</li>
-					
-					<!-- Normal Scroll Element -->
-					<li>
-
-						<label for="normalScrollElements">
-						 	<?php _e( 'Normal Scroll Element', WPFP_DOMAIN ); ?>
-						</label>
-						<input type="text" id="normalScrollElements" name="<?php print WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS; ?>[normalScrollElements]" <?php WPFP_Helpers()->value( isset( $normalScrollElements ) ? $normalScrollElements : '', isset( $NORMALSCROLLELEMENTS ) ? $NORMALSCROLLELEMENTS : '' ); ?> />
-						<span class="wpfp-tip" data-tip="<?php _e( 'If you want to avoid the auto scroll when scrolling over some elements, this is the option you need to use. (useful for maps, scrolling divs etc.) It requires a string with the jQuery selectors for those elements. (For example: "#element1, .element2")', WPFP_DOMAIN ); ?>"></span>
-
-					</li>
-					
-					<!-- Normal Scroll Element Touch Threshold -->
-					<li>
-
-						<label for="normalScrollElementTouchThreshold">
-						 	<?php _e( 'Normal Scroll Element Touch Threshold', WPFP_DOMAIN ); ?>
-						</label>
-						<input type="number" id="normalScrollElementTouchThreshold" name="<?php print WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS; ?>[normalScrollElementTouchThreshold]" step="1" min="0" class="small-text" <?php WPFP_Helpers()->value( isset( $normalScrollElementTouchThreshold ) ? $normalScrollElementTouchThreshold : 5, isset( $NORMALSCROLLELEMENTTOUCHTHRESHOLD ) ? $NORMALSCROLLELEMENTTOUCHTHRESHOLD : 5 ); ?> />
-						<span class="wpfp-tip" data-tip="<?php _e( 'Defines the threshold for the number of hops up the html node tree Fullpage will test to see if normalScrollElements is a match to allow scrolling functionality on divs on a touch device. (For example: normalScrollElementTouchThreshold: 3).', WPFP_DOMAIN ); ?>"></span>
-
-					</li>
-					
-					<!-- keyboard Scrolling -->
-					<li>
-
-						<span class="label">
-						 	<?php _e( 'keyboard Scrolling', WPFP_DOMAIN ); ?>
-						</span>
-
-						<div class="radio">
-							
-							<input type="radio" id="keyboardScrolling-yes" name="<?php print WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS; ?>[keyboardScrolling]" value="yes" <?php WPFP_Helpers()->checked( isset( $keyboardScrolling ) ? $keyboardScrolling : 'yes', isset( $KEYBOARDSCROLLING ) ? $KEYBOARDSCROLLING : 'yes', 'yes' ); ?> />
-							<label for="keyboardScrolling-yes">
-							 	<?php _e( 'yes', WPFP_DOMAIN ); ?>
-							</label>
-							<input type="radio" id="keyboardScrolling-no" name="<?php print WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS; ?>[keyboardScrolling]" value="no" <?php WPFP_Helpers()->checked( isset( $keyboardScrolling ) ? $keyboardScrolling : 'yes', isset( $KEYBOARDSCROLLING ) ? $KEYBOARDSCROLLING : 'yes', 'no' ); ?> />
-							<label for="keyboardScrolling-no">
-							 	<?php _e( 'no', WPFP_DOMAIN ); ?>
-							</label>
-						
-						</div>
-
-						<span class="wpfp-tip" data-tip="<?php _e( 'Defines if the content can be navigated using the keyboard.', WPFP_DOMAIN ); ?>"></span>
-
-					</li>
-					
-					<!-- Touch Sensitivity -->
-					<li>
-
-						<label for="touchSensitivity">
-						 	<?php _e( 'Touch Sensitivity', WPFP_DOMAIN ); ?>
-						</label>
-						<input type="number" id="touchSensitivity" name="<?php print WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS; ?>[touchSensitivity]" step="1" min="1" class="small-text" <?php WPFP_Helpers()->value( isset( $touchSensitivity ) ? $touchSensitivity : 15, isset( $TOUCHSENSITIVITY ) ? $TOUCHSENSITIVITY : 15 ); ?> />
-						<span class="wpfp-tip" data-tip="<?php _e( 'Defines a percentage of the browsers window width/height, and how far a swipe must measure for navigating to the next section / slide.', WPFP_DOMAIN ); ?>"></span>
-
-					</li>
-					
-					<!-- Continuous Vertical -->
-					<li>
-
-						<span class="label">
-						 	<?php _e( 'Continuous Vertical', WPFP_DOMAIN ); ?>
-						</span>
-
-						<div class="radio">
-							
-							<input type="radio" id="continuousVertical-yes" name="<?php print WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS; ?>[continuousVertical]" value="yes" <?php WPFP_Helpers()->checked( isset( $continuousVertical ) ? $continuousVertical : 'yes', isset( $CONTINUOUSVERTICAL ) ? $CONTINUOUSVERTICAL : 'yes', 'yes' ); ?> />
-							<label for="continuousVertical-yes">
-							 	<?php _e( 'yes', WPFP_DOMAIN ); ?>
-							</label>
-							<input type="radio" id="continuousVertical-no" name="<?php print WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS; ?>[continuousVertical]" value="no" <?php WPFP_Helpers()->checked( isset( $continuousVertical ) ? $continuousVertical : 'yes', isset( $CONTINUOUSVERTICAL ) ? $CONTINUOUSVERTICAL : 'yes', 'no' ); ?> />
-							<label for="continuousVertical-no">
-							 	<?php _e( 'no', WPFP_DOMAIN ); ?>
-							</label>
-
-						</div>
-
-						<span class="wpfp-tip" data-tip="<?php _e( 'Defines whether scrolling down in the last section should scroll down to the first one or not, and if scrolling up in the first section should scroll up to the last one or not. Not compatible with loopTop or loopBottom.', WPFP_DOMAIN ); ?>"></span>
-
-					</li>
-					
-					<!-- Animate Anchor -->
-					<li>
-
-						<span class="label">
-						 	<?php _e( 'Animate Anchor', WPFP_DOMAIN ); ?>
-						</span>
-
-						<div class="radio">
-							
-							<input type="radio" id="animateAnchor-yes" name="<?php print WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS; ?>[animateAnchor]" value="yes" <?php WPFP_Helpers()->checked( isset( $animateAnchor ) ? $animateAnchor : 'yes', isset( $ANIMATEANCHOR ) ? $ANIMATEANCHOR : 'yes', 'yes' ); ?> />
-							<label for="animateAnchor-yes">
-							 	<?php _e( 'yes', WPFP_DOMAIN ); ?>
-							</label>
-							<input type="radio" id="animateAnchor-no" name="<?php print WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS; ?>[animateAnchor]" value="no" <?php WPFP_Helpers()->checked( isset( $animateAnchor ) ? $animateAnchor : 'yes', isset( $ANIMATEANCHOR ) ? $ANIMATEANCHOR : 'yes', 'no' ); ?> />
-							<label for="animateAnchor-no">
-							 	<?php _e( 'no', WPFP_DOMAIN ); ?>
-							</label>
-
-						</div>
-
-						<span class="wpfp-tip" data-tip="<?php _e( 'Defines whether the load of the site when given an anchor (#) will scroll with animation to its destination or will directly load on the given section.', WPFP_DOMAIN ); ?>"></span>
-
-					</li>
-					
-					<!-- On Leave -->
-					<li>
-
-						<label for="onLeave">
-						 	<?php _e( 'On Leave', WPFP_DOMAIN ); ?>
-						</label>
-						<textarea cols="40" id="onLeave" name="<?php print WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS; ?>[onLeave]" <?php WPFP_Helpers()->default_setting( isset( $ONLEAVE ) ? $ONLEAVE : 'fullpageOnLeave( index, nextIndex, direction );', true ); ?>><?php print isset( $onLeave ) ? $onLeave : 'fullpageOnLeave( index, nextIndex, direction );'; ?></textarea>
-						<span class="wpfp-tip" data-tip='<?php _e( 'This callback is fired once the user leaves a section, in the transition to the new section. Use your own javascript code or customize the function "fullpageOnLeave" in "your-theme/wp-fullpage/js/jquery.fullpage.custom.js".', WPFP_DOMAIN ); ?>'></span><a class="wpfp-goto" title="<?php _e( 'Go to callback definition.', WPFP_DOMAIN ); ?>" target="_blank" href="https://github.com/alvarotrigo/fullPage.js#onleave-index-nextindex-direction"></a>
-
-					</li>
-					
-					<!-- After Load -->
-					<li>
-
-						<label for="afterLoad">
-						 	<?php _e( 'After Load', WPFP_DOMAIN ); ?>
-						</label>
-						<textarea cols="40" id="afterLoad" name="<?php print WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS; ?>[afterLoad]" <?php WPFP_Helpers()->default_setting( isset( $AFTERLOAD ) ? $AFTERLOAD : 'fullpageAfterLoad( anchorLink, index );', true ); ?>><?php print isset( $afterLoad ) ? $afterLoad : 'fullpageAfterLoad( anchorLink, index );'; ?></textarea>
-						<span class="wpfp-tip" data-tip='<?php _e( 'Callback fired once the sections have been loaded, after the scrolling has ended. Use your own javascript code or customize the function "fullpageAfterLoad" in "your-theme/wp-fullpage/js/jquery.fullpage.custom.js".', WPFP_DOMAIN ); ?>'></span><a class="wpfp-goto" title="<?php _e( 'Go to callback definition.', WPFP_DOMAIN ); ?>" target="_blank" href="https://github.com/alvarotrigo/fullPage.js#afterload-anchorlink-index"></a>
-
-					</li>
-					
-					<!-- After Render -->
-					<li>
-
-						<label for="afterRender">
-						 	<?php _e( 'After Render', WPFP_DOMAIN ); ?>
-						</label>
-						<textarea cols="40" id="afterRender" name="<?php print WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS; ?>[afterRender]" <?php WPFP_Helpers()->default_setting( isset( $AFTERRENDER ) ? $AFTERRENDER : 'fullpageAfterRender();', true ); ?>><?php print isset( $afterRender ) ? $afterRender : 'fullpageAfterRender();'; ?></textarea>
-						<span class="wpfp-tip" data-tip='<?php _e( 'This callback is fired just after the structure of the page is generated. This is the callback you want to use to initialize other plugins or fire any code which requires the document to be ready (as this plugin modifies the DOM to create the resulting structure). Use your own javascript code or customize the function "fullpageAfterRender" in "your-theme/wp-fullpage/js/jquery.fullpage.custom.js".', WPFP_DOMAIN ); ?>'></span><a class="wpfp-goto" title="<?php _e( 'Go to callback definition.', WPFP_DOMAIN ); ?>" target="_blank" href="https://github.com/alvarotrigo/fullPage.js#afterrender"></a>
-
-					</li>
-					
-					<!-- After Resize -->
-					<li>
-
-						<label for="afterResize">
-						 	<?php _e( 'After Resize', WPFP_DOMAIN ); ?>
-						</label>
-						<textarea cols="40" id="afterResize" name="<?php print WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS; ?>[afterResize]" <?php WPFP_Helpers()->default_setting( isset( $AFTERRESIZE ) ? $AFTERRESIZE : 'fullpageAfterResize();', true ); ?>><?php print isset( $afterResize ) ? $afterResize : 'fullpageAfterResize();'; ?></textarea>
-						<span class="wpfp-tip" data-tip='<?php _e( 'This callback is fired after resizing the browser\'s window. Just after the sections are resized. Use your own javascript code or customize the function "fullpageAfterResize" in "your-theme/wp-fullpage/js/jquery.fullpage.custom.js".', WPFP_DOMAIN ); ?>'></span><a class="wpfp-goto" title="<?php _e( 'Go to callback definition.', WPFP_DOMAIN ); ?>" target="_blank" href="https://github.com/alvarotrigo/fullPage.js#afterresize"></a>
-
-					</li>
-					
-					<!-- After Slide Load -->
-					<li>
-
-						<label for="afterSlideLoad">
-						 	<?php _e( 'After Slide Load', WPFP_DOMAIN ); ?>
-						</label>
-						<textarea cols="40" id="afterSlideLoad" name="<?php print WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS; ?>[afterSlideLoad]" <?php WPFP_Helpers()->default_setting( isset( $AFTERSLIDELOAD ) ? $AFTERSLIDELOAD : 'fullpageAfterSlideLoad( anchorLink, index, slideAnchor, slideIndex );', true ); ?>><?php print isset( $afterSlideLoad ) ? $afterSlideLoad : 'fullpageAfterSlideLoad( anchorLink, index, slideAnchor, slideIndex );'; ?></textarea>
-						<span class="wpfp-tip" data-tip='<?php _e( 'Callback fired once the slide of a section have been loaded, after the scrolling has ended. Use your own javascript code or customize the function "fullpageAfterSlideLoad" in "your-theme/wp-fullpage/js/jquery.fullpage.custom.js".', WPFP_DOMAIN ); ?>'></span><a class="wpfp-goto" title="<?php _e( 'Go to callback definition.', WPFP_DOMAIN ); ?>" target="_blank" href="https://github.com/alvarotrigo/fullPage.js#afterslideload-anchorlink-index-slideanchor-slideindex"></a>
-
-					</li>
-					
-					<!-- On Slide Leave -->
-					<li>
-
-						<label for="onSlideLeave">
-						 	<?php _e( 'On Slide Leave', WPFP_DOMAIN ); ?>
-						</label>
-						<textarea cols="40" id="onSlideLeave" name="<?php print WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS; ?>[onSlideLeave]" <?php WPFP_Helpers()->default_setting( isset( $ONSLIDELEAVE ) ? $ONSLIDELEAVE : 'fullpageSlideLeave( anchorLink, index, slideIndex, direction );', true ); ?>><?php print isset( $onSlideLeave ) ? $onSlideLeave : 'fullpageSlideLeave( anchorLink, index, slideIndex, direction );'; ?></textarea>
-						<span class="wpfp-tip" data-tip='<?php _e( 'This callback is fired once the user leaves an slide to go to another, in the transition to the new slide. Use your own javascript code or customize the function "fullpageSlideLeave" in "your-theme/wp-fullpage/js/jquery.fullpage.custom.js".', WPFP_DOMAIN ); ?>'></span><a class="wpfp-goto" title="<?php _e( 'Go to callback definition.', WPFP_DOMAIN ); ?>" target="_blank" href="https://github.com/alvarotrigo/fullPage.js#onslideleave-anchorlink-index-slideindex-direction"></a>
-
-					</li>
-
-				</ul>
-
-			</div>
-
-		</div>
-
-	</div>
 
 	<div id="sections-options">
 
 		<div class="inside">
 
 			<div class="setting-panel">
-
-				<ul class="sections-options">
-					
-					<!-- Title -->
-					<li>
-
-						<h5><?php _e( 'Sections Options', WPFP_DOMAIN );?></h5>
-
-					</li>
-							
-					<!-- Vertical Position -->
-					<li>
-
-						<label for="verticalPosition">
-						 	<?php _e( 'Vertical Position', WPFP_DOMAIN ); ?>
-						</label>
-
-						<select id="verticalPosition" name="<?php print WPFP_FULLPAGE_PT_SLIDES_OPTIONS; ?>[verticalPosition]" <?php WPFP_Helpers()->default_setting( isset( $VERTICALPOSITION ) ? $VERTICALPOSITION : 'middle', true ); ?>>
-							
-							<option value="middle" <?php selected( isset( $verticalPosition ) ? $verticalPosition : 'middle', 'middle' ); ?>><?php _e( 'Middle', WPFP_DOMAIN ); ?></option>
-							<option value="top" <?php selected( isset( $verticalPosition ) ? $verticalPosition : '', 'top' ); ?>><?php _e( 'Top', WPFP_DOMAIN ); ?></option>
-							<option value="bottom" <?php selected( isset( $verticalPosition ) ? $verticalPosition : '', 'bottom' ); ?>><?php _e( 'Bottom', WPFP_DOMAIN ); ?></option>
-
-						</select>
-
-						<span class="wpfp-tip" data-tip="<?php _e( 'Vertical position of the content within slide.', WPFP_DOMAIN ); ?>"></span>
-
-					</li>
-					
-					<!-- Horizontal Position -->
-					<li>
-
-						<label for="horizontalPosition">
-						 	<?php _e( 'Horizontal Position', WPFP_DOMAIN ); ?>
-						</label>
-
-						<select id="horizontalPosition" name="<?php print WPFP_FULLPAGE_PT_SLIDES_OPTIONS; ?>[horizontalPosition]" <?php WPFP_Helpers()->default_setting( isset( $HORIZONTALPOSITION ) ? $HORIZONTALPOSITION : 'center', true ); ?>>
-							
-							<option value="center" <?php selected( isset( $horizontalPosition ) ? $horizontalPosition : 'center', 'center' ); ?>><?php _e( 'Center', WPFP_DOMAIN ); ?></option>
-							<option value="left" <?php selected( isset( $horizontalPosition ) ? $horizontalPosition : '', 'left' ); ?>><?php _e( 'Left', WPFP_DOMAIN ); ?></option>
-							<option value="right" <?php selected( isset( $horizontalPosition ) ? $horizontalPosition : '', 'right' ); ?>><?php _e( 'Right', WPFP_DOMAIN ); ?></option>
-
-						</select>
-
-						<span class="wpfp-tip" data-tip="<?php _e( 'Horizontal position of the content within slide.', WPFP_DOMAIN ); ?>"></span>
-
-					</li>
-
-					<li>
 				
-						<label for="navTitle">
-						 	<?php _e( 'Navigation Title', WPFP_DOMAIN ); ?>
-							
-							<span class="wpfp-tip" data-tip='<?php _e( 'Which metadata do you want to use for the navigation tooltips in case they are being used. If the metadata is empty or does not exists, it will display the title instead. If empty, it will display post title.', WPFP_DOMAIN ); ?>'></span>
-						</label>
-						
-						<input type="text" id="navTitle" name="<?php print WPFP_FULLPAGE_PT_SECTIONS_OPTIONS; ?>[navTitle]" <?php WPFP_Helpers()->value( isset( $navTitle ) ? $navTitle : '', isset( $NAVTITLE ) ? $NAVTITLE : '' ); ?> />
+				<?php WPFP_Helpers()->table_start( '', 'sections-options form-table' ); ?>
 					
-					</li>
-			
-					<!-- Slides Color -->
-					<li>
+					<?php WPFP_Helpers()->caption( __( 'WP Fullpage Options', WPFP_DOMAIN ) ); ?>
+							
+					<!-- Sections Content toggler -->
+					<?php WPFP_Helpers()->tr_start( '', 'accordion-toggler' ); ?>
+
+						<?php WPFP_Helpers()->td_start( '', '', 2 ); ?>
+
+							<?php
+
+								WPFP_Helpers()->label( __( 'Sections Content', WPFP_DOMAIN ) );
+
+							?>
+
+						<?php WPFP_Helpers()->td_end(); ?>
+
+					<?php WPFP_Helpers()->tr_end(); ?>
+							
+					<!-- Sections Content -->
+					<?php WPFP_Helpers()->tr_start(); ?>
+						
+						<?php WPFP_Helpers()->td_start( '', '', 2 ); ?>
 				
-						<label for="slideColor">
-						 	<?php _e( 'Slides Color', WPFP_DOMAIN ); ?>
-							
-							<span class="wpfp-tip" data-tip='<?php _e( 'Define the CSS background-color property for slides. Example : "#f2f2f2", "#4BBFC3", "#7BAABE", "whitesmoke", "#000".', WPFP_DOMAIN ); ?>'></span>
-						</label>
-						
-						<input type="text" id="slideColor" name="<?php print WPFP_FULLPAGE_PT_SLIDES_OPTIONS; ?>[slideColor]" <?php WPFP_Helpers()->value( isset( $slideColor ) ? $slideColor : '', isset( $SLIDECOLOR ) ? $SLIDECOLOR : '' ); ?> />
+							<div class="accordion-container">
+
+								<?php WPFP_Helpers()->table_start( '', 'form-table' ); ?>
 					
-					</li>
-			
-					<!-- Slides Navigation Title -->
-					<li>
+									<!-- Section Type -->
+									<?php WPFP_Helpers()->tr_start(); ?>
+										
+										<?php WPFP_Helpers()->th_start( 'row', '', 'title-desc' ); ?>
+
+											<?php
+
+												WPFP_Helpers()->label( __( 'Sections Type', WPFP_DOMAIN ), 'sectionsType' );
+
+											?>
+
+											<?php
+
+												WPFP_Helpers()->tooltip( __( 'Which type of sections do you want to display for this Fullpage.', WPFP_DOMAIN ), 'wpfp-tip' );
+
+											?>
+
+										<?php WPFP_Helpers()->th_end(); ?>
+
+										<?php WPFP_Helpers()->td_start(); ?>
+
+											<?php
+
+												WPFP_Helpers()->select( WPFP_FULLPAGE_PT_SECTIONS_OPTIONS, 'sectionsType', array(
+													'sections'        => __( 'Sections', WPFP_DOMAIN ),
+													'post-taxonomies' => __( 'Post Taxonomies', WPFP_DOMAIN ),
+													'post-types'      => __( 'Post Types', WPFP_DOMAIN ),
+												), isset( $sectionsType ) ? $sectionsType : '', '', 'no-reset' );
+
+											?>
+
+										<?php WPFP_Helpers()->td_end(); ?>
+
+									<?php WPFP_Helpers()->tr_end(); ?>
+									
+									<!-- Sections -->
+									<?php WPFP_Helpers()->tr_start(); ?>
+										
+										<?php WPFP_Helpers()->td_start( '', '', 2 ); ?>
+								
+											<?php WPFP_Helpers()->table_start( 'sections-wrapper', 'wpfp-slide-wrapper sub-options form-table' ); ?>
+												
+												<?php WPFP_Helpers()->caption( __( 'Sections', WPFP_DOMAIN ) ); ?>
+														
+												<!-- Sections -->
+												<?php WPFP_Helpers()->tr_start(); ?>
+										
+													<?php WPFP_Helpers()->th_start( 'row', '', 'title-desc' ); ?>
+
+														<?php
+
+															WPFP_Helpers()->label( __( 'Sections', WPFP_DOMAIN ), 'bbm-sections-list-launcher' );
+
+														?>
+
+														<?php
+
+															WPFP_Helpers()->tooltip( __( 'Add and reorder some sections to your Fullpage.', WPFP_DOMAIN ), 'wpfp-tip' );
+
+														?>
+
+													<?php WPFP_Helpers()->th_end(); ?>
+
+													<?php WPFP_Helpers()->td_start(); ?>
+
+														<ul id="sortableSections"></ul>
+														
+														<?php
+
+															WPFP_Helpers()->hidden( WPFP_FULLPAGE_PT_SECTIONS_OPTIONS . '[sections]', 'sections-list', isset( $sections ) ? $sections : '' );
+
+														?>
+														
+														<?php
+
+															$datas = array(
+																'postType' => WPFP_FULLPAGE_SECTION_PT,
+															);
+														
+														?>
+
+														<?php
+
+															WPFP_Helpers()->button( 'bbm-sections-list-launcher', __( 'Add sections' , WPFP_DOMAIN ), $datas, 'button button-large' );
+
+														?>
+
+														<div class="clear"></div>
+
+													<?php WPFP_Helpers()->td_end(); ?>
+
+												<?php WPFP_Helpers()->tr_end(); ?>
+
+											<?php WPFP_Helpers()->table_end(); ?>
+
+										<?php WPFP_Helpers()->td_end(); ?>
+
+									<?php WPFP_Helpers()->tr_end(); ?>
+									
+									<!-- Post Taxonomies or Types -->
+									<?php WPFP_Helpers()->tr_start(); ?>
+										
+										<?php WPFP_Helpers()->td_start( '', '', 2 ); ?>
+								
+											<?php WPFP_Helpers()->table_start( 'post-taxonomies-or-types-wrapper', 'wpfp-slide-wrapper sub-options form-table' ); ?>
+												
+												<?php WPFP_Helpers()->caption( __( 'Post taxonomies', WPFP_DOMAIN ), 'post-taxonomies-wrapper' ); ?>
+												
+												<?php WPFP_Helpers()->caption( __( 'Post types', WPFP_DOMAIN ), 'post-types-wrapper' ); ?>
+														
+												<!-- Teaser -->
+												<?php WPFP_Helpers()->tr_start(); ?>
+										
+													<?php WPFP_Helpers()->th_start( 'row', '', 'title-desc' ); ?>
+											
+														<?php WPFP_Helpers()->span_label( __( 'Teaser', WPFP_DOMAIN ) ); ?>
+
+														<?php
+
+															WPFP_Helpers()->tooltip( __( 'Choose yes if you want to display the teaser.', WPFP_DOMAIN ), 'wpfp-tip' );
+
+														?>
+
+													<?php WPFP_Helpers()->th_end(); ?>
+
+													<?php WPFP_Helpers()->td_start(); ?>
+
+														<?php
+
+															WPFP_Helpers()->radio( WPFP_FULLPAGE_PT_CUSTOM_OPTIONS, 'teaserDisplay', array(
+																'yes' => __( 'yes', WPFP_DOMAIN ),
+																'no'  => __( 'no', WPFP_DOMAIN ),
+															), isset( $teaserDisplay ) ? $teaserDisplay : 'yes', isset( $TEASERDISPLAY ) ? $TEASERDISPLAY : 'yes' );
+
+														?>
+
+													<?php WPFP_Helpers()->td_end(); ?>
+
+												<?php WPFP_Helpers()->tr_end(); ?>
+														
+												<!-- Teaser Length -->
+												<?php WPFP_Helpers()->tr_start( 'teaserLength-container' ); ?>
+										
+													<?php WPFP_Helpers()->th_start( 'row', '', 'title-desc' ); ?>
+											
+														<?php
+
+															WPFP_Helpers()->label( __( 'Teaser Length', WPFP_DOMAIN ), 'teaserLength' );
+
+														?>
+
+														<?php
+
+															WPFP_Helpers()->tooltip( __( 'How many characters do you want to display in the teaser. If set to "0", it will take the default value af your theme.', WPFP_DOMAIN ), 'wpfp-tip' );
+
+														?>
+
+													<?php WPFP_Helpers()->th_end(); ?>
+
+													<?php WPFP_Helpers()->td_start(); ?>
+
+														<?php
+
+															WPFP_Helpers()->number( WPFP_FULLPAGE_PT_CUSTOM_OPTIONS, 'teaserLength', isset( $teaserLength ) ? $teaserLength : 100, isset( $TEASERLENGTH ) ? $TEASERLENGTH : 100, 0, 10, 'small-text' );
+
+														?>
+
+													<?php WPFP_Helpers()->td_end(); ?>
+
+												<?php WPFP_Helpers()->tr_end(); ?>
+														
+												<!-- Count -->
+												<?php WPFP_Helpers()->tr_start(); ?>
+										
+													<?php WPFP_Helpers()->th_start( 'row', '', 'title-desc' ); ?>
+											
+														<?php
+
+															WPFP_Helpers()->label( __( 'Count', WPFP_DOMAIN ), 'countPosts' );
+
+														?>
+
+														<?php
+
+															WPFP_Helpers()->tooltip( __( 'How many posts do you want to display.', WPFP_DOMAIN ), 'wpfp-tip' );
+
+														?>
+
+													<?php WPFP_Helpers()->th_end(); ?>
+
+													<?php WPFP_Helpers()->td_start(); ?>
+
+														<?php
+
+															WPFP_Helpers()->number( WPFP_FULLPAGE_PT_CUSTOM_OPTIONS, 'countPosts', isset( $teaserLength ) ? $countPosts : get_option( 'posts_per_page' ), isset( $COUNTPOSTS ) ? $COUNTPOSTS : get_option( 'posts_per_page' ), 1, 1, 'small-text' );
+
+														?>
+
+													<?php WPFP_Helpers()->td_end(); ?>
+
+												<?php WPFP_Helpers()->tr_end(); ?>
+														
+												<!-- Order By -->
+												<?php WPFP_Helpers()->tr_start(); ?>
+										
+													<?php WPFP_Helpers()->th_start( 'row', '', 'title-desc' ); ?>
+											
+														<?php
+
+															WPFP_Helpers()->label( __( 'Order By', WPFP_DOMAIN ), 'orderBy' );
+
+														?>
+												
+														<?php
+
+															WPFP_Helpers()->tooltip( __( 'What do you want to order the list with.', WPFP_DOMAIN ), 'wpfp-tip' );
+
+														?>
+
+													<?php WPFP_Helpers()->th_end(); ?>
+
+													<?php WPFP_Helpers()->td_start(); ?>
+
+														<?php
+
+															WPFP_Helpers()->select( WPFP_FULLPAGE_PT_CUSTOM_OPTIONS, 'orderBy', array(
+																'date'          => __( 'Date', WPFP_DOMAIN ),
+																'post__in'      => __( 'Include Order', WPFP_DOMAIN ),
+																'ID'            => __( 'Post ID', WPFP_DOMAIN ),
+																'author'        => __( 'Author', WPFP_DOMAIN ),
+																'title'         => __( 'Author', WPFP_DOMAIN ),
+																'name'          => __( 'Post Name (slug)', WPFP_DOMAIN ),
+																'modified'      => __( 'Modified date', WPFP_DOMAIN ),
+																'parent'        => __( 'Parent', WPFP_DOMAIN ),
+																'rand'          => __( 'Random', WPFP_DOMAIN ),
+																'comment_count' => __( 'Comment count', WPFP_DOMAIN ),
+																'meta_value'    => __( 'Meta Value', WPFP_DOMAIN ),
+															), isset( $orderBy ) ? $orderBy : 'date', isset( $ORDERBY ) ? $ORDERBY : 'date' );
+
+														?>
+
+													<?php WPFP_Helpers()->td_end(); ?>
+
+												<?php WPFP_Helpers()->tr_end(); ?>
+
+												<!-- Order By Meta Value Key -->
+												<?php WPFP_Helpers()->tr_start( 'orderByMetaValueKey-container' ); ?>
+										
+													<?php WPFP_Helpers()->th_start( 'row', '', 'title-desc' ); ?>
+											
+														<?php
+
+															WPFP_Helpers()->label( __( 'Order By Meta Value Key', WPFP_DOMAIN ), 'orderByMetaValueKey' );
+
+														?>
+												
+														<?php
+
+															WPFP_Helpers()->tooltip( __( 'which meta key do you want to use to order the list.', WPFP_DOMAIN ), 'wpfp-tip' );
+
+														?>
+
+													<?php WPFP_Helpers()->th_end(); ?>
+
+													<?php WPFP_Helpers()->td_start(); ?>
+
+														<?php
+
+															WPFP_Helpers()->text( WPFP_FULLPAGE_PT_CUSTOM_OPTIONS, 'orderByMetaValueKey', isset( $orderByMetaValueKey ) ? $orderByMetaValueKey : '', isset( $ORDERBYMETAVALUEKEY ) ? $ORDERBYMETAVALUEKEY : '' );
+
+														?>
+
+													<?php WPFP_Helpers()->td_end(); ?>
+
+												<?php WPFP_Helpers()->tr_end(); ?>
+
+												<!-- Order -->
+												<?php WPFP_Helpers()->tr_start(); ?>
+										
+													<?php WPFP_Helpers()->th_start( 'row', '', 'title-desc' ); ?>
+											
+														<?php
+
+															WPFP_Helpers()->label( __( 'Order', WPFP_DOMAIN ), 'order' );
+
+														?>
+												
+														<?php
+
+															WPFP_Helpers()->tooltip( __( 'How do you want to order the list.', WPFP_DOMAIN ), 'wpfp-tip' );
+
+														?>
+
+													<?php WPFP_Helpers()->th_end(); ?>
+
+													<?php WPFP_Helpers()->td_start(); ?>
+
+														<?php
+
+															WPFP_Helpers()->select( WPFP_FULLPAGE_PT_CUSTOM_OPTIONS, 'order', array(
+																'ASC'  => __( 'ASC', WPFP_DOMAIN ),
+																'DESC' => __( 'DESC', WPFP_DOMAIN ),
+															), isset( $order ) ? $order : 'ASC', isset( $ORDER ) ? $ORDER : 'ASC' );
+
+														?>
+
+													<?php WPFP_Helpers()->td_end(); ?>
+
+												<?php WPFP_Helpers()->tr_end(); ?>
+
+												<!-- Taxonomy -->
+												<?php WPFP_Helpers()->tr_start( '', 'post-taxonomies-wrapper' ); ?>
+										
+													<?php WPFP_Helpers()->th_start( 'row', '', 'title-desc' ); ?>
+											
+														<?php
+
+															WPFP_Helpers()->label( __( 'Taxonomy', WPFP_DOMAIN ), 'taxonomy' );
+
+														?>
+												
+														<?php
+
+															WPFP_Helpers()->tooltip( __( 'Which taxonomy do you want to list.', WPFP_DOMAIN ), 'wpfp-tip' );
+
+														?>
+
+													<?php WPFP_Helpers()->th_end(); ?>
+
+													<?php WPFP_Helpers()->td_start(); ?>
+														
+														<?php
+
+															$_taxonomies = array();
+
+															foreach ( $taxonomies as $_taxonomy )
+																$_taxonomies[$_taxonomy->name] = $_taxonomy->label;
+
+															WPFP_Helpers()->select( WPFP_FULLPAGE_PT_SECTIONS_OPTIONS, 'taxonomy', $_taxonomies, isset( $taxonomy ) ? $taxonomy : '', '', 'taxonomy chzn-select no-reset' );
+
+														?>	
+
+													<?php WPFP_Helpers()->td_end(); ?>
+
+												<?php WPFP_Helpers()->tr_end(); ?>
+
+												<!-- Term of the taxonomy -->
+												<?php WPFP_Helpers()->tr_start( '', 'post-taxonomies-wrapper' ); ?>
+										
+													<?php WPFP_Helpers()->th_start( 'row', '', 'title-desc' ); ?>
+											
+														<?php
+
+															WPFP_Helpers()->label( __( 'Term of the taxonomy', WPFP_DOMAIN ), '' );
+
+														?>
+												
+														<?php
+
+															WPFP_Helpers()->tooltip( __( 'Which term of the taxonomy do you want to list.', WPFP_DOMAIN ), 'wpfp-tip' );
+
+														?>
+
+													<?php WPFP_Helpers()->th_end(); ?>
+
+													<?php WPFP_Helpers()->td_start(); ?>
+														
+														<?php
+
+															WPFP_Helpers()->hidden( WPFP_FULLPAGE_PT_SECTIONS_OPTIONS . '[term]', 'term', isset( $term ) ? $term : '' );
+
+														?>
+
+														<?php
+
+															foreach ( $terms as $_taxonomy => $_terms ) :
+
+																$__terms = array();
+
+																foreach ( $_terms as $_term )
+																	$__terms[$_term->term_id] = $_term->name;
+
+																WPFP_Helpers()->select( '', $_taxonomy . '-term', $__terms, isset( $term ) ? $term : '', '', 'term chzn-select no-reset' );
+
+
+															endforeach;
+
+														?>	
+
+													<?php WPFP_Helpers()->td_end(); ?>
+
+												<?php WPFP_Helpers()->tr_end(); ?>
+
+												<!-- Include Children -->
+												<?php WPFP_Helpers()->tr_start( '', 'post-taxonomies-wrapper' ); ?>
+										
+													<?php WPFP_Helpers()->th_start( 'row', '', 'title-desc' ); ?>
+											
+														<?php
+
+															WPFP_Helpers()->label( __( 'Include Children', WPFP_DOMAIN ), '' );
+
+														?>
+
+														<?php
+
+															WPFP_Helpers()->tooltip( __( 'Do you want to include children of the term?', WPFP_DOMAIN ), 'wpfp-tip' );
+
+														?>
+
+													<?php WPFP_Helpers()->th_end(); ?>
+
+													<?php WPFP_Helpers()->td_start(); ?>
+														
+														<?php
+
+															WPFP_Helpers()->radio( WPFP_FULLPAGE_PT_SECTIONS_OPTIONS, 'includeChildren', array(
+																'yes' => __( 'yes', WPFP_DOMAIN ),
+																'no'  => __( 'no', WPFP_DOMAIN ),
+															), isset( $includeChildren ) ? $includeChildren : 'no', isset( $INCLUDECHILDREN ) ? $INCLUDECHILDREN : 'no' );
+
+														?>
+
+													<?php WPFP_Helpers()->td_end(); ?>
+
+												<?php WPFP_Helpers()->tr_end(); ?>
+
+												<!-- Post Type -->
+												<?php WPFP_Helpers()->tr_start( '', 'post-types-wrapper' ); ?>
+										
+													<?php WPFP_Helpers()->th_start( 'row', '', 'title-desc' ); ?>
+											
+														<?php
+
+															WPFP_Helpers()->label( __( 'Post Type', WPFP_DOMAIN ), 'postType' );
+
+														?>
+												
+														<?php
+
+															WPFP_Helpers()->tooltip( __( 'Which post type do you want to list.', WPFP_DOMAIN ), 'wpfp-tip' );
+
+														?>
+
+													<?php WPFP_Helpers()->th_end(); ?>
+
+													<?php WPFP_Helpers()->td_start(); ?>
+														
+														<?php
+
+															$___post_types = array();
+
+															foreach ( $post_types as $__post_type => $__post_type_object )
+																$___post_types[$__post_type] = $__post_type_object->labels->singular_name;
+
+															WPFP_Helpers()->select( WPFP_FULLPAGE_PT_SECTIONS_OPTIONS, 'postType', $___post_types, isset( $postType ) ? $postType : '', '', 'postType chzn-select no-reset' );
+
+														?>	
+
+													<?php WPFP_Helpers()->td_end(); ?>
+
+												<?php WPFP_Helpers()->tr_end(); ?>
+
+												<!-- Included Posts -->
+												<?php WPFP_Helpers()->tr_start(); ?>
+										
+													<?php WPFP_Helpers()->th_start( 'row', '', 'title-desc' ); ?>
+											
+														<?php
+
+															WPFP_Helpers()->label( __( 'Included Posts', WPFP_DOMAIN ), 'bbm-included-posts-launcher' );
+
+														?>
+
+														<?php
+
+															WPFP_Helpers()->tooltip( __( 'The posts to include.', WPFP_DOMAIN ), 'wpfp-tip' );
+
+														?>
+
+													<?php WPFP_Helpers()->th_end(); ?>
+
+													<?php WPFP_Helpers()->td_start(); ?>
+														
+														<ul id="sortableIncludedPosts"></ul>
+
+														<?php
+
+															WPFP_Helpers()->hidden( WPFP_FULLPAGE_PT_SECTIONS_OPTIONS . '[includedPosts]', 'included-posts', isset( $includedPosts ) ? $includedPosts : '' );
+
+														?>	
+														
+														<div class="post-taxonomies-wrapper">
+
+															<?php
+
+																foreach ( $terms as $_taxonomy => $_terms ) :
+
+															?>
+																		
+																<?php
+
+																	foreach ( $_terms as $_term ) :
+																		
+																		$datas = array(
+																			'taxonomy' => $_taxonomy,
+																			'termID' => $_term->term_id,
+																		);
+
+																		$dataKey = 'includedPosts' . ucfirst( $_taxonomy ) . $_term->term_id;
+
+																		?>
+
+																			<?php
+
+																				WPFP_Helpers()->hidden( WPFP_FULLPAGE_PT_SECTIONS_OPTIONS . '[' . $dataKey . ']', 'included-posts-' . $_taxonomy . '-' . $_term->term_id, isset( $$dataKey ) ? $$dataKey : '' );
+
+																			?>
+
+																			<?php
+
+																				WPFP_Helpers()->button( 'bbm-included-posts-of-term-launcher-' . $_taxonomy . '-' . $_term->term_id, sprintf( __( 'Include posts of term "%1s"' , WPFP_DOMAIN ), $_term->name ), $datas, 'button button-large bbm-included-posts-of-term-launcher' );
+
+																			?>
+																		
+																		<?php
+
+																	endforeach;
+															
+																?>
+
+															<?php
+
+																endforeach;
+
+															?>
+														
+														</div>
+
+														<div class="post-types-wrapper">
+
+															<?php
+
+																foreach ( $post_types as $__post_type => $__post_type_object ) :
+																	
+																	$datas = array(
+																		'postType' => $__post_type,
+																	);
+
+																	$dataKey = 'includedPosts' . ucfirst( $__post_type );
+
+																	?>
+
+																		<?php
+
+																			WPFP_Helpers()->hidden( WPFP_FULLPAGE_PT_SECTIONS_OPTIONS . '[' . $dataKey . ']', 'included-posts-' . $__post_type, isset( $$dataKey ) ? $$dataKey : '' );
+
+																		?>
+
+																		<?php
+
+																			WPFP_Helpers()->button( 'bbm-included-posts-of-type-launcher-' . $__post_type, sprintf( __( 'Include posts of type "%1s"' , WPFP_DOMAIN ), $__post_type_object->labels->singular_name ), $datas, 'button button-large bbm-included-posts-of-type-launcher' );
+
+																		?>
+																	
+																	<?php
+
+																endforeach;
+
+															?>
+
+														</div>
+
+													<?php WPFP_Helpers()->td_end(); ?>
+
+												<?php WPFP_Helpers()->tr_end(); ?>
+
+												<!-- Excluded Posts -->
+												<?php WPFP_Helpers()->tr_start(); ?>
+										
+													<?php WPFP_Helpers()->th_start( 'row', '', 'title-desc' ); ?>
+											
+														<?php
+
+															WPFP_Helpers()->label( __( 'Excluded Posts', WPFP_DOMAIN ), 'bbm-excluded-posts-launcher' );
+
+														?>
+
+														<?php
+
+															WPFP_Helpers()->tooltip( __( 'The posts to exclude.', WPFP_DOMAIN ), 'wpfp-tip' );
+
+														?>
+
+													<?php WPFP_Helpers()->th_end(); ?>
+
+													<?php WPFP_Helpers()->td_start(); ?>
+														
+														<ul id="sortableExcludedPosts"></ul>
+
+														<?php
+
+															WPFP_Helpers()->hidden( WPFP_FULLPAGE_PT_SECTIONS_OPTIONS . '[excludedPosts]', 'excluded-posts', isset( $excludedPosts ) ? $excludedPosts : '' );
+
+														?>
+
+														<div class="post-taxonomies-wrapper">
+
+															<?php
+
+																foreach ( $terms as $_taxonomy => $_terms ) :
+
+															?>
+																		
+																<?php
+
+																	foreach ( $_terms as $_term ) :
+																		
+																		$datas = array(
+																			'taxonomy' => $_taxonomy,
+																			'termID' => $_term->term_id,
+																		);
+
+																		$dataKey = 'excludedPosts' . ucfirst( $_taxonomy ) . $_term->term_id;
+
+																		?>
+
+																			<?php
+
+																				WPFP_Helpers()->hidden( WPFP_FULLPAGE_PT_SECTIONS_OPTIONS . '[' . $dataKey . ']', 'excluded-posts-' . $_taxonomy . '-' . $_term->term_id, isset( $$dataKey ) ? $$dataKey : '' );
+
+																			?>
+
+																			<?php
+
+																				WPFP_Helpers()->button( 'bbm-excluded-posts-of-term-launcher-' . $_taxonomy . '-' . $_term->term_id, sprintf( __( 'Exclude posts of term "%1s"' , WPFP_DOMAIN ), $_term->name ), $datas, 'button button-large bbm-excluded-posts-of-term-launcher' );
+
+																			?>
+																		
+																		<?php
+
+																	endforeach;
+															
+																?>
+
+															<?php
+
+																endforeach;
+
+															?>
+
+														</div>
+
+														<div class="post-types-wrapper">
+
+															<?php
+
+																foreach ( $post_types as $__post_type => $__post_type_object ) :
+																	
+																	$datas = array(
+																		'postType' => $__post_type,
+																	);
+
+																	$dataKey = 'excludedPosts' . ucfirst( $__post_type );
+
+																	?>
+
+																		<?php
+
+																			WPFP_Helpers()->hidden( WPFP_FULLPAGE_PT_SECTIONS_OPTIONS . '[' . $dataKey . ']', 'excluded-posts-' . $__post_type, isset( $$dataKey ) ? $$dataKey : '' );
+
+																		?>
+
+																		<?php
+
+																			WPFP_Helpers()->button( 'bbm-excluded-posts-of-type-launcher-' . $__post_type, sprintf( __( 'Exclude posts of type "%1s"' , WPFP_DOMAIN ), $__post_type_object->labels->singular_name ), $datas, 'button button-large bbm-excluded-posts-of-type-launcher' );
+
+																		?>
+																	
+																	<?php
+
+																endforeach;
+
+															?>
+															
+														</div>
+
+													<?php WPFP_Helpers()->td_end(); ?>
+
+												<?php WPFP_Helpers()->tr_end(); ?>
+
+											<?php WPFP_Helpers()->table_end(); ?>
+
+										<?php WPFP_Helpers()->td_end(); ?>
+
+									<?php WPFP_Helpers()->tr_end(); ?>
+
+								<?php WPFP_Helpers()->table_end(); ?>
+
+							</div>
+
+						<?php WPFP_Helpers()->td_end(); ?>
+
+					<?php WPFP_Helpers()->tr_end(); ?>
+							
+					<!-- Styling toggler -->
+					<?php WPFP_Helpers()->tr_start( '', 'accordion-toggler' ); ?>
+
+						<?php WPFP_Helpers()->td_start( '', '', 2 ); ?>
+
+							<?php
+
+								WPFP_Helpers()->label( __( 'Styling', WPFP_DOMAIN ) );
+
+							?>
+
+						<?php WPFP_Helpers()->td_end(); ?>
+
+					<?php WPFP_Helpers()->tr_end(); ?>
+							
+					<!-- Styling container -->
+					<?php WPFP_Helpers()->tr_start(); ?>
+						
+						<?php WPFP_Helpers()->td_start( '', '', 2 ); ?>
 				
-						<label for="slidesNavTitle">
-						 	<?php _e( 'Slides Navigation Title', WPFP_DOMAIN ); ?>
+							<div class="accordion-container">
+
+								<?php WPFP_Helpers()->table_start( '', 'form-table' ); ?>
 							
-							<span class="wpfp-tip" data-tip='<?php _e( 'Which metadata do you want to use for the slides navigation tooltips in case they are being used. If the metadata is empty or does not exists, it will display the title instead. If empty, it will display post title.', WPFP_DOMAIN ); ?>'></span>
-						</label>
-						
-						<input type="text" id="slidesNavTitle" name="<?php print WPFP_FULLPAGE_PT_SLIDES_OPTIONS; ?>[slidesNavTitle]" <?php WPFP_Helpers()->value( isset( $slidesNavTitle ) ? $slidesNavTitle : '', isset( $SLIDESNAVTITLE ) ? $SLIDESNAVTITLE : '' ); ?> />
-					
-					</li>
-
-					<!-- Section Type -->
-					<li>
-
-						<label for="sectionsType">
-						 	<?php _e( 'Sections Type', WPFP_DOMAIN ); ?>
-						</label>
-
-						<select id="sectionsType" name="<?php print WPFP_FULLPAGE_PT_SECTIONS_OPTIONS; ?>[sectionsType]">
-							
-							<option value="sections" <?php selected( isset( $sectionsType ) ? $sectionsType : '', 'sections' ); ?>><?php _e( 'Sections', WPFP_DOMAIN ); ?></option>
-							<option value="post-taxonomies" <?php selected( isset( $sectionsType ) ? $sectionsType : '', 'post-taxonomies' ); ?>><?php _e( 'Post Taxonomies', WPFP_DOMAIN ); ?></option>
-							<option value="post-types" <?php selected( isset( $sectionsType ) ? $sectionsType : '', 'post-types' ); ?>><?php _e( 'Post Types', WPFP_DOMAIN ); ?></option>
-							<!--<option value="custom" <?php selected( isset( $sectionsType ) ? $sectionsType : '', 'custom' ); ?>><?php _e( 'Custom', WPFP_DOMAIN ); ?></option>-->
-
-						</select>
-						
-						<span class="wpfp-tip" data-tip="<?php _e( 'Which type of sections do you want to display for this Fullpage.', WPFP_DOMAIN ); ?>"></span>
-
-					</li>
-					
-					<!-- Sections -->
-					<li id="sections-wrapper" class="wpfp-slide-wrapper sub-options">
-
-						<ul class="sub-options">
-
-							<li>
-								<h6><?php _e( 'Sections', WPFP_DOMAIN ); ?></h6>
-							</li>
-
-							<li>
-
-								<label for="bbm-sections-list-launcher">
-								 	<?php _e( 'Sections', WPFP_DOMAIN ); ?>
-
-								 	<span class="wpfp-tip" data-tip="<?php _e( 'Add and reorder some sections to your Fullpage.', WPFP_DOMAIN ); ?>"></span>
-								</label>
-
-								<ul id="sortableSections"></ul>
-								
-								<input type="hidden" id="sections-list" name="<?php print WPFP_FULLPAGE_PT_SECTIONS_OPTIONS; ?>[sections]" value="<?php print esc_attr( isset( $sections ) ? $sections : '' ); ?>" />
-								
-								<?php
-
-									$datas = array(
-										'postType' => WPFP_FULLPAGE_SECTION_PT,
-									);
-								
-								?>
-
-								<input type="button" class="button button-large" id="bbm-sections-list-launcher" value="<?php _e( 'Add sections' , WPFP_DOMAIN ) ?>" data-datas='<?php print json_encode( $datas ); ?>' />
-								
-								<div class="clear"></div>
-							
-							</li>
-
-						</ul>
-
-					</li>
-					
-					<!-- Post Taxonomies or Types -->
-					<li id="post-taxonomies-or-types-wrapper" class="wpfp-slide-wrapper sub-options">
-						
-						<ul class="sub-options">
-
-							<li class="post-taxonomies-wrapper">
-								<h6><?php _e( 'Post taxonomies', WPFP_DOMAIN ); ?></h6>
-							</li>
-
-							<li class="post-types-wrapper">
-								<h6><?php _e( 'Post types', WPFP_DOMAIN ); ?></h6>
-							</li>
-
-							<li>
-
-								<span class="label">
-								 	<?php _e( 'Teaser', WPFP_DOMAIN ); ?>
-									<span class="wpfp-tip" data-tip='<?php _e( 'Choose yes if you want to display the teaser.', WPFP_DOMAIN ); ?>'></span>
-								</span>
-
-								<div class="radio">
-									
-									<input type="radio" id="teaserDisplay-yes" name="<?php print WPFP_FULLPAGE_PT_CUSTOM_OPTIONS; ?>[teaserDisplay]" value="yes" <?php WPFP_Helpers()->checked( isset( $teaserDisplay ) ? $teaserDisplay : 'yes', isset( $TEASERDISPLAY ) ? $TEASERDISPLAY : 'yes', 'yes' ); ?> />
-									<label for="teaserDisplay-yes">
-									 	<?php _e( 'yes', WPFP_DOMAIN ); ?>
-									</label>
-									<input type="radio" id="teaserDisplay-no" name="<?php print WPFP_FULLPAGE_PT_CUSTOM_OPTIONS; ?>[teaserDisplay]" value="no" <?php WPFP_Helpers()->checked( isset( $teaserDisplay ) ? $teaserDisplay : 'yes', isset( $TEASERDISPLAY ) ? $TEASERDISPLAY : 'yes', 'no' ); ?> />
-									<label for="teaserDisplay-no">
-									 	<?php _e( 'no', WPFP_DOMAIN ); ?>
-									</label>
-
-								</div>
-
-								<span class="wpfp-tip" data-tip="<?php _e( 'Defines whether the load of the site when given an anchor (#) will scroll with animation to its destination or will directly load on the given section.', WPFP_DOMAIN ); ?>"></span>
-
-							</li>
-
-							<li id="teaserLength-container">
-						
-								<label for="teaserLength">
-								 	<?php _e( 'Teaser Length', WPFP_DOMAIN ); ?>
-									
-									<span class="wpfp-tip" data-tip='<?php _e( 'How many characters do you want to display in the teaser. If set to "0", it will take the default value af your theme.', WPFP_DOMAIN ); ?>'></span>
-								</label>
-								
-								<input type="number" id="teaserLength" name="<?php print WPFP_FULLPAGE_PT_CUSTOM_OPTIONS; ?>[teaserLength]" class="small-text" step="10" min="0" <?php WPFP_Helpers()->value( isset( $teaserLength ) ? $teaserLength : 100, isset( $TEASERLENGTH ) ? $TEASERLENGTH : 100 ); ?> />
-							
-							</li>
-
-							<li>
-						
-								<label for="countPosts">
-								 	<?php _e( 'Count', WPFP_DOMAIN ); ?>
-									
-									<span class="wpfp-tip" data-tip="<?php _e( 'How many posts do you want to display.', WPFP_DOMAIN ); ?>"></span>
-								</label>
-
-								<input type="number" id="countPosts" name="<?php print WPFP_FULLPAGE_PT_CUSTOM_OPTIONS; ?>[countPosts]" step="1" min="1" class="small-text" <?php WPFP_Helpers()->value( isset( $countPosts ) ? $countPosts : get_option( 'posts_per_page' ), isset( $COUNTPOSTS ) ? $COUNTPOSTS : get_option( 'posts_per_page' ) ); ?> />
-							
-							</li>
-
-							<li>
-						
-								<label for="orderBy">
-								 	<?php _e( 'Order By', WPFP_DOMAIN ); ?>
-									
-									<span class="wpfp-tip" data-tip="<?php _e( 'What do you want to order the list with.', WPFP_DOMAIN ); ?>"></span>
-								</label>
-								
-								<select id="orderBy" name="<?php print WPFP_FULLPAGE_PT_CUSTOM_OPTIONS; ?>[orderBy]" <?php WPFP_Helpers()->default_setting( isset( $ORDERBY ) ? $ORDERBY : 'date', true ); ?>>
-									
-									<option value="date" <?php selected( isset( $orderBy ) ? $orderBy : 'date', 'date' ); ?>><?php _e( 'Date', WPFP_DOMAIN ); ?></option>
-									<option value="post__in" <?php selected( isset( $orderBy ) ? $orderBy : '', 'post__in' ); ?>><?php _e( 'Include Order', WPFP_DOMAIN ); ?></option>
-									<option value="ID" <?php selected( isset( $orderBy ) ? $orderBy : '', 'ID' ); ?>><?php _e( 'Post ID', WPFP_DOMAIN ); ?></option>
-									<option value="author" <?php selected( isset( $orderBy ) ? $orderBy : '', 'author' ); ?>><?php _e( 'Author', WPFP_DOMAIN ); ?></option>
-									<option value="title" <?php selected( isset( $orderBy ) ? $orderBy : '', 'title' ); ?>><?php _e( 'Title', WPFP_DOMAIN ); ?></option>
-									<option value="name" <?php selected( isset( $orderBy ) ? $orderBy : '', 'name' ); ?>><?php _e( 'Post Name (slug)', WPFP_DOMAIN ); ?></option>
-									<option value="modified" <?php selected( isset( $orderBy ) ? $orderBy : '', 'modified' ); ?>><?php _e( 'Modified date', WPFP_DOMAIN ); ?></option>
-									<option value="parent" <?php selected( isset( $orderBy ) ? $orderBy : '', 'parent' ); ?>><?php _e( 'Parent', WPFP_DOMAIN ); ?></option>
-									<option value="rand" <?php selected( isset( $orderBy ) ? $orderBy : '', 'rand' ); ?>><?php _e( 'Random', WPFP_DOMAIN ); ?></option>
-									<option value="comment_count" <?php selected( isset( $orderBy ) ? $orderBy : '', 'comment_count' ); ?>><?php _e( 'Comment count', WPFP_DOMAIN ); ?></option>
-									<option value="meta_value" <?php selected( isset( $orderBy ) ? $orderBy : '', 'meta_value' ); ?>><?php _e( 'Meta Value', WPFP_DOMAIN ); ?></option>
-
-								</select>
-							
-							</li>
-
-							<li id="orderByMetaValueKey-container">
-						
-								<label for="orderByMetaValueKey">
-								 	<?php _e( 'Order By Meta Value Key', WPFP_DOMAIN ); ?>
-									
-									<span class="wpfp-tip" data-tip="<?php _e( 'which meta key do you want to use to order the list.', WPFP_DOMAIN ); ?>"></span>
-								</label>
-								
-								<input type="text" id="orderByMetaValueKey" name="<?php print WPFP_FULLPAGE_PT_CUSTOM_OPTIONS; ?>[orderByMetaValueKey]" <?php WPFP_Helpers()->value( isset( $orderByMetaValueKey ) ? $orderByMetaValueKey : '', isset( $ORDERBYMETAVALUEKEY ) ? $ORDERBYMETAVALUEKEY : '' ); ?> />
-							
-							</li>
-
-							<li>
-						
-								<label for="order">
-								 	<?php _e( 'Order', WPFP_DOMAIN ); ?>
-									
-									<span class="wpfp-tip" data-tip="<?php _e( 'How do you want to order the list.', WPFP_DOMAIN ); ?>"></span>
-								</label>
-								
-								<select id="order" name="<?php print WPFP_FULLPAGE_PT_CUSTOM_OPTIONS; ?>[order]" <?php WPFP_Helpers()->default_setting( isset( $ORDER ) ? $ORDER : 'ASC', true ); ?>>
-									
-									<option value="ASC" <?php selected( isset( $order ) ? $order : 'ASC', 'ASC' ); ?>><?php _e( 'ASC', WPFP_DOMAIN ); ?></option>
-									<option value="DESC" <?php selected( isset( $order ) ? $order : '', 'DESC' ); ?>><?php _e( 'DESC', WPFP_DOMAIN ); ?></option>
-
-								</select>
-							
-							</li>
-
-							<li class="post-taxonomies-wrapper">
-						
-								<label for="taxonomy">
-								 	<?php _e( 'Taxonomy', WPFP_DOMAIN ); ?>
-									
-									<span class="wpfp-tip" data-tip="<?php _e( 'Which taxonomy do you want to list.', WPFP_DOMAIN ); ?>"></span>
-								</label>
-								
-								<select data-placeholder="<?php _e( 'Choose a Taxonomy', WPFP_DOMAIN ); ?>" class="taxonomy chzn-select" id="taxonomy" name="<?php print WPFP_FULLPAGE_PT_SECTIONS_OPTIONS; ?>[taxonomy]">
-									
-									<?php
-
-										foreach ( $taxonomies as $_taxonomy ) :
+									<!-- Resize -->
+									<?php WPFP_Helpers()->tr_start(); ?>
+										
+										<?php WPFP_Helpers()->th_start( 'row', '', 'title-desc' ); ?>
 											
-											?>
-												<option value="<?php print $_taxonomy->name; ?>" <?php selected( isset( $taxonomy ) ? $taxonomy : '', $_taxonomy->name ); ?>><?php print $_taxonomy->label; ?></option>
+											<?php WPFP_Helpers()->span_label( __( 'Resize', WPFP_DOMAIN ) ); ?>
+														
 											<?php
 
-										endforeach;
-
-									?>
-
-								</select>
-							
-							</li>
-
-							<li class="post-taxonomies-wrapper">
-						
-								<label>
-								 	<?php _e( 'Term of the taxonomy', WPFP_DOMAIN ); ?>
-									
-									<span class="wpfp-tip" data-tip="<?php _e( 'Which term of the taxonomy do you want to list.', WPFP_DOMAIN ); ?>"></span>
-								</label>
-
-								<input type="hidden" id="term" name="<?php print WPFP_FULLPAGE_PT_SECTIONS_OPTIONS; ?>[term]" value="<?php print esc_attr( isset( $term ) ? $term : '' ); ?>" />
-
-								<?php
-
-									foreach ( $terms as $_taxonomy => $_terms ) :
-
-								?>
-
-									<select data-placeholder="<?php _e( 'Choose a Taxonomy Term', WPFP_DOMAIN ); ?>" id="<?php print $_taxonomy; ?>-term" class="term chzn-select">
-											
-										<?php
-
-											foreach ( $_terms as $_term ) :
-												
-												?>
-													<option class="term <?php print $_taxonomy; ?>" value="<?php print $_term->term_id; ?>" <?php selected( isset( $term ) ? $term : '', $_term->term_id ); ?>><?php print $_term->name; ?></option>
-												<?php
-
-											endforeach;
-									
-										?>
-
-									</select>
-
-								<?php
-
-									endforeach;
-
-								?>
-							
-							</li>
-
-							<li class="post-taxonomies-wrapper">
-						
-								<label>
-								 	<?php _e( 'Include Children', WPFP_DOMAIN ); ?>
-								</label>
-
-								<div class="radio">
-									
-									<input type="radio" id="includeChildren-yes" name="<?php print WPFP_FULLPAGE_PT_SECTIONS_OPTIONS; ?>[includeChildren]" value="yes" <?php WPFP_Helpers()->checked( isset( $includeChildren ) ? $includeChildren : 'no', isset( $INCLUDECHILDREN ) ? $INCLUDECHILDREN : 'no', 'yes' ); ?> />
-									<label for="includeChildren-yes">
-									 	<?php _e( 'yes', WPFP_DOMAIN ); ?>
-									</label>
-									<input type="radio" id="includeChildren-no" name="<?php print WPFP_FULLPAGE_PT_SECTIONS_OPTIONS; ?>[includeChildren]" value="no" <?php WPFP_Helpers()->checked( isset( $includeChildren ) ? $includeChildren : 'no', isset( $INCLUDECHILDREN ) ? $INCLUDECHILDREN : 'no', 'no' ); ?> />
-									<label for="includeChildren-no">
-									 	<?php _e( 'no', WPFP_DOMAIN ); ?>
-									</label>
-
-								</div>
-									
-								<span class="wpfp-tip" data-tip="<?php _e( 'Do you want to include children of the term?', WPFP_DOMAIN ); ?>"></span>
-							
-							</li>
-
-							<li class="post-types-wrapper">
-						
-								<label for="postType">
-								 	<?php _e( 'Post Type', WPFP_DOMAIN ); ?>
-									
-									<span class="wpfp-tip" data-tip="<?php _e( 'Which post type do you want to list.', WPFP_DOMAIN ); ?>"></span>
-								</label>
-								
-								<select data-placeholder="<?php _e( 'Choose a Post Type', WPFP_DOMAIN ); ?>" class="postType chzn-select" id="postType" name="<?php print WPFP_FULLPAGE_PT_SECTIONS_OPTIONS; ?>[postType]">
-									
-									<?php
-
-										foreach ( $post_types as $__post_type => $__post_type_object ) :
-
-											?>
-												<option value="<?php print $__post_type; ?>" <?php selected( isset( $postType ) ? $postType : '', $__post_type ); ?>><?php print $__post_type_object->labels->singular_name; ?></option>
-											<?php
-
-										endforeach;
-
-									?>
-
-								</select>
-							
-							</li>
-
-							<li>
-
-								<label for="bbm-included-posts-launcher">
-								 	<?php _e( 'Included Posts', WPFP_DOMAIN ); ?>
-
-								 	<span class="wpfp-tip" data-tip="<?php _e( 'The posts to include.', WPFP_DOMAIN ); ?>"></span>
-								</label>
-
-								<ul id="sortableIncludedPosts"></ul>
-								
-								<input type="hidden" id="included-posts" name="<?php print WPFP_FULLPAGE_PT_SECTIONS_OPTIONS; ?>[includedPosts]" value="<?php print esc_attr( isset( $includedPosts ) ? $includedPosts : '' ); ?>" />
-
-								<div class="post-taxonomies-wrapper">
-
-									<?php
-
-										foreach ( $terms as $_taxonomy => $_terms ) :
-
-									?>
-												
-										<?php
-
-											foreach ( $_terms as $_term ) :
-												
-												$datas = array(
-													'taxonomy' => $_taxonomy,
-													'termID' => $_term->term_id,
-												);
-
-												$dataKey = 'includedPosts' . ucfirst( $_taxonomy ) . $_term->term_id;
-
-												?>
-
-													<input type="hidden" id="included-posts-<?php print $_taxonomy ?>-<?php print $_term->term_id ?>" name="<?php print WPFP_FULLPAGE_PT_SECTIONS_OPTIONS; ?>[includedPosts<?php print ucfirst( $_taxonomy ); ?><?php print $_term->term_id; ?>]" value="<?php print esc_attr( isset( $$dataKey ) ? $$dataKey : '' ); ?>" />
-
-													<input type="button" class="button button-large bbm-included-posts-of-term-launcher" id="bbm-included-posts-of-term-launcher-<?php print $_taxonomy ?>-<?php print $_term->term_id ?>" value='<?php printf( __( 'Include posts of term "%1s"' , WPFP_DOMAIN ), $_term->name ); ?>' data-datas='<?php print json_encode( $datas ) ?>' />
-												
-												<?php
-
-											endforeach;
-									
-										?>
-
-									<?php
-
-										endforeach;
-
-									?>
-								
-								</div>
-
-								<div class="post-types-wrapper">
-
-									<?php
-
-										foreach ( $post_types as $__post_type => $__post_type_object ) :
-											
-											$datas = array(
-												'postType' => $__post_type,
-											);
-
-											$dataKey = 'includedPosts' . ucfirst( $__post_type );
+												WPFP_Helpers()->tooltip( __( 'Whether you want to resize the text when the window is resized.', WPFP_DOMAIN ), 'wpfp-tip' );
 
 											?>
 
-												<input type="hidden" id="included-posts-<?php print $__post_type ?>" name="<?php print WPFP_FULLPAGE_PT_SECTIONS_OPTIONS; ?>[includedPosts<?php print ucfirst( $__post_type ); ?>]" value="<?php print esc_attr( isset( $$dataKey ) ? $$dataKey : '' ); ?>" />
+										<?php WPFP_Helpers()->th_end(); ?>
 
-												<input type="button" class="button button-large bbm-included-posts-of-type-launcher" id="bbm-included-posts-of-type-launcher-<?php print $__post_type ?>" value='<?php printf( __( 'Include posts of type "%1s"' , WPFP_DOMAIN ), $__post_type_object->labels->singular_name ); ?>' data-datas='<?php print json_encode( $datas ) ?>' />
-											
+										<?php WPFP_Helpers()->td_start(); ?>
+
 											<?php
 
-										endforeach;
-
-									?>
-
-								</div>
-							
-							</li>
-
-							<li>
-
-								<label for="bbm-excluded-posts-launcher">
-								 	<?php _e( 'Excluded Posts', WPFP_DOMAIN ); ?>
-
-								 	<span class="wpfp-tip" data-tip="<?php _e( 'The posts to exclude.', WPFP_DOMAIN ); ?>"></span>
-								</label>
-
-								<ul id="sortableExcludedPosts"></ul>
-								
-								<input type="hidden" id="excluded-posts" name="<?php print WPFP_FULLPAGE_PT_SECTIONS_OPTIONS; ?>[excludedPosts]" value="<?php print esc_attr( isset( $excludedPosts ) ? $excludedPosts : '' ); ?>" />
-
-								<div class="post-taxonomies-wrapper">
-
-									<?php
-
-										foreach ( $terms as $_taxonomy => $_terms ) :
-
-									?>
-												
-										<?php
-
-											foreach ( $_terms as $_term ) :
-												
-												$datas = array(
-													'taxonomy' => $_taxonomy,
-													'termID' => $_term->term_id,
-												);
-
-												$dataKey = 'excludedPosts' . ucfirst( $_taxonomy ) . $_term->term_id;
-
-												?>
-
-													<input type="hidden" id="excluded-posts-<?php print $_taxonomy ?>-<?php print $_term->term_id ?>" name="<?php print WPFP_FULLPAGE_PT_SECTIONS_OPTIONS; ?>[excludedPosts<?php print ucfirst( $_taxonomy ); ?><?php print $_term->term_id; ?>]" value="<?php print esc_attr( isset( $$dataKey ) ? $$dataKey : '' ); ?>" />
-
-													<input type="button" class="button button-large bbm-excluded-posts-of-term-launcher" id="bbm-excluded-posts-of-term-launcher-<?php print $_taxonomy ?>-<?php print $_term->term_id ?>" value='<?php printf( __( 'Exclude posts of term "%1s"' , WPFP_DOMAIN ), $_term->name ); ?>' data-datas='<?php print json_encode( $datas ) ?>' />
-												
-												<?php
-
-											endforeach;
-									
-										?>
-
-									<?php
-
-										endforeach;
-
-									?>
-
-								</div>
-
-								<div class="post-types-wrapper">
-
-									<?php
-
-										foreach ( $post_types as $__post_type => $__post_type_object ) :
-											
-											$datas = array(
-												'postType' => $__post_type,
-											);
-
-											$dataKey = 'excludedPosts' . ucfirst( $__post_type );
+												WPFP_Helpers()->radio( WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS, 'resize', array(
+													'yes' => __( 'yes', WPFP_DOMAIN ),
+													'no'  => __( 'no', WPFP_DOMAIN ),
+												), isset( $resize ) ? $resize : 'yes', isset( $RESIZE ) ? $RESIZE : 'yes' );
 
 											?>
 
-												<input type="hidden" id="excluded-posts-<?php print $__post_type ?>" name="<?php print WPFP_FULLPAGE_PT_SECTIONS_OPTIONS; ?>[excludedPosts<?php print ucfirst( $__post_type ); ?>]" value="<?php print esc_attr( isset( $$dataKey ) ? $$dataKey : '' ); ?>" />
+										<?php WPFP_Helpers()->td_end(); ?>
 
-												<input type="button" class="button button-large bbm-excluded-posts-of-type-launcher" id="bbm-excluded-posts-of-type-launcher-<?php print $__post_type ?>" value='<?php printf( __( 'Exclude posts of type "%1s"' , WPFP_DOMAIN ), $__post_type_object->labels->singular_name ); ?>' data-datas='<?php print json_encode( $datas ) ?>' />
+									<?php WPFP_Helpers()->tr_end(); ?>
+											
+									<!-- Vertical Position -->
+									<?php WPFP_Helpers()->tr_start(); ?>
+									
+										<?php WPFP_Helpers()->th_start( 'row', '', 'title-desc' ); ?>
+
+											<?php
+
+												WPFP_Helpers()->label( __( 'Vertical Position', WPFP_DOMAIN ), 'verticalPosition' );
+
+											?>
+
+											<?php
+
+												WPFP_Helpers()->tooltip( __( 'Vertical position of the content within slide.', WPFP_DOMAIN ), 'wpfp-tip' );
+
+											?>
+
+										<?php WPFP_Helpers()->th_end(); ?>
+
+										<?php WPFP_Helpers()->td_start(); ?>
+
+											<?php
+
+												WPFP_Helpers()->select( WPFP_FULLPAGE_PT_SLIDES_OPTIONS, 'verticalPosition', array(
+													'middle' => __( 'Middle', WPFP_DOMAIN ),
+													'top'    => __( 'Top', WPFP_DOMAIN ),
+													'bottom' => __( 'Bottom', WPFP_DOMAIN ),
+												), isset( $verticalPosition ) ? $verticalPosition : 'middle', isset( $VERTICALPOSITION ) ? $VERTICALPOSITION : 'middle' );
+
+											?>
+
+										<?php WPFP_Helpers()->td_end(); ?>
+
+									<?php WPFP_Helpers()->tr_end(); ?>
+									
+									<!-- Horizontal Position -->
+									<?php WPFP_Helpers()->tr_start(); ?>
+										
+										<?php WPFP_Helpers()->th_start( 'row', '', 'title-desc' ); ?>
+
+											<?php
+
+												WPFP_Helpers()->label( __( 'Horizontal Position', WPFP_DOMAIN ), 'horizontalPosition' );
+
+											?>
+
+											<?php
+
+												WPFP_Helpers()->tooltip( __( 'Horizontal position of the content within slide.', WPFP_DOMAIN ), 'wpfp-tip' );
+
+											?>
+
+										<?php WPFP_Helpers()->th_end(); ?>
+
+										<?php WPFP_Helpers()->td_start(); ?>
+
+											<?php
+
+												WPFP_Helpers()->select( WPFP_FULLPAGE_PT_SLIDES_OPTIONS, 'horizontalPosition', array(
+													'center' => __( 'Center', WPFP_DOMAIN ),
+													'left'   => __( 'Left', WPFP_DOMAIN ),
+													'right'  => __( 'Right', WPFP_DOMAIN ),
+												), isset( $horizontalPosition ) ? $horizontalPosition : 'center', isset( $HORIZONTALPOSITION ) ? $HORIZONTALPOSITION : 'center' );
+
+											?>
+
+										<?php WPFP_Helpers()->td_end(); ?>
+
+									<?php WPFP_Helpers()->tr_end(); ?>
+							
+									<!-- Padding Top -->
+									<?php WPFP_Helpers()->tr_start(); ?>
+										
+										<?php WPFP_Helpers()->th_start( 'row', '', 'title-desc' ); ?>
+										
+											<?php
+
+												WPFP_Helpers()->label( __( 'Padding Top', WPFP_DOMAIN ), 'paddingTop' );
+
+											?>
+														
+											<?php
+
+												WPFP_Helpers()->tooltip( __( 'Defines the top padding for each section with a numerical value and its measure (paddingTop: &apos;10px&apos;, paddingTop: &apos;10em&apos;...) Useful in case of using a fixed header.', WPFP_DOMAIN ), 'wpfp-tip' );
+
+											?>
+
+										<?php WPFP_Helpers()->th_end(); ?>
+
+										<?php WPFP_Helpers()->td_start(); ?>
+
+											<?php
+
+												WPFP_Helpers()->text( WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS, 'paddingTop', isset( $orderByMetaValueKey ) ? $paddingTop : '0', isset( $PADDINGTOP ) ? $PADDINGTOP : '0' );
+
+											?>
+														
+										<?php WPFP_Helpers()->td_end(); ?>
+
+									<?php WPFP_Helpers()->tr_end(); ?>
+											
+									<!-- Padding Bottom -->
+									<?php WPFP_Helpers()->tr_start(); ?>
+										
+										<?php WPFP_Helpers()->th_start( 'row', '', 'title-desc' ); ?>
+										
+											<?php
+
+												WPFP_Helpers()->label( __( 'Padding Bottom', WPFP_DOMAIN ), 'paddingBottom' );
+
+											?>
+														
+											<?php
+
+												WPFP_Helpers()->tooltip( __( 'Defines the bottom padding for each section with a numerical value and its measure (paddingBottom: &apos;10px&apos;, paddingBottom: &apos;10em&apos;...). Useful in case of using a fixed footer.', WPFP_DOMAIN ), 'wpfp-tip' );
+
+											?>
+
+										<?php WPFP_Helpers()->th_end(); ?>
+
+										<?php WPFP_Helpers()->td_start(); ?>
+
+											<?php
+
+												WPFP_Helpers()->text( WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS, 'paddingBottom', isset( $paddingBottom ) ? $paddingBottom : '0', isset( $PADDINGBOTTOM ) ? $PADDINGBOTTOM : '0' );
+
+											?>
+														
+										<?php WPFP_Helpers()->td_end(); ?>
+
+									<?php WPFP_Helpers()->tr_end(); ?>
+							
+									<!-- Slides Color -->
+									<?php WPFP_Helpers()->tr_start(); ?>
+										
+										<?php WPFP_Helpers()->th_start( 'row', '', 'title-desc' ); ?>
+
+											<?php
+
+												WPFP_Helpers()->label( __( 'Slides Color', WPFP_DOMAIN ), 'slideColor' );
+
+											?>
+
+											<?php
+
+												WPFP_Helpers()->tooltip( __( 'Define the CSS background-color property for slides. Example : "#f2f2f2", "#4BBFC3", "#7BAABE", "whitesmoke", "#000".', WPFP_DOMAIN ), 'wpfp-tip' );
+
+											?>
+
+										<?php WPFP_Helpers()->th_end(); ?>
+
+										<?php WPFP_Helpers()->td_start(); ?>
+
+											<?php
+
+												WPFP_Helpers()->text( WPFP_FULLPAGE_PT_SLIDES_OPTIONS, 'slideColor', isset( $slideColor ) ? $slideColor : '', isset( $SLIDECOLOR ) ? $SLIDECOLOR : '' );
+
+											?>
+
+										<?php WPFP_Helpers()->td_end(); ?>
+
+									<?php WPFP_Helpers()->tr_end(); ?>
+							
+									<!-- Fixed Elements -->
+									<?php WPFP_Helpers()->tr_start(); ?>
+										
+										<?php WPFP_Helpers()->th_start( 'row', '', 'title-desc' ); ?>
+										
+											<?php
+
+												WPFP_Helpers()->label( __( 'Fixed Elements', WPFP_DOMAIN ), 'fixedElements' );
+
+											?>
+														
+											<?php
+
+												WPFP_Helpers()->tooltip( __( 'Defines which elements will be taken off the scrolling structure of the plugin which is necesary when using the css3 option to keep them fixed. It requires a string with the jQuery selectors for those elements. (For example: &apos;#element1, .element2&apos;)', WPFP_DOMAIN ), 'wpfp-tip' );
+
+											?>
+
+										<?php WPFP_Helpers()->th_end(); ?>
+
+										<?php WPFP_Helpers()->td_start(); ?>
+
+											<?php
+
+												WPFP_Helpers()->text( WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS, 'fixedElements', isset( $fixedElements ) ? $fixedElements : '', isset( $FIXEDELEMENTS ) ? $FIXEDELEMENTS : '' );
+
+											?>
+														
+										<?php WPFP_Helpers()->td_end(); ?>
+
+									<?php WPFP_Helpers()->tr_end(); ?>
+
+								<?php WPFP_Helpers()->table_end(); ?>
+
+							</div>
+
+						<?php WPFP_Helpers()->td_end(); ?>
+
+					<?php WPFP_Helpers()->tr_end(); ?>
+										
+					<!-- Navigation toggler -->
+					<?php WPFP_Helpers()->tr_start( '', 'accordion-toggler' ); ?>
+
+						<?php WPFP_Helpers()->td_start( '', '', 2 ); ?>
+
+							<?php
+
+								WPFP_Helpers()->label( __( 'Navigation', WPFP_DOMAIN ) );
+
+							?>
+
+						<?php WPFP_Helpers()->td_end(); ?>
+
+					<?php WPFP_Helpers()->tr_end(); ?>
+							
+					<!-- Navigation container -->
+					<?php WPFP_Helpers()->tr_start(); ?>
+						
+						<?php WPFP_Helpers()->td_start( '', '', 2 ); ?>
+				
+							<div class="accordion-container">
+
+								<?php WPFP_Helpers()->table_start( '', 'form-table' ); ?>
+							
+									<!-- Navigation -->
+									<?php WPFP_Helpers()->tr_start(); ?>
+										
+										<?php WPFP_Helpers()->th_start( 'row', '', 'title-desc' ); ?>
+											
+											<?php WPFP_Helpers()->span_label( __( 'Navigation', WPFP_DOMAIN ) ); ?>
+														
+											<?php
+
+												WPFP_Helpers()->tooltip( __( 'If set to true, it will show a navigation bar made up of small circles.', WPFP_DOMAIN ), 'wpfp-tip' );
+
+											?>
+
+										<?php WPFP_Helpers()->th_end(); ?>
+
+										<?php WPFP_Helpers()->td_start(); ?>
+
+											<?php
+
+												WPFP_Helpers()->radio( WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS, 'navigation', array(
+													'yes' => __( 'yes', WPFP_DOMAIN ),
+													'no'  => __( 'no', WPFP_DOMAIN ),
+												), isset( $navigation ) ? $navigation : 'yes', isset( $NAVIGATION ) ? $NAVIGATION : 'yes' );
+
+											?>
+
+										<?php WPFP_Helpers()->td_end(); ?>
+
+									<?php WPFP_Helpers()->tr_end(); ?>
+											
+									<!-- Navigation Position -->
+									<?php WPFP_Helpers()->tr_start(); ?>
+										
+										<?php WPFP_Helpers()->th_start( 'row', '', 'title-desc' ); ?>
 											
 											<?php
 
-										endforeach;
+												WPFP_Helpers()->label( __( 'Navigation Position', WPFP_DOMAIN ), 'navigationPosition' );
 
-									?>
+											?>
+														
+											<?php
+
+												WPFP_Helpers()->tooltip( __( 'It can be set to left or right and defines which position the navigation bar will be shown (if using one).', WPFP_DOMAIN ), 'wpfp-tip' );
+
+											?>
+
+										<?php WPFP_Helpers()->th_end(); ?>
+
+										<?php WPFP_Helpers()->td_start(); ?>
+
+											<?php
+
+												WPFP_Helpers()->select( WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS, 'navigationPosition', array(
+													'left'  => __( 'Left', WPFP_DOMAIN ),
+													'right' => __( 'Right', WPFP_DOMAIN ),
+												), isset( $navigationPosition ) ? $navigationPosition : 'left', isset( $NAVIGATIONPOSITION ) ? $NAVIGATIONPOSITION : 'left' );
+
+											?>
+
+										<?php WPFP_Helpers()->td_end(); ?>
+
+									<?php WPFP_Helpers()->tr_end(); ?>
 									
-								</div>
+									<!-- Navigation Title -->
+									<?php WPFP_Helpers()->tr_start(); ?>
+										
+										<?php WPFP_Helpers()->th_start( 'row', '', 'title-desc' ); ?>
+
+											<?php
+
+												WPFP_Helpers()->label( __( 'Navigation Title', WPFP_DOMAIN ), 'navTitle' );
+
+											?>
+
+											<?php
+
+												WPFP_Helpers()->tooltip( __( 'Which metadata do you want to use for the navigation tooltips in case they are being used. If the metadata is empty or does not exists, it will display the title instead. If empty, it will display post title.', WPFP_DOMAIN ), 'wpfp-tip' );
+
+											?>
+
+										<?php WPFP_Helpers()->th_end(); ?>
+
+										<?php WPFP_Helpers()->td_start(); ?>
+
+											<?php
+
+												WPFP_Helpers()->text( WPFP_FULLPAGE_PT_SECTIONS_OPTIONS, 'navTitle', isset( $navTitle ) ? $navTitle : '', isset( $NAVTITLE ) ? $NAVTITLE : '' );
+
+											?>
+
+										<?php WPFP_Helpers()->td_end(); ?>
+
+									<?php WPFP_Helpers()->tr_end(); ?>
+											
+									<!-- Slides Navigation -->
+									<?php WPFP_Helpers()->tr_start(); ?>
+										
+										<?php WPFP_Helpers()->th_start( 'row', '', 'title-desc' ); ?>
+											
+											<?php WPFP_Helpers()->span_label( __( 'Slides Navigation', WPFP_DOMAIN ) ); ?>
+														
+											<?php
+
+												WPFP_Helpers()->tooltip( __( 'If set to true it will show a navigation bar made up of small circles for each landscape slider on the site.', WPFP_DOMAIN ), 'wpfp-tip' );
+
+											?>
+
+										<?php WPFP_Helpers()->th_end(); ?>
+
+										<?php WPFP_Helpers()->td_start(); ?>
+
+											<?php
+
+												WPFP_Helpers()->radio( WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS, 'slidesNavigation', array(
+													'yes' => __( 'yes', WPFP_DOMAIN ),
+													'no'  => __( 'no', WPFP_DOMAIN ),
+												), isset( $slidesNavigation ) ? $slidesNavigation : 'yes', isset( $SLIDESNAVIGATION ) ? $SLIDESNAVIGATION : 'yes' );
+
+											?>
+
+										<?php WPFP_Helpers()->td_end(); ?>
+
+									<?php WPFP_Helpers()->tr_end(); ?>
+											
+									<!-- Slides Nav Position -->
+									<?php WPFP_Helpers()->tr_start(); ?>
+										
+										<?php WPFP_Helpers()->th_start( 'row', '', 'title-desc' ); ?>
+												
+											<?php
+
+												WPFP_Helpers()->label( __( 'Slides Nav Position', WPFP_DOMAIN ), 'slidesNavPosition' );
+
+											?>
+
+											<?php
+
+												WPFP_Helpers()->tooltip( __( 'Defines the position for the landscape navigation bar for sliders. Admits top and bottom as values. You may want to modify the CSS styles to determine the distance from the top or bottom as well as any other style such as color.', WPFP_DOMAIN ), 'wpfp-tip' );
+
+											?>
+
+										<?php WPFP_Helpers()->th_end(); ?>
+
+										<?php WPFP_Helpers()->td_start(); ?>
+
+											<?php
+
+												WPFP_Helpers()->select( WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS, 'slidesNavPosition', array(
+													'top'  => __( 'Top', WPFP_DOMAIN ),
+													'bottom' => __( 'Bottom', WPFP_DOMAIN ),
+												), isset( $slidesNavPosition ) ? $slidesNavPosition : 'top', isset( $SLIDESNAVPOSITION ) ? $SLIDESNAVPOSITION : 'top' );
+
+											?>
+														
+										<?php WPFP_Helpers()->td_end(); ?>
+
+									<?php WPFP_Helpers()->tr_end(); ?>
 							
-							</li>
+									<!-- Slides Navigation Title -->
+									<?php WPFP_Helpers()->tr_start(); ?>
+										
+										<?php WPFP_Helpers()->th_start( 'row', '', 'title-desc' ); ?>
 
-						</ul>
+											<?php
 
-					</li>
-				</ul>
+												WPFP_Helpers()->label( __( 'Slides Navigation Title', WPFP_DOMAIN ), 'slidesNavTitle' );
+
+											?>
+
+											<?php
+
+												WPFP_Helpers()->tooltip( __( 'Which metadata do you want to use for the slides navigation tooltips in case they are being used. If the metadata is empty or does not exists, it will display the title instead. If empty, it will display post title.', WPFP_DOMAIN ), 'wpfp-tip' );
+
+											?>
+
+										<?php WPFP_Helpers()->th_end(); ?>
+
+										<?php WPFP_Helpers()->td_start(); ?>
+
+											<?php
+
+												WPFP_Helpers()->text( WPFP_FULLPAGE_PT_SLIDES_OPTIONS, 'slidesNavTitle', isset( $slidesNavTitle ) ? $slidesNavTitle : '', isset( $SLIDESNAVTITLE ) ? $SLIDESNAVTITLE : '' );
+
+											?>
+
+										<?php WPFP_Helpers()->td_end(); ?>
+
+									<?php WPFP_Helpers()->tr_end(); ?>
+									
+								<?php WPFP_Helpers()->table_end(); ?>
+
+							</div>
+
+						<?php WPFP_Helpers()->td_end(); ?>
+
+					<?php WPFP_Helpers()->tr_end(); ?>
+							
+					<!-- Scrolling toggler -->
+					<?php WPFP_Helpers()->tr_start( '', 'accordion-toggler' ); ?>
+
+						<?php WPFP_Helpers()->td_start( '', '', 2 ); ?>
+
+							<?php
+
+								WPFP_Helpers()->label( __( 'Scrolling', WPFP_DOMAIN ) );
+
+							?>
+
+						<?php WPFP_Helpers()->td_end(); ?>
+
+					<?php WPFP_Helpers()->tr_end(); ?>
+							
+					<!-- Scrolling container -->
+					<?php WPFP_Helpers()->tr_start(); ?>
+						
+						<?php WPFP_Helpers()->td_start( '', '', 2 ); ?>
+				
+							<div class="accordion-container">
+
+								<?php WPFP_Helpers()->table_start( '', 'form-table' ); ?>
+											
+									<!-- CSS 3 -->
+									<?php WPFP_Helpers()->tr_start(); ?>
+										
+										<?php WPFP_Helpers()->th_start( 'row', '', 'title-desc' ); ?>
+										
+											<?php WPFP_Helpers()->span_label( __( 'CSS 3', WPFP_DOMAIN ) ); ?>
+														
+											<?php
+
+												WPFP_Helpers()->tooltip( __( "Defines wheter to use JavaScript or CSS3 transforms to scroll within sections and slides. Useful to speed up the movement in tablet and mobile devices with browsers supporting CSS3. If this option is set to true and the browser doesn&apos;t support CSS3, a jQuery fallback will be used instead.", WPFP_DOMAIN ), 'wpfp-tip' );
+
+											?>
+
+										<?php WPFP_Helpers()->th_end(); ?>
+
+										<?php WPFP_Helpers()->td_start(); ?>
+
+											<?php
+
+												WPFP_Helpers()->radio( WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS, 'css3', array(
+													'yes' => __( 'yes', WPFP_DOMAIN ),
+													'no'  => __( 'no', WPFP_DOMAIN ),
+												), isset( $css3 ) ? $css3 : 'yes', isset( $CSS3 ) ? $CSS3 : 'yes' );
+
+											?>
+														
+										<?php WPFP_Helpers()->td_end(); ?>
+
+									<?php WPFP_Helpers()->tr_end(); ?>
+							
+									<!-- Scrolling Speed -->
+									<?php WPFP_Helpers()->tr_start(); ?>
+										
+										<?php WPFP_Helpers()->th_start( 'row', '', 'title-desc' ); ?>
+											
+											<?php
+
+												WPFP_Helpers()->label( __( 'Scrolling Speed', WPFP_DOMAIN ), 'scrollingSpeed' );
+
+											?>
+														
+											<?php
+
+												WPFP_Helpers()->tooltip( __( 'Speed in miliseconds for the scrolling transitions.', WPFP_DOMAIN ), 'wpfp-tip' );
+
+											?>
+
+										<?php WPFP_Helpers()->th_end(); ?>
+
+										<?php WPFP_Helpers()->td_start(); ?>
+								
+											<?php
+
+												WPFP_Helpers()->number( WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS, 'scrollingSpeed', isset( $scrollingSpeed ) ? $scrollingSpeed : 700, isset( $SCROLLINGSPEED ) ? $SCROLLINGSPEED : 700, 0, 10, 'small-text' );
+
+											?>
+
+										<?php WPFP_Helpers()->td_end(); ?>
+
+									<?php WPFP_Helpers()->tr_end(); ?>
+							
+									<!-- Transition effect -->
+									<?php WPFP_Helpers()->tr_start(); ?>
+										
+										<?php WPFP_Helpers()->th_start( 'row', '', 'title-desc' ); ?>
+											
+											<?php
+
+												WPFP_Helpers()->label( __( 'Transition effect', WPFP_DOMAIN ), 'easing' );
+
+											?>
+														
+											<?php
+
+												WPFP_Helpers()->tooltip( __( 'Defines the transition effect to use for the vertical and horizontal scrolling.', WPFP_DOMAIN ), 'wpfp-tip' );
+
+											?>
+
+										<?php WPFP_Helpers()->th_end(); ?>
+
+										<?php WPFP_Helpers()->td_start(); ?>
+
+											<?php
+
+												WPFP_Helpers()->select( WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS, 'easing', array(
+													'linear'           => __( 'Linear', WPFP_DOMAIN ),
+													'swing'            => __( 'Swing', WPFP_DOMAIN ),
+													'easeInSine'       => __( 'Ease In Sine', WPFP_DOMAIN ),
+													'easeOutSine'      => __( 'Ease Out Sine', WPFP_DOMAIN ),
+													'easeInOutSine'    => __( 'Ease In Out Sine', WPFP_DOMAIN ),
+													'easeInCirc'       => __( 'Ease In Circ', WPFP_DOMAIN ),
+													'easeOutCirc'      => __( 'Ease Out Circ', WPFP_DOMAIN ),
+													'easeInOutCirc'    => __( 'Ease In Out Circ', WPFP_DOMAIN ),
+													'easeInQuad'       => __( 'Ease In Quad', WPFP_DOMAIN ),
+													'easeOutQuad'      => __( 'Ease Out Quad', WPFP_DOMAIN ),
+													'easeInOutQuad'    => __( 'Ease In Out Quad', WPFP_DOMAIN ),
+													'easeInCubic'      => __( 'Ease In Cubic', WPFP_DOMAIN ),
+													'easeOutCubic'     => __( 'Ease Out Cubic', WPFP_DOMAIN ),
+													'easeInOutCubic'   => __( 'Ease In Out Cubic', WPFP_DOMAIN ),
+													'easeInQuart'      => __( 'Ease In Quart', WPFP_DOMAIN ),
+													'easeOutQuart'     => __( 'Ease Out Quart', WPFP_DOMAIN ),
+													'easeInOutQuart'   => __( 'Ease In Out Quart', WPFP_DOMAIN ),
+													'easeInQuint'      => __( 'Ease In Quint', WPFP_DOMAIN ),
+													'easeOutQuint'     => __( 'Ease Out Quint', WPFP_DOMAIN ),
+													'easeInOutQuint'   => __( 'Ease In Out Quint', WPFP_DOMAIN ),
+													'easeInExpo'       => __( 'Ease In Expo', WPFP_DOMAIN ),
+													'easeOutExpo'      => __( 'Ease Out Expo', WPFP_DOMAIN ),
+													'easeInOutExpo'    => __( 'Ease In Out Expo', WPFP_DOMAIN ),
+													'easeInBack'       => __( 'Ease In Back', WPFP_DOMAIN ),
+													'easeOutBack'      => __( 'Ease Out Back', WPFP_DOMAIN ),
+													'easeInOutBack'    => __( 'Ease In Out Back', WPFP_DOMAIN ),
+													'easeInElastic'    => __( 'Ease In Elastic', WPFP_DOMAIN ),
+													'easeOutElastic'   => __( 'Ease Out Elastic', WPFP_DOMAIN ),
+													'easeInOutElastic' => __( 'Ease In Out Elastic', WPFP_DOMAIN ),
+													'easeInBounce'     => __( 'Ease In Bounce', WPFP_DOMAIN ),
+													'easeOutBounce'    => __( 'Ease Out Bounce', WPFP_DOMAIN ),
+													'easeInOutBounce'  => __( 'Ease In Out Bounce', WPFP_DOMAIN ),
+												), isset( $easing ) ? $easing : 'easeInQuad', isset( $EASING ) ? $EASING : 'linear' );
+
+											?>
+
+										<?php WPFP_Helpers()->td_end(); ?>
+
+									<?php WPFP_Helpers()->tr_end(); ?>
+							
+									<!-- CSS3 Transition effect -->
+									<?php WPFP_Helpers()->tr_start(); ?>
+										
+										<?php WPFP_Helpers()->th_start( 'row', '', 'title-desc' ); ?>
+											
+											<?php
+
+												WPFP_Helpers()->label( __( 'CSS3 Transition effect', WPFP_DOMAIN ), 'easingCss3' );
+
+											?>
+														
+											<?php
+
+												WPFP_Helpers()->tooltip( __( 'Defines the transition effect to use for the vertical and horizontal scrolling in case of CSS3.', WPFP_DOMAIN ), 'wpfp-tip' );
+
+											?>
+
+										<?php WPFP_Helpers()->th_end(); ?>
+
+										<?php WPFP_Helpers()->td_start(); ?>
+
+											<?php
+
+												WPFP_Helpers()->select( WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS, 'easingCss3', array(
+													'linear'                                    => __( 'Linear', WPFP_DOMAIN ),
+													'ease'                                      => __( 'Ease', WPFP_DOMAIN ),
+													'ease-in'                                   => __( 'Ease In', WPFP_DOMAIN ),
+													'ease-out'                                  => __( 'Ease Out', WPFP_DOMAIN ),
+													'ease-in-out'                               => __( 'Ease In Out', WPFP_DOMAIN ),
+													'cubic-bezier(0.470, 0.000, 0.745, 0.715)'  => __( 'Ease In Sine', WPFP_DOMAIN ),
+													'cubic-bezier(0.390, 0.575, 0.565, 1.000)'  => __( 'Ease Out Sine', WPFP_DOMAIN ),
+													'cubic-bezier(0.445, 0.050, 0.550, 0.950)'  => __( 'Ease In Out Sine', WPFP_DOMAIN ),
+													'cubic-bezier(0.600, 0.040, 0.980, 0.335)'  => __( 'Ease In Circ', WPFP_DOMAIN ),
+													'cubic-bezier(0.075, 0.820, 0.165, 1.000)'  => __( 'Ease Out Circ', WPFP_DOMAIN ),
+													'cubic-bezier(0.785, 0.135, 0.150, 0.860)'  => __( 'Ease In Out Circ', WPFP_DOMAIN ),
+													'cubic-bezier(0.550, 0.085, 0.680, 0.530)'  => __( 'Ease In Quad', WPFP_DOMAIN ),
+													'cubic-bezier(0.250, 0.460, 0.450, 0.940)'  => __( 'Ease Out Quad', WPFP_DOMAIN ),
+													'cubic-bezier(0.455, 0.030, 0.515, 0.955)'  => __( 'Ease In Out Quad', WPFP_DOMAIN ),
+													'cubic-bezier(0.550, 0.055, 0.675, 0.190)'  => __( 'Ease In Cubic', WPFP_DOMAIN ),
+													'cubic-bezier(0.215, 0.610, 0.355, 1.000)'  => __( 'Ease Out Cubic', WPFP_DOMAIN ),
+													'cubic-bezier(0.645, 0.045, 0.355, 1.000)'  => __( 'Ease In Out Cubic', WPFP_DOMAIN ),
+													'cubic-bezier(0.895, 0.030, 0.685, 0.220)'  => __( 'Ease In Quart', WPFP_DOMAIN ),
+													'cubic-bezier(0.165, 0.840, 0.440, 1.000)'  => __( 'Ease Out Quart', WPFP_DOMAIN ),
+													'cubic-bezier(0.770, 0.000, 0.175, 1.000)'  => __( 'Ease In Out Quart', WPFP_DOMAIN ),
+													'cubic-bezier(0.755, 0.050, 0.855, 0.060)'  => __( 'Ease In Quint', WPFP_DOMAIN ),
+													'cubic-bezier(0.230, 1.000, 0.320, 1.000)'  => __( 'Ease Out Quint', WPFP_DOMAIN ),
+													'cubic-bezier(0.860, 0.000, 0.070, 1.000)'  => __( 'Ease In Out Quint', WPFP_DOMAIN ),
+													'cubic-bezier(0.950, 0.050, 0.795, 0.035)'  => __( 'Ease In Expo', WPFP_DOMAIN ),
+													'cubic-bezier(0.190, 1.000, 0.220, 1.000)'  => __( 'Ease Out Expo', WPFP_DOMAIN ),
+													'cubic-bezier(1.000, 0.000, 0.000, 1.000)'  => __( 'Ease In Out Expo', WPFP_DOMAIN ),
+													'cubic-bezier(0.600, -0.280, 0.735, 0.045)' => __( 'Ease In Back', WPFP_DOMAIN ),
+													'cubic-bezier(0.175, 0.885, 0.320, 1.275)'  => __( 'Ease Out Back', WPFP_DOMAIN ),
+													'cubic-bezier(0.680, 0, 0.265, 1.550)'      => __( 'Ease In Out Back', WPFP_DOMAIN ),
+												), isset( $easingCss3 ) ? $easingCss3 : 'linear', isset( $EASINGCSS3 ) ? $EASINGCSS3 : 'linear' );
+
+											?>
+
+										<?php WPFP_Helpers()->td_end(); ?>
+
+									<?php WPFP_Helpers()->tr_end(); ?>
+											
+									<!-- Loop Bottom -->
+									<?php WPFP_Helpers()->tr_start(); ?>
+										
+										<?php WPFP_Helpers()->th_start( 'row', '', 'title-desc' ); ?>
+												
+											<?php WPFP_Helpers()->span_label( __( 'Loop Bottom', WPFP_DOMAIN ) ); ?>
+														
+											<?php
+
+												WPFP_Helpers()->tooltip( __( 'Defines whether scrolling down in the last section should scroll to the first one or not.', WPFP_DOMAIN ), 'wpfp-tip' );
+
+											?>
+
+										<?php WPFP_Helpers()->th_end(); ?>
+
+										<?php WPFP_Helpers()->td_start(); ?>
+
+											<?php
+
+												WPFP_Helpers()->radio( WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS, 'loopBottom', array(
+													'yes' => __( 'yes', WPFP_DOMAIN ),
+													'no'  => __( 'no', WPFP_DOMAIN ),
+												), isset( $loopBottom ) ? $loopBottom : 'yes', isset( $LOOPBOTTOM ) ? $LOOPBOTTOM : 'yes' );
+
+											?>
+														
+										<?php WPFP_Helpers()->td_end(); ?>
+
+									<?php WPFP_Helpers()->tr_end(); ?>
+											
+									<!-- Loop Top -->
+									<?php WPFP_Helpers()->tr_start(); ?>
+										
+										<?php WPFP_Helpers()->th_start( 'row', '', 'title-desc' ); ?>
+												
+											<?php WPFP_Helpers()->span_label( __( 'Loop Top', WPFP_DOMAIN ) ); ?>
+														
+											<?php
+
+												WPFP_Helpers()->tooltip( __( 'Defines whether scrolling up in the first section should scroll to the last one or not.', WPFP_DOMAIN ), 'wpfp-tip' );
+
+											?>
+
+										<?php WPFP_Helpers()->th_end(); ?>
+
+										<?php WPFP_Helpers()->td_start(); ?>
+
+											<?php
+
+												WPFP_Helpers()->radio( WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS, 'loopTop', array(
+													'yes' => __( 'yes', WPFP_DOMAIN ),
+													'no'  => __( 'no', WPFP_DOMAIN ),
+												), isset( $loopTop ) ? $loopTop : 'yes', isset( $LOOPTOP ) ? $LOOPTOP : 'yes' );
+
+											?>
+														
+										<?php WPFP_Helpers()->td_end(); ?>
+
+									<?php WPFP_Helpers()->tr_end(); ?>
+											
+									<!-- Loop Horizontal -->
+									<?php WPFP_Helpers()->tr_start(); ?>
+										
+										<?php WPFP_Helpers()->th_start( 'row', '', 'title-desc' ); ?>
+										
+											<?php WPFP_Helpers()->span_label( __( 'Loop Horizontal', WPFP_DOMAIN ) ); ?>
+														
+											<?php
+
+												WPFP_Helpers()->tooltip( __( 'Defines whether horizontal sliders will loop after reaching the last or previous slide or not.', WPFP_DOMAIN ), 'wpfp-tip' );
+
+											?>
+
+										<?php WPFP_Helpers()->th_end(); ?>
+
+										<?php WPFP_Helpers()->td_start(); ?>
+											
+											<?php
+
+												WPFP_Helpers()->radio( WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS, 'loopHorizontal', array(
+													'yes' => __( 'yes', WPFP_DOMAIN ),
+													'no'  => __( 'no', WPFP_DOMAIN ),
+												), isset( $loopHorizontal ) ? $loopHorizontal : 'yes', isset( $LOOPHORIZONTAL ) ? $LOOPHORIZONTAL : 'yes' );
+
+											?>
+														
+										<?php WPFP_Helpers()->td_end(); ?>
+
+									<?php WPFP_Helpers()->tr_end(); ?>
+											
+									<!-- Auto Scrolling -->
+									<?php WPFP_Helpers()->tr_start(); ?>
+										
+										<?php WPFP_Helpers()->th_start( 'row', '', 'title-desc' ); ?>
+										
+											<?php WPFP_Helpers()->span_label( __( 'Auto Scrolling', WPFP_DOMAIN ) ); ?>
+														
+											<?php
+
+												WPFP_Helpers()->tooltip( __( 'Defines whether to use the "automatic" scrolling or the "normal" one. It also has affects the way the sections fit in the browser/device window in tablets and mobile phones.', WPFP_DOMAIN ), 'wpfp-tip' );
+
+											?>
+
+										<?php WPFP_Helpers()->th_end(); ?>
+
+										<?php WPFP_Helpers()->td_start(); ?>
+
+											<?php
+
+												WPFP_Helpers()->radio( WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS, 'autoScrolling', array(
+													'yes' => __( 'yes', WPFP_DOMAIN ),
+													'no'  => __( 'no', WPFP_DOMAIN ),
+												), isset( $autoScrolling ) ? $autoScrolling : 'yes', isset( $AUTOSCROLLING ) ? $AUTOSCROLLING : 'yes' );
+
+											?>
+														
+										<?php WPFP_Helpers()->td_end(); ?>
+
+									<?php WPFP_Helpers()->tr_end(); ?>
+											
+									<!-- Scroll Overflow -->
+									<?php WPFP_Helpers()->tr_start(); ?>
+										
+										<?php WPFP_Helpers()->th_start( 'row', '', 'title-desc' ); ?>
+										
+											<?php WPFP_Helpers()->span_label( __( 'Scroll Overflow', WPFP_DOMAIN ) ); ?>
+														
+											<?php
+
+												WPFP_Helpers()->tooltip( __( 'Defines whether or not to create a scroll for the section in case its content is bigger than the height of it.', WPFP_DOMAIN ), 'wpfp-tip' );
+
+											?>
+
+										<?php WPFP_Helpers()->th_end(); ?>
+
+										<?php WPFP_Helpers()->td_start(); ?>
+											
+											<?php
+
+												WPFP_Helpers()->radio( WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS, 'scrollOverflow', array(
+													'yes' => __( 'yes', WPFP_DOMAIN ),
+													'no'  => __( 'no', WPFP_DOMAIN ),
+												), isset( $scrollOverflow ) ? $scrollOverflow : 'yes', isset( $SCROLLOVERFLOW ) ? $SCROLLOVERFLOW : 'yes' );
+
+											?>
+														
+										<?php WPFP_Helpers()->td_end(); ?>
+
+									<?php WPFP_Helpers()->tr_end(); ?>
+											
+									<!-- Normal Scroll Elements -->
+									<?php WPFP_Helpers()->tr_start(); ?>
+										
+										<?php WPFP_Helpers()->th_start( 'row', '', 'title-desc' ); ?>
+										
+											<?php
+
+												WPFP_Helpers()->label( __( 'Normal Scroll Elements', WPFP_DOMAIN ), 'normalScrollElements' );
+
+											?>
+														
+											<?php
+
+												WPFP_Helpers()->tooltip( __( 'If you want to avoid the auto scroll when scrolling over some elements, this is the option you need to use. (useful for maps, scrolling divs etc.) It requires a string with the jQuery selectors for those elements. (For example: "#element1, .element2")', WPFP_DOMAIN ), 'wpfp-tip' );
+
+											?>
+
+										<?php WPFP_Helpers()->th_end(); ?>
+
+										<?php WPFP_Helpers()->td_start(); ?>
+
+											<?php
+
+												WPFP_Helpers()->text( WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS, 'normalScrollElements', isset( $normalScrollElements ) ? $normalScrollElements : '', isset( $NORMALSCROLLELEMENTS ) ? $NORMALSCROLLELEMENTS : '' );
+
+											?>
+														
+										<?php WPFP_Helpers()->td_end(); ?>
+
+									<?php WPFP_Helpers()->tr_end(); ?>
+											
+									<!-- Normal Scroll Element Touch Threshold -->
+									<?php WPFP_Helpers()->tr_start(); ?>
+										
+										<?php WPFP_Helpers()->th_start( 'row', '', 'title-desc' ); ?>
+										
+											<?php
+
+												WPFP_Helpers()->label( __( 'Normal Scroll Element Touch Threshold', WPFP_DOMAIN ), 'normalScrollElementTouchThreshold' );
+
+											?>
+
+											<?php
+
+												WPFP_Helpers()->tooltip( __( 'Defines the threshold for the number of hops up the html node tree Fullpage will test to see if normalScrollElements is a match to allow scrolling functionality on divs on a touch device.', WPFP_DOMAIN ), 'wpfp-tip' );
+
+											?>
+
+										<?php WPFP_Helpers()->th_end(); ?>
+
+										<?php WPFP_Helpers()->td_start(); ?>
+													
+											<?php
+
+												WPFP_Helpers()->number( WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS, 'normalScrollElementTouchThreshold', isset( $normalScrollElementTouchThreshold ) ? $normalScrollElementTouchThreshold : 5, isset( $NORMALSCROLLELEMENTTOUCHTHRESHOLD ) ? $NORMALSCROLLELEMENTTOUCHTHRESHOLD : 5, 0, 1, 'small-text' );
+
+											?>
+														
+										<?php WPFP_Helpers()->td_end(); ?>
+
+									<?php WPFP_Helpers()->tr_end(); ?>
+							
+									<!-- Continuous Vertical -->
+									<?php WPFP_Helpers()->tr_start(); ?>
+										
+										<?php WPFP_Helpers()->th_start( 'row', '', 'title-desc' ); ?>
+										
+											<?php WPFP_Helpers()->span_label( __( 'Continuous Vertical', WPFP_DOMAIN ) ); ?>
+
+											<?php
+
+												WPFP_Helpers()->tooltip( __( 'Defines whether scrolling down in the last section should scroll down to the first one or not, and if scrolling up in the first section should scroll up to the last one or not. Not compatible with loopTop or loopBottom.', WPFP_DOMAIN ), 'wpfp-tip' );
+
+											?>
+
+										<?php WPFP_Helpers()->th_end(); ?>
+
+										<?php WPFP_Helpers()->td_start(); ?>
+
+											<?php
+
+												WPFP_Helpers()->radio( WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS, 'continuousVertical', array(
+													'yes' => __( 'yes', WPFP_DOMAIN ),
+													'no'  => __( 'no', WPFP_DOMAIN ),
+												), isset( $continuousVertical ) ? $continuousVertical : 'yes', isset( $CONTINUOUSVERTICAL ) ? $CONTINUOUSVERTICAL : 'yes' );
+
+											?>
+
+										<?php WPFP_Helpers()->td_end(); ?>
+
+									<?php WPFP_Helpers()->tr_end(); ?>
+							
+									<!-- Touch Sensitivity -->
+									<?php WPFP_Helpers()->tr_start(); ?>
+										
+										<?php WPFP_Helpers()->th_start( 'row', '', 'title-desc' ); ?>
+										
+											<?php
+
+												WPFP_Helpers()->label( __( 'Touch Sensitivity', WPFP_DOMAIN ), 'touchSensitivity' );
+
+											?>
+
+											<?php
+
+												WPFP_Helpers()->tooltip( __( 'Defines a percentage of the browsers window width/height, and how far a swipe must measure for navigating to the next section / slide.', WPFP_DOMAIN ), 'wpfp-tip' );
+
+											?>
+
+										<?php WPFP_Helpers()->th_end(); ?>
+
+										<?php WPFP_Helpers()->td_start(); ?>
+													
+											<?php
+
+												WPFP_Helpers()->number( WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS, 'touchSensitivity', isset( $touchSensitivity ) ? $touchSensitivity : 15, isset( $TOUCHSENSITIVITY ) ? $TOUCHSENSITIVITY : 15, 1, 1, 'small-text' );
+
+											?>
+
+										<?php WPFP_Helpers()->td_end(); ?>
+
+									<?php WPFP_Helpers()->tr_end(); ?>
+									
+								<?php WPFP_Helpers()->table_end(); ?>
+
+							</div>
+
+						<?php WPFP_Helpers()->td_end(); ?>
+
+					<?php WPFP_Helpers()->tr_end(); ?>
+							
+					<!-- Accessibility toggler -->
+					<?php WPFP_Helpers()->tr_start( '', 'accordion-toggler' ); ?>
+
+						<?php WPFP_Helpers()->td_start( '', '', 2 ); ?>
+
+							<?php
+
+								WPFP_Helpers()->label( __( 'Accessibility', WPFP_DOMAIN ) );
+
+							?>
+
+						<?php WPFP_Helpers()->td_end(); ?>
+
+					<?php WPFP_Helpers()->tr_end(); ?>
+							
+					<!-- Accessibility container -->
+					<?php WPFP_Helpers()->tr_start(); ?>
+						
+						<?php WPFP_Helpers()->td_start( '', '', 2 ); ?>
+				
+							<div class="accordion-container">
+
+								<?php WPFP_Helpers()->table_start( '', 'form-table' ); ?>
+							
+									<!-- keyboard Scrolling -->
+									<?php WPFP_Helpers()->tr_start(); ?>
+										
+										<?php WPFP_Helpers()->th_start( 'row', '', 'title-desc' ); ?>
+										
+											<?php WPFP_Helpers()->span_label( __( 'keyboard Scrolling', WPFP_DOMAIN ) ); ?>
+
+											<?php
+
+												WPFP_Helpers()->tooltip( __( 'Defines if the content can be navigated using the keyboard.', WPFP_DOMAIN ), 'wpfp-tip' );
+
+											?>
+
+										<?php WPFP_Helpers()->th_end(); ?>
+
+										<?php WPFP_Helpers()->td_start(); ?>
+
+											<?php
+
+												WPFP_Helpers()->radio( WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS, 'keyboardScrolling', array(
+													'yes' => __( 'yes', WPFP_DOMAIN ),
+													'no'  => __( 'no', WPFP_DOMAIN ),
+												), isset( $keyboardScrolling ) ? $keyboardScrolling : 'yes', isset( $KEYBOARDSCROLLING ) ? $KEYBOARDSCROLLING : 'yes' );
+
+											?>
+														
+										<?php WPFP_Helpers()->td_end(); ?>
+
+									<?php WPFP_Helpers()->tr_end(); ?>
+											
+									<!-- Animate Anchor -->
+									<?php WPFP_Helpers()->tr_start(); ?>
+										
+										<?php WPFP_Helpers()->th_start( 'row', '', 'title-desc' ); ?>
+										
+											<?php WPFP_Helpers()->span_label( __( 'Animate Anchor', WPFP_DOMAIN ) ); ?>
+
+											<?php
+
+												WPFP_Helpers()->tooltip( __( 'Defines whether the load of the site when given an anchor (#) will scroll with animation to its destination or will directly load on the given section.', WPFP_DOMAIN ), 'wpfp-tip' );
+
+											?>
+
+										<?php WPFP_Helpers()->th_end(); ?>
+
+										<?php WPFP_Helpers()->td_start(); ?>
+
+											<?php
+
+												WPFP_Helpers()->radio( WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS, 'animateAnchor', array(
+													'yes' => __( 'yes', WPFP_DOMAIN ),
+													'no'  => __( 'no', WPFP_DOMAIN ),
+												), isset( $animateAnchor ) ? $animateAnchor : 'yes', isset( $ANIMATEANCHOR ) ? $ANIMATEANCHOR : 'yes' );
+
+											?>
+
+										<?php WPFP_Helpers()->td_end(); ?>
+
+									<?php WPFP_Helpers()->tr_end(); ?>
+									
+								<?php WPFP_Helpers()->table_end(); ?>
+
+							</div>
+
+						<?php WPFP_Helpers()->td_end(); ?>
+
+					<?php WPFP_Helpers()->tr_end(); ?>
+							
+					<!-- Events toggler -->
+					<?php WPFP_Helpers()->tr_start( '', 'accordion-toggler' ); ?>
+
+						<?php WPFP_Helpers()->td_start( '', '', 2 ); ?>
+
+							<?php
+
+								WPFP_Helpers()->label( __( 'Events', WPFP_DOMAIN ) );
+
+							?>
+
+						<?php WPFP_Helpers()->td_end(); ?>
+
+					<?php WPFP_Helpers()->tr_end(); ?>
+							
+					<!-- Events container -->
+					<?php WPFP_Helpers()->tr_start(); ?>
+						
+						<?php WPFP_Helpers()->td_start( '', '', 2 ); ?>
+				
+							<div class="accordion-container">
+
+								<?php WPFP_Helpers()->table_start( '', 'form-table' ); ?>
+							
+									<!-- On Leave -->
+									<?php WPFP_Helpers()->tr_start(); ?>
+										
+										<?php WPFP_Helpers()->th_start( 'row', '', 'title-desc' ); ?>
+											
+											<?php
+
+												WPFP_Helpers()->label( __( 'On Leave', WPFP_DOMAIN ), 'onLeave' );
+
+											?>
+
+											<?php
+
+												WPFP_Helpers()->tooltip( __( 'This callback is fired once the user leaves a section, in the transition to the new section. Use your own javascript code or customize the function "fullpageOnLeave" in "your-theme/wp-fullpage/js/jquery.fullpage.custom.js".', WPFP_DOMAIN ), 'wpfp-tip' );
+
+											?>
+
+											<?php
+
+												WPFP_Helpers()->goto_tip( __( 'Go to callback definition.', WPFP_DOMAIN ), 'https://github.com/alvarotrigo/fullPage.js#onleave-index-nextindex-direction', 'wpfp-goto tabs-tip' );
+
+											?>
+
+
+										<?php WPFP_Helpers()->th_end(); ?>
+
+										<?php WPFP_Helpers()->td_start(); ?>
+
+											<?php
+
+												WPFP_Helpers()->textarea( WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS, 'onLeave', isset( $onLeave ) ? $onLeave : 'fullpageOnLeave( index, nextIndex, direction );', isset( $ONLEAVE ) ? $ONLEAVE : 'fullpageOnLeave( index, nextIndex, direction );' );
+
+											?>
+
+										<?php WPFP_Helpers()->td_end(); ?>
+
+									<?php WPFP_Helpers()->tr_end(); ?>
+											
+									<!-- After Load -->
+									<?php WPFP_Helpers()->tr_start(); ?>
+										
+										<?php WPFP_Helpers()->th_start( 'row', '', 'title-desc' ); ?>
+											
+											<?php
+
+												WPFP_Helpers()->label( __( 'After Load', WPFP_DOMAIN ), 'afterLoad' );
+
+											?>
+
+											<?php
+
+												WPFP_Helpers()->tooltip( __( 'Callback fired once the sections have been loaded, after the scrolling has ended. Use your own javascript code or customize the function "fullpageAfterLoad" in "your-theme/wp-fullpage/js/jquery.fullpage.custom.js".', WPFP_DOMAIN ), 'wpfp-tip' );
+
+											?>
+
+											<?php
+
+												WPFP_Helpers()->goto_tip( __( 'Go to callback definition.', WPFP_DOMAIN ), 'https://github.com/alvarotrigo/fullPage.js#afterload-anchorlink-index', 'wpfp-goto tabs-tip' );
+
+											?>
+
+
+										<?php WPFP_Helpers()->th_end(); ?>
+
+										<?php WPFP_Helpers()->td_start(); ?>
+
+											<?php
+
+												WPFP_Helpers()->textarea( WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS, 'afterLoad', isset( $afterLoad ) ? $afterLoad : 'fullpageAfterLoad( anchorLink, index );', isset( $AFTERLOAD ) ? $AFTERLOAD : 'fullpageAfterLoad( anchorLink, index );' );
+
+											?>
+
+										<?php WPFP_Helpers()->td_end(); ?>
+
+									<?php WPFP_Helpers()->tr_end(); ?>
+											
+									<!-- After Render -->
+									<?php WPFP_Helpers()->tr_start(); ?>
+										
+										<?php WPFP_Helpers()->th_start( 'row', '', 'title-desc' ); ?>
+											
+											<?php
+
+												WPFP_Helpers()->label( __( 'After Render', WPFP_DOMAIN ), 'afterRender' );
+
+											?>
+
+											<?php
+
+												WPFP_Helpers()->tooltip( __( 'This callback is fired just after the structure of the page is generated. This is the callback you want to use to initialize other plugins or fire any code which requires the document to be ready (as this plugin modifies the DOM to create the resulting structure). Use your own javascript code or customize the function "fullpageAfterRender" in "your-theme/wp-fullpage/js/jquery.fullpage.custom.js".', WPFP_DOMAIN ), 'wpfp-tip' );
+
+											?>
+
+											<?php
+
+												WPFP_Helpers()->goto_tip( __( 'Go to callback definition.', WPFP_DOMAIN ), 'https://github.com/alvarotrigo/fullPage.js#afterrender', 'wpfp-goto tabs-tip' );
+
+											?>
+
+
+										<?php WPFP_Helpers()->th_end(); ?>
+
+										<?php WPFP_Helpers()->td_start(); ?>
+
+											<?php
+
+												WPFP_Helpers()->textarea( WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS, 'afterRender', isset( $afterRender ) ? $afterRender : 'fullpageAfterRender();', isset( $AFTERRENDER ) ? $AFTERRENDER : 'fullpageAfterRender();' );
+
+											?>
+
+										<?php WPFP_Helpers()->td_end(); ?>
+
+									<?php WPFP_Helpers()->tr_end(); ?>
+											
+									<!-- After Resize -->
+									<?php WPFP_Helpers()->tr_start(); ?>
+										
+										<?php WPFP_Helpers()->th_start( 'row', '', 'title-desc' ); ?>
+											
+											<?php
+
+												WPFP_Helpers()->label( __( 'After Resize', WPFP_DOMAIN ), 'afterResize' );
+
+											?>
+
+											<?php
+
+												WPFP_Helpers()->tooltip( __( 'This callback is fired after resizing the browser\'s window. Just after the sections are resized. Use your own javascript code or customize the function "fullpageAfterResize" in "your-theme/wp-fullpage/js/jquery.fullpage.custom.js".', WPFP_DOMAIN ), 'wpfp-tip' );
+
+											?>
+
+											<?php
+
+												WPFP_Helpers()->goto_tip( __( 'Go to callback definition.', WPFP_DOMAIN ), 'https://github.com/alvarotrigo/fullPage.js#afterresize', 'wpfp-goto tabs-tip' );
+
+											?>
+
+
+										<?php WPFP_Helpers()->th_end(); ?>
+
+										<?php WPFP_Helpers()->td_start(); ?>
+											
+											<?php
+
+												WPFP_Helpers()->textarea( WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS, 'afterResize', isset( $afterResize ) ? $afterResize : 'fullpageAfterResize();', isset( $AFTERRESIZE ) ? $AFTERRESIZE : 'fullpageAfterResize();' );
+
+											?>
+
+										<?php WPFP_Helpers()->td_end(); ?>
+
+									<?php WPFP_Helpers()->tr_end(); ?>
+						
+									<!-- After Slide Load -->
+									<?php WPFP_Helpers()->tr_start(); ?>
+										
+										<?php WPFP_Helpers()->th_start( 'row', '', 'title-desc' ); ?>
+											
+											<?php
+
+												WPFP_Helpers()->label( __( 'After Slide Load', WPFP_DOMAIN ), 'afterSlideLoad' );
+
+											?>
+												
+											<?php
+
+												WPFP_Helpers()->tooltip( __( 'Callback fired once the slide of a section have been loaded, after the scrolling has ended. Use your own javascript code or customize the function "fullpageAfterSlideLoad" in "your-theme/wp-fullpage/js/jquery.fullpage.custom.js".', WPFP_DOMAIN ), 'wpfp-tip' );
+
+											?>
+
+											<?php
+
+												WPFP_Helpers()->goto_tip( __( 'Go to callback definition.', WPFP_DOMAIN ), 'https://github.com/alvarotrigo/fullPage.js#afterslideload-anchorlink-index-slideanchor-slideindex', 'wpfp-goto tabs-tip' );
+
+											?>
+
+
+										<?php WPFP_Helpers()->th_end(); ?>
+
+										<?php WPFP_Helpers()->td_start(); ?>
+											
+											<?php
+
+												WPFP_Helpers()->textarea( WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS, 'afterSlideLoad', isset( $afterSlideLoad ) ? $afterSlideLoad : 'fullpageAfterSlideLoad( anchorLink, index, slideAnchor, slideIndex );', isset( $AFTERSLIDELOAD ) ? $AFTERSLIDELOAD : 'fullpageAfterSlideLoad( anchorLink, index, slideAnchor, slideIndex );' );
+
+											?>
+
+										<?php WPFP_Helpers()->td_end(); ?>
+
+									<?php WPFP_Helpers()->tr_end(); ?>
+						
+									<!-- On Slide Leave -->
+									<?php WPFP_Helpers()->tr_start(); ?>
+										
+										<?php WPFP_Helpers()->th_start( 'row', '', 'title-desc' ); ?>
+											
+											<?php
+
+												WPFP_Helpers()->label( __( 'On Slide Leave', WPFP_DOMAIN ), 'onSlideLeave' );
+
+											?>
+
+											<?php
+
+												WPFP_Helpers()->tooltip( __( 'This callback is fired once the user leaves an slide to go to another, in the transition to the new slide. Use your own javascript code or customize the function "fullpageSlideLeave" in "your-theme/wp-fullpage/js/jquery.fullpage.custom.js".', WPFP_DOMAIN ), 'wpfp-tip' );
+
+											?>
+
+											<?php
+
+												WPFP_Helpers()->goto_tip( __( 'Go to callback definition.', WPFP_DOMAIN ), 'https://github.com/alvarotrigo/fullPage.js#onslideleave-anchorlink-index-slideindex-direction', 'wpfp-goto tabs-tip' );
+
+											?>
+
+
+										<?php WPFP_Helpers()->th_end(); ?>
+
+										<?php WPFP_Helpers()->td_start(); ?>
+												
+											<?php
+
+												WPFP_Helpers()->textarea( WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS, 'onSlideLeave', isset( $onSlideLeave ) ? $onSlideLeave : 'fullpageSlideLeave( anchorLink, index, slideIndex, direction );', isset( $ONSLIDELEAVE ) ? $ONSLIDELEAVE : 'fullpageSlideLeave( anchorLink, index, slideIndex, direction );' );
+
+											?>
+
+										<?php WPFP_Helpers()->td_end(); ?>
+
+									<?php WPFP_Helpers()->tr_end(); ?>
+
+								<?php WPFP_Helpers()->table_end(); ?>
+
+							</div>
+
+						<?php WPFP_Helpers()->td_end(); ?>
+
+					<?php WPFP_Helpers()->tr_end(); ?>
+
+				<?php WPFP_Helpers()->table_end(); ?>
 
 			</div>
 

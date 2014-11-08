@@ -8,92 +8,217 @@
 
 ?>
 
-<h4><a href="#wpfp-settings"><?php _e( 'WP Fullpage Slide Options', WPFP_DOMAIN ); ?></a></h4>
-
 <div id="settingsbox">
 
-	<div id="fullpage-options">
+	<div id="slide-options">
 
 		<div class="inside">
 
 			<div class="setting-panel">
-
-				<ul class="fullpage-options">
-					
-					<!-- Title -->
-					<li>
-
-						<h5><?php _e( 'Fullpage.js Options', WPFP_DOMAIN );?></h5>
-
-					</li>
-							
-					<!-- Vertical Position -->
-					<li>
-
-						<label for="verticalPosition">
-						 	<?php _e( 'Vertical Position', WPFP_DOMAIN ); ?>
-						</label>
-
-						<select id="verticalPosition" name="<?php print WPFP_SLIDE_PT_SLIDE_OPTIONS; ?>[verticalPosition]" <?php WPFP_Helpers()->default_setting( isset( $VERTICALPOSITION ) ? $VERTICALPOSITION : 'middle', true ); ?>>
-							
-							<option value="inherit" <?php selected( isset( $verticalPosition ) ? $verticalPosition : '', 'inherit' ); ?>><?php _e( 'Inherit from Section', WPFP_DOMAIN ); ?></option>
-							<option value="middle" <?php selected( isset( $verticalPosition ) ? $verticalPosition : 'middle', 'middle' ); ?>><?php _e( 'Middle', WPFP_DOMAIN ); ?></option>
-							<option value="top" <?php selected( isset( $verticalPosition ) ? $verticalPosition : '', 'top' ); ?>><?php _e( 'Top', WPFP_DOMAIN ); ?></option>
-							<option value="bottom" <?php selected( isset( $verticalPosition ) ? $verticalPosition : '', 'bottom' ); ?>><?php _e( 'Bottom', WPFP_DOMAIN ); ?></option>
-
-						</select>
-
-						<span class="wpfp-tip" data-tip="<?php _e( 'Vertical position of the content within slide.', WPFP_DOMAIN ); ?>"></span>
-
-					</li>
-					
-					<!-- Horizontal Position -->
-					<li>
-
-						<label for="horizontalPosition">
-						 	<?php _e( 'Horizontal Position', WPFP_DOMAIN ); ?>
-						</label>
-
-						<select id="horizontalPosition" name="<?php print WPFP_SLIDE_PT_SLIDE_OPTIONS; ?>[horizontalPosition]" <?php WPFP_Helpers()->default_setting( isset( $HORIZONTALPOSITION ) ? $HORIZONTALPOSITION : 'center', true ); ?>>
-							
-							<option value="inherit" <?php selected( isset( $horizontalPosition ) ? $horizontalPosition : '', 'inherit' ); ?>><?php _e( 'Inherit from Section', WPFP_DOMAIN ); ?></option>
-							<option value="center" <?php selected( isset( $horizontalPosition ) ? $horizontalPosition : 'center', 'center' ); ?>><?php _e( 'Center', WPFP_DOMAIN ); ?></option>
-							<option value="left" <?php selected( isset( $horizontalPosition ) ? $horizontalPosition : '', 'left' ); ?>><?php _e( 'Left', WPFP_DOMAIN ); ?></option>
-							<option value="right" <?php selected( isset( $horizontalPosition ) ? $horizontalPosition : '', 'right' ); ?>><?php _e( 'Right', WPFP_DOMAIN ); ?></option>
-
-						</select>
-
-						<span class="wpfp-tip" data-tip="<?php _e( 'Horizontal position of the content within slide.', WPFP_DOMAIN ); ?>"></span>
-
-					</li>
-
-					<!-- Slide Navigation Title -->
-					<li>
 				
-						<label for="slidesNavTitle">
-						 	<?php _e( 'Slide Navigation Title', WPFP_DOMAIN ); ?>
+				<?php WPFP_Helpers()->table_start( '', 'slide-options form-table' ); ?>
+					
+					<?php WPFP_Helpers()->caption( __( 'WP Fullpage Slide Options', WPFP_DOMAIN ) ); ?>
 							
-							<span class="wpfp-tip" data-tip='<?php _e( 'Which metadata do you want to use for the slide navigation tooltip in case it is being used. If the metadata is empty or does not exists, it will use the Section option.', WPFP_DOMAIN ); ?>'></span>
-						</label>
-						
-						<input type="text" id="slidesNavTitle" name="<?php print WPFP_SLIDE_PT_SLIDE_OPTIONS; ?>[slidesNavTitle]" <?php WPFP_Helpers()->value( isset( $slidesNavTitle ) ? $slidesNavTitle : '', isset( $SLIDESNAVTITLE ) ? $SLIDESNAVTITLE : '' ); ?> />
-					
-					</li>
-					
-					<!-- Slide Color -->
-					<li>
-				
-						<label for="slideColor">
-						 	<?php _e( 'Slide Color', WPFP_DOMAIN ); ?>
-							
-							<span class="wpfp-tip" data-tip='<?php _e( 'Define the CSS background-color property for the slide. If empty, will use the section option.', WPFP_DOMAIN ); ?>'></span>
-						</label>
-						
-						<input type="text" id="slideColor" name="<?php print WPFP_SLIDE_PT_SLIDE_OPTIONS; ?>[slideColor]" <?php WPFP_Helpers()->value( isset( $slideColor ) ? $slideColor : '', isset( $SLIDECOLOR ) ? $SLIDECOLOR : '' ); ?> />
-					
-					</li>
+					<!-- Styling toggler -->
+					<?php WPFP_Helpers()->tr_start( '', 'accordion-toggler' ); ?>
 
-				</ul>
+						<?php WPFP_Helpers()->td_start( '', '', 2 ); ?>
+
+							<?php
+
+								WPFP_Helpers()->label( __( 'Styling', WPFP_DOMAIN ) );
+
+							?>
+
+						<?php WPFP_Helpers()->td_end(); ?>
+
+					<?php WPFP_Helpers()->tr_end(); ?>
+							
+					<!-- Styling container -->
+					<?php WPFP_Helpers()->tr_start(); ?>
+						
+						<?php WPFP_Helpers()->td_start( '', '', 2 ); ?>
+				
+							<div class="accordion-container">
+
+								<?php WPFP_Helpers()->table_start( '', 'form-table' ); ?>
+											
+									<!-- Vertical Position -->
+									<?php WPFP_Helpers()->tr_start(); ?>
+									
+										<?php WPFP_Helpers()->th_start( 'row', '', 'title-desc' ); ?>
+
+											<?php
+
+												WPFP_Helpers()->label( __( 'Vertical Position', WPFP_DOMAIN ), 'verticalPosition' );
+
+											?>
+
+											<?php
+
+												WPFP_Helpers()->tooltip( __( 'Vertical position of the content within slide.', WPFP_DOMAIN ), 'wpfp-tip' );
+
+											?>
+
+										<?php WPFP_Helpers()->th_end(); ?>
+
+										<?php WPFP_Helpers()->td_start(); ?>
+
+											<?php
+
+												WPFP_Helpers()->select( WPFP_SLIDE_PT_SLIDE_OPTIONS, 'verticalPosition', array(
+													'inherit' => __( 'Inherit from Section', WPFP_DOMAIN ),
+													'middle' => __( 'Middle', WPFP_DOMAIN ),
+													'top'    => __( 'Top', WPFP_DOMAIN ),
+													'bottom' => __( 'Bottom', WPFP_DOMAIN ),
+												), isset( $verticalPosition ) ? $verticalPosition : 'middle', isset( $VERTICALPOSITION ) ? $VERTICALPOSITION : 'middle' );
+
+											?>
+
+										<?php WPFP_Helpers()->td_end(); ?>
+
+									<?php WPFP_Helpers()->tr_end(); ?>
+									
+									<!-- Horizontal Position -->
+									<?php WPFP_Helpers()->tr_start(); ?>
+										
+										<?php WPFP_Helpers()->th_start( 'row', '', 'title-desc' ); ?>
+
+											<?php
+
+												WPFP_Helpers()->label( __( 'Horizontal Position', WPFP_DOMAIN ), 'horizontalPosition' );
+
+											?>
+
+											<?php
+
+												WPFP_Helpers()->tooltip( __( 'Horizontal position of the content within slide.', WPFP_DOMAIN ), 'wpfp-tip' );
+
+											?>
+
+										<?php WPFP_Helpers()->th_end(); ?>
+
+										<?php WPFP_Helpers()->td_start(); ?>
+
+											<?php
+
+												WPFP_Helpers()->select( WPFP_SLIDE_PT_SLIDE_OPTIONS, 'horizontalPosition', array(
+													'inherit' => __( 'Inherit from Section', WPFP_DOMAIN ),
+													'center' => __( 'Center', WPFP_DOMAIN ),
+													'left'   => __( 'Left', WPFP_DOMAIN ),
+													'right'  => __( 'Right', WPFP_DOMAIN ),
+												), isset( $horizontalPosition ) ? $horizontalPosition : 'center', isset( $HORIZONTALPOSITION ) ? $HORIZONTALPOSITION : 'center' );
+
+											?>
+
+										<?php WPFP_Helpers()->td_end(); ?>
+
+									<?php WPFP_Helpers()->tr_end(); ?>
+							
+									<!-- Slides Color -->
+									<?php WPFP_Helpers()->tr_start(); ?>
+										
+										<?php WPFP_Helpers()->th_start( 'row', '', 'title-desc' ); ?>
+
+											<?php
+
+												WPFP_Helpers()->label( __( 'Slide Color', WPFP_DOMAIN ), 'slideColor' );
+
+											?>
+
+											<?php
+
+												WPFP_Helpers()->tooltip( __( 'Define the CSS background-color property for the slide. If empty, will use the section option.', WPFP_DOMAIN ), 'wpfp-tip' );
+
+											?>
+
+										<?php WPFP_Helpers()->th_end(); ?>
+
+										<?php WPFP_Helpers()->td_start(); ?>
+
+											<?php
+
+												WPFP_Helpers()->text( WPFP_SLIDE_PT_SLIDE_OPTIONS, 'slideColor', isset( $slideColor ) ? $slideColor : '', isset( $SLIDECOLOR ) ? $SLIDECOLOR : '' );
+
+											?>
+
+										<?php WPFP_Helpers()->td_end(); ?>
+
+									<?php WPFP_Helpers()->tr_end(); ?>
+
+								<?php WPFP_Helpers()->table_end(); ?>
+
+							</div>
+
+						<?php WPFP_Helpers()->td_end(); ?>
+
+					<?php WPFP_Helpers()->tr_end(); ?>
+										
+					<!-- Navigation toggler -->
+					<?php WPFP_Helpers()->tr_start( '', 'accordion-toggler' ); ?>
+
+						<?php WPFP_Helpers()->td_start( '', '', 2 ); ?>
+
+							<?php
+
+								WPFP_Helpers()->label( __( 'Navigation', WPFP_DOMAIN ) );
+
+							?>
+
+						<?php WPFP_Helpers()->td_end(); ?>
+
+					<?php WPFP_Helpers()->tr_end(); ?>
+							
+					<!-- Navigation container -->
+					<?php WPFP_Helpers()->tr_start(); ?>
+						
+						<?php WPFP_Helpers()->td_start( '', '', 2 ); ?>
+				
+							<div class="accordion-container">
+
+								<?php WPFP_Helpers()->table_start( '', 'form-table' ); ?>
+							
+									<!-- Slides Navigation Title -->
+									<?php WPFP_Helpers()->tr_start(); ?>
+										
+										<?php WPFP_Helpers()->th_start( 'row', '', 'title-desc' ); ?>
+
+											<?php
+
+												WPFP_Helpers()->label( __( 'Slides Navigation Title', WPFP_DOMAIN ), 'slidesNavTitle' );
+
+											?>
+
+											<?php
+
+												WPFP_Helpers()->tooltip( __( 'Which metadata do you want to use for the slides navigation tooltips in case they are being used. If the metadata is empty or does not exists, it will display the title instead. If empty, it will use the FullPage option.', WPFP_DOMAIN ), 'wpfp-tip' );
+
+											?>
+
+										<?php WPFP_Helpers()->th_end(); ?>
+
+										<?php WPFP_Helpers()->td_start(); ?>
+
+											<?php
+
+												WPFP_Helpers()->text( WPFP_SLIDE_PT_SLIDE_OPTIONS, 'slidesNavTitle', isset( $slidesNavTitle ) ? $slidesNavTitle : '', isset( $SLIDESNAVTITLE ) ? $SLIDESNAVTITLE : '' );
+
+											?>
+
+										<?php WPFP_Helpers()->td_end(); ?>
+
+									<?php WPFP_Helpers()->tr_end(); ?>
+									
+								<?php WPFP_Helpers()->table_end(); ?>
+
+							</div>
+
+						<?php WPFP_Helpers()->td_end(); ?>
+
+					<?php WPFP_Helpers()->tr_end(); ?>
+
+				<?php WPFP_Helpers()->table_end(); ?>
 
 			</div>
 
