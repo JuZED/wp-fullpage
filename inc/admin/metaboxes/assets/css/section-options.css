@@ -81,7 +81,9 @@
 		
 		#settingsbox table.slides-options.form-table > caption:hover:after {
 			-webkit-transform: rotate(90deg);
-			transform: rotate(90deg); }
+			transform: rotate(90deg);
+			-webkit-text-shadow: 2px -2px 1px #FFF000;
+			text-shadow: 2px -2px 1px #FFF000; }
 
 #section-page-options, 
 #settingsbox { 

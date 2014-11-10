@@ -5,8 +5,7 @@ var fullpageConsoleLog,
 	fullpageAfterResize,
 	fullpageAfterSlideLoad,
 	fullpageSlideLeave,
-	fullpageSetBackground,
-	currentAnchor = location.hash;
+	fullpageSetBackground;
 
 ( function( $ ) {
 
@@ -209,7 +208,7 @@ var fullpageConsoleLog,
 
 		} );
 
-		$( 'a[href="' + currentAnchor + '"]' ).parents( 'li' ).addClass( 'active' );
+		$( 'a[href="' + location.hash + '"]' ).parents( 'li' ).addClass( 'active' );
 
 	} );
 
