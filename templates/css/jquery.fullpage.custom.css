@@ -215,14 +215,14 @@
 				border-radius: 0px 0px 2px 2px; }
 		
 		#wpfp-menu li ul {
-			position: absolute; }
+			position: absolute;
+			margin-top: -100vh;
+			transition: all 0.5s ease-out; }
 			
 			#wpfp-menu li ul li {
-				display: block;
-				margin-top: -100vh;
-				transition: all 0.5s ease-out; }
+				display: block; }
 			
-			#wpfp-menu li:hover ul li {
+			#wpfp-menu li:hover ul {
 				margin-top: 0px; }
 
 /**

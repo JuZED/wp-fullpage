@@ -35,5 +35,7 @@
 	<?php 
 
 		// Add a complete fullpage menu with sections and slides under sections
-		// Uncomment the next line to show it
-		// WPFP()->get_sidebar( 'menu' );
+		$fullNavigation = WPFP_Query()->fullpage->fullpage_options['fullNavigation'];
+
+		if( 'yes' === $fullNavigation )
+			WPFP()->get_sidebar( 'menu' );

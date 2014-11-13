@@ -6,6 +6,7 @@ var fullpageConsoleLog,
 	fullpageAfterSlideLoad,
 	fullpageSlideLeave,
 	fullpageSetBackground,
+	fullpageSetActiveMenuItem,
 	fullpageParallaxInit,
 	fullpageStartParallaxY,
 	fullpageStartParallaxX,
@@ -20,8 +21,9 @@ var fullpageConsoleLog,
 
 	$( function() {
 
-		var fullpageEl            = $( '#fullpage' ),
-			fullpageSectionsEl    = $( '.section' ),
+		var fullpageEl                 = $( '#fullpage' ),
+			fullpageSectionsEl         = $( '.section' ),
+			fullpageCompleteNavMenuLis = $( '#wpfp-menu li' ),
 			fullpageSectionsCount = fullpageSectionsEl.length,
 			fullpageSlidesCount   = [],
 			fullpageBackgroundImage,
@@ -82,6 +84,8 @@ var fullpageConsoleLog,
 
 			fullpageSetBackground( section );
 
+			fullpageSetActiveMenuItem();
+
 			fullpageConsoleLog( 'fullpageAfterLoad' );
 
 		}
@@ -124,6 +128,8 @@ var fullpageConsoleLog,
 				} );
 
 			} );
+
+			fullpageSetActiveMenuItem();
 
 			fullpageConsoleLog( 'fullpageAfterRender' );
 
@@ -179,6 +185,8 @@ var fullpageConsoleLog,
 			var slide = fullpageSectionsEl.eq( index -1 ).find( '.slide' ).eq( slideIndex );
 
 			fullpageSetBackground( slide );
+
+			fullpageSetActiveMenuItem();
 
 			fullpageConsoleLog( 'fullpageAfterSlideLoad' );
 
@@ -489,6 +497,20 @@ var fullpageConsoleLog,
 		}
 
 		/**
+		 * Set the active menu item
+		 *
+		 * @return  {void}
+		 */
+		fullpageSetActiveMenuItem = function() {
+
+			fullpageCompleteNavMenuLis.removeClass( 'active' );
+
+			$( 'a[href="' + location.hash + '"]' ).parents( 'li' )
+				.addClass( 'active' );
+
+		};
+
+		/**
 		 * Slides Navigation tooltips
 		 */
 		$( document ).on( {
@@ -520,15 +542,9 @@ var fullpageConsoleLog,
 			var section = $( this ).data( 'section' );
 			var slide   = $( this ).data( 'slide' );
 
-			$( '#wpfp-menu li' ).removeClass( 'active' );
-
-			$( this ).parents( 'li' ).addClass( 'active' );
-
 			$.fn.fullpage.moveTo( section, slide );
 
 		} );
-
-		$( 'a[href="' + location.hash + '"]' ).parents( 'li' ).addClass( 'active' );
 
 	} );
 
