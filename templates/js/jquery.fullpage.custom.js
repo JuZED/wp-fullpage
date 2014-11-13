@@ -136,7 +136,7 @@ var fullpageConsoleLog,
 		 */
 		fullpageAfterResize = function() {
 
-			if( 'yes' == fullPageParams.parallax ) {
+			if( 'no' == fullPageParams.css3 && 'yes' == fullPageParams.parallax ) {
 				
 				fullpageParallaxInit();
 
@@ -224,7 +224,7 @@ var fullpageConsoleLog,
 				fullpageSectionBackground[ index ]      = background;
 			}
 
-			if( 'no' == fullPageParams.css3 && undefined != fullpageSectionBackgroundImage[ index ] && 1 < fullpageSlidesCount[ index ] ) {
+			if( undefined != fullpageSectionBackgroundImage[ index ] && 1 < fullpageSlidesCount[ index ] ) {
 				
 				var imageWidth   = parseInt( backgroundImage.width ),
 					imageHeight  = parseInt( backgroundImage.height ),
@@ -279,7 +279,7 @@ var fullpageConsoleLog,
 				fullpageBackground      = background;
 			}
 
-			if( 'no' == fullPageParams.css3 && undefined != fullpageBackgroundImage && 1 < fullpageSectionsCount ) {
+			if( undefined != fullpageBackgroundImage && 1 < fullpageSectionsCount ) {
 				
 				var imageWidth   = parseInt( backgroundImage.width ),
 					imageHeight  = parseInt( backgroundImage.height ),
@@ -333,12 +333,12 @@ var fullpageConsoleLog,
 
 				backgroundImage.onload = function() {
 
-					if( 'yes' == fullPageParams.parallax && undefined != type && 'fullpage' == type ) {
+					if( 'no' == fullPageParams.css3 && 'yes' == fullPageParams.parallax && 'fullpage' == type ) {
 
 						fullpageInitParallaxY( elem, backgroundImage, background );
 
 					}
-					else if( 'yes' == fullPageParams.parallax && undefined != type && 'section' == type ) {
+					else if( 'no' == fullPageParams.css3 && 'yes' == fullPageParams.parallax && 'section' == type ) {
 
 						fullpageInitParallaxX( elem, index, backgroundImage, background );
 
@@ -394,7 +394,7 @@ var fullpageConsoleLog,
 		 */
 		fullpageStartParallaxY = function() {
 
-			if(  'no' == fullPageParams.parallax || 'yes' == fullPageParams.css3 )
+			if( 'no' == fullPageParams.parallax || 'yes' == fullPageParams.css3 )
 				return false;
 
 			fullpageParallaxTimerY = setInterval( fullpageTranslateY, 13 );
@@ -408,7 +408,7 @@ var fullpageConsoleLog,
 		 */
 		fullpageStopParallaxY = function() {
 
-			if( 'yes' == fullPageParams.css3 )
+			if( 'no' == fullPageParams.parallax || 'yes' == fullPageParams.css3 )
 				return false;
 				
 			clearInterval( fullpageParallaxTimerY );
@@ -458,7 +458,7 @@ var fullpageConsoleLog,
 		 */
 		fullpageStopParallaxX = function() {
 
-			if( 'yes' == fullPageParams.css3 )
+			if( 'no' == fullPageParams.parallax || 'yes' == fullPageParams.css3 )
 				return false;
 
 			clearInterval( fullpageParallaxTimerX );
