@@ -10,7 +10,7 @@
  */
 ?>
 
-<div class="section <?php WPFP_Query()->get_section_easing(); ?>" data-bg="<?php print WPFP_Query()->get_section_bg(); ?>">
+<div class="section <?php WPFP_Query()->get_section_easing(); ?> <?php print WPFP_Query()->section->post_name; ?>" data-bg="<?php print WPFP_Query()->get_section_bg(); ?>">
 
 	<?php
 
