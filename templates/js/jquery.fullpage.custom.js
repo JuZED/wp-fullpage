@@ -13,8 +13,8 @@ var fullpageConsoleLog,
 	fullpageStopParallaxX,
 	fullpageTranslateY,
 	fullpageTranslateX,
-	fullpageParallaxTimerY         = false,
-	fullpageParallaxTimerX         = false;
+	fullpageParallaxTimerY = false,
+	fullpageParallaxTimerX = false;
 
 ( function( $ ) {
 
