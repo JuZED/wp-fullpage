@@ -1291,7 +1291,7 @@
 														
 											<?php
 
-												WPFP_Helpers()->tooltip( __( "Defines wheter to use JavaScript or CSS3 transforms to scroll within sections and slides. Useful to speed up the movement in tablet and mobile devices with browsers supporting CSS3. If this option is set to true and the browser doesn&apos;t support CSS3, a jQuery fallback will be used instead.", WPFP_DOMAIN ), 'wpfp-tip' );
+												WPFP_Helpers()->tooltip( __( "Defines whether to use JavaScript or CSS3 transforms to scroll within sections and slides. Useful to speed up the movement in tablet and mobile devices with browsers supporting CSS3. If this option is set to true and the browser doesn&apos;t support CSS3, a jQuery fallback will be used instead.", WPFP_DOMAIN ), 'wpfp-tip' );
 
 											?>
 
@@ -1305,6 +1305,36 @@
 													'yes' => __( 'yes', WPFP_DOMAIN ),
 													'no'  => __( 'no', WPFP_DOMAIN ),
 												), isset( $css3 ) ? $css3 : 'yes', isset( $CSS3 ) ? $CSS3 : 'yes' );
+
+											?>
+														
+										<?php WPFP_Helpers()->td_end(); ?>
+
+									<?php WPFP_Helpers()->tr_end(); ?>
+											
+									<!-- Parallax -->
+									<?php WPFP_Helpers()->tr_start(); ?>
+										
+										<?php WPFP_Helpers()->th_start( 'row', '', 'title-desc' ); ?>
+										
+											<?php WPFP_Helpers()->span_label( __( 'Parallax', WPFP_DOMAIN ) ); ?>
+														
+											<?php
+
+												WPFP_Helpers()->tooltip( __( "Defines whether to add a Parallax effects to your FullPage or not. Does not work in CSS3 mode.", WPFP_DOMAIN ), 'wpfp-tip' );
+
+											?>
+
+										<?php WPFP_Helpers()->th_end(); ?>
+
+										<?php WPFP_Helpers()->td_start(); ?>
+
+											<?php
+
+												WPFP_Helpers()->radio( WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS, 'parallax', array(
+													'yes' => __( 'yes', WPFP_DOMAIN ),
+													'no'  => __( 'no', WPFP_DOMAIN ),
+												), isset( $parallax ) ? $parallax : 'no', isset( $PARALLAX ) ? $PARALLAX : 'no' );
 
 											?>
 														
