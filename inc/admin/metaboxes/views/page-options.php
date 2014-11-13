@@ -1104,6 +1104,36 @@
 							<div class="accordion-container">
 
 								<?php WPFP_Helpers()->table_start( '', 'form-table' ); ?>
+									
+									<!-- Full Navigation -->
+									<?php WPFP_Helpers()->tr_start(); ?>
+										
+										<?php WPFP_Helpers()->th_start( 'row', '', 'title-desc' ); ?>
+											
+											<?php WPFP_Helpers()->span_label( __( 'Full Navigation', WPFP_DOMAIN ) ); ?>
+														
+											<?php
+
+												WPFP_Helpers()->tooltip( __( 'If set to true, it will show a complete FullPage navigation menu bar.', WPFP_DOMAIN ), 'wpfp-tip' );
+
+											?>
+
+										<?php WPFP_Helpers()->th_end(); ?>
+
+										<?php WPFP_Helpers()->td_start(); ?>
+
+											<?php
+
+												WPFP_Helpers()->radio( WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS, 'fullNavigation', array(
+													'yes' => __( 'yes', WPFP_DOMAIN ),
+													'no'  => __( 'no', WPFP_DOMAIN ),
+												), isset( $fullNavigation ) ? $fullNavigation : 'yes', isset( $FULLNAVIGATION ) ? $FULLNAVIGATION : 'yes' );
+
+											?>
+
+										<?php WPFP_Helpers()->td_end(); ?>
+
+									<?php WPFP_Helpers()->tr_end(); ?>
 							
 									<!-- Navigation -->
 									<?php WPFP_Helpers()->tr_start(); ?>
