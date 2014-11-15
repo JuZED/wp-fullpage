@@ -13,7 +13,10 @@ Change your WordPress website to a Fullscreen Scrolling one using fullPage.js
 Wp Fullpage integrates the power of [fullPage.js](https://github.com/alvarotrigo/fullPage.js "fullPage.js") into your WordPress website.
 
 = Examples =
-Browse some [examples](http://wp-fullpage.juzed.fr/ "WP FullPage on JuZED.fr").
+Browse some [examples](http://wp-fullpage.juzed.fr/parallax/ "WP FullPage on JuZED.fr").
+
+= FAQ =
+Browse [questions](http://wp-fullpage.juzed.fr/faq/ "WP FullPage FAQ on JuZED.fr").
 
 = New Features =
 1. New Parallax effect. When CSS3 mode is deactivated and Parallax activated, FullPage and Sections has a background Parallax effect. 

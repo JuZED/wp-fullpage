@@ -219,7 +219,8 @@
 			position: absolute;
 			margin-top: -100vh;
 			padding-top: 10px;
-			transition: all 0.5s ease-out; }
+			transition: all 0.5s ease-out;
+			z-index: 100; }
 			
 			#wpfp-menu li ul li {
 				display: block; }
