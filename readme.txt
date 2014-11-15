@@ -1,9 +1,9 @@
 === WP FullPage ===
 Contributors: Julien Zerbib
-Tags: fullpage, fullscreen, scrolling
+Tags: fullpage, fullscreen, scrolling, theme, parallax
 Requires at least: 3.5
 Tested up to: 4.0
-Stable tag: 2.2
+Stable tag: 3.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,15 +12,22 @@ Change your WordPress website to a Fullscreen Scrolling one using fullPage.js
 == Description ==
 Wp Fullpage integrates the power of [fullPage.js](https://github.com/alvarotrigo/fullPage.js "fullPage.js") into your WordPress website.
 
+= Examples =
+Browse some [examples](http://wp-fullpage.juzed.fr/parallax/ "WP FullPage on JuZED.fr").
+
+= FAQ =
+Browse [questions](http://wp-fullpage.juzed.fr/faq/ "WP FullPage FAQ on JuZED.fr").
+
 = New Features =
-1. Now, in CSS3 mode, you can chose a transition effect by FullPage (vertical) and Section (horizontal) independently. 
-2. Many js and CSS3 transition effects available. 
-3. You can now disable FullPage vertical Scrolling for smaller screens modifying "Responsive" value.
-4. UI improvments. 
-5. Pages can now be used as FullPages.
-6. Backgrounds are now displayed once loaded with a fade in effect.
-7. You can found some sample code into "template" folder.
-8. Fullpage are now available as front page.
+1. New Parallax effect. When CSS3 mode is deactivated and Parallax activated, FullPage and Sections has a background Parallax effect. 
+2. Now, in CSS3 mode, you can chose a transition effect by FullPage (vertical) and Section (horizontal) independently. 
+3. Many js and CSS3 transition effects available. 
+4. You can now disable FullPage vertical Scrolling for smaller screens modifying "Responsive" value.
+5. UI improvments. 
+6. Pages can now be used as FullPages.
+7. Backgrounds are now displayed once loaded with a fade in effect.
+8. You can found some sample code into "template" folder.
+9. Fullpage are now available as front page.
 
 = How to use =
 1. Create Fullpage Sections and Slides and integrates them into a Fullpage or a Page.
@@ -49,6 +56,8 @@ Read the [full documentation](http://docs.juzed.fr/wp-fullpage "WP FullPage Docu
 Deactivate than reactivate the plugin after upgrade to refresh permalinks.
 
 == Changelog ==
+= 3.0 =
+*   New parallax effect
 = 2.2 =
 *   New options added
 = 2.1 =

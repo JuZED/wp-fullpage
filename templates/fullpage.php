@@ -9,7 +9,7 @@
 
 WPFP()->get_header(); ?>
 
-<div id="fullpage" class="<?php WPFP_Query()->get_fullpage_easing(); ?>">
+<div id="fullpage" class="<?php WPFP_Query()->get_fullpage_easing(); ?> <?php print WPFP_Query()->fullpage->post_name; ?>" data-bg="<?php print WPFP_Query()->get_fullpage_bg(); ?>">
 
 	<?php
 
@@ -31,5 +31,5 @@ $navigation = WPFP_Query()->fullpage->fullpage_options['navigation'];
 if( 'yes' === $navigation )
 	WPFP()->get_navigation();
 
-// WPFP()->get_sidebar();
+WPFP()->get_sidebar();
 WPFP()->get_footer();

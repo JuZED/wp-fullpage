@@ -6,11 +6,35 @@ var fullpageConsoleLog,
 	fullpageAfterSlideLoad,
 	fullpageSlideLeave,
 	fullpageSetBackground,
-	currentAnchor = location.hash;
+	fullpageSetActiveMenuItem,
+	fullpageParallaxInit,
+	fullpageStartParallaxY,
+	fullpageStartParallaxX,
+	fullpageStopParallaxY,
+	fullpageStopParallaxX,
+	fullpageTranslateY,
+	fullpageTranslateX,
+	fullpageParallaxTimerY = false,
+	fullpageParallaxTimerX = false;
 
 ( function( $ ) {
 
 	$( function() {
+
+		var fullpageEl                 = $( '#fullpage' ),
+			fullpageSectionsEl         = $( '.section' ),
+			fullpageCompleteNavMenuLis = $( '#wpfp-menu li' ),
+			fullpageSectionsCount = fullpageSectionsEl.length,
+			fullpageSlidesCount   = [],
+			fullpageBackgroundImage,
+			fullpageBackground,
+			fullpageSectionBackgroundImage = [],
+			fullpageSectionBackground      = [],
+			fullpageSectionIndex           = -1,
+			imageMaxTop,
+			maxTop,
+			imageMaxLeft = [],
+			maxLeft      = [];
 
 		/**
 		 * Console Log
@@ -37,6 +61,9 @@ var fullpageConsoleLog,
 		 */
 		fullpageOnLeave = function( index, nextIndex, direction ) {
 
+			if( 'yes' == fullPageParams.autoScrolling )
+				fullpageStartParallaxY();
+
 			fullpageConsoleLog( 'fullpageOnLeave' );
 
 		}
@@ -51,9 +78,13 @@ var fullpageConsoleLog,
 		 */
 		fullpageAfterLoad = function( anchorLink, index ) {
 
-			var section = $( '.section' ).eq( index -1 );
+			fullpageStopParallaxY();
+
+			var section = fullpageSectionsEl.eq( index -1 );
 
 			fullpageSetBackground( section );
+
+			fullpageSetActiveMenuItem();
 
 			fullpageConsoleLog( 'fullpageAfterLoad' );
 
@@ -66,7 +97,39 @@ var fullpageConsoleLog,
 		 */
 		fullpageAfterRender = function() {
 
-			fullpageSetBackground( $( '.section' ).first() );
+			/**
+			 * Init Parallax properties
+			 */
+			fullpageParallaxInit();
+
+			/**
+			 * If there is no Auto Scrolling
+			 */
+			if( 'no' == fullPageParams.autoScrolling )
+				$( window ).scroll( fullpageTranslateY );
+
+			/**
+			 * Initialising Backgrounds
+			 */
+			fullpageEl.each( function() {
+
+				fullpageSetBackground( $( this ), 'fullpage' );
+
+				fullpageSectionsEl.each( function( index ) {
+
+					fullpageSetBackground( $( this ), 'section', index );
+
+					$( '.slide', this ).each( function() {
+
+						fullpageSetBackground( $( this ) );
+						
+					} );
+
+				} );
+
+			} );
+
+			fullpageSetActiveMenuItem();
 
 			fullpageConsoleLog( 'fullpageAfterRender' );
 
@@ -78,6 +141,28 @@ var fullpageConsoleLog,
 		 * @return  {void}
 		 */
 		fullpageAfterResize = function() {
+
+			if( 'no' == fullPageParams.css3 && 'yes' == fullPageParams.parallax ) {
+				
+				fullpageParallaxInit();
+
+				fullpageInitParallaxY( fullpageEl );
+
+				fullpageTranslateY();
+
+				fullpageSectionsEl.each( function( index ) {
+					
+					fullpageSectionIndex = index;
+
+					fullpageInitParallaxX( $( this ), fullpageSectionIndex );
+
+					fullpageTranslateX();
+
+				} );
+
+				fullpageSectionIndex = -1;
+
+			}
 
 			fullpageConsoleLog( 'fullpageAfterResize' );
 
@@ -95,9 +180,13 @@ var fullpageConsoleLog,
 		 */
 		fullpageAfterSlideLoad = function( anchorLink, index, slideAnchor, slideIndex ) {
 
-			var slide = $( '.section' ).eq( index -1 ).find( '.slide' ).eq( slideIndex );
+			fullpageStopParallaxX();
+
+			var slide = fullpageSectionsEl.eq( index -1 ).find( '.slide' ).eq( slideIndex );
 
 			fullpageSetBackground( slide );
+
+			fullpageSetActiveMenuItem();
 
 			fullpageConsoleLog( 'fullpageAfterSlideLoad' );
 
@@ -115,20 +204,135 @@ var fullpageConsoleLog,
 		 */
 		fullpageSlideLeave = function ( anchorLink, index, slideIndex, direction ) {
 
+			fullpageSectionIndex = index;
+
+			fullpageStartParallaxX();
+
 			fullpageConsoleLog( 'fullpageSlideLeave' );
 
 		}
 
 		/**
-		 * Background init
+		 * Parallax X Init
 		 *
-		 * @param   {jQuery}  elem
+		 * @param   {jQuery}  element
+		 * @param   {int}     index            
+		 * @param   {img}     backgroundImage  
+		 * @param   {string}  background
 		 *
 		 * @return  {void}
 		 */
-		fullpageSetBackground = function( elem ) {
+		fullpageInitParallaxX = function ( element, index, backgroundImage, background ) {
 
-			var element    = elem;
+			if( undefined == backgroundImage ) {
+				backgroundImage = fullpageSectionBackgroundImage[ index ];
+				background      = fullpageSectionBackground[ index ];
+			} else {
+				fullpageSectionBackgroundImage[ index ] = backgroundImage;
+				fullpageSectionBackground[ index ]      = background;
+			}
+
+			if( undefined != fullpageSectionBackgroundImage[ index ] && 1 < fullpageSlidesCount[ index ] ) {
+				
+				var imageWidth   = parseInt( backgroundImage.width ),
+					imageHeight  = parseInt( backgroundImage.height ),
+					imageNewWidth,
+					width;
+
+				if( 'yes' == fullPageParams.autoScrolling )
+					width = ( fullpageSlidesCount[ index ] * 100 ) + '%';
+				else
+					width = '100%';
+				
+				imageNewWidth         = windowHeight * imageWidth / imageHeight;
+				imageMaxLeft[ index ] = windowWidth - imageNewWidth;
+
+				if( '' != element.data( 'bg' ) )
+					element.pseudoCss( ':before', {
+						backgroundImage: 'url(' + background + ')',
+						width: width,
+						opacity: 1,
+						backgroundSize: 'auto 100%',
+						backgroundPosition: '0% 50%'
+					} );
+
+			} else if( undefined != fullpageSectionBackgroundImage[ index ] ) {
+
+				element.pseudoCss( ':before', {
+					backgroundImage : 'url(' + background + ')',
+					opacity: 1
+				} );
+
+			}
+
+		}
+
+		/**
+		 * Parallax Y Init
+		 *
+		 * @param   {jQuery}  element
+		 * @param   {int}     index            
+		 * @param   {img}     backgroundImage  
+		 * @param   {string}  background
+		 *
+		 * @return  {void}
+		 */
+		fullpageInitParallaxY = function ( element, backgroundImage, background ) {
+
+			if( undefined == backgroundImage ) {
+				backgroundImage = fullpageBackgroundImage;
+				background      = fullpageBackground;
+			} else {
+				fullpageBackgroundImage = backgroundImage ;
+				fullpageBackground      = background;
+			}
+
+			if( undefined != fullpageBackgroundImage && 1 < fullpageSectionsCount ) {
+				
+				var imageWidth   = parseInt( backgroundImage.width ),
+					imageHeight  = parseInt( backgroundImage.height ),
+					imageNewHeight,
+					height;
+
+				if( 'yes' == fullPageParams.autoScrolling )
+					height = ( fullpageSectionsCount * 100 ) + '%';
+				else
+					height = '100%';
+				
+				imageNewHeight = windowWidth * imageHeight / imageWidth;
+				imageMaxTop    = fullpageSectionsCount * windowHeight - imageNewHeight;
+
+				if( '' != element.data( 'bg' ) )
+					element.pseudoCss( ':before', {
+						backgroundImage: 'url(' + background + ')',
+						height: height,
+						opacity: 1,
+						backgroundSize: '100% auto',
+						backgroundPosition: '50% 0%'
+					} );
+
+			} else if( undefined != fullpageBackgroundImage ) {
+
+				element.pseudoCss( ':before', {
+					backgroundImage : 'url(' + background + ')',
+					opacity: 1
+				} );
+
+			}
+
+		}
+
+		/**
+		 * Init Background
+		 *
+		 * @param   {jQuery}  elem  
+		 * @param   {string}  type  
+		 * @param   {int}     index
+		 *
+		 * @return  {void}
+		 */
+		fullpageSetBackground = function( elem, type, index ) {
+
 			var background = elem.data( 'bg' );
 
 			if( undefined != background && '' != background ) {
@@ -137,16 +341,30 @@ var fullpageConsoleLog,
 
 				backgroundImage.onload = function() {
 
-					element.pseudoCss( ':before', {
-						backgroundImage : 'url(' + background + ')',
-						opacity: 1
-					} );
+					if( 'no' == fullPageParams.css3 && 'yes' == fullPageParams.parallax && 'fullpage' == type ) {
 
-					element.data( 'bg', '' );
+						fullpageInitParallaxY( elem, backgroundImage, background );
+
+					}
+					else if( 'no' == fullPageParams.css3 && 'yes' == fullPageParams.parallax && 'section' == type ) {
+
+						fullpageInitParallaxX( elem, index, backgroundImage, background );
+
+					}
+					else {
+
+						elem.pseudoCss( ':before', {
+							backgroundImage : 'url(' + background + ')',
+							opacity: 1
+						} );
+
+					}
+
+					elem.data( 'bg', '' );
 
 					fullpageConsoleLog( 'fullpageSetBackground' );
 
-				};
+				}
 
 				backgroundImage.src = background;
 
@@ -155,19 +373,142 @@ var fullpageConsoleLog,
 		}
 
 		/**
-		 * Initialising Backgrounds
+		 * Init Parallax properties
+		 *
+		 * @return  {void}
 		 */
-		$( '.section' ).each( function() {
+		fullpageParallaxInit = function() {
 
-			fullpageSetBackground( $( this ) );
+			windowWidth  = parseInt( $( window ).width() );
+			windowHeight = parseInt( $( window ).height() );
+			maxTop       = ( fullpageSectionsCount - 1 ) * windowHeight;
 
-			$( this ).find( '.slide' ).each( function() {
+			fullpageSectionsEl.each( function( index ) {
 
-				fullpageSetBackground( $( this ) );
+				var slides = $( '.slide', this );
+
+				fullpageSlidesCount[ index ] = slides.length;
 				
+				maxLeft[ index ] = ( fullpageSlidesCount[ index ] - 1 ) * windowWidth;
+
+			} );
+			
+		}
+
+		/**
+		 * Start Parallax Y
+		 *
+		 * @return  {void}
+		 */
+		fullpageStartParallaxY = function() {
+
+			if( 'no' == fullPageParams.parallax || 'yes' == fullPageParams.css3 )
+				return false;
+
+			fullpageParallaxTimerY = setInterval( fullpageTranslateY, 13 );
+			
+		}
+
+		/**
+		 * Stop Parallax Y
+		 *
+		 * @return  {void}
+		 */
+		fullpageStopParallaxY = function() {
+
+			if( 'no' == fullPageParams.parallax || 'yes' == fullPageParams.css3 )
+				return false;
+				
+			clearInterval( fullpageParallaxTimerY );
+
+			fullpageTranslateY();
+
+		}
+
+		/**
+		 * Translate Y
+		 *
+		 * @return  {void}
+		 */
+		fullpageTranslateY = function() {
+
+			var y;
+
+			if( 'yes' == fullPageParams.autoScrolling )
+				y = parseInt( fullpageEl.css( 'top' ) );
+			else
+				y = - parseInt( $( window ).scrollTop() );
+
+			fullpageEl.pseudoCss( ':before', {
+				backgroundPosition: '50% ' + ( -y * imageMaxTop / maxTop ) + 'px'
 			} );
 
-		} );
+		}
+
+		/**
+		 * Start Parallax X
+		 *
+		 * @return  {void}
+		 */
+		fullpageStartParallaxX = function() {
+
+			if( 'no' == fullPageParams.parallax || 'yes' == fullPageParams.css3 )
+				return false;
+
+			fullpageParallaxTimerX = setInterval( fullpageTranslateX, 13 );
+			
+		}
+
+		/**
+		 * Stop Parallax X
+		 *
+		 * @return  {void}
+		 */
+		fullpageStopParallaxX = function() {
+
+			if( 'no' == fullPageParams.parallax || 'yes' == fullPageParams.css3 )
+				return false;
+
+			clearInterval( fullpageParallaxTimerX );
+
+			fullpageTranslateX();
+
+			fullpageSectionIndex = -1;
+
+		}
+
+		/**
+		 * Translate X
+		 *
+		 * @return  {void}
+		 */
+		fullpageTranslateX = function() {
+
+			var x,
+				section = fullpageSectionsEl.eq( fullpageSectionIndex - 1 );
+
+			x = parseInt( section.find( '.fp-slides' ).scrollLeft() );
+
+			if( ! isNaN( x ) )
+				section.pseudoCss( ':before', {
+					backgroundPosition: ( x * imageMaxLeft[ fullpageSectionIndex - 1 ] / maxLeft[ fullpageSectionIndex - 1 ] ) + 'px 50%'
+				} );
+
+		}
+
+		/**
+		 * Set the active menu item
+		 *
+		 * @return  {void}
+		 */
+		fullpageSetActiveMenuItem = function() {
+
+			fullpageCompleteNavMenuLis.removeClass( 'active' );
+
+			$( 'a[href="' + location.hash + '"]' ).parents( 'li' )
+				.addClass( 'active' );
+
+		};
 
 		/**
 		 * Slides Navigation tooltips
@@ -201,15 +542,9 @@ var fullpageConsoleLog,
 			var section = $( this ).data( 'section' );
 			var slide   = $( this ).data( 'slide' );
 
-			$( '#wpfp-menu li' ).removeClass( 'active' );
-
-			$( this ).parents( 'li' ).addClass( 'active' );
-
 			$.fn.fullpage.moveTo( section, slide );
 
 		} );
-
-		$( 'a[href="' + currentAnchor + '"]' ).parents( 'li' ).addClass( 'active' );
 
 	} );
 

@@ -39,7 +39,9 @@
 		
 		.wrap.wpfp-wrap h2 a:hover:after {
 			-webkit-transform: rotate(90deg);
-			transform: rotate(90deg); }
+			transform: rotate(90deg);
+			-webkit-text-shadow: 3px -3px 0px #FFF000;
+			text-shadow: 3px -3px 0px #FFF000; }
 
 #settingsbox table.sections-options.form-table > caption {
 	color: #17A5C7;

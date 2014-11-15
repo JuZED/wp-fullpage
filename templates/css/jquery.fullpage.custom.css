@@ -189,11 +189,12 @@
 
 	#wpfp-menu > li {
 		display: inline-block;
-		position: relative; }
+		position: relative;
+		margin: 0 5px; }
 
 		#wpfp-menu li a {
 			color: #666666;
-			padding: 2px 10px;
+			padding: 10px 10px;
 			display: block;
 			background-color: rgba(230, 230, 230, 0.8);
 			border-radius: 2px; }
@@ -215,14 +216,16 @@
 				border-radius: 0px 0px 2px 2px; }
 		
 		#wpfp-menu li ul {
-			position: absolute; }
+			position: absolute;
+			margin-top: -100vh;
+			padding-top: 10px;
+			transition: all 0.5s ease-out;
+			z-index: 100; }
 			
 			#wpfp-menu li ul li {
-				display: block;
-				margin-top: -100vh;
-				transition: all 0.5s ease-out; }
+				display: block; }
 			
-			#wpfp-menu li:hover ul li {
+			#wpfp-menu li:hover ul {
 				margin-top: 0px; }
 
 /**
