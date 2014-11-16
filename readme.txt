@@ -56,6 +56,8 @@ Read the [full documentation](http://docs.juzed.fr/wp-fullpage "WP FullPage Docu
 Deactivate than reactivate the plugin after upgrade to refresh permalinks.
 
 == Changelog ==
+= 3.1 =
+*   Admin Bug Fixes
 = 3.0 =
 *   New parallax effect
 = 2.2 =
