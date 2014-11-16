@@ -36,8 +36,12 @@
 			$( '#' + wpfpFPOParams.includedPostsOfTermLauncherClass + '-' + selectedTaxonomy + '-' + selectedTermID ).show();
 			$( '#' + wpfpFPOParams.excludedPostsOfTermLauncherClass + '-' + selectedTaxonomy + '-' + selectedTermID ).show();
 
-			globalIncludedPostsEl.val( includedPostsEl.val() ).trigger( 'change' );
-			globalExcludedPostsEl.val( excludedPostsEl.val() ).trigger( 'change' );
+			globalIncludedPostsEl.data( 'correspondingEl', includedPostsEl.selector )
+				.val( includedPostsEl.val() )
+				.trigger( 'change' );
+			globalExcludedPostsEl.data( 'correspondingEl', excludedPostsEl.selector )
+				.val( excludedPostsEl.val() )
+				.trigger( 'change' );
 
 		}
 
@@ -54,8 +58,12 @@
 			$( '#' + wpfpFPOParams.includedPostsOfTypeLauncherClass + '-' + selectedPostType ).show();
 			$( '#' + wpfpFPOParams.excludedPostsOfTypeLauncherClass + '-' + selectedPostType ).show();
 
-			globalIncludedPostsEl.val( includedPostsEl.val() ).trigger( 'change' );
-			globalExcludedPostsEl.val( excludedPostsEl.val() ).trigger( 'change' );
+			globalIncludedPostsEl.data( 'correspondingEl', includedPostsEl.selector )
+				.val( includedPostsEl.val() )
+				.trigger( 'change' );
+			globalExcludedPostsEl.data( 'correspondingEl', excludedPostsEl.selector )
+				.val( excludedPostsEl.val() )
+				.trigger( 'change' );
 
 		}
 

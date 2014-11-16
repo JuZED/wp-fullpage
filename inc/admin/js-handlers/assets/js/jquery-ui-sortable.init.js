@@ -34,6 +34,9 @@
 
 						$( inputEl ).val( newValues.join( ',' ) );
 
+						if( undefined != $( inputEl ).data( 'correspondingEl' ) )
+							$( $( inputEl ).data( 'correspondingEl' ) ).val( newValues.join( ',' ) );
+
 					}
 
 					$( sortableEl, document ).replaceWith( response );
@@ -73,6 +76,9 @@
 				} );
 
 				$( inputEl ).val( inputValue.join( ',' ) );
+
+				if( undefined != $( inputEl ).data( 'correspondingEl' ) )
+					$( $( inputEl ).data( 'correspondingEl' ) ).val( inputValue.join( ',' ) );
 
 			}
 
