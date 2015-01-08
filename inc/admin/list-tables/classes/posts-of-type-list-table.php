@@ -33,6 +33,8 @@ class WP_Fullpage_Posts_Of_Type_List_Table extends WP_Fullpage_Posts_List_Table 
 			'screen' => $post_type,
 		) );
 
+		$this->user_posts_count = 0;
+
 		if ( !current_user_can( $post_type_object->cap->edit_others_posts ) ) {
 			
 			$exclude_states         = get_post_stati( array( 'show_in_admin_all_list' => false ) );

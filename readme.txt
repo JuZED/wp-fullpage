@@ -2,8 +2,8 @@
 Contributors: Julien Zerbib
 Tags: fullpage, fullscreen, scrolling, theme, parallax
 Requires at least: 3.5
-Tested up to: 4.0
-Stable tag: 3.1
+Tested up to: 4.1
+Stable tag: 3.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -38,8 +38,7 @@ Browse [questions](http://wp-fullpage.juzed.fr/faq/ "WP FullPage FAQ on JuZED.fr
 
 = Customization =
 1. Customize FullPage templates and functionalities by copying the contents of "/wp-content/plugins/wp-fullpage/templates/" into "/wp-content/themes/YOURTHEME/wp-fullpage/".
-2. Uncomment line 39 of "layout/header.php" to see a complete menu with slides under sections.
-3. Many hook filters and actions are available too.
+2. Many hook filters and actions are available too.
 
 = Documentation =
 Read the [full documentation](http://docs.juzed.fr/wp-fullpage "WP FullPage Documentation")
@@ -56,6 +55,8 @@ Read the [full documentation](http://docs.juzed.fr/wp-fullpage "WP FullPage Docu
 Deactivate than reactivate the plugin after upgrade to refresh permalinks.
 
 == Changelog ==
+= 3.1.1 =
+*   Bug fixes on WP 4.1
 = 3.1 =
 *   Admin Bug Fixes
 = 3.0 =
