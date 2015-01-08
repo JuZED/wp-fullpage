@@ -90,23 +90,23 @@ final class WP_Fullpage extends WP_Fullpage_Base {
 	 * 
 	 * @return  bool
 	 */
-	private function isItFullpage() {
+	private function is_fullpage() {
 
-		$isItFullpage = 'no';
+		$is_fullpage = 'no';
 
 		if( is_page() ) {
 
 			$fullpage_options = get_post_meta( get_queried_object_id(), WPFP_FULLPAGE_PT_FULLPAGE_OPTIONS, true );
-			$isItFullpage     = ! empty( $fullpage_options['isItFullpage'] ) ? $fullpage_options['isItFullpage'] : 'no' ;
+			$is_fullpage      = ! empty( $fullpage_options['isItFullpage'] ) ? $fullpage_options['isItFullpage'] : 'no' ;
 		
 		}
 
-		if ( WPFP_FULLPAGE_PT === get_query_var( 'post_type' ) || 'yes' === $isItFullpage )
+		if ( WPFP_FULLPAGE_PT === get_query_var( 'post_type' ) || 'yes' === $is_fullpage )
 			return true;
 		else
 			return false;
 
-	} // END private function isItFullpage
+	} // END private function is_fullpage
 
 	/**
 	 * The template include Filter to fullpage post type
@@ -117,7 +117,7 @@ final class WP_Fullpage extends WP_Fullpage_Base {
 	 */
 	public function fullpage_template_include( $template ) {
 
-		if ( $this->isItFullpage() ) {
+		if ( $this->is_fullpage() ) {
 			
 			global $post;
 			
@@ -144,7 +144,7 @@ final class WP_Fullpage extends WP_Fullpage_Base {
 	 */
 	public function scripts_styles() {
 		
-		if( $this->isItFullpage() ) {
+		if( $this->is_fullpage() ) {
 
 			// Add Fullpage Scripts
 			wp_enqueue_script( 'jquery-slimscroll', $this->assets_url . '/js/jquery.slimscroll.min.js', array( 'jquery' ), WPFP_VERSION );
@@ -221,8 +221,7 @@ final class WP_Fullpage extends WP_Fullpage_Base {
 	public function init_fullpage_params() {
 
 		// Init Fullpage Params
-		$params          = WPFP_Query()->fullpage->fullpage_options;
-		$sections_option = WPFP_Query()->fullpage->sections_option;
+		$params = WPFP_Query()->fullpage->fullpage_options;
 
 		$params['anchors'] = array();
 

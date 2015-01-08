@@ -250,8 +250,8 @@ abstract class WP_Fullpage_Posts_List_Table extends WP_Posts_List_Table {
 	 * @return  void
 	 */
 	public function display() {
-		
-		extract( $this->_args );
+
+		extract( $this->__get( '_args' ) );
 
 		$this->display_tablenav( 'top' );
 
@@ -766,10 +766,12 @@ abstract class WP_Fullpage_Posts_List_Table extends WP_Posts_List_Table {
 	 */
 	public function pagination( $which ) {
 
-		if ( empty( $this->_pagination_args ) )
+		$pagination_args = $this->__get( '_pagination_args' );
+
+		if ( empty( $pagination_args ) )
 			return;
 
-		extract( $this->_pagination_args, EXTR_SKIP );
+		extract( $pagination_args, EXTR_SKIP );
 		
 		$ajax_params   = $this->ajax_params;
 		$output        = '<span class="displaying-num">' . sprintf( _n( '1 item', '%s items', $total_items ), number_format_i18n( $total_items ) ) . '</span>';

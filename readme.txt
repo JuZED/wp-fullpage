@@ -38,8 +38,7 @@ Browse [questions](http://wp-fullpage.juzed.fr/faq/ "WP FullPage FAQ on JuZED.fr
 
 = Customization =
 1. Customize FullPage templates and functionalities by copying the contents of "/wp-content/plugins/wp-fullpage/templates/" into "/wp-content/themes/YOURTHEME/wp-fullpage/".
-2. Uncomment line 39 of "layout/header.php" to see a complete menu with slides under sections.
-3. Many hook filters and actions are available too.
+2. Many hook filters and actions are available too.
 
 = Documentation =
 Read the [full documentation](http://docs.juzed.fr/wp-fullpage "WP FullPage Documentation")
