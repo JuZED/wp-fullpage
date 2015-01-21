@@ -149,10 +149,11 @@ final class WP_Fullpage_Query {
 			case 'sections':
 				
 				$args = array(
-					'post_type' => WPFP_FULLPAGE_SECTION_PT,
-					'post__in'  => explode( ',', $sections_options['sections'] ),					
-					'orderby'   => 'post__in',
-					'order'     => 'ASC',
+					'posts_per_page' => -1,
+					'post_type'      => WPFP_FULLPAGE_SECTION_PT,
+					'post__in'       => explode( ',', $sections_options['sections'] ),					
+					'orderby'        => 'post__in',
+					'order'          => 'ASC',
 				);
 
 				break;
@@ -329,10 +330,11 @@ final class WP_Fullpage_Query {
 			case 'slides':
 				
 				$args = array(
-					'post_type' => WPFP_FULLPAGE_SLIDE_PT,
-					'post__in'  => explode( ',', $slides_options['slides'] ),					
-					'orderby'   => 'post__in',
-					'order'     => 'ASC',
+					'posts_per_page' => -1,
+					'post_type'      => WPFP_FULLPAGE_SLIDE_PT,
+					'post__in'       => explode( ',', $slides_options['slides'] ),					
+					'orderby'        => 'post__in',
+					'order'          => 'ASC',
 				);
 
 				break;
